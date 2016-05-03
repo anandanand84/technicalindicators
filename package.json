@@ -1,0 +1,30 @@
+{
+  "name": "technicalindicators",
+  "version": "0.0.1",
+  "description": "Techincal Indicators written in javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anandanand84/technicalindicators.git"
+  },
+  "keywords": [
+    "Technicalindicators",
+    "stocks",
+    "rsi",
+    "macd",
+    "ema",
+    "sma"
+  ],
+  "author": "anand.anand84@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anandanand84/technicalindicators/issues"
+  },
+  "homepage": "https://github.com/anandanand84/technicalindicators#readme",
+  "dependencies": {
+    "co": "^4.6.0"
+  }
+}
