@@ -1,4 +1,5 @@
-var LinkedList = require('linkedlist');
+"use strict"
+const LinkedList = require('linkedlist');
 
 var smaGenerator = function* (period){
     var list = new LinkedList()
