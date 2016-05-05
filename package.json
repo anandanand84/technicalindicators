@@ -6,7 +6,7 @@
   "scripts": {
     "cover": "babel-istanbul --include-all-sources cover -x dist/**/*.* ./node_modules/mocha/bin/_mocha -- -R spec && open coverage/lcov-report/index.html",
     "test": "mocha --compilers js:babel-register",
-    "build": "browserify src/browser.js -t [ babelify --presets [ es2015 ] ] -d -p [minifyify --no-map] -o dist/browser.js"
+    "build": "browserify browser.js -t [ babelify --presets [ es2015 ] ] -d -p [minifyify --no-map] -o dist/browser.js"
   },
   "repository": {
     "type": "git",

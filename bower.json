@@ -1,0 +1,26 @@
+{
+  "name": "technicalindicators",
+  "description": "Techincal Indicators written in javascript",
+  "main": "browser.js",
+  "authors": [
+    "anand.anand84@gmail.com"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "Technicalindicators",
+    "stocks",
+    "rsi",
+    "macd",
+    "ema",
+    "sma"
+  ],
+  "homepage": "https://github.com/anandanand84/technicalindicators",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
