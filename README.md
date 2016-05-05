@@ -2,10 +2,6 @@
 
 A javascript technical indicators written in javascript. 
 
-# Not Ready Yet
-
-This project is still under development. Do not use it for production or any serious project, API's may change in future.
- 
 # Installation
 
 For nodejs install using npm
@@ -13,11 +9,26 @@ For nodejs install using npm
 ``` 
 npm install --save technicalindicators
 ```
+
+```
+const SMA = require('technicalindicators').SMA;
+```
 For browser install using bower
 
 ```
 bower install --save technicalindicators
 ```
+```
+<script src="bower_components/technicalindicators/browser.js"></script>
+```
+
+All indicators will be available in window object. So you can just use
+
+```
+SMA.calculate(period, prices);
+```
+
+Caution: This project is still under development. Do not use it for production or any serious project, API's may change in future.
 
 # API
 
@@ -66,6 +77,15 @@ sma.nextValue(16); // 10.1
 
 Note:  Calling nextValue will not update getResult() value. 
 
+#Running tests and getting coverage
+
+```
+npm test
+```
+
+```
+npm cover
+```
 # Contribute
 
 Create issues about anything you want to report, change of API's, or request for adding new indicators. You can also create pull request with new indicators.

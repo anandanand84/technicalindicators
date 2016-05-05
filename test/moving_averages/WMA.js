@@ -14,8 +14,18 @@ describe('WMA', function() {
   });
 
   it('should be able to get WMA for the next bar', function() {
-    var emaProducer = new WMA(period, prices);
-    assert.deepEqual(emaProducer.getResult(),  [140.33, 142.52, 146.86,153.76], 'Wrong Results while getting results');
-    assert.equal(emaProducer.nextValue(200.35), 163.92, 'Wrong Results while calculating next bar WMA');
+    var wma = new WMA(period, prices);
+    assert.deepEqual(wma.getResult(),  [140.33, 142.52, 146.86,153.76], 'Wrong Results while getting results');
+  })
+
+  it('should be able to get WMA for the next bar using nextValue', function() {
+    var wma = new WMA(period, []);
+    var results = [];
+    prices.forEach(price => {
+      var result = wma.nextValue(price);
+      if(result)
+        results.push(result)
+    });
+    assert.deepEqual(results,  [140.33, 142.52, 146.86,153.76], 'Wrong Results while getting results');
   })
 })
