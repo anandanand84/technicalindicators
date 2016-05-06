@@ -25,7 +25,7 @@ bower install --save technicalindicators
 All indicators will be available in window object. So you can just use
 
 ```
-SMA.calculate(period, prices);
+SMA.calculate({period : period, values : []});
 ```
 
 # API
