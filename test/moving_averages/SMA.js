@@ -3,31 +3,44 @@
  */
 var SMA = require('../../lib/moving_averages/SMA');
 var assert = require('assert');
+var data   = require('../data')
 
-
-var prices = [1,2,3,4,5,6,7,8,9,10,12,13,15];
+var prices = data.close;
 
 var period = 10;
 
-describe('SMA', function() {
+var expectResult =  [
+  139.44,
+  142.91,
+  147.9,
+  154.66,
+  162.31,
+  171.74,
+  182.34,
+  196.24,
+  210.36
+]
+
+
+  describe('SMA (Simple Moving Average)', function() {
   it('should calculate SMA using the calculate method', function() {
-    assert.deepEqual(SMA.calculate(period, prices), [5.5, 6.6, 7.7, 8.9], 'Wrong Results');
+    assert.deepEqual(SMA.calculate({period : period, values : prices}), expectResult, 'Wrong Results');
   });
 
   it('should be able to calculate EMA by using getResult', function() {
-      var smaProducer = new SMA(period, prices);
-      assert.deepEqual(smaProducer.getResult(),  [5.5, 6.6, 7.7, 8.9], 'Wrong Results while calculating next bar');
+      var smaProducer = new SMA({period : period, values : prices});
+      assert.deepEqual(smaProducer.getResult(),  expectResult, 'Wrong Results while calculating next bar');
   });
 
   it('should be able to get EMA for the next bar using nextValue', function() {
-    var smaProducer = new SMA(period, []);
+    var smaProducer = new SMA({period : period, values : []});
     var results = [];
     prices.forEach(price => {
       var result = smaProducer.nextValue(price);
       if(result)
         results.push(result)
     });
-    assert.deepEqual(results,  [5.5, 6.6, 7.7, 8.9], 'Wrong Results while getting results');
+    assert.deepEqual(results, expectResult, 'Wrong Results while getting results');
   })
 
 })

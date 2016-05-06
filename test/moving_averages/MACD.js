@@ -3,9 +3,10 @@
  */
 var MACD = require('../../lib/moving_averages/MACD');
 var assert = require('assert');
+var data   = require('../data');
 
-var data = {
-  prices            : [127.75,129.02,132.75,145.40,148.98,137.52,147.38,139.05,137.23,149.30,162.45,178.95,200.35,221.90,243.23,243.52,286.42,280.27],
+var macdInput = {
+  values            : data.close,
   fastPeriod        : 5,
   slowPeriod        : 8,
   signalPeriod      : 3 ,
@@ -46,8 +47,8 @@ var expectedOutput = [
   },
   {
     "MACD": 12.73,
-    "histogram": 2.95,
-    "signal": 9.78
+    "histogram": 2.94,
+    "signal": 9.79
   },
   {
     "MACD": 15.9,
@@ -73,10 +74,10 @@ var expectedOutput = [
 
 var input;
 
-describe('MACD', function() {
+describe('MACD (Moving Average Convergence Divergence)', function() {
 
   beforeEach(function(){
-    input = JSON.parse(JSON.stringify(data));
+    input = JSON.parse(JSON.stringify(macdInput));
   });
 
   it('should calculate MACD using the calculate method', function() {
@@ -89,10 +90,10 @@ describe('MACD', function() {
   });
 
   it('should be able to get MACD for the next bar using nextValue', function() {
-    input.prices = [];
+    input.values = [];
     var macd = new MACD(input);
     var results = [];
-    data.prices.forEach(price => {
+    macdInput.values.forEach(price => {
       var result = macd.nextValue(price);
       if(result)
         results.push(result)

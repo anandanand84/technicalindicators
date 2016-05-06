@@ -28,8 +28,6 @@ All indicators will be available in window object. So you can just use
 SMA.calculate(period, prices);
 ```
 
-Caution: This project is still under development. Do not use it for production or any serious project, API's may change in future.
-
 # API
 
 There are three ways you can use to get the indicator results.
@@ -42,7 +40,7 @@ Every indicator has a static method ```calculate``` which can be used to calcula
 const SMA = require('technicalindicators').SMA;
 var prices = [1,2,3,4,5,6,7,8,9,10,12,13,15];
 var period = 10;
-SMA.calculate(period, prices)
+SMA.calculate({period : period, values : prices})
 ```
 
 ##nextValue
@@ -50,7 +48,7 @@ SMA.calculate(period, prices)
 ```nextValue``` method is used to get the next indicator value.
 
 ```javascript
-var sma = new SMA(period, []);
+var sma = new SMA({period : period, values : []});
 var results = [];
 prices.forEach(price => {
   var result = sma.nextValue(price);
@@ -70,12 +68,19 @@ This a merge of calculate and nextValue. The usual use case would be
 3.Use nextValue to get next indicator values for further tick.
     
 ```javascript
-var sma = new SMA(period, prices);
+var sma = new SMA({period : period, values : prices});
 sma.getResult(); // [5.5, 6.6, 7.7, 8.9]
 sma.nextValue(16); // 10.1
 ```
 
 Note:  Calling nextValue will not update getResult() value. 
+
+#Available Indicators
+
+1. [Simple Moving Average](http://example.com/ "SMA").
+2. [Exponential Moving Average](http://example.com/ "EMA").
+3. [Weighted Moving Average](http://example.com/ "WMA").
+4. [Moving Average Convergence Divergence](http://example.com/ "MACD").
 
 #Running tests and getting coverage
 
@@ -84,7 +89,7 @@ npm test
 ```
 
 ```
-npm cover
+npm run cover
 ```
 # Contribute
 
