@@ -77,10 +77,10 @@ Note:  Calling nextValue will not update getResult() value.
 
 #Available Indicators
 
-1. [Simple Moving Average](http://example.com/ "SMA").
-2. [Exponential Moving Average](http://example.com/ "EMA").
-3. [Weighted Moving Average](http://example.com/ "WMA").
-4. [Moving Average Convergence Divergence](http://example.com/ "MACD").
+1. [Simple Moving Average](https://tonicdev.com/anandaravindan/sma "SMA").
+2. [Exponential Moving Average](https://tonicdev.com/anandaravindan/ema "EMA").
+3. [Weighted Moving Average](https://tonicdev.com/anandaravindan/wma "WMA").
+4. [Moving Average Convergence Divergence](https://tonicdev.com/anandaravindan/macd "MACD").
 
 #Running tests and getting coverage
 

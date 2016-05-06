@@ -10,6 +10,7 @@ module.exports = {
   SMA : SMA,
   EMA : EMA,
   MACD:MACD,
-  RSI : RSI
+  RSI : RSI,
+  WMA: WMA
   //ADX : ADX
 };

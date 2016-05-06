@@ -22,16 +22,25 @@ var period = 9;
 
 describe('WMA (Weighted Moving Average)', function() {
   it('should calculate WMA using the calculate method', function() {
-    assert.deepEqual(WMA.calculate(period, prices), expectedResult, 'Wrong Results');
+    assert.deepEqual(WMA.calculate({
+      period : period,
+      values : prices
+    }), expectedResult, 'Wrong Results');
   });
 
   it('should be able to get WMA for the next bar', function() {
-    var wma = new WMA(period, prices);
+    var wma = new WMA({
+      period : period,
+      values : prices
+    });
     assert.deepEqual(wma.getResult(),  expectedResult, 'Wrong Results while getting results');
   })
 
   it('should be able to get WMA for the next bar using nextValue', function() {
-    var wma = new WMA(period, []);
+    var wma = new WMA({
+      period : period,
+      values : []
+    });
     var results = [];
     prices.forEach(price => {
       var result = wma.nextValue(price);
