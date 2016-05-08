@@ -27,6 +27,14 @@ describe('Fixed Size Linked List', function() {
     assert.equal(linkedList.length, size);
     assert.equal(linkedList.head, '1');
     assert.equal(linkedList.tail, '10');
+    linkedList.push('11');
+    assert.equal(linkedList.lastShift, '1');
+    assert.equal(linkedList.head, '2');
+    assert.equal(linkedList.tail, '11');
+    linkedList.push('12');
+    assert.equal(linkedList.lastShift, '2');
+    assert.equal(linkedList.head, '3');
+    assert.equal(linkedList.tail, '12');
   })
 
   it('Should popup out the first excess to the lastShift', function(){

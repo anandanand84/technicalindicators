@@ -81,6 +81,7 @@ Note:  Calling nextValue will not update getResult() value.
 2. [Exponential Moving Average](https://tonicdev.com/anandaravindan/ema "EMA").
 3. [Weighted Moving Average](https://tonicdev.com/anandaravindan/wma "WMA").
 4. [Moving Average Convergence Divergence](https://tonicdev.com/anandaravindan/macd "MACD").
+5. [Bollinger Bands](https://tonicdev.com/anandaravindan/bb "BB").
 
 #Running tests and getting coverage
 
