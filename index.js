@@ -8,6 +8,7 @@ let RSI             = require('./lib/oscillators/RSI.js');
 let BollingerBands  = require('./lib/volatility/BollingerBands.js');
 let ADX             = require('./lib/directionalmovement/ADX.js');
 let ATR             = require('./lib/directionalmovement/ATR.js');
+let ROC             = require('./lib/momentum/ROC.js');
 
 module.exports = {
   SMA             : SMA,
@@ -18,5 +19,6 @@ module.exports = {
   BollingerBands  : BollingerBands,
   ATR             : ATR,
   ADX             : ADX,
-  WEMA            : WEMA
+  WEMA            : WEMA,
+  ROC             : ROC
 };

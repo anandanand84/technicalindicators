@@ -85,7 +85,10 @@ Note:  Calling nextValue will not update getResult() value.
 6. [Bollinger Bands](https://tonicdev.com/anandaravindan/bb "BB").
 7. [Average True Range](https://tonicdev.com/anandaravindan/atr "ATR").
 8. [Relative Strength Index](https://tonicdev.com/anandaravindan/rsi "RSI").
-8. [Wilder’s Smoothing (Smoothed Moving Average)](https://tonicdev.com/anandaravindan/wema "WEMA").
+9. [Wilder’s Smoothing (Smoothed Moving Average)](https://tonicdev.com/anandaravindan/wema "WEMA").
+10. [Rate of Change (ROC)](https://tonicdev.com/anandaravindan/roc "ROC").
+11. [Know Sure Thing (KST)](https://tonicdev.com/anandaravindan/kst "KST").
+
 
 #Running tests and getting coverage
 
