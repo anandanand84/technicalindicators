@@ -9,6 +9,7 @@ let BollingerBands  = require('./lib/volatility/BollingerBands.js');
 let ADX             = require('./lib/directionalmovement/ADX.js');
 let ATR             = require('./lib/directionalmovement/ATR.js');
 let ROC             = require('./lib/momentum/ROC.js');
+let KST             = require('./lib/momentum/KST.js');
 
 module.exports = {
   SMA             : SMA,
@@ -20,5 +21,6 @@ module.exports = {
   ATR             : ATR,
   ADX             : ADX,
   WEMA            : WEMA,
-  ROC             : ROC
+  ROC             : ROC,
+  KST             : KST
 };

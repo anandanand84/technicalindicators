@@ -13,12 +13,18 @@
     "url": "git+https://github.com/anandanand84/technicalindicators.git"
   },
   "keywords": [
-    "Technicalindicators",
+    "Technical indicators",
+    "Technical analysis",
     "stocks",
-    "rsi",
-    "macd",
-    "ema",
-    "sma"
+    "rsi","relative strength index",
+    "macd","moving average convergence divergance and histogram",
+    "ema","exponential moving average",
+    "sma","simple moving average",
+    "wma","weighted moving average",
+    "kst","know sure thing",
+    "roc","rate of change",
+    "bollinger bands",
+    "atr","Average true range"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",
