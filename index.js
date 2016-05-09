@@ -6,6 +6,7 @@ let MACD            = require('./lib/moving_averages/MACD.js');
 let RSI             = require('./lib/oscillators/RSI.js');
 let BollingerBands  = require('./lib/volatility/BollingerBands.js');
 let ADX             = require('./lib/directionalmovement/ADX.js');
+let ATR             = require('./lib/directionalmovement/ATR.js');
 
 module.exports = {
   SMA             : SMA,
@@ -14,5 +15,6 @@ module.exports = {
   RSI             : RSI,
   WMA             : WMA,
   BollingerBands  : BollingerBands,
+  ATR             : ATR,
   ADX             : ADX
 };
