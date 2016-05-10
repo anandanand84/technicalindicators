@@ -7,9 +7,7 @@ gulp.task('test', function () {
   return gulp.src(['test/**/*.js'], { read: false })
       .pipe(mocha({
         reporter: 'spec',
-        compilers: {
-          js: babel
-        }
+        compilers: ['js:babel-core/register']
       }))
       .on('error', util.log);
 });

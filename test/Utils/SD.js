@@ -1,6 +1,7 @@
 /**
  * Created by AAravindan on 5/7/16.
  */
+"use strict"
 const assert = require('assert');
 const SD     = require('../../lib/Utils/SD')
 
@@ -21,6 +22,16 @@ describe('Standard Deviation', function() {
   "use strict";
   it('should calculate SD using the calculate method', function() {
     assert.deepEqual(SD.calculate({period : period, values : data}), expectResult, 'Wrong Results');
+  });
+
+  it('should be able to calculate ROC for reversed input by using calculate method', function() {
+    let myInput = Object.assign({}, {
+      period : period,
+      values : data
+    });
+    myInput.reversedInput = true;
+    myInput.values.reverse();
+    assert.deepEqual(SD.calculate(myInput),  expectResult.slice().reverse(), 'Wrong Results while calculating next bar');
   });
 
   it('should be able to calculate EMA by using getResult', function() {

@@ -1,6 +1,7 @@
 /**
  * Created by AAravindan on 5/3/16.
  */
+"use strict"
 var BB = require('../../lib/volatility/BollingerBands');
 var assert = require('assert');
 var data   = require('../data')
@@ -62,6 +63,17 @@ var expectResult =  [
 describe('BB (Bollinger Bands)', function() {
     it('should calculate BB using the calculate method', function() {
         assert.deepEqual(BB.calculate({period : period, values : prices ,stdDev : stdDev}), expectResult, 'Wrong Results');
+    });
+
+    it('should be able to calculate BB for reversed input by using calculate method', function() {
+      let myInput = Object.assign({}, {
+        period : period,
+        values : prices,
+        stdDev : stdDev
+      });
+      myInput.reversedInput = true;
+      myInput.values.reverse();
+      assert.deepEqual(BB.calculate(myInput),  expectResult.slice().reverse(), 'Wrong Results while calculating next bar');
     });
 
     it('should be able to calculate BB by using getResult', function() {

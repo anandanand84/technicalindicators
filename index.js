@@ -10,8 +10,11 @@ let ADX             = require('./lib/directionalmovement/ADX.js');
 let ATR             = require('./lib/directionalmovement/ATR.js');
 let ROC             = require('./lib/momentum/ROC.js');
 let KST             = require('./lib/momentum/KST.js');
+let Indicators;
 
-module.exports = {
+global.AvailbleIndicators = [];
+
+module.exports = Indicators = {
   SMA             : SMA,
   EMA             : EMA,
   MACD            : MACD,
@@ -23,4 +26,12 @@ module.exports = {
   WEMA            : WEMA,
   ROC             : ROC,
   KST             : KST
+};
+
+Object.assign(global, Indicators);
+
+for(let indicator in Indicators){
+  var indicatorName = indicator.toLowerCase();
+  global.AvailbleIndicators.push(indicatorName);
+  global[indicatorName] = Indicators[indicator].calculate;
 };

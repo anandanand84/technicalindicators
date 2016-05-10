@@ -1,3 +1,4 @@
+"use strict"
 var RSI = require('../../lib/oscillators/RSI');
 var assert = require("assert");
 var data = require('../data');
@@ -24,6 +25,13 @@ var expectedResult = [
 describe('RSI (Relative Strength Index)', function () {
   it('should calculate RSI using the calculate method', function () {
     assert.deepEqual(RSI.calculate(inputRSI), expectedResult, 'Wrong Results');
+  });
+
+  it('should be able to calculate ROC for reversed input by using calculate method', function() {
+    let myInput = Object.assign({}, inputRSI);
+    myInput.reversedInput = true;
+    myInput.values.reverse();
+    assert.deepEqual(RSI.calculate(myInput),  expectedResult.slice().reverse(), 'Wrong Results while calculating next bar');
   });
 
   it('should be able to get RSI for the next bar', function () {
