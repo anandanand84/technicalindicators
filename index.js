@@ -10,6 +10,7 @@ let ADX             = require('./lib/directionalmovement/ADX.js');
 let ATR             = require('./lib/directionalmovement/ATR.js');
 let ROC             = require('./lib/momentum/ROC.js');
 let KST             = require('./lib/momentum/KST.js');
+let Stochastic      = require('./lib/momentum/Stochastic.js');
 let Indicators;
 
 global.AvailbleIndicators = [];
@@ -25,7 +26,8 @@ module.exports = Indicators = {
   ADX             : ADX,
   WEMA            : WEMA,
   ROC             : ROC,
-  KST             : KST
+  KST             : KST,
+  Stochastic      : Stochastic
 };
 
 Object.assign(global, Indicators);

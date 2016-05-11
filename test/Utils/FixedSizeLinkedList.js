@@ -10,7 +10,7 @@ var size = 10;
 
 describe('Fixed Size Linked List', function() {
   beforeEach(function() {
-    linkedList = new FixedSizeLinkedList(size);
+    linkedList = new FixedSizeLinkedList(size, true, true);
   });
 
   it('Should maintain only the fixed size', function() {
@@ -60,5 +60,34 @@ describe('Fixed Size Linked List', function() {
       results.push(values);
     }
     assert.deepEqual(['2','3','4','5','6','7','8','9','10','11'], results);
+  })
+
+  it('Should maintain period high before shift', function(){
+    for(let i=1; i<=10; i++) {
+      linkedList.push(i)
+    }
+    assert.equal(linkedList.periodHigh, 10)
+  });
+
+  it('Should maintain period high after shift', function(){
+    for(let i=1; i<=13; i++) {
+      linkedList.push(i)
+    }
+    assert.equal(linkedList.periodHigh, 13)
+  })
+
+  it('Should maintain period low before shift', function(){
+    for(let i=1; i<=10; i++) {
+      linkedList.push(i)
+    }
+    assert.equal(linkedList.periodLow, 1)
+  });
+
+  it('Should maintain period low after shift', function(){
+    for(let i=1; i<=14; i++) {
+      linkedList.push(i)
+    }
+    assert.equal(linkedList.periodLow, 5)
+
   })
 });

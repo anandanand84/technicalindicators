@@ -88,6 +88,7 @@ Note:  Calling nextValue will not update getResult() value.
 9. [Wilder’s Smoothing (Smoothed Moving Average)](https://tonicdev.com/anandaravindan/wema "WEMA").
 10. [Rate of Change (ROC)](https://tonicdev.com/anandaravindan/roc "ROC").
 11. [Know Sure Thing (KST)](https://tonicdev.com/anandaravindan/kst "KST").
+12. [Stochastic (Stochastic)](https://tonicdev.com/anandaravindan/stochastic "Stochastic").
 
 
 #Running tests and getting coverage
