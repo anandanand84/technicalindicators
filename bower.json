@@ -1,18 +1,35 @@
 {
   "name": "technicalindicators",
   "description": "Techincal Indicators written in javascript",
-  "main": "browser.js",
+  "main": "dist/browser.js",
   "authors": [
     "anand.anand84@gmail.com"
   ],
   "license": "MIT",
   "keywords": [
-    "Technicalindicators",
+    "Technical indicators",
+    "Technical analysis",
+    "finance",
+    "forex",
     "stocks",
     "rsi",
+    "relative strength index",
     "macd",
+    "moving average convergence divergance and histogram",
     "ema",
-    "sma"
+    "exponential moving average",
+    "sma",
+    "simple moving average",
+    "wma",
+    "weighted moving average",
+    "kst",
+    "know sure thing",
+    "roc",
+    "rate of change",
+    "bollinger bands",
+    "atr",
+    "Average true range",
+    "Stochastic"
   ],
   "homepage": "https://github.com/anandanand84/technicalindicators",
   "moduleType": [],
