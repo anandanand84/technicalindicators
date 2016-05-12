@@ -35,7 +35,8 @@
     "bollinger bands",
     "atr",
     "Average true range",
-    "Stochastic"
+    "Stochastic",
+    "WilliamsR"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",

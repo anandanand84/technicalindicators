@@ -11,6 +11,8 @@ let ATR             = require('./lib/directionalmovement/ATR.js');
 let ROC             = require('./lib/momentum/ROC.js');
 let KST             = require('./lib/momentum/KST.js');
 let Stochastic      = require('./lib/momentum/Stochastic.js');
+let WilliamsR       = require('./lib/momentum/WilliamsR.js');
+
 let Indicators;
 
 global.AvailableIndicators = [];
@@ -27,7 +29,8 @@ module.exports = Indicators = {
   WEMA            : WEMA,
   ROC             : ROC,
   KST             : KST,
-  Stochastic      : Stochastic
+  Stochastic      : Stochastic,
+  WilliamsR       : WilliamsR
 };
 
 Object.assign(global, Indicators);

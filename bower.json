@@ -29,7 +29,8 @@
     "bollinger bands",
     "atr",
     "Average true range",
-    "Stochastic"
+    "Stochastic",
+    "WilliamsR"
   ],
   "homepage": "https://github.com/anandanand84/technicalindicators",
   "moduleType": [],

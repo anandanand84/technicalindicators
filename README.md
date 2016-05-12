@@ -89,6 +89,7 @@ Note:  Calling nextValue will not update getResult() value.
 10. [Rate of Change (ROC)](https://tonicdev.com/anandaravindan/roc "ROC").
 11. [Know Sure Thing (KST)](https://tonicdev.com/anandaravindan/kst "KST").
 12. [Stochastic (Stochastic)](https://tonicdev.com/anandaravindan/stochastic "Stochastic").
+12. [WilliamsR (WilliamsR)](https://tonicdev.com/anandaravindan/williamsR "WilliamsR").
 
 
 #Running tests and getting coverage
