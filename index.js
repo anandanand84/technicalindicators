@@ -13,7 +13,7 @@ let KST             = require('./lib/momentum/KST.js');
 let Stochastic      = require('./lib/momentum/Stochastic.js');
 let Indicators;
 
-global.AvailbleIndicators = [];
+global.AvailableIndicators = [];
 
 module.exports = Indicators = {
   SMA             : SMA,
@@ -34,6 +34,6 @@ Object.assign(global, Indicators);
 
 for(let indicator in Indicators){
   var indicatorName = indicator.toLowerCase();
-  global.AvailbleIndicators.push(indicatorName);
+  global.AvailableIndicators.push(indicatorName);
   global[indicatorName] = Indicators[indicator].calculate;
 };
