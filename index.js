@@ -37,6 +37,6 @@ Object.assign(global, Indicators);
 
 for(let indicator in Indicators){
   var indicatorName = indicator.toLowerCase();
-  global.AvailableIndicators.push(indicatorName);
+  global.AvailableIndicators.push(indicator);
   global[indicatorName] = Indicators[indicator].calculate;
 };
