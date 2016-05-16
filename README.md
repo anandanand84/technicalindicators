@@ -104,3 +104,23 @@ npm run cover
 # Contribute
 
 Create issues about anything you want to report, change of API's, or request for adding new indicators. You can also create pull request with new indicators.
+
+## Adding new indicators.
+
+1. Fork the project, clone it, run
+
+```
+npm install
+```
+```
+gulp watch-test
+```
+
+2. Add tests for the indicator. Make it pass. It would be better if a sample of the stockcharts excel is used for the test case.
+3. Add the indicator to the index.js
+4. Run ```npm build``` so it adds the indicator to the browser.js
+5. Add it to read me, with the link to the tonicdev url containing the sample.
+6. Add indicator it to keywords in package.json and bower.json
+
+
+
