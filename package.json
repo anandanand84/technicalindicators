@@ -36,7 +36,9 @@
     "atr",
     "Average true range",
     "Stochastic",
-    "WilliamsR"
+    "WilliamsR",
+    "Accumulation Distribution Line",
+    "adl"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",

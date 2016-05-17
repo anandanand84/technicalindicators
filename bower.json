@@ -30,7 +30,9 @@
     "atr",
     "Average true range",
     "Stochastic",
-    "WilliamsR"
+    "WilliamsR",
+    "Accumulation Distribution Line",
+    "adl"
   ],
   "homepage": "https://github.com/anandanand84/technicalindicators",
   "moduleType": [],

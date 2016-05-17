@@ -89,7 +89,8 @@ Note:  Calling nextValue will not update getResult() value.
 10. [Rate of Change (ROC)](https://tonicdev.com/anandaravindan/roc "ROC").
 11. [Know Sure Thing (KST)](https://tonicdev.com/anandaravindan/kst "KST").
 12. [Stochastic (Stochastic)](https://tonicdev.com/anandaravindan/stochastic "Stochastic").
-12. [WilliamsR (WilliamsR)](https://tonicdev.com/anandaravindan/williamsR "WilliamsR").
+13. [WilliamsR (WilliamsR)](https://tonicdev.com/anandaravindan/williamsR "WilliamsR").
+14. [Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "adl").
 
 
 #Running tests and getting coverage
@@ -118,7 +119,7 @@ gulp watch-test
 
 2. Add tests for the indicator. Make it pass. It would be better if a sample of the stockcharts excel is used for the test case.
 3. Add the indicator to the index.js
-4. Run ```npm build``` so it adds the indicator to the browser.js
+4. Run ```npm run build``` so it adds the indicator to the browser.js
 5. Add it to read me, with the link to the tonicdev url containing the sample.
 6. Add indicator it to keywords in package.json and bower.json
 
