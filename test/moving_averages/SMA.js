@@ -22,7 +22,7 @@ var expectResult =  [
 ]
 
 
-  describe('SMA (Simple Moving Average)', function() {
+describe('SMA (Simple Moving Average)', function() {
   it('should calculate SMA using the calculate method', function() {
     assert.deepEqual(SMA.calculate({period : period, values : prices}), expectResult, 'Wrong Results');
   });
@@ -42,5 +42,4 @@ var expectResult =  [
     });
     assert.deepEqual(results, expectResult, 'Wrong Results while getting results');
   })
-
 })

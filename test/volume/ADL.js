@@ -8,8 +8,6 @@
 let assert = require('assert');
 let ADL    = require('../../lib/volume/ADL');
 
-let period = 14
-
 let input = {
   high : [62.3400,62.0500,62.2700,60.7900,59.9300,61.7500,60.0000,59.0000,59.0700,59.2200,58.7500,58.6500,58.4700,58.2500,58.3500,59.8600,59.5299,62.1000,62.1600,62.6700,62.3800,63.7300,63.8500,66.1500,65.3400,66.4800,65.2300,63.4000,63.1800,62.7000],
   low  : [61.3700,60.6900,60.1000,58.6100,58.7120,59.8600,57.9700,58.0200,57.4800,58.3000,57.8276,57.8600,57.9100,57.8333,57.5300,58.5800,58.3000,58.5300,59.8000,60.9300,60.1500,62.2618,63.0000,63.5800,64.0700,65.2000,63.2100,61.8800,61.1100,61.2500],
@@ -25,8 +23,8 @@ describe('ADL (Accumulation Distribution line)', function() {
   });
 
   it('should be able to calculate ADL by using getResult', function() {
-    let atr = new ADL(input);
-    assert.deepEqual(atr.getResult(),  expectResult, 'Wrong Results while calculating next bar');
+    let adl = new ADL(input);
+    assert.deepEqual(adl.getResult(),  expectResult, 'Wrong Results while calculating next bar');
   });
 
   it('should be able to calculate ADL for reversed input by using calculate method', function() {
@@ -40,10 +38,10 @@ describe('ADL (Accumulation Distribution line)', function() {
   });
 
   it('should be able to get ADL for the next bar using nextValue', function() {
-    let atr = new ADL({period : period, high : [], low:[], close:[]});
+    let adl = new ADL({ high : [], low:[], close:[], volume : []});
     let results = [];
     input.close.forEach(function(close,index) {
-      let result = atr.nextValue({
+      let result = adl.nextValue({
         close: input.close[index],
         high: input.high[index],
         low: input.low[index],

@@ -13,6 +13,8 @@ let KST             = require('./lib/momentum/KST.js');
 let Stochastic      = require('./lib/momentum/Stochastic.js');
 let WilliamsR       = require('./lib/momentum/WilliamsR.js');
 let ADL             = require('./lib/volume/ADL.js');
+let OBV             = require('./lib/volume/OBV.js');
+let TRIX            = require('./lib/momentum/TRIX.js');
 
 let Indicators;
 
@@ -32,7 +34,9 @@ module.exports = Indicators = {
   KST             : KST,
   Stochastic      : Stochastic,
   WilliamsR       : WilliamsR,
-  ADL             : ADL
+  ADL             : ADL,
+  OBV             : OBV,
+  TRIX            : TRIX
 };
 
 Object.assign(global, Indicators);

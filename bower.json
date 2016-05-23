@@ -32,7 +32,9 @@
     "Stochastic",
     "WilliamsR",
     "Accumulation Distribution Line",
-    "adl"
+    "adl",
+    "On Balance Volume",
+    "OBV"
   ],
   "homepage": "https://github.com/anandanand84/technicalindicators",
   "moduleType": [],

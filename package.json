@@ -38,7 +38,10 @@
     "Stochastic",
     "WilliamsR",
     "Accumulation Distribution Line",
-    "adl"
+    "adl",
+    "On Balance Volume",
+    "OBV",
+    "TRIX"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",

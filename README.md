@@ -25,8 +25,32 @@ bower install --save technicalindicators
 All indicators will be available in window object. So you can just use
 
 ```
-SMA.calculate({period : period, values : []});
+SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 ```
+or
+
+```
+sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
+```
+
+#Available Indicators
+
+1. [Simple Moving Average](https://tonicdev.com/anandaravindan/sma "SMA").
+2. [Exponential Moving Average](https://tonicdev.com/anandaravindan/ema "EMA").
+3. [Weighted Moving Average](https://tonicdev.com/anandaravindan/wma "WMA").
+4. [Moving Average Convergence Divergence](https://tonicdev.com/anandaravindan/macd "MACD").
+5. [MACD Histogram](https://tonicdev.com/anandaravindan/macd "MACD").
+6. [Bollinger Bands](https://tonicdev.com/anandaravindan/bb "BB").
+7. [Average True Range](https://tonicdev.com/anandaravindan/atr "ATR").
+8. [Relative Strength Index](https://tonicdev.com/anandaravindan/rsi "RSI").
+9. [Wilder’s Smoothing (Smoothed Moving Average)](https://tonicdev.com/anandaravindan/wema "WEMA").
+10. [Rate of Change (ROC)](https://tonicdev.com/anandaravindan/roc "ROC").
+11. [Know Sure Thing (KST)](https://tonicdev.com/anandaravindan/kst "KST").
+12. [Stochastic (Stochastic)](https://tonicdev.com/anandaravindan/stochastic "Stochastic").
+13. [WilliamsR (WilliamsR)](https://tonicdev.com/anandaravindan/williamsr "WilliamsR").
+14. [Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "adl").
+15. [On Balance Volume (OBV)](https://tonicdev.com/anandaravindan/obv "obv").
+16. [TRIX (TRIX)](https://tonicdev.com/anandaravindan/trix "trix").
 
 # API
 
@@ -75,24 +99,6 @@ sma.nextValue(16); // 10.1
 
 Note:  Calling nextValue will not update getResult() value. 
 
-#Available Indicators
-
-1. [Simple Moving Average](https://tonicdev.com/anandaravindan/sma "SMA").
-2. [Exponential Moving Average](https://tonicdev.com/anandaravindan/ema "EMA").
-3. [Weighted Moving Average](https://tonicdev.com/anandaravindan/wma "WMA").
-4. [Moving Average Convergence Divergence](https://tonicdev.com/anandaravindan/macd "MACD").
-5. [MACD Histogram](https://tonicdev.com/anandaravindan/macd "MACD").
-6. [Bollinger Bands](https://tonicdev.com/anandaravindan/bb "BB").
-7. [Average True Range](https://tonicdev.com/anandaravindan/atr "ATR").
-8. [Relative Strength Index](https://tonicdev.com/anandaravindan/rsi "RSI").
-9. [Wilder’s Smoothing (Smoothed Moving Average)](https://tonicdev.com/anandaravindan/wema "WEMA").
-10. [Rate of Change (ROC)](https://tonicdev.com/anandaravindan/roc "ROC").
-11. [Know Sure Thing (KST)](https://tonicdev.com/anandaravindan/kst "KST").
-12. [Stochastic (Stochastic)](https://tonicdev.com/anandaravindan/stochastic "Stochastic").
-13. [WilliamsR (WilliamsR)](https://tonicdev.com/anandaravindan/williamsR "WilliamsR").
-14. [Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "adl").
-
-
 #Running tests and getting coverage
 
 ```
@@ -122,6 +128,6 @@ gulp watch-test
 4. Run ```npm run build``` so it adds the indicator to the browser.js
 5. Add it to read me, with the link to the tonicdev url containing the sample.
 6. Add indicator it to keywords in package.json and bower.json
-
+7. Send a pull request.
 
 
