@@ -44,12 +44,12 @@ sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
 7. [Relative Strength Index (RSI)](https://tonicdev.com/anandaravindan/rsi "RSI").
 8. [Wilder’s Smoothing (Smoothed Moving Average, WEMA)](https://tonicdev.com/anandaravindan/wema "WEMA").
 9. [Rate of Change (ROC)](https://tonicdev.com/anandaravindan/roc "ROC").
-10.[Know Sure Thing (KST)](https://tonicdev.com/anandaravindan/kst "KST").
-11.[Stochastic Oscillator (KD)](https://tonicdev.com/anandaravindan/stochastic "KD").
-12.[WilliamsR (W%R)](https://tonicdev.com/anandaravindan/williamsr "W%R").
-13.[Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "ADL").
-14.[On Balance Volume (OBV)](https://tonicdev.com/anandaravindan/obv "OBV").
-15.[Triple Exponentially Smoothed Average (TRIX)](https://tonicdev.com/anandaravindan/trix "TRIX").
+10. [Know Sure Thing (KST)](https://tonicdev.com/anandaravindan/kst "KST").
+11. [Stochastic Oscillator (KD)](https://tonicdev.com/anandaravindan/stochastic "KD").
+12. [WilliamsR (W%R)](https://tonicdev.com/anandaravindan/williamsr "W%R").
+13. [Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "ADL").
+14. [On Balance Volume (OBV)](https://tonicdev.com/anandaravindan/obv "OBV").
+15. [Triple Exponentially Smoothed Average (TRIX)](https://tonicdev.com/anandaravindan/trix "TRIX").
 
 # API
 
