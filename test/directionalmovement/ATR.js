@@ -13,7 +13,7 @@ var input = {
   period : period
 }
 
-var expectResult = [0.55,0.59,0.58,0.56,0.61,0.61,0.64,0.67,0.69,0.77,0.78,1.21,1.30,1.38,1.37,1.33,1.32]
+var expectResult = [0.5543,0.5933,0.5852,0.5684,0.6149,0.6174,0.6419,0.6739,0.6922,0.7749,0.781,1.209,1.302,1.380,1.367,1.336,1.316]
 
 describe('ATR (Average True Range)', function() {
   it('should calculate ATR using the calculate method', function() {
@@ -35,7 +35,7 @@ describe('ATR (Average True Range)', function() {
         low: input.low[index]
       });
       if(result !== undefined){
-        results.push(parseFloat(result.toFixed(2)));
+        results.push(parseFloat(result.toPrecision(4)));
       }
     });
     assert.deepEqual(results, expectResult, 'Wrong Results while getting results');

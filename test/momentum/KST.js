@@ -20,7 +20,7 @@ let input = {
 };
 
   let expectResult = [{
-    kst: 36.59,
+    kst: 36.60,
     signal: undefined
   },
   {
@@ -28,20 +28,20 @@ let input = {
     signal: undefined
   },
   {
-    kst: 38.36,
-    signal: 37.39
+    kst: 38.38,
+    signal: 37.40
   },
   {
-    kst: 38.76,
-    signal: 38.12
+    kst: 38.78,
+    signal: 38.13
   },
   {
     kst: 37.54,
-    signal: 38.22
+    signal: 38.24
   },
   {
-    kst: 36.23,
-    signal: 37.51
+    kst: 36.25,
+    signal: 37.53
   }
 ];
 

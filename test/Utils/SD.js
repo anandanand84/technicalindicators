@@ -10,13 +10,13 @@ var data = [11,12,13,14,15,16,18, 19, 22, 23, 23];
 var period = 5;
 //var expectResult = [2.24]
 var expectResult = [
-  1.41,
-  1.41,
-  1.72,
-  1.85,
-  2.45,
-  2.58,
-  2.1
+  1.414,
+  1.414,
+  1.720,
+  1.855,
+  2.449,
+  2.577,
+  2.098
 ]
 describe('Standard Deviation', function() {
   "use strict";
