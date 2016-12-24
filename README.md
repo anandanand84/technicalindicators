@@ -35,21 +35,21 @@ sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
 
 #Available Indicators
 
-1. [Simple Moving Average](https://tonicdev.com/anandaravindan/sma "SMA").
-2. [Exponential Moving Average](https://tonicdev.com/anandaravindan/ema "EMA").
-3. [Weighted Moving Average](https://tonicdev.com/anandaravindan/wma "WMA").
+1. [Simple Moving Average (SMA)](https://tonicdev.com/anandaravindan/sma "SMA").
+2. [Exponential Moving Average (EMA)](https://tonicdev.com/anandaravindan/ema "EMA").
+3. [Weighted Moving Average (WMA)](https://tonicdev.com/anandaravindan/wma "WMA").
 4. [Moving Average Convergence Divergence (MACD)](https://tonicdev.com/anandaravindan/macd "MACD").
-5. [Bollinger Bands](https://tonicdev.com/anandaravindan/bb "BB").
-6. [Average True Range](https://tonicdev.com/anandaravindan/atr "ATR").
-7. [Relative Strength Index](https://tonicdev.com/anandaravindan/rsi "RSI").
-8. [Wilder’s Smoothing (Smoothed Moving Average)](https://tonicdev.com/anandaravindan/wema "WEMA").
+5. [Bollinger Bands (BB)](https://tonicdev.com/anandaravindan/bb "BB").
+6. [Average True Range (ATR)](https://tonicdev.com/anandaravindan/atr "ATR").
+7. [Relative Strength Index (RSI)](https://tonicdev.com/anandaravindan/rsi "RSI").
+8. [Wilder’s Smoothing (Smoothed Moving Average, WEMA)](https://tonicdev.com/anandaravindan/wema "WEMA").
 9. [Rate of Change (ROC)](https://tonicdev.com/anandaravindan/roc "ROC").
 10.[Know Sure Thing (KST)](https://tonicdev.com/anandaravindan/kst "KST").
-11.[Stochastic (Stochastic)](https://tonicdev.com/anandaravindan/stochastic "Stochastic").
-12.[WilliamsR (WilliamsR)](https://tonicdev.com/anandaravindan/williamsr "WilliamsR").
-13.[Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "adl").
-14.[On Balance Volume (OBV)](https://tonicdev.com/anandaravindan/obv "obv").
-15.[TRIX (TRIX)](https://tonicdev.com/anandaravindan/trix "trix").
+11.[Stochastic Oscillator (KD)](https://tonicdev.com/anandaravindan/stochastic "KD").
+12.[WilliamsR (W%R)](https://tonicdev.com/anandaravindan/williamsr "W%R").
+13.[Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "ADL").
+14.[On Balance Volume (OBV)](https://tonicdev.com/anandaravindan/obv "OBV").
+15.[Triple Exponentially Smoothed Average (TRIX)](https://tonicdev.com/anandaravindan/trix "TRIX").
 
 # API
 
