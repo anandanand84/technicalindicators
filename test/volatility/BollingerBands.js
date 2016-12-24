@@ -12,50 +12,50 @@ var period = 10;
 
 var stdDev = 2;
 var expectResult =  [
-   {
-     "lower": 124.14,
-    "middle": 139.44,
-    "upper": 154.74,
+  {
+    "lower": 124.1,
+    "middle": 139.4,
+    "upper": 154.7
   },
   {
-    "lower": 124.39,
-    "middle": 142.91,
-    "upper": 161.43,
+    "lower": 124.4,
+    "middle": 142.9,
+    "upper": 161.4
   },
   {
     "lower": 121.7,
     "middle": 147.9,
-    "upper": 174.1,
+    "upper": 174.1
   },
   {
-    "lower": 115.78,
-    "middle": 154.66,
-    "upper": 193.54,
+    "lower": 115.8,
+    "middle": 154.7,
+    "upper": 193.5
   },
   {
-    "lower": 107.07,
-    "middle": 162.31,
-    "upper": 217.55,
+    "lower": 107.1,
+    "middle": 162.3,
+    "upper": 217.6
   },
   {
-    "lower": 99.32000000000001,
-    "middle": 171.74,
-    "upper": 244.16000000000003,
+    "lower": 99.32,
+    "middle": 171.7,
+    "upper": 244.2
   },
   {
-    "lower": 102.42,
-    "middle": 182.34,
-    "upper": 262.26,
+    "lower": 102.4,
+    "middle": 182.3,
+    "upper": 262.3
   },
   {
     "lower": 98.98,
-    "middle": 196.24,
-    "upper": 293.5,
+    "middle": 196.2,
+    "upper": 293.5
   },
   {
-    "lower": 109.48000000000002,
-    "middle": 210.36,
-    "upper": 311.24,
+    "lower": 109.5,
+    "middle": 210.4,
+    "upper": 311.2
   }
 ]
 

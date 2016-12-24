@@ -8,7 +8,7 @@ const ROC     = require('../../lib/momentum/ROC')
 //let data = [4,2,5,8,6];
 let data = [11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75];
 let period = 12;
-let expectResult = [-3.85,-4.85,-4.52,-6.34,-7.86,-6.21,-4.31,-3.24]
+let expectResult = [-3.849,-4.849,-4.521,-6.344,-7.859,-6.208,-4.313,-3.243]
 describe('Rate of change', function() {
   "use strict";
   it('should calculate ROC using the calculate method', function() {
