@@ -1,3 +1,5 @@
+[![Travis CI](https://img.shields.io/travis/anandanand84/technicalindicators.svg?style=flat-square)](https://travis-ci.org/anandanand84/technicalindicators)
+
 # TechnicalIndicators
 
 A javascript technical indicators written in javascript. 
