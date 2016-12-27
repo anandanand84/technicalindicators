@@ -41,7 +41,10 @@
     "adl",
     "On Balance Volume",
     "OBV",
-    "TRIX"
+    "TRIX",
+    "CandleStick",
+    "DOJI",
+    "AbandonedBaby"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",

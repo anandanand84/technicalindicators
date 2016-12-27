@@ -16,6 +16,9 @@ let ADL             = require('./lib/volume/ADL.js');
 let OBV             = require('./lib/volume/OBV.js');
 let TRIX            = require('./lib/momentum/TRIX.js');
 
+let AbandonedBaby   = require('./lib/candlestick/AbandonedBaby.js');
+let Doji            = require('./lib/candlestick/Doji.js');
+
 let Indicators;
 
 global.AvailableIndicators = [];
@@ -36,7 +39,9 @@ module.exports = Indicators = {
   WilliamsR       : WilliamsR,
   ADL             : ADL,
   OBV             : OBV,
-  TRIX            : TRIX
+  TRIX            : TRIX,
+  AbandonedBaby   : new AbandonedBaby(),
+  Doji            : new Doji()
 };
 
 Object.assign(global, Indicators);
@@ -44,5 +49,6 @@ Object.assign(global, Indicators);
 for(let indicator in Indicators){
   var indicatorName = indicator.toLowerCase();
   global.AvailableIndicators.push(indicator);
-  global[indicatorName] = Indicators[indicator].calculate;
+  let fn            = Indicators[indicator].calculate || Indicators[indicator].hasPattern
+  global[indicatorName] = fn; 
 };
