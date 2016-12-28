@@ -1,6 +1,6 @@
 {
   "name": "technicalindicators",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Techincal Indicators written in javascript",
   "main": "index.js",
   "scripts": {
@@ -41,7 +41,10 @@
     "adl",
     "On Balance Volume",
     "OBV",
-    "TRIX"
+    "TRIX",
+    "CandleStick",
+    "DOJI",
+    "AbandonedBaby"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",
