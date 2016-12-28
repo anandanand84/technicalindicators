@@ -15,47 +15,56 @@ var expectResult =  [
   {
     "lower": 124.1,
     "middle": 139.4,
-    "upper": 154.7
+    "upper": 154.7,
+    "pb": 0.4291
   },
   {
     "lower": 124.4,
     "middle": 142.9,
-    "upper": 161.4
+    "upper": 161.4,
+    "pb": 0.6730
   },
   {
     "lower": 121.7,
     "middle": 147.9,
-    "upper": 174.1
+    "upper": 174.1,
+    "pb": 0.7777
   },
   {
     "lower": 115.8,
     "middle": 154.7,
-    "upper": 193.5
+    "upper": 193.5,
+    "pb": 0.8127
   },
   {
     "lower": 107.1,
     "middle": 162.3,
-    "upper": 217.6
+    "upper": 217.6,
+    "pb": 0.8439
   },
   {
     "lower": 99.32,
     "middle": 171.7,
-    "upper": 244.2
+    "upper": 244.2,
+    "pb": 0.8461
   },
   {
     "lower": 102.4,
     "middle": 182.3,
-    "upper": 262.3
+    "upper": 262.3,
+    "pb": 0.8807
   },
   {
     "lower": 98.98,
     "middle": 196.2,
-    "upper": 293.5
+    "upper": 293.5,
+    "pb": 0.7431
   },
   {
     "lower": 109.5,
     "middle": 210.4,
-    "upper": 311.2
+    "upper": 311.2,
+    "pb": 0.8771
   }
 ]
 
