@@ -63,6 +63,7 @@
     "babel-register": "^6.8.0",
     "babelify": "^7.3.0",
     "browserify": "^13.0.0",
+    "draw-candlestick": "*",
     "gulp": "^3.9.1",
     "gulp-mocha": "^2.2.0",
     "gulp-util": "^3.0.7",
