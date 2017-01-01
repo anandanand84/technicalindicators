@@ -1,3 +1,18 @@
 language: node_js
 node_js:
   - "6.0"
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libcairo2-dev
+      - libjpeg8-dev
+      - libpango1.0-dev
+      - libgif-dev
+      - g++-4.9
+env:
+  - CXX=g++-4.9
+before_install:
+  - npm explore npm -g -- npm install node-gyp@latest
+sudo: false
