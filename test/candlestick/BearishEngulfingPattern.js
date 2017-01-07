@@ -9,12 +9,12 @@ var twoDayBearishInput = {
   low: [20.82,14.93],
 }
 
-describe('Common candlestick utilities : ', function() {
+describe('BearishEngulfingPattern : ', function() {
   before(function() {
     var imageBuffer = drawCandleStick(twoDayBearishInput);
     fs.writeFileSync(__dirname+'/images/bearishEngulfing.png',imageBuffer);
   });
-  it('Generate candlestick should generate subset of data based on supplied data', function() {
+  it('Check whether the supplied data has BearishEngulfingPattern pattern', function() {
    var bearishEngulfingPattern = new BearishEngulfingPattern ();
    var result        = bearishEngulfingPattern.hasPattern(twoDayBearishInput);
    assert.deepEqual(result, true, 'Invalid result for BearishEngulfingPattern');

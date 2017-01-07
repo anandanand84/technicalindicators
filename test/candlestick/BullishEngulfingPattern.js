@@ -1,5 +1,7 @@
 var BullishEngulfingPattern = require('../../lib/candlestick/BullishEngulfingPattern');
 var assert = require('assert');
+var drawCandleStick         = require('draw-candlestick');
+var fs                      = require('fs');
 
 var twoDayBullishInput = {
   open: [23.25,15.36],
@@ -8,8 +10,12 @@ var twoDayBullishInput = {
   low: [20.82,14.93],
 }
 
-describe('Common candlestick utilities : ', function() {
-  it('Generate candlestick should generate subset of data based on supplied data', function() {
+describe('BullishEngulfingPattern : ', function() {
+   before(function() {
+    var imageBuffer = drawCandleStick(twoDayBullishInput);
+    fs.writeFileSync(__dirname+'/images/bullishEngulfingPattern.png',imageBuffer);
+  });
+  it('Check whether the supplied data has BullishEngulfingPattern pattern', function() {
    var bullishEngulfingPattern = new BullishEngulfingPattern ();
    var result        = bullishEngulfingPattern.hasPattern(twoDayBullishInput);
    assert.deepEqual(result, true, 'Invalid result for BullishEngulfingPattern');
