@@ -1,5 +1,7 @@
 var Harami = require('../../lib/candlestick/Harami');
 var assert = require('assert');
+var drawCandleStick         = require('draw-candlestick');
+var fs                      = require('fs');
 
 var twoDayInput = {
   open: [25.13, 23.45],
@@ -16,8 +18,12 @@ var twoDayInput = {
   low: [19.88,21.31],
 }*/
 
-describe('Common candlestick utilities : ', function() {
-  it('Generate candlestick should generate subset of data based on supplied data', function() {
+describe('Harami : ', function() {
+   before(function() {
+    var imageBuffer = drawCandleStick(twoDayInput);
+    fs.writeFileSync(__dirname+'/images/Harami.png',imageBuffer);
+  });
+  it('Check whether the supplied data has Harami pattern', function() {
    var harami = new Harami ();
    var result = harami.hasPattern(twoDayInput);
    assert.deepEqual(result, true, 'Invalid result for Harami')
