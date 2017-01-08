@@ -53,6 +53,19 @@ sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
 14. [On Balance Volume (OBV)](https://tonicdev.com/anandaravindan/obv "OBV").
 15. [Triple Exponentially Smoothed Average (TRIX)](https://tonicdev.com/anandaravindan/trix "TRIX").
 
+
+#CandleStick Pattern
+1. [Abandoned Baby](https://runkit.com/aarthiaradhana/abandonedbaby).
+2. [Bearish Engulfing Pattern](https://runkit.com/aarthiaradhana/bearishengulfingpattern).
+3. [Bullish Engulfiing Pattern](https://runkit.com/aarthiaradhana/bullishengulfingpattern).
+4. [Dark Cloud Cover](https://runkit.com/aarthiaradhana/darkcloudcover).
+5. [Downside Tasuki Gap](https://runkit.com/aarthiaradhana/downsidetasukigap).
+6. [Doji](https://runkit.com/aarthiaradhana/doji).
+7. [DragonFly Doji](https://runkit.com/aarthiaradhana/dragonflydoji).
+8. [GraveStone Doji](https://runkit.com/aarthiaradhana/gravestonedoji).
+9. [Harami](https://runkit.com/aarthiaradhana/harami).
+10. [Harami Cross](https://runkit.com/aarthiaradhana/haramicross).
+
 # API
 
 There are three ways you can use to get the indicator results.
