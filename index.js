@@ -23,6 +23,9 @@ let BullishEngulfingPattern    = require('./lib/candlestick/BullishEngulfingPatt
 let DarkCloudCover             = require('./lib/candlestick/DarkCloudCover.js');
 let DownsideTasukiGap          = require('./lib/candlestick/DownsideTasukiGap.js');
 let DragonFlyDoji              = require('./lib/candlestick/DragonFlyDoji');
+let GraveStoneDoji             = require('./lib/candlestick/GraveStoneDoji');
+let Harami                     = require('./lib/candlestick/Harami');
+let HaramiCross                = require('./lib/candlestick/HaramiCross');
 
 let Indicators;
 
@@ -51,7 +54,11 @@ module.exports = Indicators = {
   BullishEngulfingPattern      : new BullishEngulfingPattern(),
   DarkCloudCover               : new DarkCloudCover(),
   DownsideTasukiGap            : new DownsideTasukiGap(),
-  DragonFlyDoji                : new DragonFlyDoji()
+  DragonFlyDoji                : new DragonFlyDoji(),
+  GraveStoneDoji               : new GraveStoneDoji(),
+  Harami                       : new Harami(),
+  HaramiCross                  : new HaramiCross(),
+
 };
 
 Object.assign(global, Indicators);
