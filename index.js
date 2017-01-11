@@ -26,6 +26,15 @@ let DragonFlyDoji              = require('./lib/candlestick/DragonFlyDoji');
 let GraveStoneDoji             = require('./lib/candlestick/GraveStoneDoji');
 let Harami                     = require('./lib/candlestick/Harami');
 let HaramiCross                = require('./lib/candlestick/HaramiCross');
+let EveningDojiStar            = require('./lib/candlestick/EveningDojiStar');
+let EveningStar                = require('./lib/candlestick/EveningStar');
+let MorningDojiStar            = require('./lib/candlestick/MorningDojiStar');
+let MorningStar                = require('./lib/candlestick/MorningStar');
+let Marubozu                   = require('./lib/candlestick/Marubozu');
+let PiercingLine               = require('./lib/candlestick/PiercingLine');
+let SpinningTop                = require('./lib/candlestick/SpinningTop');
+let ThreeBlackCrows            = require('./lib/candlestick/ThreeBlackCrows');
+let ThreeWhiteSoldiers         = require('./lib/candlestick/ThreeWhiteSoldiers');
 
 let Indicators;
 
@@ -58,6 +67,15 @@ module.exports = Indicators = {
   GraveStoneDoji               : new GraveStoneDoji(),
   Harami                       : new Harami(),
   HaramiCross                  : new HaramiCross(),
+  EveningDojiStars             : new EveningDojiStars(),
+  EveningStar                  : new EveningStar(),
+  Marubozu                     : new Marubozu(),
+  PiercingLine                 : new PiercingLine(),
+  SpinningTop                  : new SpinningTop(),
+  MorningStar                  : new MorningStar(),
+  MorningDojiStar              : new MorningDojiStar(),
+  ThreeBlackCrows              : new ThreeBlackCrows(),
+  ThreeWhiteSoldiers           : new ThreeWhiteSoldiers(),
 
 };
 
