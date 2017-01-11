@@ -67,7 +67,7 @@ module.exports = Indicators = {
   GraveStoneDoji               : new GraveStoneDoji(),
   Harami                       : new Harami(),
   HaramiCross                  : new HaramiCross(),
-  EveningDojiStars             : new EveningDojiStars(),
+  EveningDojiStar              : new EveningDojiStar(),
   EveningStar                  : new EveningStar(),
   Marubozu                     : new Marubozu(),
   PiercingLine                 : new PiercingLine(),
