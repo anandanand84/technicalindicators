@@ -24,15 +24,19 @@ let DarkCloudCover             = require('./lib/candlestick/DarkCloudCover.js');
 let DownsideTasukiGap          = require('./lib/candlestick/DownsideTasukiGap.js');
 let DragonFlyDoji              = require('./lib/candlestick/DragonFlyDoji');
 let GraveStoneDoji             = require('./lib/candlestick/GraveStoneDoji');
-let Harami                     = require('./lib/candlestick/Harami');
-let HaramiCross                = require('./lib/candlestick/HaramiCross');
+let BullishHarami              = require('./lib/candlestick/BullishHarami');
+let BearishHarami              = require('./lib/candlestick/BearishHarami');
+let BullishHaramiCross         = require('./lib/candlestick/BullishHaramiCross');
+let BearishHaramiCross         = require('./lib/candlestick/BearishHaramiCross');
 let EveningDojiStar            = require('./lib/candlestick/EveningDojiStar');
 let EveningStar                = require('./lib/candlestick/EveningStar');
 let MorningDojiStar            = require('./lib/candlestick/MorningDojiStar');
 let MorningStar                = require('./lib/candlestick/MorningStar');
-let Marubozu                   = require('./lib/candlestick/Marubozu');
+let BullishMarubozu            = require('./lib/candlestick/BullishMarubozu');
+let BearishMarubozu            = require('./lib/candlestick/BearishMarubozu');
 let PiercingLine               = require('./lib/candlestick/PiercingLine');
-let SpinningTop                = require('./lib/candlestick/SpinningTop');
+let BullishSpinningTop         = require('./lib/candlestick/BullishSpinningTop');
+let BearishSpinningTop         = require('./lib/candlestick/BearishSpinningTop');
 let ThreeBlackCrows            = require('./lib/candlestick/ThreeBlackCrows');
 let ThreeWhiteSoldiers         = require('./lib/candlestick/ThreeWhiteSoldiers');
 
@@ -65,13 +69,17 @@ module.exports = Indicators = {
   DownsideTasukiGap            : new DownsideTasukiGap(),
   DragonFlyDoji                : new DragonFlyDoji(),
   GraveStoneDoji               : new GraveStoneDoji(),
-  Harami                       : new Harami(),
-  HaramiCross                  : new HaramiCross(),
+  BullishHarami                : new BullishHarami(),
+  BearishHarami                : new BearishHarami(),
+  BullishHaramiCross           : new BullishHaramiCross(),
+  BearishHaramiCross           : new BearishHaramiCross(),
   EveningDojiStar              : new EveningDojiStar(),
   EveningStar                  : new EveningStar(),
-  Marubozu                     : new Marubozu(),
+  BullishMarubozu              : new BullishMarubozu(),
+  BearishMarubozu              : new BearishMarubozu(),
   PiercingLine                 : new PiercingLine(),
-  SpinningTop                  : new SpinningTop(),
+  BullishSpinningTop           : new BullishSpinningTop(),
+  BearishSpinningTop           : new BearishSpinningTop(),
   MorningStar                  : new MorningStar(),
   MorningDojiStar              : new MorningDojiStar(),
   ThreeBlackCrows              : new ThreeBlackCrows(),
