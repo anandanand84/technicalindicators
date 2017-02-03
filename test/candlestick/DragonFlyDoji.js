@@ -3,7 +3,7 @@ var assert = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');
 
-var singleInput = {
+var input = {
   open: [30.10],
   high: [30.10],
   close: [30.13],
@@ -13,12 +13,12 @@ var singleInput = {
 
 describe('DragonFlyDoji : ', function() {
    before(function() {
-    var imageBuffer = drawCandleStick(singleInput);
+    var imageBuffer = drawCandleStick(input);
     fs.writeFileSync(__dirname+'/images/dragonFlyDoji.png',imageBuffer);
   });
   it('Check whether the supplied data has DragonFlyDoji pattern', function() {
    var dragonFlyDoji = new DragonFlyDoji();
-   var result = dragonFlyDoji.hasPattern(singleInput);
+   var result = dragonFlyDoji.hasPattern(input);
    assert.deepEqual(result, true, 'Invalid result for DragonFlyDoji');
   });
 })
