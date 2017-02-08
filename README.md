@@ -63,8 +63,24 @@ sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
 6. [Doji](https://runkit.com/aarthiaradhana/doji).
 7. [DragonFly Doji](https://runkit.com/aarthiaradhana/dragonflydoji).
 8. [GraveStone Doji](https://runkit.com/aarthiaradhana/gravestonedoji).
-9. [Harami](https://runkit.com/aarthiaradhana/harami).
-10. [Harami Cross](https://runkit.com/aarthiaradhana/haramicross).
+9. [BullishHarami](https://runkit.com/aarthiaradhana/bullishharami).
+10. [Bearish Harami Cross](https://runkit.com/aarthiaradhana/bearishharamicross).
+11. [Bullish Harami Cross](https://runkit.com/aarthiaradhana/bullishharamicross).
+12. [Bullish Marubozu](https://runkit.com/aarthiaradhana/bullishmarubozu).
+13. [Bearish Marubozu](https://runkit.com/aarthiaradhana/bearishmarubozu).
+14. [Evening Doji Star](https://runkit.com/aarthiaradhana/eveningdojistar).
+15. [Evening Star](https://runkit.com/aarthiaradhana/eveningstar).
+16. [Bearish Harami](https://runkit.com/aarthiaradhana/bearishharami).
+17. [Piercing Line](https://runkit.com/aarthiaradhana/piercingline).
+18. [Bullish Spinning Top](https://runkit.com/aarthiaradhana/bullishspinningtop).
+19. [Bearish Spinning Top](https://runkit.com/aarthiaradhana/bearishspinningtop).
+20. [Morning Doji Star](https://runkit.com/aarthiaradhana/morningdojistar).
+21. [Morning Star](https://runkit.com/aarthiaradhana/morningstar).
+22. [Three Black Crows](https://runkit.com/aarthiaradhana/threeblackcrows).
+23. [Three White Soldiers](https://runkit.com/aarthiaradhana/threewhitesoldiers).
+
+
+
 
 # API
 
