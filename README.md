@@ -79,7 +79,24 @@ sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
 22. [Three Black Crows](https://runkit.com/aarthiaradhana/threeblackcrows).
 23. [Three White Soldiers](https://runkit.com/aarthiaradhana/threewhitesoldiers).
 
+or 
 
+Search for all bullish or bearish using
+
+
+````
+var twoDayBullishInput = {
+  open: [23.25,15.36],
+  high: [25.10,30.87],
+  close: [21.44,27.89],
+  low: [20.82,14.93],
+}
+
+var Bullish = require('technicalindicators').Bullish;
+
+Bullish.hasPattern(twoDayBullishInput) //true
+
+```
 
 
 # API

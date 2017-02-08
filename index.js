@@ -16,6 +16,8 @@ let ADL                        = require('./lib/volume/ADL.js');
 let OBV                        = require('./lib/volume/OBV.js');
 let TRIX                       = require('./lib/momentum/TRIX.js');
 
+let Bullish                    = require('./lib/candlestick/Bullish.js');
+let Bearish                    = require('./lib/candlestick/Bearish.js');
 let AbandonedBaby              = require('./lib/candlestick/AbandonedBaby.js');
 let Doji                       = require('./lib/candlestick/Doji.js');
 let BearishEngulfingPattern    = require('./lib/candlestick/BearishEngulfingPattern.js');
@@ -84,7 +86,8 @@ module.exports = Indicators = {
   MorningDojiStar              : new MorningDojiStar(),
   ThreeBlackCrows              : new ThreeBlackCrows(),
   ThreeWhiteSoldiers           : new ThreeWhiteSoldiers(),
-
+  Bullish                      : new Bullish(),
+  Bearish                      : new Bearish()
 };
 
 Object.assign(global, Indicators);
