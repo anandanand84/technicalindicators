@@ -4,11 +4,18 @@
 "use strict"
 const assert = require('assert');
 const ROC     = require('../../lib/momentum/ROC')
-
+    
 //let data = [4,2,5,8,6];
 let data = [11045.27,11167.32,11008.61,11151.83,10926.77,10868.12,10520.32,10380.43,10785.14,10748.26,10896.91,10782.95,10620.16,10625.83,10510.95,10444.37,10068.01,10193.39,10066.57,10043.75];
 let period = 12;
-let expectResult = [-3.849,-4.849,-4.521,-6.344,-7.859,-6.208,-4.313,-3.243]
+let expectResult = [-3.8488,
+      -4.84888,
+      -4.52064,
+      -6.34389,
+      -7.85923,
+      -6.20834,
+      -4.31308,
+      -3.24341]
 describe('Rate of change', function() {
   "use strict";
   it('should calculate ROC using the calculate method', function() {
