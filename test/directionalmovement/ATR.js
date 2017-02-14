@@ -13,7 +13,68 @@ var input = {
   period : period
 }
 
-var expectResult = [0.5543,0.5933,0.5852,0.5684,0.6149,0.6174,0.6419,0.6739,0.6922,0.7749,0.781,1.209,1.302,1.380,1.367,1.336,1.316]
+      
+var expectResult =  [
+      0.55429,
+      0.59327,
+      0.58517,
+      0.56838,
+      0.61492,
+      0.61743,
+      0.6419,
+      0.6739,
+      0.6922,
+      0.7749,
+      0.78098,
+      1.20876,
+      1.30242,
+      1.38011,
+      1.36653,
+      1.33606,
+      1.31634
+   ]
+
+
+var expectResultNextBar = [
+  0.5543,
+  0.5933,
+  0.5852,
+  0.5684,
+  0.6149,
+  0.6174,
+  0.6419,
+  0.6739,
+  0.6922,
+  0.7749,
+  0.781,
+  1.209,
+  1.302,
+  1.38,
+  1.367,
+  1.336,
+  1.316,
+];
+
+
+var expected =   [
+    0.55429,
+    0.59327,
+    0.58517,
+    0.56838,
+    0.61492,
+    0.61743,
+    0.6419,
+    0.6739,
+    0.6922,
+    0.7749,
+    0.78098,
+    1.20876,
+    1.30242,
+    1.38011,
+    1.36653,
+    1.33606,
+    1.31634
+  ];
 
 describe('ATR (Average True Range)', function() {
   it('should calculate ATR using the calculate method', function() {
@@ -22,8 +83,10 @@ describe('ATR (Average True Range)', function() {
 
   it('should be able to caÎlculate ATR by using getResult', function() {
     var atr = new ATR(input);
-    assert.deepEqual(atr.getResult(),  expectResult, 'Wrong Results while calculating next bar');
+    assert.deepEqual(atr.getResult(),  expected, 'Wrong Results while calculating next bar');
   });
+
+
 
   it('should be able to get ATR for the next bar using nextValue', function() {
     var atr = new ATR({period : period, high : [], low:[], close:[]});
@@ -38,7 +101,7 @@ describe('ATR (Average True Range)', function() {
         results.push(parseFloat(result.toPrecision(4)));
       }
     });
-    assert.deepEqual(results, expectResult, 'Wrong Results while getting results');
+    assert.deepEqual(results, expectResultNextBar, 'Wrong Results while getting results');
   })
 
 })

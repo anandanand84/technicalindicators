@@ -16,59 +16,59 @@ var macdInput = {
 
 var expectedOutput = [
   {
-    "MACD": 1.508,
+    "MACD": 1.5206,
     "histogram": undefined,
     "signal": undefined
   },
   {
-    "MACD": 0.8641,
+    "MACD": 0.87471,
     "histogram": undefined,
     "signal": undefined
   },
   {
-    "MACD": 1.807,
-    "histogram": 0.4144,
-    "signal": 1.393
+    "MACD": 1.81612,
+    "histogram": 0.41231,
+    "signal": 1.40381
   },
   {
-    "MACD": 3.624,
-    "histogram": 1.115,
-    "signal": 2.508
+    "MACD": 3.63084,
+    "histogram": 1.11351,
+    "signal": 2.51732
   },
   {
-    "MACD": 6.130,
-    "histogram": 1.811,
-    "signal": 4.319
+    "MACD": 6.13619,
+    "histogram": 1.80943,
+    "signal": 4.32676
   },
   {
-    "MACD": 9.354,
-    "histogram": 2.517,
-    "signal": 6.837
+    "MACD": 9.3585,
+    "histogram": 2.51587,
+    "signal": 6.84263
   },
   {
-    "MACD": 12.73,
-    "histogram": 2.945,
-    "signal": 9.782
+    "MACD": 12.73056,
+    "histogram": 2.94396,
+    "signal": 9.78659
   },
   {
-    "MACD": 15.9,
-    "histogram": 3.061,
-    "signal": 12.84
+    "MACD": 15.90602,
+    "histogram": 3.05972,
+    "signal": 12.84631
   },
   {
-    "MACD": 16.40,
-    "histogram": 1.781,
-    "signal": 14.62
+    "MACD": 16.40656,
+    "histogram": 1.78013,
+    "signal": 14.62643
   },
   {
-    "MACD": 20.22,
-    "histogram": 2.796,
-    "signal": 17.42
+    "MACD": 20.21746,
+    "histogram": 2.79551,
+    "signal": 17.42195
   },
   {
-    "MACD": 20.01,
-    "histogram": 1.296,
-    "signal": 18.72
+    "MACD": 20.01256,
+    "histogram": 1.29531,
+    "signal": 18.71726
   }
 ];
 

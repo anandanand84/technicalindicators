@@ -20,28 +20,28 @@ let input = {
 };
 
   let expectResult = [{
-    kst: 36.60,
+    kst: 36.59764,
     signal: undefined
   },
   {
-    kst: 37.23,
+    kst: 37.22849,
     signal: undefined
   },
   {
-    kst: 38.38,
-    signal: 37.40
+    kst: 38.38192,
+    signal: 37.40268
   },
   {
-    kst: 38.78,
-    signal: 38.13
+    kst: 38.78389,
+    signal: 38.13143
   },
   {
-    kst: 37.54,
-    signal: 38.24
+    kst: 37.54315,
+    signal: 38.23632
   },
   {
-    kst: 36.25,
-    signal: 37.53
+    kst: 36.2535,
+    signal: 37.52685
   }
 ];
 
