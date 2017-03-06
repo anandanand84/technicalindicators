@@ -1,4 +1,4 @@
-var MorningStar = require('../../lib/candlestick/MorningStar');
+var MorningStar = require('../../lib/candlestick/MorningStar').default;
 var assert = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');

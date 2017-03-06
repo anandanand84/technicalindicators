@@ -1,4 +1,4 @@
-var DarkCloudCover = require('../../lib/candlestick/DarkCloudCover');
+var DarkCloudCover = require('../../lib/candlestick/DarkCloudCover').default;
 var assert = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');

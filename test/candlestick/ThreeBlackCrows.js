@@ -1,4 +1,4 @@
-var ThreeBlackCrows = require('../../lib/candlestick/ThreeBlackCrows');
+var ThreeBlackCrows = require('../../lib/candlestick/ThreeBlackCrows').default;
 var assert = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');

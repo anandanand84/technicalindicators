@@ -1,4 +1,4 @@
-var PiercingLine = require('../../lib/candlestick/PiercingLine');
+var PiercingLine = require('../../lib/candlestick/PiercingLine').default;
 var assert = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');

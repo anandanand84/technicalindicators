@@ -1,4 +1,4 @@
-var DragonFlyDoji = require('../../lib/candlestick/DragonFlyDoji');
+var DragonFlyDoji = require('../../lib/candlestick/DragonFlyDoji').default;
 var assert = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');

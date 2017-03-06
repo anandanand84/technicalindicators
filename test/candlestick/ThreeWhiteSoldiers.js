@@ -1,4 +1,4 @@
-var ThreeWhiteSoldiers = require('../../lib/candlestick/ThreeWhiteSoldiers');
+var ThreeWhiteSoldiers = require('../../lib/candlestick/ThreeWhiteSoldiers').default;
 var assert = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');

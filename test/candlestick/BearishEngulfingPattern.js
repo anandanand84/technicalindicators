@@ -1,4 +1,4 @@
-var BearishEngulfingPattern = require('../../lib/candlestick/BearishEngulfingPattern');
+var BearishEngulfingPattern = require('../../lib/candlestick/BearishEngulfingPattern').default;
 var assert                  = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');

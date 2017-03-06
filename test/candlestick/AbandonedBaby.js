@@ -1,4 +1,4 @@
-var AbandonedBaby = require('../../lib/candlestick/AbandonedBaby');
+var AbandonedBaby = require('../../lib/candlestick/AbandonedBaby').default;
 var assert = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');

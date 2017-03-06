@@ -1,4 +1,4 @@
-var CandlestickFinder = require('../../lib/candlestick/CandlestickFinder');
+var CandlestickFinder = require('../../lib/candlestick/CandlestickFinder').default;
 var assert = require('assert');
 
 

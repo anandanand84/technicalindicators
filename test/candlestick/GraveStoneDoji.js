@@ -1,4 +1,4 @@
-var GraveStoneDoji = require('../../lib/candlestick/GraveStoneDoji');
+var GraveStoneDoji = require('../../lib/candlestick/GraveStoneDoji').default;
 var assert = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');

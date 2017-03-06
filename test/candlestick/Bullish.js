@@ -1,4 +1,4 @@
-var Bullish = require('../../lib/candlestick/Bullish.js');
+var Bullish = require('../../lib/candlestick/Bullish.js').default;
 var assert                  = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');
