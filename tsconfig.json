@@ -7,7 +7,6 @@
     "outDir": "./lib",
     "preserveConstEnums": true,
     "removeComments": true,
-    "strictNullChecks": true,
     "baseUrl": ".", // This must be specified if "paths" is.
     "paths": {
       "linkedlist": ["typings/linkedlist"]

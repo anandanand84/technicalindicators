@@ -1,7 +1,7 @@
 /**
  * Created by AAravindan on 5/4/16.
  */
-var MACD = require('../../lib/moving_averages/MACD');
+var MACD = require('../../lib/moving_averages/MACD').MACD;
 var assert = require('assert');
 var data   = require('../data');
 

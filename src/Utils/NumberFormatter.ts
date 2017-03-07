@@ -1,3 +1,3 @@
 export function format(v:number):number {
-    return parseFloat(v.toFixed(5));
+    return parseFloat(v.toFixed(5)); 
 }

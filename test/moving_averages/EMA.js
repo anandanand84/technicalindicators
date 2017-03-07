@@ -1,7 +1,7 @@
 /**
  * Created by AAravindan on 5/3/16.
  */
-var EMA = require('../../lib/moving_averages/EMA');
+var EMA = require('../../lib/moving_averages/EMA').EMA;
 var assert = require('assert');
 var data   = require('../data');
 

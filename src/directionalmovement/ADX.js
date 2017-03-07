@@ -82,7 +82,6 @@ module.exports = ADX = function(input) {
           index++;
         }
         else {
-          console.log(lastATR,calcTr);
           lastATR =  (lastATR - (lastATR / period)) + calcTr;
           lastAPDM = (lastAPDM - (lastAPDM / period)) + calcPDM;
           lastAMDM = (lastAMDM - (lastAMDM / period)) + calcMDM;
