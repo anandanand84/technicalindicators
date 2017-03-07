@@ -42,7 +42,7 @@ export default class FixedSizeLinkedList extends linkedlist {
         (this.periodLow = data);
   }
 
-  iterator = function*() {
+  *iterator() {
     this.resetCursor();
     while(this.next()){
       yield this.current;
