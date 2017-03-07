@@ -7,7 +7,13 @@
     "outDir": "./lib",
     "preserveConstEnums": true,
     "removeComments": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": ".", // This must be specified if "paths" is.
+    "paths": {
+      "linkedlist": ["typings/linkedlist"]
+    },
+    "typeRoots" : ["typings", "node_modules/**/@types"],
+    "types" : ["linkedlist","node"]
   },
   "include": [
     "src/**/*.ts"
