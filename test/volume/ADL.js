@@ -6,7 +6,7 @@
  */
 "use strict";
 let assert = require('assert');
-let ADL    = require('../../lib/volume/ADL');
+let ADL    = require('../../lib/volume/ADL').ADL;
 
 let input = {
   high : [62.3400,62.0500,62.2700,60.7900,59.9300,61.7500,60.0000,59.0000,59.0700,59.2200,58.7500,58.6500,58.4700,58.2500,58.3500,59.8600,59.5299,62.1000,62.1600,62.6700,62.3800,63.7300,63.8500,66.1500,65.3400,66.4800,65.2300,63.4000,63.1800,62.7000],
@@ -27,16 +27,6 @@ describe('ADL (Accumulation Distribution line)', function() {
     assert.deepEqual(adl.getResult(),  expectResult, 'Wrong Results while calculating next bar');
   });
 
-  it('should be able to calculate ADL for reversed input by using calculate method', function() {
-    let myInput = Object.assign({}, input);
-    myInput.reversedInput = true;
-    myInput.high.reverse();
-    myInput.low.reverse();
-    myInput.close.reverse();
-    myInput.volume.reverse();
-    assert.deepEqual(ADL.calculate(myInput),  expectResult.slice().reverse(), 'Wrong Results while calculating next bar');
-  });
-
   it('should be able to get ADL for the next bar using nextValue', function() {
     let adl = new ADL({ high : [], low:[], close:[], volume : []});
     let results = [];
@@ -53,5 +43,15 @@ describe('ADL (Accumulation Distribution line)', function() {
     });
     assert.deepEqual(results, expectResult, 'Wrong Results while getting results');
   })
+
+  it('should be able to calculate ADL for reversed input by using calculate method', function() {
+    let myInput = Object.assign({}, input);
+    myInput.reversedInput = true;
+    myInput.high.reverse();
+    myInput.low.reverse();
+    myInput.close.reverse();
+    myInput.volume.reverse();
+    assert.deepEqual(ADL.calculate(myInput),  expectResult.slice().reverse(), 'Wrong Results while calculating next bar');
+  });
 
 })

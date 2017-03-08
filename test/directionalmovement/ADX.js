@@ -4,7 +4,7 @@
 /**
  * Created by AAravindan on 5/3/16.
  */
-var ADX = require('../../lib/directionalmovement/ADX');
+var ADX = require('../../lib/directionalmovement/ADX').ADX;
 var assert = require('assert');
 var data   = require('../data')
 
@@ -24,16 +24,16 @@ var expectResult =  [
 
 
 describe('ADX (Average Directional Index)', function() {
-  //it('should calculate ADX using the calculate method', function() {
+  // it('should calculate ADX using the calculate method', function() {
   //  assert.deepEqual(ADX.calculate(input), expectResult, 'Wrong Results');
-  //});
+  // });
 
-  //it('should be able to calculate ADX by using getResult', function() {
+  // it('should be able to calculate ADX by using getResult', function() {
   //  var adx = new ADX(input);
   //  assert.deepEqual(adx.getResult(),  expectResult, 'Wrong Results while calculating next bar');
-  //});
-  //
-  //it('should be able to get ADX for the next bar using nextValue', function() {
+  // });
+  
+  // it('should be able to get ADX for the next bar using nextValue', function() {
   //  var adx = new ADX({period : period, high : [], low:[], close:[]});
   //  var results = [];
   //  input.close.forEach(function(close,index) {
@@ -46,6 +46,5 @@ describe('ADX (Average Directional Index)', function() {
   //      results.push(result)
   //  });
   //  assert.deepEqual(results, expectResult, 'Wrong Results while getting results');
-  //})
-
+  // })
 })
