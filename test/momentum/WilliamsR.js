@@ -3,7 +3,7 @@
  */
 "use strict"
 const assert = require('assert');
-const WilliamsR     = require('../../lib/momentum/WilliamsR')
+const WilliamsR     = require('../../lib/momentum/WilliamsR').WilliamsR
 
 //let data = [4,2,5,8,6];
 let high  = [127.0090,127.6159,126.5911,127.3472,128.1730,128.4317,127.3671,126.4220,126.8995,126.8498,125.6460,125.7156,127.1582,127.7154,127.6855,128.2228,128.2725,128.0934,128.2725,127.7353,128.7700,129.2873,130.0633,129.1182,129.2873,128.4715,128.0934,128.6506,129.1381,128.6406];
@@ -22,15 +22,6 @@ describe('WilliamsR', function() {
   "use strict";
   it('should calculate WilliamsR using the calculate method', function() {
     assert.deepEqual(WilliamsR.calculate(input), expectResult, 'Wrong Results');
-  });
-
-  it('should be able to calculate williamsR for reversed input by using calculate method', function() {
-    let myInput = Object.assign({}, input);
-    myInput.reversedInput = true;
-    myInput.high.reverse();
-    myInput.low.reverse();
-    myInput.close.reverse();
-    assert.deepEqual(WilliamsR.calculate(myInput),  expectResult.slice().reverse(), 'Wrong Results while calculating next bar');
   });
 
   it('should be able to calculate williamsR by using getResult', function() {
@@ -57,4 +48,13 @@ describe('WilliamsR', function() {
     });
     assert.deepEqual(results, expectResult, 'Wrong Results while getting results');
   })
+
+  it('should be able to calculate williamsR for reversed input by using calculate method', function() {
+    let myInput = Object.assign({}, input);
+    myInput.reversedInput = true;
+    myInput.high.reverse();
+    myInput.low.reverse();
+    myInput.close.reverse();
+    assert.deepEqual(WilliamsR.calculate(myInput),  expectResult.slice().reverse(), 'Wrong Results while calculating next bar');
+  });
 });

@@ -4,11 +4,11 @@
 import linkedlist = require('linkedlist');
 
 export default class FixedSizeLinkedList extends linkedlist {
-  private periodHigh:number = 0;
-  private periodLow:number = Infinity;
+  public periodHigh:number = 0;
+  public periodLow:number = Infinity;
   public lastShift:number;
   public _push:(data:number)=>void;
-  constructor(public size:number,public maintainHigh:boolean,public maintainLow:boolean) {
+  constructor(public size:number,public maintainHigh?:boolean,public maintainLow?:boolean) {
     super();
     if(!size || typeof size !== 'number'){
       throw('Size required and should be a number.');

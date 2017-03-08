@@ -4,3 +4,10 @@ export default class StockData {
         this.reversedInput = reversedInput;
     }
 }
+
+export class CandleData {
+    open?:number;
+    high?:number;
+    low?:number;
+    close?:number
+}

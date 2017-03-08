@@ -1,7 +1,7 @@
 /**
  * Created by AAravindan on 5/8/16.
  */
-var PlusDM = require('../../lib/directionalmovement/PlusDM');
+var PlusDM = require('../../lib/directionalmovement/PlusDM').PDM;
 var assert = require('assert');
 var data   = require('../data')
 
