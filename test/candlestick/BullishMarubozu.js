@@ -1,4 +1,4 @@
-var BullishMarubozu = require('../../lib/candlestick/BullishMarubozu');
+var BullishMarubozu = require('../../lib/candlestick/BullishMarubozu').default;
 var assert = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');

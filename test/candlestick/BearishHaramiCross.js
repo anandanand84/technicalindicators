@@ -1,4 +1,4 @@
-var BearishHaramiCross = require('../../lib/candlestick/BearishHaramiCross');
+var BearishHaramiCross = require('../../lib/candlestick/BearishHaramiCross').default;
 var assert = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');

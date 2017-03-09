@@ -1,7 +1,7 @@
 /**
  * Created by AAravindan on 5/3/16.
  */
-var WMA = require('../../lib/moving_averages/WMA');
+var WMA = require('../../lib/moving_averages/WMA').WMA;
 var assert = require('assert');
 var data   = require('../data');
 

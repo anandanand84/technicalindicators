@@ -1,4 +1,4 @@
-var BearishSpinningTop = require('../../lib/candlestick/BearishSpinningTop');
+var BearishSpinningTop = require('../../lib/candlestick/BearishSpinningTop').default;
 var assert = require('assert');
 var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');

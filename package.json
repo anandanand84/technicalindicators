@@ -1,6 +1,6 @@
 {
   "name": "technicalindicators",
-  "version": "0.2.17",
+  "version": "0.2.20",
   "description": "Techincal Indicators written in javascript",
   "main": "index.js",
   "scripts": {
@@ -56,6 +56,9 @@
     "linkedlist": "^1.0.1"
   },
   "devDependencies": {
+    "@types/chai": "^3.0.0",
+    "@types/mocha": "^2.0.0",
+    "@types/node": "^6.0.31",
     "babel-cli": "^6.8.0",
     "babel-core": "^6.8.0",
     "babel-polyfill": "^6.8.0",
@@ -63,11 +66,16 @@
     "babel-register": "^6.8.0",
     "babelify": "^7.3.0",
     "browserify": "^13.0.0",
+    "chai": "^3.0.0",
     "draw-candlestick": "*",
     "gulp": "^3.9.1",
     "gulp-mocha": "^2.2.0",
     "gulp-util": "^3.0.7",
     "minifyify": "^7.3.3",
-    "mocha": "^2.4.5"
+    "mocha": "^2.4.5",
+    "rimraf": "^2.0.0",
+    "ts-node": "^1.0.0",
+    "tslint": "^4.0.0",
+    "typescript": "^2.0.0"
   }
 }

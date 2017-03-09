@@ -2,7 +2,7 @@
  * Created by AAravindan on 5/7/16.
  */
 "use strict";
-var FixedSizeLinkedList = require("../../lib/Utils/FixedSizeLinkedList");
+var FixedSizeLinkedList = require("../../lib/Utils/FixedSizeLinkedList").default;
 var assert = require('assert');
 
 var linkedList;

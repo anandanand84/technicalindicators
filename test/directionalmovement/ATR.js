@@ -2,7 +2,7 @@
  * Created by AAravindan on 5/8/16.
  */
 var assert = require('assert');
-var ATR    = require('../../lib/directionalmovement/ATR');
+var ATR    = require('../../lib/directionalmovement/ATR').ATR;
 
 var period = 14
 

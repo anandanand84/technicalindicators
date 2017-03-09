@@ -3,7 +3,7 @@
  */
 "use strict"
 const assert = require('assert');
-const Stochastic     = require('../../lib/momentum/Stochastic')
+const Stochastic     = require('../../lib/momentum/Stochastic').Stochastic
 
 //let data = [4,2,5,8,6];
 let high  = [127.009,127.616,126.591,127.347,128.173,128.432,127.367,126.422,126.900,126.850,125.646,125.716,127.158,127.715,127.686,128.223,128.273,128.093,128.273,127.735,128.770,129.287,130.063,129.118,129.287,128.472,128.093,128.651,129.138,128.641];
@@ -94,15 +94,6 @@ describe('Stochastic', function() {
     assert.deepEqual(Stochastic.calculate(input), expectResult, 'Wrong Results');
   });
 
-  it('should be able to calculate Stochastic for reversed input by using calculate method', function() {
-    let myInput = Object.assign({}, input);
-    myInput.reversedInput = true;
-    myInput.high.reverse();
-    myInput.low.reverse();
-    myInput.close.reverse();
-    assert.deepEqual(Stochastic.calculate(myInput),  expectResult.slice().reverse(), 'Wrong Results while calculating next bar');
-  });
-
   it('should be able to calculate Stochastic by using getResult', function() {
     let stochastic = new Stochastic(input);
     assert.deepEqual(stochastic.getResult(),  expectResult, 'Wrong Results while calculating next bar');
@@ -127,4 +118,13 @@ describe('Stochastic', function() {
     });
     assert.deepEqual(results, expectResult, 'Wrong Results while getting results');
   })
+
+  it('should be able to calculate Stochastic for reversed input by using calculate method', function() {
+    let myInput = Object.assign({}, input);
+    myInput.reversedInput = true;
+    myInput.high.reverse();
+    myInput.low.reverse();
+    myInput.close.reverse();
+    assert.deepEqual(Stochastic.calculate(myInput),  expectResult.slice().reverse(), 'Wrong Results while calculating next bar');
+  });
 })

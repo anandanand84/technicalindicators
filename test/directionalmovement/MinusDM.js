@@ -1,7 +1,7 @@
 /**
  * Created by AAravindan on 5/8/16.
  */
-var MinusDM = require('../../lib/directionalmovement/MinusDM');
+var MinusDM = require('../../lib/directionalmovement/MinusDM').MDM;
 var assert = require('assert');
 var data   = require('../data')
 

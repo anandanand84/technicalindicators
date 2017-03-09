@@ -2,7 +2,7 @@
  * Created by AAravindan on 5/3/16.
  */
 "use strict"
-var BB = require('../../lib/volatility/BollingerBands');
+var BB = require('../../lib/volatility/BollingerBands').BollingerBands;
 var assert = require('assert');
 var data   = require('../data')
 
@@ -74,17 +74,6 @@ describe('BB (Bollinger Bands)', function() {
         assert.deepEqual(BB.calculate({period : period, values : prices ,stdDev : stdDev}), expectResult, 'Wrong Results');
     });
 
-    it('should be able to calculate BB for reversed input by using calculate method', function() {
-      let myInput = Object.assign({}, {
-        period : period,
-        values : prices,
-        stdDev : stdDev
-      });
-      myInput.reversedInput = true;
-      myInput.values.reverse();
-      assert.deepEqual(BB.calculate(myInput),  expectResult.slice().reverse(), 'Wrong Results while calculating next bar');
-    });
-
     it('should be able to calculate BB by using getResult', function() {
         var bb = new BB({period : period, values : prices,stdDev : stdDev});
         assert.deepEqual(bb.getResult(),  expectResult, 'Wrong Results while calculating next bar');
@@ -100,5 +89,16 @@ describe('BB (Bollinger Bands)', function() {
         });
         assert.deepEqual(results, expectResult, 'Wrong Results while getting results');
     })
+
+    it('should be able to calculate BB for reversed input by using calculate method', function() {
+      let myInput = Object.assign({}, {
+        period : period,
+        values : prices,
+        stdDev : stdDev
+      });
+      myInput.reversedInput = true;
+      myInput.values.reverse();
+      assert.deepEqual(BB.calculate(myInput),  expectResult.slice().reverse(), 'Wrong Results while calculating next bar');
+    });
 
 })

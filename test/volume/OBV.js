@@ -6,7 +6,7 @@
  */
 "use strict";
 let assert = require('assert');
-let OBV    = require('../../lib/volume/OBV');
+let OBV    = require('../../lib/volume/OBV').OBV;
 
 let input = {
   close : [53.26,53.30,53.32,53.72,54.19,53.92,54.65,54.60,54.21,54.53,53.79,53.66,53.56,53.57,53.94,53.27],
@@ -25,14 +25,6 @@ describe('OBV (Accumulation Distribution line)', function() {
     assert.deepEqual(obv.getResult(),  expectResult, 'Wrong Results while calculating next bar');
   });
 
-  it('should be able to calculate OBV for reversed input by using calculate method', function() {
-    let myInput = Object.assign({}, input);
-    myInput.reversedInput = true;
-    myInput.close.reverse();
-    myInput.volume.reverse();
-    assert.deepEqual(OBV.calculate(myInput),  expectResult.slice().reverse(), 'Wrong Results while calculating next bar');
-  });
-
   it('should be able to get OBV for the next bar using nextValue', function() {
     let obv = new OBV({volume:[], close:[]});
     let results = [];
@@ -47,5 +39,13 @@ describe('OBV (Accumulation Distribution line)', function() {
     });
     assert.deepEqual(results, expectResult, 'Wrong Results while getting results');
   })
+
+  it('should be able to calculate OBV for reversed input by using calculate method', function() {
+    let myInput = Object.assign({}, input);
+    myInput.reversedInput = true;
+    myInput.close.reverse();
+    myInput.volume.reverse();
+    assert.deepEqual(OBV.calculate(myInput),  expectResult.slice().reverse(), 'Wrong Results while calculating next bar');
+  });
 
 })

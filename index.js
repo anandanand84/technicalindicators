@@ -1,100 +1,52 @@
 "use strict"
-let SMA                        = require('./lib/moving_averages/SMA.js');
-let EMA                        = require('./lib/moving_averages/EMA.js');
-let WMA                        = require('./lib/moving_averages/WMA.js');
-let WEMA                       = require('./lib/moving_averages/WEMA.js');
-let MACD                       = require('./lib/moving_averages/MACD.js');
-let RSI                        = require('./lib/oscillators/RSI.js');
-let BollingerBands             = require('./lib/volatility/BollingerBands.js');
-let ADX                        = require('./lib/directionalmovement/ADX.js');
-let ATR                        = require('./lib/directionalmovement/ATR.js');
-let ROC                        = require('./lib/momentum/ROC.js');
-let KST                        = require('./lib/momentum/KST.js');
-let Stochastic                 = require('./lib/momentum/Stochastic.js');
-let WilliamsR                  = require('./lib/momentum/WilliamsR.js');
-let ADL                        = require('./lib/volume/ADL.js');
-let OBV                        = require('./lib/volume/OBV.js');
-let TRIX                       = require('./lib/momentum/TRIX.js');
-
-let Bullish                    = require('./lib/candlestick/Bullish.js');
-let Bearish                    = require('./lib/candlestick/Bearish.js');
-let AbandonedBaby              = require('./lib/candlestick/AbandonedBaby.js');
-let Doji                       = require('./lib/candlestick/Doji.js');
-let BearishEngulfingPattern    = require('./lib/candlestick/BearishEngulfingPattern.js');
-let BullishEngulfingPattern    = require('./lib/candlestick/BullishEngulfingPattern.js');
-let DarkCloudCover             = require('./lib/candlestick/DarkCloudCover.js');
-let DownsideTasukiGap          = require('./lib/candlestick/DownsideTasukiGap.js');
-let DragonFlyDoji              = require('./lib/candlestick/DragonFlyDoji');
-let GraveStoneDoji             = require('./lib/candlestick/GraveStoneDoji');
-let BullishHarami              = require('./lib/candlestick/BullishHarami');
-let BearishHarami              = require('./lib/candlestick/BearishHarami');
-let BullishHaramiCross         = require('./lib/candlestick/BullishHaramiCross');
-let BearishHaramiCross         = require('./lib/candlestick/BearishHaramiCross');
-let EveningDojiStar            = require('./lib/candlestick/EveningDojiStar');
-let EveningStar                = require('./lib/candlestick/EveningStar');
-let MorningDojiStar            = require('./lib/candlestick/MorningDojiStar');
-let MorningStar                = require('./lib/candlestick/MorningStar');
-let BullishMarubozu            = require('./lib/candlestick/BullishMarubozu');
-let BearishMarubozu            = require('./lib/candlestick/BearishMarubozu');
-let PiercingLine               = require('./lib/candlestick/PiercingLine');
-let BullishSpinningTop         = require('./lib/candlestick/BullishSpinningTop');
-let BearishSpinningTop         = require('./lib/candlestick/BearishSpinningTop');
-let ThreeBlackCrows            = require('./lib/candlestick/ThreeBlackCrows');
-let ThreeWhiteSoldiers         = require('./lib/candlestick/ThreeWhiteSoldiers');
-
-let Indicators;
-
+let Indicators = require('./lib');
+Object.keys(Indicators).forEach(function(indicator) {
+  global[indicator] = Indicators[indicator];
+})
 global.AvailableIndicators = [];
-
-module.exports = Indicators = {
-  SMA                          : SMA,
-  EMA                          : EMA,
-  MACD                         : MACD,
-  RSI                          : RSI,
-  WMA                          : WMA,
-  BollingerBands               : BollingerBands,
-  ATR                          : ATR,
-  ADX                          : ADX,
-  WEMA                         : WEMA,
-  ROC                          : ROC,
-  KST                          : KST,
-  Stochastic                   : Stochastic,
-  WilliamsR                    : WilliamsR,
-  ADL                          : ADL,
-  OBV                          : OBV,
-  TRIX                         : TRIX,
-  AbandonedBaby                : new AbandonedBaby(),
-  Doji                         : new Doji(),
-  BearishEngulfingPattern      : new BearishEngulfingPattern(),
-  BullishEngulfingPattern      : new BullishEngulfingPattern(),
-  DarkCloudCover               : new DarkCloudCover(),
-  DownsideTasukiGap            : new DownsideTasukiGap(),
-  DragonFlyDoji                : new DragonFlyDoji(),
-  GraveStoneDoji               : new GraveStoneDoji(),
-  BullishHarami                : new BullishHarami(),
-  BearishHarami                : new BearishHarami(),
-  BullishHaramiCross           : new BullishHaramiCross(),
-  BearishHaramiCross           : new BearishHaramiCross(),
-  EveningDojiStar              : new EveningDojiStar(),
-  EveningStar                  : new EveningStar(),
-  BullishMarubozu              : new BullishMarubozu(),
-  BearishMarubozu              : new BearishMarubozu(),
-  PiercingLine                 : new PiercingLine(),
-  BullishSpinningTop           : new BullishSpinningTop(),
-  BearishSpinningTop           : new BearishSpinningTop(),
-  MorningStar                  : new MorningStar(),
-  MorningDojiStar              : new MorningDojiStar(),
-  ThreeBlackCrows              : new ThreeBlackCrows(),
-  ThreeWhiteSoldiers           : new ThreeWhiteSoldiers(),
-  Bullish                      : new Bullish(),
-  Bearish                      : new Bearish()
-};
-
-Object.assign(global, Indicators);
-
-for(let indicator in Indicators){
-  var indicatorName = indicator.toLowerCase();
-  global.AvailableIndicators.push(indicator);
-  let fn            = Indicators[indicator].calculate || Indicators[indicator].hasPattern
-  global[indicatorName] = fn; 
-};
+global.AvailableIndicators.push('sma');
+global.AvailableIndicators.push('ema');
+global.AvailableIndicators.push('wma');
+global.AvailableIndicators.push('wema');
+global.AvailableIndicators.push('macd');
+global.AvailableIndicators.push('rsi');
+global.AvailableIndicators.push('bollingerbands');
+global.AvailableIndicators.push('adx');
+global.AvailableIndicators.push('atr');
+global.AvailableIndicators.push('truerange');
+global.AvailableIndicators.push('roc');
+global.AvailableIndicators.push('kst');
+global.AvailableIndicators.push('stochastic');
+global.AvailableIndicators.push('williamsr');
+global.AvailableIndicators.push('adl');
+global.AvailableIndicators.push('obv');
+global.AvailableIndicators.push('trix');
+global.AvailableIndicators.push('averagegain');
+global.AvailableIndicators.push('averageloss');
+global.AvailableIndicators.push('sd');
+global.AvailableIndicators.push('bullish');
+global.AvailableIndicators.push('bearish');
+global.AvailableIndicators.push('abandonedbaby');
+global.AvailableIndicators.push('doji');
+global.AvailableIndicators.push('bearishengulfingpattern');
+global.AvailableIndicators.push('bullishengulfingpattern');
+global.AvailableIndicators.push('darkcloudcover');
+global.AvailableIndicators.push('downsidetasukigap');
+global.AvailableIndicators.push('dragonflydoji');
+global.AvailableIndicators.push('gravestonedoji');
+global.AvailableIndicators.push('bullishharami');
+global.AvailableIndicators.push('bearishharami');
+global.AvailableIndicators.push('bullishharamicross');
+global.AvailableIndicators.push('bearishharamicross');
+global.AvailableIndicators.push('eveningdojistar');
+global.AvailableIndicators.push('eveningstar');
+global.AvailableIndicators.push('morningdojistar');
+global.AvailableIndicators.push('morningstar');
+global.AvailableIndicators.push('bullishmarubozu');
+global.AvailableIndicators.push('bearishmarubozu');
+global.AvailableIndicators.push('piercingline');
+global.AvailableIndicators.push('bullishspinningtop');
+global.AvailableIndicators.push('bearishspinningtop');
+global.AvailableIndicators.push('threeblackcrows');
+global.AvailableIndicators.push('threewhitesoldiers)');
+module.exports = Indicators;
