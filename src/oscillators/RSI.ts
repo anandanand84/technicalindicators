@@ -49,7 +49,14 @@ export class RSI extends Indicator {
     });
   };
 
-  static calculate(input:RSIInput):number[] {
+  static calculate = rsi;
+
+    nextValue(price:number):number | undefined {
+        return this.generator.next(price).value;
+    };
+}
+
+export function rsi(input:RSIInput):number[] {
        Indicator.reverseInputs(input);
         var result = new RSI(input).result;
         if(input.reversedInput) {
@@ -58,8 +65,3 @@ export class RSI extends Indicator {
         Indicator.reverseInputs(input);
         return result;
     };
-
-    nextValue(price:number):number | undefined {
-        return this.generator.next(price).value;
-    };
-}

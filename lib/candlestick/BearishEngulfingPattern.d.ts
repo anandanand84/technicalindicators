@@ -4,3 +4,4 @@ export default class BearishEngulfingPattern extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
+export declare function bearishengulfingpattern(data: StockData): any;

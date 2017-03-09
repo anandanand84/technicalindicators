@@ -25,3 +25,7 @@ export default class BearishEngulfingPattern extends CandlestickFinder {
         return (isBearishEngulfing);
    }
 }
+
+export function bearishengulfingpattern(data:StockData) {
+    return new BearishEngulfingPattern().hasPattern(data);
+}

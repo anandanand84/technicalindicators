@@ -51,24 +51,24 @@ export class SMA extends Indicator{
             }
         });
     }
+    
+    static calculate = sma;
 
-    //STEP 4: MODIFY THE CALCULATE FUNCTINO
-    static calculate(input:MAInput):number[] {
-        Indicator.reverseInputs(input);
-        var result = new SMA(input).result;
-        if(input.reversedInput) {
-            result.reverse();
-        }
-        Indicator.reverseInputs(input);
-        return result;
-    }
-
-    //STEP 5. REMOVE GET RESULT FUNCTION
     nextValue(price:number):number | undefined {
         var result = this.generator.next(price).value;
         if(result)
             return this.format(result);
     };
 }
+
+export function sma(input:MAInput):number[] {
+    Indicator.reverseInputs(input);
+    var result = new SMA(input).result;
+    if(input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+};
 
 //STEP 6. Run the tests

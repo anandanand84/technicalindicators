@@ -9,6 +9,7 @@ export declare class ATR extends Indicator {
     result: number[];
     generator: IterableIterator<number | undefined>;
     constructor(input: ATRInput);
-    static calculate(input: ATRInput): number[];
+    static calculate: typeof atr;
     nextValue(price: number): number | undefined;
 }
+export declare function atr(input: ATRInput): number[];

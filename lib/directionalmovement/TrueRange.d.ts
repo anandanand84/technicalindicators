@@ -9,6 +9,7 @@ export declare class TrueRange extends Indicator {
     result: number[];
     generator: IterableIterator<number | undefined>;
     constructor(input: TrueRangeInput);
-    static calculate(input: TrueRangeInput): number[];
+    static calculate: typeof truerange;
     nextValue(price: CandleData): number | undefined;
 }
+export declare function truerange(input: TrueRangeInput): number[];

@@ -8,6 +8,7 @@ export declare class ADXInput extends IndicatorInput {
 export declare class ADX extends Indicator {
     generator: IterableIterator<number | undefined>;
     constructor(input: ADXInput);
-    static calculate(input: ADXInput): number[];
+    static calculate: typeof adx;
     nextValue(price: number): number | undefined;
 }
+export declare function adx(input: ADXInput): number[];

@@ -22,3 +22,7 @@ export default class BearishSpinningTop extends CandlestickFinder {
         return isBearishSpinningTop;
     }
 }
+
+export function bearishspinningtop(data:StockData) {
+  return new BearishSpinningTop().hasPattern(data);
+}

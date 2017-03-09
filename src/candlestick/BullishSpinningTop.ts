@@ -22,3 +22,7 @@ export default class BullishSpinningTop extends CandlestickFinder {
         return isBullishSpinningTop;
     }
 }
+
+export function bullishspinningtop(data:StockData) {
+  return new BullishSpinningTop().hasPattern(data);
+}

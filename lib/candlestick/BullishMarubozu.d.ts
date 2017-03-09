@@ -4,3 +4,4 @@ export default class BullishMarubozu extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
+export declare function bullishmarubozu(data: StockData): any;

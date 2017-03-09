@@ -41,3 +41,8 @@ export default class MorningDojiStar extends CandlestickFinder {
             doesCloseAboveFirstMidpoint );
      }
 }
+
+
+export function morningdojistar(data:StockData) {
+  return new MorningDojiStar().hasPattern(data);
+}

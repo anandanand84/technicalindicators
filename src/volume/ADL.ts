@@ -55,7 +55,14 @@ export class ADL extends Indicator {
       });
   };
 
-  static calculate(input:ADLInput):number[] {
+  static calculate = adl;
+
+  nextValue(price:CandleData):number | undefined {
+     return this.generator.next(price).value;
+  };
+}
+
+export function adl(input:ADLInput):number[] {
       Indicator.reverseInputs(input);
       var result = new ADL(input).result;
       if(input.reversedInput) {
@@ -64,8 +71,3 @@ export class ADL extends Indicator {
       Indicator.reverseInputs(input);
       return result;
   };
-
-  nextValue(price:CandleData):number | undefined {
-     return this.generator.next(price).value;
-  };
-}

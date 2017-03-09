@@ -47,7 +47,16 @@ export class EMA extends Indicator{
         });
     }
 
-    static calculate(input:MAInput):number[] {
+    static calculate = ema;
+
+    nextValue(price:number) {
+        var result = this.generator.next(price).value;
+        if(result)
+            return this.format(result);
+    };
+}
+
+export function ema(input:MAInput):number[] {
         Indicator.reverseInputs(input);
         var result = new EMA(input).result;
         if(input.reversedInput) {
@@ -56,10 +65,3 @@ export class EMA extends Indicator{
         Indicator.reverseInputs(input);
         return result;
     }
-
-    nextValue(price:number) {
-        var result = this.generator.next(price).value;
-        if(result)
-            return this.format(result);
-    };
-}

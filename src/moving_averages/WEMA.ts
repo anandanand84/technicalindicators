@@ -43,7 +43,16 @@ export class WEMA extends Indicator {
     });
   }
 
-  static calculate(input:MAInput) {
+  static calculate = wema;
+
+  nextValue(price:number):number | undefined {
+      var result = this.generator.next(price).value;
+      if(result)
+          return this.format(result);
+  };
+};
+
+export function wema(input:MAInput) {
     Indicator.reverseInputs(input);
     var result = new WEMA(input).result;
     if(input.reversedInput) {
@@ -52,10 +61,3 @@ export class WEMA extends Indicator {
     Indicator.reverseInputs(input);
     return result;
   }
-
-  nextValue(price:number):number | undefined {
-      var result = this.generator.next(price).value;
-      if(result)
-          return this.format(result);
-  };
-};

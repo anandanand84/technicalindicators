@@ -19,6 +19,7 @@ export declare class KST extends Indicator {
     result: KSTOutput[];
     generator: IterableIterator<KSTOutput | undefined>;
     constructor(input: KSTInput);
-    static calculate(input: KSTInput): KSTOutput[];
+    static calculate: typeof kst;
     nextValue(price: number): KSTOutput;
 }
+export declare function kst(input: KSTInput): KSTOutput[];

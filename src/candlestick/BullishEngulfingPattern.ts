@@ -26,3 +26,7 @@ export default class BullishEngulfingPattern extends CandlestickFinder {
         
    }
 }
+
+export function bullishengulfingpattern(data:StockData) {
+  return new BullishEngulfingPattern().hasPattern(data);
+}

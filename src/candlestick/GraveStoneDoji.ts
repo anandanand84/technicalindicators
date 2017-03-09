@@ -18,3 +18,7 @@ export default class GraveStoneDoji extends CandlestickFinder {
         return (isOpenEqualsClose && isLowEqualsOpen);
     }
 }
+
+export function gravestonedoji(data:StockData) {
+  return new GraveStoneDoji().hasPattern(data);
+}

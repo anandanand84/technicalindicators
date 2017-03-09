@@ -10,6 +10,7 @@ export declare class SMA extends Indicator {
     result: number[];
     generator: IterableIterator<number | undefined>;
     constructor(input: MAInput);
-    static calculate(input: MAInput): number[];
+    static calculate: typeof sma;
     nextValue(price: number): number | undefined;
 }
+export declare function sma(input: MAInput): number[];

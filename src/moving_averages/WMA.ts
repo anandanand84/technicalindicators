@@ -43,15 +43,7 @@ export class WMA extends Indicator{
     });
   }
 
-  static calculate(input:MAInput):number[] {
-      Indicator.reverseInputs(input);
-      var result = new WMA(input).result;
-      if(input.reversedInput) {
-          result.reverse();
-      }
-      Indicator.reverseInputs(input);
-      return result;
-  }
+  static calculate = wma;
 
     //STEP 5. REMOVE GET RESULT FUNCTION
   nextValue(price:number):number | undefined {
@@ -61,3 +53,13 @@ export class WMA extends Indicator{
   };
 
 };
+
+export function wma(input:MAInput):number[] {
+      Indicator.reverseInputs(input);
+      var result = new WMA(input).result;
+      if(input.reversedInput) {
+          result.reverse();
+      }
+      Indicator.reverseInputs(input);
+      return result;
+  }

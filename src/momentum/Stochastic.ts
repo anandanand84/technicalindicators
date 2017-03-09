@@ -85,7 +85,16 @@ export class Stochastic extends Indicator {
     });
   };
 
-  static calculate(input:StochasticInput):StochasticOutput[] {
+  static calculate = stochastic
+
+  nextValue (input:StochasticInput):StochasticOutput {
+    let nextResult = this.generator.next(input);
+    if(nextResult.value !== undefined)
+      return nextResult.value;
+  };
+}
+
+export function stochastic(input:StochasticInput):StochasticOutput[] {
         Indicator.reverseInputs(input);
         var result = new Stochastic(input).result;
         if(input.reversedInput) {
@@ -94,10 +103,3 @@ export class Stochastic extends Indicator {
         Indicator.reverseInputs(input);
         return result;
     };
-
-  nextValue (input:StochasticInput):StochasticOutput {
-    let nextResult = this.generator.next(input);
-    if(nextResult.value !== undefined)
-      return nextResult.value;
-  };
-}

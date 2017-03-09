@@ -7,6 +7,7 @@ export declare class TRIX extends Indicator {
     result: number[];
     generator: IterableIterator<number | undefined>;
     constructor(input: TRIXInput);
-    static calculate(input: TRIXInput): number[];
+    static calculate: typeof trix;
     nextValue(price: number): number;
 }
+export declare function trix(input: TRIXInput): number[];

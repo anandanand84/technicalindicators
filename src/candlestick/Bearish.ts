@@ -23,3 +23,7 @@ export default class BearishPatterns extends CandlestickFinder {
         }, false)
     }
 }
+
+export function bearish(data:StockData){
+    return new BearishPatterns().hasPattern(data);
+}

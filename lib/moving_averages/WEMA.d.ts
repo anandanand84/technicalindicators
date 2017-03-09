@@ -6,6 +6,7 @@ export declare class WEMA extends Indicator {
     result: number[];
     generator: IterableIterator<number | undefined>;
     constructor(input: MAInput);
-    static calculate(input: MAInput): number[];
+    static calculate: typeof wema;
     nextValue(price: number): number | undefined;
 }
+export declare function wema(input: MAInput): number[];

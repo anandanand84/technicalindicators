@@ -27,3 +27,7 @@ export default class BullishHarami extends CandlestickFinder {
         
    }
 }
+
+export function bullishharami(data:StockData) {
+  return new BullishHarami().hasPattern(data);
+}

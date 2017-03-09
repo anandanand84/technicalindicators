@@ -49,18 +49,22 @@ export class TRIX extends Indicator {
       }
     });
   }
-  static calculate(input:TRIXInput):number[] {
-       Indicator.reverseInputs(input);
-        var result = new TRIX(input).result;
-        if(input.reversedInput) {
-            result.reverse();
-        }
-        Indicator.reverseInputs(input);
-        return result;
-    };  
+    
+    static calculate=trix;
+
     nextValue(price:number) {
       let nextResult = this.generator.next(price);
       if(nextResult.value !== undefined)
         return nextResult.value;
     };
 } 
+
+export function trix(input:TRIXInput):number[] {
+    Indicator.reverseInputs(input);
+    var result = new TRIX(input).result;
+    if(input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+};  

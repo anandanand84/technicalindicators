@@ -41,3 +41,8 @@ export default class EveningDojiStar extends CandlestickFinder {
       return (isFirstBullish && dojiExists && gapExists && isThirdBearish && doesCloseBelowFirstMidpoint );
      }
 }
+
+
+export function eveningdojistar(data:StockData) {
+  return new EveningDojiStar().hasPattern(data);
+}

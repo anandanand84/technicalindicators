@@ -9,6 +9,7 @@ export declare class WilliamsR extends Indicator {
     result: number[];
     generator: IterableIterator<number | undefined>;
     constructor(input: WilliamsRInput);
-    static calculate(input: WilliamsRInput): number[];
+    static calculate: typeof williamsr;
     nextValue(price: number): number | undefined;
 }
+export declare function williamsr(input: WilliamsRInput): number[];

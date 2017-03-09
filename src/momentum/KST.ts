@@ -91,15 +91,7 @@ export class KST extends Indicator {
     });
   };
 
-  static calculate(input:KSTInput):KSTOutput[] {
-       Indicator.reverseInputs(input);
-        var result = new KST(input).result;
-        if(input.reversedInput) {
-            result.reverse();
-        }
-        Indicator.reverseInputs(input);
-        return result;
-    };
+  static calculate = kst;
 
 
   nextValue (price:number) {
@@ -108,3 +100,13 @@ export class KST extends Indicator {
       return nextResult.value;
   };
 }
+
+export function kst(input:KSTInput):KSTOutput[] {
+       Indicator.reverseInputs(input);
+        var result = new KST(input).result;
+        if(input.reversedInput) {
+            result.reverse();
+        }
+        Indicator.reverseInputs(input);
+        return result;
+    };

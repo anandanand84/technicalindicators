@@ -37,3 +37,7 @@ export default class AbandonedBaby extends CandlestickFinder {
         return (isFirstBearish && dojiExists && gapExists && isThirdBullish );
      }
 }
+
+export function abandonedbaby(data:StockData) {
+    return new AbandonedBaby().hasPattern(data);
+} 

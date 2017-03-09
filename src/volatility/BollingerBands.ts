@@ -66,7 +66,14 @@ export class BollingerBands extends Indicator {
         });
     }
 
-    static calculate(input:BollingerBandsInput):BollingerBandsOutput[] {
+    static calculate = bollingerbands;
+
+    nextValue(price:number):BollingerBandsOutput | undefined {
+        return this.generator.next(price).value;
+    };
+}
+
+export function bollingerbands(input:BollingerBandsInput):BollingerBandsOutput[] {
        Indicator.reverseInputs(input);
         var result = new BollingerBands(input).result;
         if(input.reversedInput) {
@@ -75,8 +82,3 @@ export class BollingerBands extends Indicator {
         Indicator.reverseInputs(input);
         return result;
     };
-
-    nextValue(price:number):BollingerBandsOutput | undefined {
-        return this.generator.next(price).value;
-    };
-}

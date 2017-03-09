@@ -29,3 +29,7 @@ export default class BullishHaramiCross extends CandlestickFinder {
         
    }
 }
+
+export function bullishharamicross(data:StockData) {
+  return new BullishHaramiCross().hasPattern(data);
+}

@@ -18,3 +18,7 @@ export default class DragonFlyDoji extends CandlestickFinder {
         return (isOpenEqualsClose && isHighEqualsOpen);
     }
 }
+
+export function dragonflydoji(data:StockData) {
+  return new DragonFlyDoji().hasPattern(data);
+}

@@ -4,3 +4,4 @@ export default class PiercingLine extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
+export declare function piercingline(data: StockData): any;

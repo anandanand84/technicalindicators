@@ -72,17 +72,20 @@ export class ATR extends Indicator {
     });
   };
 
-  static calculate(input:ATRInput):number[] {
-    Indicator.reverseInputs(input);
-    var result = new ATR(input).result;
-    if(input.reversedInput) {
-        result.reverse();
-    }
-    Indicator.reverseInputs(input);
-    return result;
-  };
+  static calculate = atr;
 
   nextValue(price:number):number | undefined {
       return this.generator.next(price).value;
   };
 }
+
+
+export function atr(input:ATRInput):number[] {
+  Indicator.reverseInputs(input);
+  var result = new ATR(input).result;
+  if(input.reversedInput) {
+      result.reverse();
+  }
+  Indicator.reverseInputs(input);
+  return result;
+};

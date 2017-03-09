@@ -51,7 +51,14 @@ export class AverageLoss extends Indicator {
     });
   }
 
-  static calculate(input:AvgLossInput):number[] {
+  static calculate = averageloss;
+
+    nextValue(price:number):number | undefined {
+        return this.generator.next(price).value;
+    };
+} 
+
+export function averageloss(input:AvgLossInput):number[] {
        Indicator.reverseInputs(input);
         var result = new AverageLoss(input).result;
         if(input.reversedInput) {
@@ -60,8 +67,3 @@ export class AverageLoss extends Indicator {
         Indicator.reverseInputs(input);
         return result;
     };
-
-    nextValue(price:number):number | undefined {
-        return this.generator.next(price).value;
-    };
-} 

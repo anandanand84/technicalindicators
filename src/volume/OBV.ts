@@ -54,7 +54,15 @@ export class OBV extends Indicator {
     });
   }
 
-  static calculate(input:OBVInput):number[] {
+  static calculate = obv;
+
+  nextValue(price:CandleData):number | undefined {
+     return this.generator.next(price).value;
+  };
+
+}
+
+export function obv(input:OBVInput):number[] {
       Indicator.reverseInputs(input);
       var result = new OBV(input).result;
       if(input.reversedInput) {
@@ -63,9 +71,3 @@ export class OBV extends Indicator {
       Indicator.reverseInputs(input);
       return result;
   };
-
-  nextValue(price:CandleData):number | undefined {
-     return this.generator.next(price).value;
-  };
-
-}

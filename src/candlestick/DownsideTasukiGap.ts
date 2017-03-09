@@ -34,3 +34,7 @@ export default class DownsideTasukiGap extends CandlestickFinder {
         
    }
 }
+
+export function downsidetasukigap(data:StockData) {
+  return new DownsideTasukiGap().hasPattern(data);
+}

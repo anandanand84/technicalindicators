@@ -6,6 +6,7 @@ export declare class EMA extends Indicator {
     result: number[];
     generator: IterableIterator<number | undefined>;
     constructor(input: MAInput);
-    static calculate(input: MAInput): number[];
+    static calculate: typeof ema;
     nextValue(price: number): number;
 }
+export declare function ema(input: MAInput): number[];

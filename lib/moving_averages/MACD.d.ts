@@ -18,6 +18,7 @@ export declare class MACD extends Indicator {
     result: MACDOutput[];
     generator: IterableIterator<MACDOutput | undefined>;
     constructor(input: MACDInput);
-    static calculate(input: MACDInput): MACDOutput[];
+    static calculate: typeof macd;
     nextValue(price: number): MACDOutput | undefined;
 }
+export declare function macd(input: MACDInput): MACDOutput[];

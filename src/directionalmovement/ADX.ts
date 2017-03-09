@@ -112,15 +112,7 @@ export class ADX extends Indicator {
     });
   };
 
-  static calculate(input:ADXInput):number[] {
-    Indicator.reverseInputs(input);
-    var result = new ADX(input).result;
-    if(input.reversedInput) {
-        result.reverse();
-    }
-    Indicator.reverseInputs(input);
-    return result;
-  };
+  static calculate = adx;
 
   nextValue(price:number):number | undefined {
       let result = this.generator.next(price).value;
@@ -129,3 +121,13 @@ export class ADX extends Indicator {
       }
   };
 }
+
+export function adx(input:ADXInput):number[] {
+    Indicator.reverseInputs(input);
+    var result = new ADX(input).result;
+    if(input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+  };

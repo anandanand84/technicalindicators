@@ -53,7 +53,16 @@ export class SD extends Indicator {
     });
   }
 
-  static calculate(input:SDInput):number[] {
+  static calculate = sd;
+
+    nextValue(price:number):number | undefined {
+        var nextResult = this.generator.next(price);
+        if(nextResult.value)
+          return this.format(nextResult.value);
+    };
+} 
+
+export function sd(input:SDInput):number[] {
        Indicator.reverseInputs(input);
         var result = new SD(input).result;
         if(input.reversedInput) {
@@ -62,11 +71,4 @@ export class SD extends Indicator {
         Indicator.reverseInputs(input);
         return result;
     };
-
-    nextValue(price:number):number | undefined {
-        var nextResult = this.generator.next(price);
-        if(nextResult.value)
-          return this.format(nextResult.value);
-    };
-} 
 

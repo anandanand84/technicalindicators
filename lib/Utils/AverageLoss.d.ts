@@ -6,6 +6,7 @@ export declare class AvgLossInput extends IndicatorInput {
 export declare class AverageLoss extends Indicator {
     generator: IterableIterator<number | undefined>;
     constructor(input: AvgLossInput);
-    static calculate(input: AvgLossInput): number[];
+    static calculate: typeof averageloss;
     nextValue(price: number): number | undefined;
 }
+export declare function averageloss(input: AvgLossInput): number[];

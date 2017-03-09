@@ -66,7 +66,16 @@ export class WilliamsR extends Indicator {
     });
   };
 
-  static calculate(input:WilliamsRInput):number[] {
+  static calculate = williamsr;
+
+  nextValue(price:number):number | undefined {
+      var nextResult = this.generator.next(price);
+      if(nextResult.value)
+        return this.format(nextResult.value);
+  };
+}
+
+export function williamsr(input:WilliamsRInput):number[] {
       Indicator.reverseInputs(input);
       var result = new WilliamsR(input).result;
       if(input.reversedInput) {
@@ -75,10 +84,3 @@ export class WilliamsR extends Indicator {
       Indicator.reverseInputs(input);
       return result;
   };
-
-  nextValue(price:number):number | undefined {
-      var nextResult = this.generator.next(price);
-      if(nextResult.value)
-        return this.format(nextResult.value);
-  };
-}

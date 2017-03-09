@@ -75,7 +75,15 @@ export class MACD extends Indicator{
       });
     }
 
-    static calculate(input:MACDInput):MACDOutput[] {
+    static calculate=macd;
+
+    nextValue(price:number):MACDOutput | undefined {
+        var result = this.generator.next(price).value;
+        return result;
+    };
+}
+
+export function macd(input:MACDInput):MACDOutput[] {
        Indicator.reverseInputs(input);
         var result = new MACD(input).result;
         if(input.reversedInput) {
@@ -84,9 +92,3 @@ export class MACD extends Indicator{
         Indicator.reverseInputs(input);
         return result;
     };
-
-    nextValue(price:number):MACDOutput | undefined {
-        var result = this.generator.next(price).value;
-        return result;
-    };
-}

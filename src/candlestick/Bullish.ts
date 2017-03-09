@@ -29,3 +29,7 @@ export default class BullishPatterns extends CandlestickFinder {
         }, false)
     }
 }
+
+export function bullish(data:StockData) {
+  return new BullishPatterns().hasPattern(data);
+}

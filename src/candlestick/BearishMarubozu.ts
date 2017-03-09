@@ -22,3 +22,7 @@ export default class BearishMarubozu extends CandlestickFinder {
         
     }
 }
+
+export function bearishmarubozu(data:StockData) {
+  return new BearishMarubozu().hasPattern(data);
+}

@@ -9,6 +9,7 @@ export declare class ADLInput extends IndicatorInput {
 export declare class ADL extends Indicator {
     generator: IterableIterator<number | undefined>;
     constructor(input: ADLInput);
-    static calculate(input: ADLInput): number[];
+    static calculate: typeof adl;
     nextValue(price: CandleData): number | undefined;
 }
+export declare function adl(input: ADLInput): number[];

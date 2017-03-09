@@ -35,3 +35,7 @@ export default class ThreeWhiteSoldiers extends CandlestickFinder {
       return (isUpTrend && isAllBullish && doesOpenWithinPreviousBody);
      }
 }
+
+export function threewhitesoldiers(data:StockData) {
+  return new ThreeWhiteSoldiers().hasPattern(data);
+}

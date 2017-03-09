@@ -13,3 +13,7 @@ export default class Doji extends CandlestickFinder {
         return this.approximateEqual(daysOpen, daysClose);
     }
 }
+
+export function doji(data:StockData) {
+  return new Doji().hasPattern(data);
+}

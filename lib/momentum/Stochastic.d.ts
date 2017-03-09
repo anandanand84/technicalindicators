@@ -14,6 +14,7 @@ export declare class Stochastic extends Indicator {
     result: StochasticOutput[];
     generator: IterableIterator<StochasticOutput | undefined>;
     constructor(input: StochasticInput);
-    static calculate(input: StochasticInput): StochasticOutput[];
+    static calculate: typeof stochastic;
     nextValue(input: StochasticInput): StochasticOutput;
 }
+export declare function stochastic(input: StochasticInput): StochasticOutput[];

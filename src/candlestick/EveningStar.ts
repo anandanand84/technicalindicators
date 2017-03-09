@@ -35,3 +35,7 @@ export default class EveningStar extends CandlestickFinder {
       return (isFirstBullish && isSmallBodyExists && gapExists && isThirdBearish && doesCloseBelowFirstMidpoint );
      }
 }
+
+export function eveningstar(data:StockData) {
+  return new EveningStar().hasPattern(data);
+}

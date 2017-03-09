@@ -35,3 +35,7 @@ export default class ThreeBlackCrows extends CandlestickFinder {
       return (isDownTrend && isAllBearish && doesOpenWithinPreviousBody);
      }
 }
+
+export function threeblackcrows(data:StockData) {
+  return new ThreeBlackCrows().hasPattern(data);
+}

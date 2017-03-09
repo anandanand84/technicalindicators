@@ -28,3 +28,7 @@ export default class DarkCloudCover extends CandlestickFinder {
         
    }
 }
+
+export function darkcloudcover(data:StockData) {
+  return new DarkCloudCover().hasPattern(data);
+}

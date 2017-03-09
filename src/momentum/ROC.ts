@@ -41,15 +41,7 @@ export class ROC extends Indicator {
       });
   }
 
-   static calculate(input:ROCInput):number[] {
-       Indicator.reverseInputs(input);
-        var result = new ROC(input).result;
-        if(input.reversedInput) {
-            result.reverse();
-        }
-        Indicator.reverseInputs(input);
-        return result;
-    };
+   static calculate = roc;
 
     nextValue(price:number):number | undefined {
         var nextResult = this.generator.next(price);
@@ -58,3 +50,14 @@ export class ROC extends Indicator {
     };
 
 };
+
+
+export function roc(input:ROCInput):number[] {
+       Indicator.reverseInputs(input);
+        var result = new ROC(input).result;
+        if(input.reversedInput) {
+            result.reverse();
+        }
+        Indicator.reverseInputs(input);
+        return result;
+    };

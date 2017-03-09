@@ -60,18 +60,20 @@ export class TrueRange extends Indicator {
     });
   };
 
-  static calculate(input:TrueRangeInput):number[] {
-      Indicator.reverseInputs(input);
-      var result = new TrueRange(input).result;
-      if(input.reversedInput) {
-          result.reverse();
-      }
-      Indicator.reverseInputs(input);
-      return result;
-  };
+  static calculate = truerange;
 
   nextValue(price:CandleData):number | undefined {
      return this.generator.next(price).value;
   };
 
 }
+
+export function truerange(input:TrueRangeInput):number[] {
+    Indicator.reverseInputs(input);
+    var result = new TrueRange(input).result;
+    if(input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+};

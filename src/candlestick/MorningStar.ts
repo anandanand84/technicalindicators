@@ -35,3 +35,7 @@ export default class MorningStar extends CandlestickFinder {
       return (isFirstBearish && isSmallBodyExists && gapExists && isThirdBullish && doesCloseAboveFirstMidpoint );
      }
 }
+
+export function morningstar(data:StockData) {
+  return new MorningStar().hasPattern(data);
+}

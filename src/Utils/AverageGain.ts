@@ -53,7 +53,14 @@ export class AverageGain extends Indicator {
     });
   }
 
-  static calculate(input:AvgGainInput):number[] {
+  static calculate = averagegain;
+
+    nextValue(price:number):number | undefined {
+        return this.generator.next(price).value;
+    };
+}
+
+export function averagegain(input:AvgGainInput):number[] {
        Indicator.reverseInputs(input);
         var result = new AverageGain(input).result;
         if(input.reversedInput) {
@@ -62,8 +69,3 @@ export class AverageGain extends Indicator {
         Indicator.reverseInputs(input);
         return result;
     };
-
-    nextValue(price:number):number | undefined {
-        return this.generator.next(price).value;
-    };
-}

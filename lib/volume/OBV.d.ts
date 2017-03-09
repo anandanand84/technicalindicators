@@ -7,6 +7,7 @@ export declare class OBVInput extends IndicatorInput {
 export declare class OBV extends Indicator {
     generator: IterableIterator<number | undefined>;
     constructor(input: OBVInput);
-    static calculate(input: OBVInput): number[];
+    static calculate: typeof obv;
     nextValue(price: CandleData): number | undefined;
 }
+export declare function obv(input: OBVInput): number[];

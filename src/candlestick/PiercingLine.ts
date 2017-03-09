@@ -29,3 +29,7 @@ export default class PiercingLine extends CandlestickFinder {
         
    }
 }
+
+export function piercingline(data:StockData) {
+  return new PiercingLine().hasPattern(data);
+}
