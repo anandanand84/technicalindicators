@@ -2,13 +2,16 @@ import { format as nf } from '../Utils/NumberFormatter';
 
 export class IndicatorInput {
     reversedInput?:boolean;
+    format?:(data:number)=>number   
+}
+
+export class AllInputs {
     values?:number[]   
     open?:number[]   
     high?:number[]   
     low?:number[]   
     close?:number[]   
     volume?:number[]
-    format?:(data:number)=>number   
 }
 
 export class Indicator {
@@ -17,7 +20,7 @@ export class Indicator {
     constructor(input:IndicatorInput) {
         this.format = input.format || nf;
     }
-    static reverseInputs(input:IndicatorInput):void {
+    static reverseInputs(input:any):void {
         if(input.reversedInput) {
             input.values ? input.values.reverse() : undefined;
             input.open ? input.open.reverse() : undefined;
