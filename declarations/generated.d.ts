@@ -295,151 +295,151 @@ export class SD extends Indicator {
 }
 export function sd(input: SDInput): number[];
 
-export class BullishPatterns extends CandlestickFinder {
+export default class BullishPatterns extends CandlestickFinder {
     constructor();
     hasPattern(data: StockData): boolean;
 }
 export function bullish(data: StockData): boolean;
 
-export class BearishPatterns extends CandlestickFinder {
+export default class BearishPatterns extends CandlestickFinder {
     constructor();
     hasPattern(data: StockData): boolean;
 }
 export function bearish(data: StockData): boolean;
 
-export class AbandonedBaby extends CandlestickFinder {
+export default class AbandonedBaby extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function abandonedbaby(data: StockData): any;
 
-export class Doji extends CandlestickFinder {
+export default class Doji extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function doji(data: StockData): any;
 
-export class BearishEngulfingPattern extends CandlestickFinder {
+export default class BearishEngulfingPattern extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function bearishengulfingpattern(data: StockData): any;
 
-export class BullishEngulfingPattern extends CandlestickFinder {
+export default class BullishEngulfingPattern extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function bullishengulfingpattern(data: StockData): any;
 
-export class DarkCloudCover extends CandlestickFinder {
+export default class DarkCloudCover extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function darkcloudcover(data: StockData): any;
 
-export class DownsideTasukiGap extends CandlestickFinder {
+export default class DownsideTasukiGap extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function downsidetasukigap(data: StockData): any;
 
-export class DragonFlyDoji extends CandlestickFinder {
+export default class DragonFlyDoji extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function dragonflydoji(data: StockData): any;
 
-export class GraveStoneDoji extends CandlestickFinder {
+export default class GraveStoneDoji extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function gravestonedoji(data: StockData): any;
 
-export class BullishHarami extends CandlestickFinder {
+export default class BullishHarami extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function bullishharami(data: StockData): any;
 
-export class BearishHarami extends CandlestickFinder {
+export default class BearishHarami extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function bearishharami(data: StockData): any;
 
-export class BullishHaramiCross extends CandlestickFinder {
+export default class BullishHaramiCross extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function bullishharamicross(data: StockData): any;
 
-export class BearishHaramiCross extends CandlestickFinder {
+export default class BearishHaramiCross extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function bearishharamicross(data: StockData): any;
 
-export class EveningDojiStar extends CandlestickFinder {
+export default class EveningDojiStar extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function eveningdojistar(data: StockData): any;
 
-export class EveningStar extends CandlestickFinder {
+export default class EveningStar extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function eveningstar(data: StockData): any;
 
-export class MorningDojiStar extends CandlestickFinder {
+export default class MorningDojiStar extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function morningdojistar(data: StockData): any;
 
-export class MorningStar extends CandlestickFinder {
+export default class MorningStar extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function morningstar(data: StockData): any;
 
-export class BullishMarubozu extends CandlestickFinder {
+export default class BullishMarubozu extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function bullishmarubozu(data: StockData): any;
 
-export class BearishMarubozu extends CandlestickFinder {
+export default class BearishMarubozu extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function bearishmarubozu(data: StockData): any;
 
-export class PiercingLine extends CandlestickFinder {
+export default class PiercingLine extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function piercingline(data: StockData): any;
 
-export class BullishSpinningTop extends CandlestickFinder {
+export default class BullishSpinningTop extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function bullishspinningtop(data: StockData): any;
 
-export class BearishSpinningTop extends CandlestickFinder {
+export default class BearishSpinningTop extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function bearishspinningtop(data: StockData): any;
 
-export class ThreeBlackCrows extends CandlestickFinder {
+export default class ThreeBlackCrows extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
 export function threeblackcrows(data: StockData): any;
 
-export class ThreeWhiteSoldiers extends CandlestickFinder {
+export default class ThreeWhiteSoldiers extends CandlestickFinder {
     constructor();
     logic(data: StockData): boolean;
 }
@@ -447,23 +447,25 @@ export function threewhitesoldiers(data: StockData): any;
 
 export class IndicatorInput {
     reversedInput?: boolean;
+    format?: (data: number) => number;
+}
+export class AllInputs {
     values?: number[];
     open?: number[];
     high?: number[];
     low?: number[];
     close?: number[];
     volume?: number[];
-    format?: (data: number) => number;
 }
 export class Indicator {
     result: any[];
     format: (data: number) => number;
     constructor(input: IndicatorInput);
-    static reverseInputs(input: IndicatorInput): void;
+    static reverseInputs(input: any): void;
     getResult(): any[];
 }
 
-export class StockData {
+export default class StockData {
     open: number[];
     high: number[];
     low: number[];
@@ -478,7 +480,7 @@ export class CandleData {
     close?: number;
 }
 
-export class CandlestickFinder {
+export default class CandlestickFinder {
     requiredCount: number;
     name: string;
     constructor();

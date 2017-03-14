@@ -1,17 +1,19 @@
 export declare class IndicatorInput {
     reversedInput?: boolean;
+    format?: (data: number) => number;
+}
+export declare class AllInputs {
     values?: number[];
     open?: number[];
     high?: number[];
     low?: number[];
     close?: number[];
     volume?: number[];
-    format?: (data: number) => number;
 }
 export declare class Indicator {
     result: any[];
     format: (data: number) => number;
     constructor(input: IndicatorInput);
-    static reverseInputs(input: IndicatorInput): void;
+    static reverseInputs(input: any): void;
     getResult(): any[];
 }
