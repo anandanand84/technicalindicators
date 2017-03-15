@@ -178,3 +178,16 @@ gulp watch-test
 7. Send a pull request.
 
 
+# Verify Documentation
+
+```
+node testdocs.js
+```
+
+```
+http://localhost:5444/testdocs.html
+```
+
+
+
+
