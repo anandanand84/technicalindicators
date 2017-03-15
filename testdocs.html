@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+</head>
+<body>
+
+<div id="container" style="width:800px;height:600px;border:1px solid grey"></div>
+
+<script src="node_modules/monaco-editor/min/vs/loader.js"></script>
+<script>
+    var editor;
+    require.config({ paths: { 'vs': 'node_modules/monaco-editor/min/vs' }});
+    require(['vs/editor/editor.main'], function() {
+        fetch('http://localhost:5444/declarations/generated.d.ts', { method: 'get'}).then(function(response) { return response.text()  }).then(function(content) {
+                var technicalIndicators = content.replace(new RegExp('default ', 'g'), '').split('export').join('declare');
+                var disposable = monaco.languages.typescript.typescriptDefaults.addExtraLib(
+                technicalIndicators
+                , 'indicators.d.ts');
+                monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+                    target: monaco.languages.typescript.ScriptTarget.ES5,
+                    noEmit : true,
+                    // noLib : true,
+                    allowNonTsExtensions: true
+                });
+                editor = monaco.editor.create(container, {
+                    value: `var mainput = input('ma1', InputType.Source, 'close');
+var fastPeriod = input('Fast Period', 'Number', 50);
+var slowPeriod = input('Slow Period', 'Number', 200);
+var sma50 = sma({period : fastPeriod , values: mainput});
+plot('sma50',sma50);
+var sma200 = sma({period : slowPeriod , values: mainput});
+plot('sma200',sma200);
+                            `,
+                    fontSize : 12,
+                    emptySelectionClipboard:false,
+                    formatOnType : true,
+                    formatOnPaste : true,
+                    parameterHints : true,
+                    language: 'typescript'
+                });
+                window.addEventListener('resize', function () {
+                    editor.layout();
+                });
+            })
+    });
+</script>
+</body>
+</html>
