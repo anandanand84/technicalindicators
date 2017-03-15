@@ -1,3 +1,6 @@
+/**
+ * Created by AAravindan on 5/17/16.
+ */
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 import { CandleData } from '../StockData';
 export declare class ADLInput extends IndicatorInput {

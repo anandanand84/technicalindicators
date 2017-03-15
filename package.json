@@ -3,6 +3,7 @@
   "version": "0.2.22",
   "description": "Techincal Indicators written in javascript",
   "main": "index.js",
+  "types": "./declarations/index.d.ts",
   "scripts": {
     "cover": "babel-istanbul --include-all-sources cover -x dist/**/*.* ./node_modules/mocha/bin/_mocha -- -R spec && open coverage/lcov-report/index.html",
     "test": "mocha --compilers js:babel-register",

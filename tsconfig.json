@@ -7,7 +7,7 @@
     "noImplicitAny": true,
     "outDir": "./lib",
     "preserveConstEnums": true,
-    "removeComments": true,
+    "removeComments": false,
     "sourceMap": true,
     "baseUrl": ".", // This must be specified if "paths" is.
     "paths": {

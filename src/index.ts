@@ -45,3 +45,4 @@ export  { bullishspinningtop }         from  './candlestick/BullishSpinningTop';
 export  { bearishspinningtop }         from  './candlestick/BearishSpinningTop';
 export  { threeblackcrows }            from  './candlestick/ThreeBlackCrows';
 export  { threewhitesoldiers }         from  './candlestick/ThreeWhiteSoldiers';
+export  { fibonacciretracement}         from './drawingtools/fibonacci';

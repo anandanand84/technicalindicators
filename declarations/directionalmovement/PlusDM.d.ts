@@ -1,4 +1,7 @@
 import { Indicator, IndicatorInput } from '../indicator/indicator';
+/**
+ * Created by AAravindan on 5/8/16.
+ */
 export declare class PDMInput extends IndicatorInput {
     low: number[];
     high: number[];

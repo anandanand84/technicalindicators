@@ -1,4 +1,7 @@
 /// <reference types="linkedlist" />
+/**
+ * Created by AAravindan on 5/7/16.
+ */
 import linkedlist = require('linkedlist');
 export default class FixedSizeLinkedList extends linkedlist {
     size: number;

@@ -16,10 +16,6 @@ gulp.task('watch-test', function () {
   gulp.watch(['lib/**', 'test/**'], ['test']);
 });
 
-gulp.task('docs', function() {
-
-});
-
 gulp.task('watch-docs', function () {
   gulp.watch(['lib/**', 'test/**'], ['docs']);
 });
