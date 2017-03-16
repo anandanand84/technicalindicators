@@ -35,7 +35,7 @@ or
 sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
 ```
 
-#Available Indicators
+# Available Indicators
 
 1. [Simple Moving Average (SMA)](https://tonicdev.com/anandaravindan/sma "SMA").
 2. [Exponential Moving Average (EMA)](https://tonicdev.com/anandaravindan/ema "EMA").
@@ -54,7 +54,7 @@ sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
 15. [Triple Exponentially Smoothed Average (TRIX)](https://tonicdev.com/anandaravindan/trix "TRIX").
 
 
-#CandleStick Pattern
+# CandleStick Pattern
 1. [Abandoned Baby](https://runkit.com/aarthiaradhana/abandonedbaby).
 2. [Bearish Engulfing Pattern](https://runkit.com/aarthiaradhana/bearishengulfingpattern).
 3. [Bullish Engulfiing Pattern](https://runkit.com/aarthiaradhana/bullishengulfingpattern).
@@ -84,7 +84,7 @@ or
 Search for all bullish or bearish using
 
 
-````
+```js
 var twoDayBullishInput = {
   open: [23.25,15.36],
   high: [25.10,30.87],
@@ -103,7 +103,7 @@ Bullish.hasPattern(twoDayBullishInput) //true
 
 There are three ways you can use to get the indicator results.
 
-##calculate 
+## calculate 
 
 Every indicator has a static method ```calculate``` which can be used to calculate the indicator without creating an object.
 
@@ -114,7 +114,7 @@ var period = 10;
 SMA.calculate({period : period, values : prices})
 ```
 
-##nextValue
+## nextValue
 
 ```nextValue``` method is used to get the next indicator value.
 
@@ -128,7 +128,7 @@ prices.forEach(price => {
 });
 ```
 
-##getResult
+## getResult
 
 This a merge of calculate and nextValue. The usual use case would be
 
@@ -146,7 +146,7 @@ sma.nextValue(16); // 10.1
 
 Note:  Calling nextValue will not update getResult() value. 
 
-#Running tests and getting coverage
+# Running tests and getting coverage
 
 ```
 npm test
