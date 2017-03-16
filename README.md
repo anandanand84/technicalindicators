@@ -84,7 +84,7 @@ or
 Search for all bullish or bearish using
 
 
-````
+```js
 var twoDayBullishInput = {
   open: [23.25,15.36],
   high: [25.10,30.87],
