@@ -35,6 +35,10 @@ or
 sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
 ```
 
+# Playground
+  
+  [Playground with code completion](https://anandanand84.github.io/ "Playground")
+
 # Available Indicators
 
 1. [Simple Moving Average (SMA)](https://tonicdev.com/anandaravindan/sma "SMA").
