@@ -48,5 +48,5 @@ global.AvailableIndicators.push('piercingline');
 global.AvailableIndicators.push('bullishspinningtop');
 global.AvailableIndicators.push('bearishspinningtop');
 global.AvailableIndicators.push('threeblackcrows');
-global.AvailableIndicators.push('threewhitesoldiers)');
+global.AvailableIndicators.push('threewhitesoldiers');
 module.exports = Indicators;
