@@ -1,9 +1,9 @@
 /**
  * Created by AAravindan on 5/7/16.
  */
-import linkedlist = require('linkedlist');
+import { LinkedList } from './LinkedList';
 
-export default class FixedSizeLinkedList extends linkedlist {
+export default class FixedSizeLinkedList extends LinkedList {
   public periodHigh:number = 0;
   public periodLow:number = Infinity;
   public lastShift:number;

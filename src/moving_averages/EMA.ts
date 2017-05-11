@@ -1,6 +1,6 @@
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 import { MAInput, SMA } from './SMA';
-import LinkedList = require('linkedlist');
+import { LinkedList } from '../Utils/LinkedList';
 
 export class EMA extends Indicator{
     period:number;

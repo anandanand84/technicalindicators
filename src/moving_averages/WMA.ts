@@ -1,7 +1,7 @@
 "use strict"
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 import { MAInput } from './SMA';
-import LinkedList = require('linkedlist');
+import { LinkedList } from '../Utils/LinkedList';
 
 export class WMA extends Indicator{
   period:number;

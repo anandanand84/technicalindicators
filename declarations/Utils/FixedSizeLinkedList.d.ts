@@ -1,9 +1,8 @@
-/// <reference types="linkedlist" />
 /**
  * Created by AAravindan on 5/7/16.
  */
-import linkedlist = require('linkedlist');
-export default class FixedSizeLinkedList extends linkedlist {
+import { LinkedList } from './LinkedList';
+export default class FixedSizeLinkedList extends LinkedList {
     size: number;
     maintainHigh: boolean;
     maintainLow: boolean;
@@ -13,7 +12,7 @@ export default class FixedSizeLinkedList extends linkedlist {
     _push: (data: number) => void;
     constructor(size: number, maintainHigh?: boolean, maintainLow?: boolean);
     add(data: number): void;
-    iterator(): IterableIterator<number>;
+    iterator(): IterableIterator<any>;
     calculatePeriodHigh(): void;
     calculatePeriodLow(): void;
 }

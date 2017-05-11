@@ -1,6 +1,6 @@
 //STEP 1. Import Necessary indicator or rather last step
 import { Indicator, IndicatorInput } from '../indicator/indicator';
-import LinkedList = require('linkedlist');
+import { LinkedList } from '../Utils/LinkedList';
 
 //STEP 2. Create the input for the indicator, mandatory should be in the constructor
 export class MAInput extends IndicatorInput {

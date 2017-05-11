@@ -2,7 +2,16 @@
   "compilerOptions": {
     "declaration": true,
     "declarationDir": "./declarations",
-    "module": "commonjs",
+    "lib": [
+      "es5",
+      "es2015.iterable",
+      "es2015.collection",
+      "es2015.promise",
+      "dom"
+    ],
+    "suppressImplicitAnyIndexErrors": true,
+    "moduleResolution": "node",
+    "module": "es6",
     "target": "es6",
     "noImplicitAny": true,
     "outDir": "./lib",
