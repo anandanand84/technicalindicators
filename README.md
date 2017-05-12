@@ -15,12 +15,15 @@ npm install --save technicalindicators
 ```
 const SMA = require('technicalindicators').SMA;
 ```
-For browser install using bower
+For browser install using bower or npm, but it is necessary to include the babel-polyfill otherwise you will get an error.
 
 ```
+npm install --save technicalindicators
+npm install --save babel-polyfill
 bower install --save technicalindicators
 ```
 ```
+<script src="node_modules/babel-polyfill/browser.js"></script>
 <script src="bower_components/technicalindicators/browser.js"></script>
 ```
 
