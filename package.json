@@ -11,6 +11,7 @@
     "cover": "babel-istanbul --include-all-sources cover -x dist/**/*.* ./node_modules/mocha/bin/_mocha -- -R spec && open coverage/lcov-report/index.html",
     "test": "mocha --compilers js:babel-register --require babel-polyfill",
     "rollup": "rollup -c",
+    "dev": "rollup -c -w",
     "generateDts": "dts-bundle --name indicators --main declarations/index.d.ts --out generated.d.ts --baseDir declarations --outputAsModuleFolder"
   },
   "repository": {
@@ -85,8 +86,12 @@
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^1.0.2",
+    "rollup-watch": "^3.2.2",
     "ts-node": "^1.0.0",
     "tslint": "^4.0.0",
     "typescript": "^2.0.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0"
   }
 }
