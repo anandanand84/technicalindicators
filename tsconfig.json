@@ -10,7 +10,6 @@
       "dom"
     ],
     "suppressImplicitAnyIndexErrors": true,
-    "moduleResolution": "node",
     "module": "es6",
     "target": "es6",
     "noImplicitAny": true,
@@ -19,11 +18,7 @@
     "removeComments": false,
     "sourceMap": true,
     "baseUrl": ".", // This must be specified if "paths" is.
-    "paths": {
-      "linkedlist": ["typings/linkedlist"]
-    },
-    "typeRoots" : ["typings", "node_modules/**/@types"],
-    "types" : ["linkedlist","node"]
+    "typeRoots" : ["typings", "node_modules/**/@types"]
   },
   "include": [
     "src/**/*.ts"

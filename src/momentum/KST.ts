@@ -1,4 +1,3 @@
-import { runInThisContext } from 'vm';
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 import { SMA } from '../moving_averages/SMA';
 import { ROC } from './ROC';
