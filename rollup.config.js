@@ -4,7 +4,7 @@ import uglify from 'rollup-plugin-uglify';
 export default {
   entry: 'index.js',
   dest : 'dist/browser.js',
-  format: 'umd',
+  format: 'iife',
   moduleName : 'window',
   plugins: [
     babel({
