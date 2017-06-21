@@ -1,5 +1,3 @@
-import { runInThisContext } from 'vm';
-import * as console from 'console';
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 import { MDM } from   './MinusDM';
 import { PDM } from    './PlusDM';

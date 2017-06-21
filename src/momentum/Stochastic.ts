@@ -1,4 +1,3 @@
-import { runInThisContext } from 'vm';
 import { IndicatorInput, Indicator } from '../indicator/indicator';
 /**
  * Created by AAravindan on 5/10/16.
