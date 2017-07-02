@@ -1,4 +1,3 @@
-import 'babel-polyfill'; 
 export * from './lib/index.js';
 export function getAvailableIndicators () {
   let AvailableIndicators   = []

@@ -2,7 +2,7 @@
   "name": "technicalindicators",
   "version": "1.0.4",
   "description": "Techincal Indicators written in javascript",
-  "main": "dist/browser.js",
+  "main": "dist/index.js",
   "browser": "dist/browser.js",
   "module": "lib/index.js",
   "types": "./declarations/index.d.ts",
@@ -12,7 +12,8 @@
     "test": "mocha --compilers js:babel-register --require babel-polyfill",
     "rollup": "rollup -c",
     "dev": "rollup -c -w",
-    "generateDts": "dts-bundle --name indicators --main declarations/index.d.ts --out generated.d.ts --baseDir declarations --outputAsModuleFolder"
+    "generateDts": "dts-bundle --name indicators --main declarations/index.d.ts --out generated.d.ts --baseDir declarations --outputAsModuleFolder",
+    "build-lib": "babel-node --presets es2015 rollup.js"
   },
   "repository": {
     "type": "git",
