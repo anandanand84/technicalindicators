@@ -30,12 +30,12 @@ bower install --save technicalindicators
 All indicators will be available in window object. So you can just use
 
 ```
-SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
+sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
 ```
-or
+or 
 
 ```
-sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
+SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 ```
 
 # Playground
@@ -99,9 +99,9 @@ var twoDayBullishInput = {
   low: [20.82,14.93],
 }
 
-var Bullish = require('technicalindicators').Bullish;
+var bullish = require('technicalindicators').bullish;
 
-Bullish.hasPattern(twoDayBullishInput) //true
+bullish(twoDayBullishInput) //true
 
 ```
 
@@ -113,6 +113,13 @@ There are three ways you can use to get the indicator results.
 ## calculate 
 
 Every indicator has a static method ```calculate``` which can be used to calculate the indicator without creating an object.
+```javascript
+const sma = require('technicalindicators').sma;
+var prices = [1,2,3,4,5,6,7,8,9,10,12,13,15];
+var period = 10;
+sma({period : period, values : prices})
+```
+or 
 
 ```javascript
 const SMA = require('technicalindicators').SMA;
