@@ -203,5 +203,8 @@ http://localhost:5444/testdocs.html
 ```
 
 
+# Donate
+
+BTC : 12eGmnhPrGuqvLNVnPddTaXm74hX68auTV
 
 
