@@ -33,13 +33,17 @@ export class TrueRange extends Indicator {
       var current:CandleData = yield;
       var previousClose,result;
       while (true) {
+        if(previousClose === undefined) {
+          previousClose = current.close;
+          current = yield result;
+        }
         result = Math.max(
             current.high - current.low,
             isNaN(Math.abs(current.high - previousClose)) ? 0 : Math.abs(current.high - previousClose),
             isNaN(Math.abs(current.low - previousClose)) ? 0 : Math.abs(current.low - previousClose)
         );
         previousClose = current.close;
-        if(result){
+        if(result != undefined){
           result = format(result)
         }
         current = yield result;
@@ -54,7 +58,7 @@ export class TrueRange extends Indicator {
         low  : lows[index],
         close: closes[index]
       });
-      if(result.value){
+      if(result.value != undefined){
         this.result.push(result.value);
       }
     });

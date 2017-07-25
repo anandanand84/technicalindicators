@@ -44,7 +44,7 @@ export class PDM extends Indicator {
         high : highs[index],
         low  : lows[index]
       });
-      if(result.value!==undefined)
+      if(result.value !== undefined)
         this.result.push(result.value);
     });
   };

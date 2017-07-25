@@ -59,6 +59,7 @@ sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
 13. [Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "ADL").
 14. [On Balance Volume (OBV)](https://tonicdev.com/anandaravindan/obv "OBV").
 15. [Triple Exponentially Smoothed Average (TRIX)](https://tonicdev.com/anandaravindan/trix "TRIX").
+15. [Average Directional Index (ADX)](https://tonicdev.com/anandaravindan/adx "ADX").
 
 
 # CandleStick Pattern

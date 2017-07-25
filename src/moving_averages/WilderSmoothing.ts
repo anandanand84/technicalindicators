@@ -1,17 +1,9 @@
-//STEP 1. Import Necessary indicator or rather last step
+import { MAInput } from './SMA';
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 import { LinkedList } from '../Utils/LinkedList';
 
-//STEP 2. Create the input for the indicator, mandatory should be in the constructor
-export class MAInput extends IndicatorInput {
-    constructor(public period:number, 
-                public values:number[]) {
-        super();
-    }
-}
-
 //STEP3. Add class based syntax with export
-export class SMA extends Indicator{
+export class WilderSmoothing extends Indicator{
     period:number;
     price:number[];
     result : number[];
@@ -26,17 +18,17 @@ export class SMA extends Indicator{
             var counter = 1;
             var current = yield;
             var result;
-            list.push(0);
             while(true){
                 if(counter < period){
                     counter ++;
-                    list.push(current);
                     sum = sum + current;
+                } else if(counter == period){
+                    counter ++;
+                    sum = sum + current;
+                    result = sum;
                 }
                 else{
-                    sum = sum - list.shift() + current;
-                    result = ((sum) / period);
-                    list.push(current);
+                    result = result - (result / period) + current;
                 }
                 current = yield result;
             }
@@ -46,13 +38,13 @@ export class SMA extends Indicator{
         this.result = [];
         this.price.forEach((tick) => {
             var result = this.generator.next(tick);
-            if(result.value !== undefined){
+            if(result.value != undefined){
                 this.result.push(this.format(result.value));
             }
         });
     }
     
-    static calculate = sma;
+    static calculate = wildersmoothing;
 
     nextValue(price:number):number | undefined {
         var result = this.generator.next(price).value;
@@ -61,9 +53,9 @@ export class SMA extends Indicator{
     };
 }
 
-export function sma(input:MAInput):number[] {
+export function wildersmoothing(input:MAInput):number[] {
     Indicator.reverseInputs(input);
-    var result = new SMA(input).result;
+    var result = new WilderSmoothing(input).result;
     if(input.reversedInput) {
         result.reverse();
     }
