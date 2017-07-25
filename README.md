@@ -161,6 +161,16 @@ sma.nextValue(16); // 10.1
 
 Note:  Calling nextValue will not update getResult() value. 
 
+### Precision
+
+This uses regular javascript numbers, so there can be rounding errors which are negligible for a technical indicators, you can set precision by using the below config. By default there is no precision set.
+  
+  ```
+  const technicalIndicators = require('technicalindicators');
+  technicalIndicators.setConfig('precision', 10);
+  ```
+
+
 # Running tests and getting coverage
 
 ```
