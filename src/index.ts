@@ -46,3 +46,4 @@ export  { bearishspinningtop }         from  './candlestick/BearishSpinningTop';
 export  { threeblackcrows }            from  './candlestick/ThreeBlackCrows';
 export  { threewhitesoldiers }         from  './candlestick/ThreeWhiteSoldiers';
 export  { fibonacciretracement}         from './drawingtools/fibonacci';
+export  { setConfig, getConfig }  from './config'

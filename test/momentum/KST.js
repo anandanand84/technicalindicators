@@ -18,31 +18,32 @@ let input = {
   signalPeriod: 3
 };
 
-  let expectResult = [{
-    kst: 36.59764,
-    signal: undefined
-  },
-  {
-    kst: 37.22849,
-    signal: undefined
-  },
-  {
-    kst: 38.38192,
-    signal: 37.40268
-  },
-  {
-    kst: 38.78389,
-    signal: 38.13143
-  },
-  {
-    kst: 37.54315,
-    signal: 38.23632
-  },
-  {
-    kst: 36.2535,
-    signal: 37.52685
-  }
-];
+  let expectResult = [
+         {
+          "kst": 36.597637686000944,
+           "signal": undefined
+         },
+         {
+          "kst": 37.22847898422272,
+           "signal": undefined
+         },
+         {
+          "kst": 38.38191122855075,
+          "signal": 37.40267596625814,
+         },
+         {
+          "kst": 38.78388892587009,
+          "signal": 38.131426379547854,
+         },
+         {
+          "kst": 37.54314785478353,
+          "signal": 38.23631600306812,
+         },
+         {
+          "kst": 36.253502032156405,
+          "signal": 37.52684627093667,
+         },
+       ];
 
 describe('Know Sure Thing', function() {
   "use strict";

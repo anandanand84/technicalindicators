@@ -15,62 +15,62 @@ var macdInput = {
 }
 
 var expectedOutput = [
-  {
-    "MACD": 1.5206,
-    "histogram": undefined,
-    "signal": undefined
-  },
-  {
-    "MACD": 0.87471,
-    "histogram": undefined,
-    "signal": undefined
-  },
-  {
-    "MACD": 1.81612,
-    "histogram": 0.41231,
-    "signal": 1.40381
-  },
-  {
-    "MACD": 3.63084,
-    "histogram": 1.11351,
-    "signal": 2.51732
-  },
-  {
-    "MACD": 6.13619,
-    "histogram": 1.80943,
-    "signal": 4.32676
-  },
-  {
-    "MACD": 9.3585,
-    "histogram": 2.51587,
-    "signal": 6.84263
-  },
-  {
-    "MACD": 12.73056,
-    "histogram": 2.94396,
-    "signal": 9.78659
-  },
-  {
-    "MACD": 15.90602,
-    "histogram": 3.05972,
-    "signal": 12.84631
-  },
-  {
-    "MACD": 16.40656,
-    "histogram": 1.78013,
-    "signal": 14.62643
-  },
-  {
-    "MACD": 20.21746,
-    "histogram": 2.79551,
-    "signal": 17.42195
-  },
-  {
-    "MACD": 20.01256,
-    "histogram": 1.29531,
-    "signal": 18.71726
-  }
-];
+         {
+           "MACD": 1.5206018518518647,
+           "histogram": undefined,
+           "signal": undefined
+         },
+         {
+           "MACD": 0.8747067901234686,
+           "histogram": undefined,
+           "signal": undefined
+         },
+         {
+            "MACD": 1.8161162551440384,
+            "histogram": 0.41230795610424775,
+            "signal": 1.4038082990397907,
+         },
+         {
+            "MACD": 3.630838477366268,
+            "histogram": 1.113515089163239,
+            "signal": 2.517323388203029,
+         },
+         {
+            "MACD": 6.1361878905654805,
+            "histogram": 1.8094322511812262,
+            "signal": 4.326755639384254,
+         },
+         {
+            "MACD": 9.35850329810836,
+            "histogram": 2.515873829362053,
+            "signal": 6.842629468746307,
+         },
+         {
+            "MACD": 12.730555487344787,
+            "histogram": 2.9439630092992406,
+            "signal": 9.786592478045547,
+         },
+         {
+            "MACD": 15.906022882701109,
+            "histogram": 3.05971520232778,
+            "signal": 12.846307680373329,
+         },
+         {
+            "MACD": 16.40655983713023,
+            "histogram": 1.7801260783784514,
+            "signal": 14.62643375875178,
+         },
+         {
+            "MACD": 20.217463455194945,
+            "histogram": 2.7955148482215826,
+            "signal": 17.421948606973363,
+         },
+         {
+            "MACD": 20.012564334547392,
+            "histogram": 1.2953078637870163,
+            "signal": 18.717256470760375,
+         },
+       ];
 
 var input;
 

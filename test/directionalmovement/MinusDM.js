@@ -16,33 +16,69 @@ var input = {
 
 
 var expectResult =  [
-  0.09,0.00,1.22,0.18,0.15,0.33,0.65,0.00,0.00,0.43,0.31,0.91,0.05,0.00,0.5,0.70,0.08,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.43,0.00,0.00,0.64,0.00,0.00,1.08,0.00,0.47,0.00,0.00,0.18
-]
+  0.08999999999999986,
+         0,
+      1.2200000000000024,
+      0.17999999999999972,
+      0.14999999999999858,
+      0.33000000000000185,
+      0.6499999999999986,
+         0,
+         0,
+      0.4299999999999997,
+      0.3099999999999987,
+      0.9100000000000001,
+      0.05000000000000071,
+         0,
+         0.5,
+      0.6999999999999993,
+      0.0799999999999983,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+         0,
+      0.4299999999999997,
+         0,
+         0,
+      0.6400000000000006,
+         0,
+         0,
+      1.0799999999999983,
+         0,
+      0.46999999999999886,
+         0,
+         0,
+      0.17999999999999972,
+       ]
 
 
-describe('MinusDM', function() {
-  it('should calculate MinusDM using the calculate method', function() {
-    assert.deepEqual(MinusDM.calculate(input), expectResult, 'Wrong Results');
-  });
-
-  it('should be able to calculate MinusDM by using getResult', function() {
-    var minusDm = new MinusDM(input);
-    assert.deepEqual(minusDm.getResult(),  expectResult, 'Wrong Results while calculating next bar');
-  });
-
-  it('should be able to get MinusDM for the next bar using nextValue', function() {
-    var minusDm = new MinusDM({period : period, high : [], low:[], close:[]});
-    var results = [];
-    input.close.forEach(function(close,index) {
-      var result = minusDm.nextValue({
-        close: input.close[index],
-        high: input.high[index],
-        low: input.low[index]
-      });
-      if(result!==undefined)
-        results.push(result)
+  describe('MinusDM', function() {
+    it('should calculate MinusDM using the calculate method', function() {
+      assert.deepEqual(MinusDM.calculate(input), expectResult, 'Wrong Results');
     });
-    assert.deepEqual(results, expectResult, 'Wrong Results while getting results');
-  })
 
-})
+    it('should be able to calculate MinusDM by using getResult', function() {
+      var minusDm = new MinusDM(input);
+      assert.deepEqual(minusDm.getResult(),  expectResult, 'Wrong Results while calculating next bar');
+    });
+
+    it('should be able to get MinusDM for the next bar using nextValue', function() {
+      var minusDm = new MinusDM({period : period, high : [], low:[], close:[]});
+      var results = [];
+      input.close.forEach(function(close,index) {
+        var result = minusDm.nextValue({
+          close: input.close[index],
+          high: input.high[index],
+          low: input.low[index]
+        });
+        if(result!==undefined)
+          results.push(result)
+      });
+      assert.deepEqual(results, expectResult, 'Wrong Results while getting results');
+    })
+
+  })
