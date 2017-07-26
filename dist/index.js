@@ -1,3 +1,2596 @@
-"use strict";function setConfig(e,t){config[e]=t}function getConfig(e){return config[e]}function format(e){var t=getConfig("precision");return t?parseFloat(e.toPrecision(t)):e}function sma(e){Indicator.reverseInputs(e);var t=new SMA(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function ema(e){Indicator.reverseInputs(e);var t=new EMA(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function wma(e){Indicator.reverseInputs(e);var t=new WMA(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function wema(e){Indicator.reverseInputs(e);var t=new WEMA(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function macd(e){Indicator.reverseInputs(e);var t=new MACD(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function averagegain(e){Indicator.reverseInputs(e);var t=new AverageGain(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function averageloss(e){Indicator.reverseInputs(e);var t=new AverageLoss(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function rsi(e){Indicator.reverseInputs(e);var t=new RSI(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function sd(e){Indicator.reverseInputs(e);var t=new SD(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function bollingerbands(e){Indicator.reverseInputs(e);var t=new BollingerBands(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function wildersmoothing(e){Indicator.reverseInputs(e);var t=new WilderSmoothing(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function truerange(e){Indicator.reverseInputs(e);var t=new TrueRange(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function adx(e){Indicator.reverseInputs(e);var t=new ADX(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function atr(e){Indicator.reverseInputs(e);var t=new ATR(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function roc(e){Indicator.reverseInputs(e);var t=new ROC(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function kst(e){Indicator.reverseInputs(e);var t=new KST(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function stochastic(e){Indicator.reverseInputs(e);var t=new Stochastic(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function williamsr(e){Indicator.reverseInputs(e);var t=new WilliamsR(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function adl(e){Indicator.reverseInputs(e);var t=new ADL(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function obv(e){Indicator.reverseInputs(e);var t=new OBV(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function trix(e){Indicator.reverseInputs(e);var t=new TRIX(e).result;return e.reversedInput&&t.reverse(),Indicator.reverseInputs(e),t}function morningstar(e){return(new MorningStar).hasPattern(e)}function bullishengulfingpattern(e){return(new BullishEngulfingPattern).hasPattern(e)}function bullishharami(e){return(new BullishHarami).hasPattern(e)}function bullishharamicross(e){return(new BullishHaramiCross).hasPattern(e)}function doji(e){return(new Doji).hasPattern(e)}function morningdojistar(e){return(new MorningDojiStar).hasPattern(e)}function downsidetasukigap(e){return(new DownsideTasukiGap).hasPattern(e)}function bullishmarubozu(e){return(new BullishMarubozu).hasPattern(e)}function piercingline(e){return(new PiercingLine).hasPattern(e)}function threewhitesoldiers(e){return(new ThreeWhiteSoldiers).hasPattern(e)}function bullish(e){return(new BullishPatterns).hasPattern(e)}function bearishengulfingpattern(e){return(new BearishEngulfingPattern).hasPattern(e)}function bearishharami(e){return(new BearishHarami).hasPattern(e)}function bearishharamicross(e){return(new BearishHaramiCross).hasPattern(e)}function eveningdojistar(e){return(new EveningDojiStar).hasPattern(e)}function eveningstar(e){return(new EveningStar).hasPattern(e)}function bearishmarubozu(e){return(new BearishMarubozu).hasPattern(e)}function threeblackcrows(e){return(new ThreeBlackCrows).hasPattern(e)}function bearish(e){return(new BearishPatterns).hasPattern(e)}function abandonedbaby(e){return(new AbandonedBaby).hasPattern(e)}function darkcloudcover(e){return(new DarkCloudCover).hasPattern(e)}function dragonflydoji(e){return(new DragonFlyDoji).hasPattern(e)}function gravestonedoji(e){return(new GraveStoneDoji).hasPattern(e)}function bullishspinningtop(e){return(new BullishSpinningTop).hasPattern(e)}function bearishspinningtop(e){return(new BearishSpinningTop).hasPattern(e)}function fibonacciretracement(e,t){var r=[0,23.6,38.2,50,61.8,78.6,100,127.2,161.8,261.8,423.6];return e<t?r.map(function(r){var n=t-Math.abs(e-t)*r/100;return n>0?n:0}):r.map(function(r){var n=t+Math.abs(e-t)*r/100;return n>0?n:0})}function getAvailableIndicators(){var e=[];return e.push("sma"),e.push("ema"),e.push("wma"),e.push("wema"),e.push("macd"),e.push("rsi"),e.push("bollingerbands"),e.push("adx"),e.push("atr"),e.push("truerange"),e.push("roc"),e.push("kst"),e.push("stochastic"),e.push("williamsr"),e.push("adl"),e.push("obv"),e.push("trix"),e.push("averagegain"),e.push("averageloss"),e.push("sd"),e.push("bullish"),e.push("bearish"),e.push("abandonedbaby"),e.push("doji"),e.push("bearishengulfingpattern"),e.push("bullishengulfingpattern"),e.push("darkcloudcover"),e.push("downsidetasukigap"),e.push("dragonflydoji"),e.push("gravestonedoji"),e.push("bullishharami"),e.push("bearishharami"),e.push("bullishharamicross"),e.push("bearishharamicross"),e.push("eveningdojistar"),e.push("eveningstar"),e.push("morningdojistar"),e.push("morningstar"),e.push("bullishmarubozu"),e.push("bearishmarubozu"),e.push("piercingline"),e.push("bullishspinningtop"),e.push("bearishspinningtop"),e.push("threeblackcrows"),e.push("threewhitesoldiers"),e}Object.defineProperty(exports,"__esModule",{value:!0});var config={},classCallCheck=function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")},createClass=function(){function e(e,t){for(var r=0;r<t.length;r++){var n=t[r];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}return function(t,r,n){return r&&e(t.prototype,r),n&&e(t,n),t}}(),inherits=function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)},possibleConstructorReturn=function(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t},IndicatorInput=function e(){classCallCheck(this,e)},Indicator=function(){function e(t){classCallCheck(this,e),this.format=t.format||format}return createClass(e,[{key:"getResult",value:function(){return this.result}}],[{key:"reverseInputs",value:function(e){e.reversedInput&&(e.values&&e.values.reverse(),e.open&&e.open.reverse(),e.high&&e.high.reverse(),e.low&&e.low.reverse(),e.close&&e.close.reverse(),e.volume&&e.volume.reverse())}}]),e}(),Item=function e(t,r,n){classCallCheck(this,e),this.next=n,n&&(n.prev=this),this.prev=r,r&&(r.next=this),this.data=t},LinkedList=function(){function e(){classCallCheck(this,e),this._length=0}return createClass(e,[{key:"push",value:function(e){this._tail=new Item(e,this._tail),0===this._length&&(this._head=this._tail,this._current=this._head,this._next=this._head),this._length++}},{key:"pop",value:function(){var e=this._tail;if(0!==this._length)return 0===--this._length?(this._head=this._tail=this._current=this._next=void 0,e.data):(this._tail=e.prev,this._tail.next=void 0,this._current===e&&(this._current=this._tail,this._next=void 0),e.data)}},{key:"shift",value:function(){var e=this._head;if(0!==this._length)return 0===--this._length?(this._head=this._tail=this._current=this._next=void 0,e.data):(this._head=this._head.next,this._current===e&&(this._current=this._head,this._next=this._current.next),e.data)}},{key:"unshift",value:function(e){this._head=new Item(e,void 0,this._head),0===this._length&&(this._tail=this._head,this._next=this._head),this._length++}},{key:"unshiftCurrent",value:function(){var e=this._current;return e===this._head||this._length<2?e&&e.data:(e===this._tail?(this._tail=e.prev,this._tail.next=void 0,this._current=this._tail):(e.next.prev=e.prev,e.prev.next=e.next,this._current=e.prev),this._next=this._current.next,e.next=this._head,e.prev=void 0,this._head.prev=e,this._head=e,e.data)}},{key:"removeCurrent",value:function(){var e=this._current;if(0!==this._length)return 0===--this._length?(this._head=this._tail=this._current=this._next=void 0,e.data):(e===this._tail?(this._tail=e.prev,this._tail.next=void 0,this._current=this._tail):e===this._head?(this._head=e.next,this._head.prev=void 0,this._current=this._head):(e.next.prev=e.prev,e.prev.next=e.next,this._current=e.prev),this._next=this._current.next,e.data)}},{key:"resetCursor",value:function(){return this._current=this._next=this._head,this}},{key:"next",value:function(){var e=this._next;if(void 0!==e)return this._next=e.next,this._current=e,e.data}},{key:"head",get:function(){return this._head&&this._head.data}},{key:"tail",get:function(){return this._tail&&this._tail.data}},{key:"current",get:function(){return this._current&&this._current.data}},{key:"length",get:function(){return this._length}}]),e}(),MAInput=function(e){function t(e,r){classCallCheck(this,t);var n=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return n.period=e,n.values=r,n}return inherits(t,e),t}(IndicatorInput),SMA=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));r.period=e.period,r.price=e.values;var n=regeneratorRuntime.mark(function e(t){var r,n,s,i,o;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return r=new LinkedList,n=0,s=1,void(e.next=5);case 5:i=e.sent,r.push(0);case 7:return s<t?(s++,r.push(i),n+=i):(n=n-r.shift()+i,o=n/t,r.push(i)),e.next=11,o;case 11:i=e.sent,e.next=7;break;case 14:case"end":return e.stop()}},e,this)});return r.generator=n(r.period),r.generator.next(),r.result=[],r.price.forEach(function(e){var t=r.generator.next(e);void 0!==t.value&&r.result.push(r.format(t.value))}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){var t=this.generator.next(e).value;if(void 0!=t)return this.format(t)}}]),t}(Indicator);SMA.calculate=sma;var EMA=function(e){function t(e){classCallCheck(this,t);var r,n=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),s=e.period,i=e.values,o=2/(s+1);n.result=[],r=new SMA({period:s,values:[]});var a=regeneratorRuntime.mark(function e(){var t,n;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return void(e.next=2);case 2:t=e.sent;case 3:if(!n||!t){e.next=11;break}return n=(t-n)*o+n,e.next=8,n;case 8:t=e.sent,e.next=19;break;case 11:return void(e.next=13);case 13:if(t=e.sent,!(n=r.nextValue(t))){e.next=19;break}return e.next=18,n;case 18:t=e.sent;case 19:e.next=3;break;case 21:case"end":return e.stop()}},e,this)});return n.generator=a(),n.generator.next(),n.generator.next(),i.forEach(function(e){var t=n.generator.next(e);t.value&&n.result.push(n.format(t.value))}),n}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){var t=this.generator.next(e).value;if(t)return this.format(t)}}]),t}(Indicator);EMA.calculate=ema;var WMA=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.period,s=e.values;return r.result=[],r.generator=regeneratorRuntime.mark(function e(){var t,r,s,i,o;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:t=new LinkedList,r=n*(n+1)/2;case 2:if(!(t.length<n)){e.next=11;break}return e.t0=t,void(e.next=7);case 7:e.t1=e.sent,e.t0.push.call(e.t0,e.t1),e.next=19;break;case 11:for(t.resetCursor(),s=0,i=1;i<=n;i++)s+=t.next()*i/r;return e.next=16,s;case 16:o=e.sent,t.shift(),t.push(o);case 19:e.next=2;break;case 21:case"end":return e.stop()}},e,this)})(),r.generator.next(),s.forEach(function(e,t){var n=r.generator.next(e);n.value&&r.result.push(r.format(n.value))}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){var t=this.generator.next(e).value;if(t)return this.format(t)}}]),t}(Indicator);WMA.calculate=wma;var WEMA=function(e){function t(e){classCallCheck(this,t);var r,n=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),s=e.period,i=e.values,o=1/s;n.result=[],r=new SMA({period:s,values:[]});var a=regeneratorRuntime.mark(function e(){var t,n;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return void(e.next=2);case 2:t=e.sent;case 3:if(!n||void 0==t){e.next=11;break}return n=(t-n)*o+n,e.next=8,n;case 8:t=e.sent,e.next=19;break;case 11:return void(e.next=13);case 13:if(t=e.sent,!(n=r.nextValue(t))){e.next=19;break}return e.next=18,n;case 18:t=e.sent;case 19:e.next=3;break;case 21:case"end":return e.stop()}},e,this)});return n.generator=a(),n.generator.next(),n.generator.next(),i.forEach(function(e){var t=n.generator.next(e);void 0!=t.value&&n.result.push(n.format(t.value))}),n}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){var t=this.generator.next(e).value;if(void 0!=t)return this.format(t)}}]),t}(Indicator);WEMA.calculate=wema;var MACDInput=function(e){function t(e,r){classCallCheck(this,t);var n=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return n.period=e,n.values=r,n.SimpleMAOscillator=!0,n.SimpleMASignal=!0,n}return inherits(t,e),t}(IndicatorInput),MACD=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.SimpleMAOscillator?SMA:EMA,s=e.SimpleMASignal?SMA:EMA,i=new n({period:e.fastPeriod,values:[],format:function(e){return e}}),o=new n({period:e.slowPeriod,values:[],format:function(e){return e}}),a=new s({period:e.signalPeriod,values:[],format:function(e){return e}}),u=r.format;return r.result=[],r.generator=regeneratorRuntime.mark(function t(){var r,n,s,l,c,h,p;return regeneratorRuntime.wrap(function(t){for(;;)switch(t.prev=t.next){case 0:r=0;case 1:if(!(r<e.slowPeriod)){t.next=10;break}return void(t.next=5);case 5:return n=t.sent,h=i.nextValue(n),p=o.nextValue(n),r++,t.abrupt("continue",1);case 10:return h&&p&&(s=h-p,l=a.nextValue(s)),c=s-l,t.next=14,{MACD:u(s),signal:l?u(l):void 0,histogram:isNaN(c)?void 0:u(c)};case 14:n=t.sent,h=i.nextValue(n),p=o.nextValue(n),t.next=1;break;case 19:case"end":return t.stop()}},t,this)})(),r.generator.next(),e.values.forEach(function(e){var t=r.generator.next(e);t.value&&r.result.push(t.value)}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){return this.generator.next(e).value}}]),t}(Indicator);MACD.calculate=macd;var AvgGainInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),AverageGain=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.values,s=e.period,i=r.format;return r.generator=regeneratorRuntime.mark(function e(t){var r,n,s,o,a,u;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return void(e.next=2);case 2:r=e.sent,n=1,s=0;case 5:return a=u?r-u:0,a=a||0,a>0&&(s+=a),n<t+1?n++:o=o?(o*(t-1)+(a>0?a:0))/t:s/t,u=r,o=o?i(o):void 0,e.next=14,o;case 14:r=e.sent,e.next=5;break;case 17:case"end":return e.stop()}},e,this)})(s),r.generator.next(),r.result=[],n.forEach(function(e){var t=r.generator.next(e);void 0!==t.value&&r.result.push(t.value)}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){return this.generator.next(e).value}}]),t}(Indicator);AverageGain.calculate=averagegain;var AvgLossInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),AverageLoss=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.values,s=e.period,i=r.format;return r.generator=regeneratorRuntime.mark(function e(t){var r,n,s,o,a,u;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return void(e.next=2);case 2:r=e.sent,n=1,s=0;case 5:return a=u?u-r:0,a=a||0,a>0&&(s+=a),n<t+1?n++:o=o?(o*(t-1)+(a>0?a:0))/t:s/t,u=r,o=o?i(o):void 0,e.next=14,o;case 14:r=e.sent,e.next=5;break;case 17:case"end":return e.stop()}},e,this)})(s),r.generator.next(),r.result=[],n.forEach(function(e){var t=r.generator.next(e);void 0!==t.value&&r.result.push(t.value)}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){return this.generator.next(e).value}}]),t}(Indicator);AverageLoss.calculate=averageloss;var RSIInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),RSI=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.period,s=e.values,i=new AverageGain({period:n,values:[]}),o=new AverageLoss({period:n,values:[]});return r.generator=regeneratorRuntime.mark(function e(t){var r,n,s,a,u;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return void(e.next=2);case 2:r=e.sent;case 3:return n=i.nextValue(r),s=o.nextValue(r),n&&s&&(0===s?u=100:(a=n/s,u=parseFloat((100-100/(1+a)).toFixed(2)))),e.next=9,u;case 9:r=e.sent,e.next=3;break;case 12:case"end":return e.stop()}},e,this)})(n),r.generator.next(),r.result=[],s.forEach(function(e){var t=r.generator.next(e);void 0!==t.value&&r.result.push(t.value)}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){return this.generator.next(e).value}}]),t}(Indicator);RSI.calculate=rsi;var FixedSizeLinkedList=function(e){function t(e,r,n){classCallCheck(this,t);var s=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));if(s.size=e,s.maintainHigh=r,s.maintainLow=n,s.periodHigh=0,s.periodLow=1/0,!e||"number"!=typeof e)throw"Size required and should be a number.";return s._push=s.push,s.push=function(e){this.add(e)},s}return inherits(t,e),createClass(t,[{key:"add",value:function(e){this.length===this.size?(this.lastShift=this.shift(),this._push(e),this.maintainHigh&&this.lastShift==this.periodHigh&&this.calculatePeriodHigh(),this.maintainLow&&this.lastShift==this.periodLow&&this.calculatePeriodLow()):this._push(e),this.maintainHigh&&this.periodHigh<=e&&(this.periodHigh=e),this.maintainLow&&this.periodLow>=e&&(this.periodLow=e)}},{key:"iterator",value:regeneratorRuntime.mark(function e(){return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:this.resetCursor();case 1:if(!this.next()){e.next=6;break}return e.next=4,this.current;case 4:e.next=1;break;case 6:case"end":return e.stop()}},e,this)})},{key:"calculatePeriodHigh",value:function(){for(this.resetCursor(),this.next()&&(this.periodHigh=this.current);this.next();)this.periodHigh<=this.current&&(this.periodHigh=this.current)}},{key:"calculatePeriodLow",value:function(){for(this.resetCursor(),this.next()&&(this.periodLow=this.current);this.next();)this.periodLow>=this.current&&(this.periodLow=this.current)}}]),t}(LinkedList),SDInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),SD=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.period,s=e.values,i=new SMA({period:n,values:[],format:function(e){return e}});return r.result=[],r.generator=regeneratorRuntime.mark(function e(){var t,r,s,o,a,u,l,c,h,p,v;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return s=new FixedSizeLinkedList(n),void(e.next=4);case 4:t=e.sent;case 5:if(s.push(t),!(r=i.nextValue(t))){e.next=30;break}for(a=0,u=!0,l=!1,c=void 0,e.prev=13,h=s.iterator()[Symbol.iterator]();!(u=(p=h.next()).done);u=!0)v=p.value,a+=Math.pow(v-r,2);e.next=21;break;case 17:e.prev=17,e.t0=e.catch(13),l=!0,c=e.t0;case 21:e.prev=21,e.prev=22,!u&&h.return&&h.return();case 24:if(e.prev=24,!l){e.next=27;break}throw c;case 27:return e.finish(24);case 28:return e.finish(21);case 29:o=Math.sqrt(a/n);case 30:return e.next=32,o;case 32:t=e.sent,e.next=5;break;case 35:case"end":return e.stop()}},e,this,[[13,17,21,29],[22,,24,28]])})(),r.generator.next(),s.forEach(function(e){var t=r.generator.next(e);t.value&&r.result.push(r.format(t.value))}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){var t=this.generator.next(e);if(t.value)return this.format(t.value)}}]),t}(Indicator);SD.calculate=sd;var BollingerBandsInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),BollingerBandsOutput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),BollingerBands=function(e){function t(e){classCallCheck(this,t);var r,n,s=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),i=e.period,o=e.values,a=e.stdDev,u=s.format;return s.result=[],r=new SMA({period:i,values:[],format:function(e){return e}}),n=new SD({period:i,values:[],format:function(e){return e}}),s.generator=regeneratorRuntime.mark(function e(){var t,s,i,o,l,c,h,p;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return void(e.next=2);case 2:s=e.sent;case 3:return i=r.nextValue(s),o=n.nextValue(s),i&&(l=u(i),c=u(i+o*a),h=u(i-o*a),p=u((s-h)/(c-h)),t={middle:l,upper:c,lower:h,pb:p}),e.next=9,t;case 9:s=e.sent,e.next=3;break;case 12:case"end":return e.stop()}},e,this)})(),s.generator.next(),o.forEach(function(e){var t=s.generator.next(e);t.value&&s.result.push(t.value)}),s}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){return this.generator.next(e).value}}]),t}(Indicator);BollingerBands.calculate=bollingerbands;var WilderSmoothing=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e));r.period=e.period,r.price=e.values;var n=regeneratorRuntime.mark(function e(t){var r,n,s,i,o;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return r=new LinkedList,n=0,s=1,void(e.next=5);case 5:i=e.sent;case 6:return s<t?(s++,n+=i):s==t?(s++,n+=i,o=n):o=o-o/t+i,e.next=10,o;case 10:i=e.sent,e.next=6;break;case 13:case"end":return e.stop()}},e,this)});return r.generator=n(r.period),r.generator.next(),r.result=[],r.price.forEach(function(e){var t=r.generator.next(e);void 0!=t.value&&r.result.push(r.format(t.value))}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){var t=this.generator.next(e).value;if(void 0!=t)return this.format(t)}}]),t}(Indicator);WilderSmoothing.calculate=wildersmoothing;var MDMInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),MDM=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.low,s=e.high,i=r.format;if(n.length!=s.length)throw"Inputs(low,high) not of equal size";return r.result=[],r.generator=regeneratorRuntime.mark(function e(){var t,r,n,s,o;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return void(e.next=2);case 2:r=e.sent;case 3:return n&&(s=r.high-n.high,o=n.low-r.low,t=i(o>s&&o>0?o:0)),n=r,e.next=8,t;case 8:r=e.sent,e.next=3;break;case 11:case"end":return e.stop()}},e,this)})(),r.generator.next(),n.forEach(function(e,t){var i=r.generator.next({high:s[t],low:n[t]});void 0!==i.value&&r.result.push(i.value)}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){return this.generator.next(e).value}}],[{key:"calculate",value:function(e){Indicator.reverseInputs(e);var r=new t(e).result;return e.reversedInput&&r.reverse(),Indicator.reverseInputs(e),r}}]),t}(Indicator),PDMInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),PDM=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.low,s=e.high,i=r.format;if(n.length!=s.length)throw"Inputs(low,high) not of equal size";return r.result=[],r.generator=regeneratorRuntime.mark(function e(){var t,r,n,s,o;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return void(e.next=2);case 2:r=e.sent;case 3:return n&&(s=r.high-n.high,o=n.low-r.low,t=i(s>o&&s>0?s:0)),n=r,e.next=8,t;case 8:r=e.sent,e.next=3;break;case 11:case"end":return e.stop()}},e,this)})(),r.generator.next(),n.forEach(function(e,t){var i=r.generator.next({high:s[t],low:n[t]});void 0!==i.value&&r.result.push(i.value)}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){return this.generator.next(e).value}}],[{key:"calculate",value:function(e){Indicator.reverseInputs(e);var r=new t(e).result;return e.reversedInput&&r.reverse(),Indicator.reverseInputs(e),r}}]),t}(Indicator),TrueRangeInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),TrueRange=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.low,s=e.high,i=e.close,o=r.format;if(n.length!=s.length)throw"Inputs(low,high) not of equal size";return r.result=[],r.generator=regeneratorRuntime.mark(function e(){var t,r,n;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return void(e.next=2);case 2:t=e.sent;case 3:if(void 0!==r){e.next=9;break}return r=t.close,e.next=8,n;case 8:t=e.sent;case 9:return n=Math.max(t.high-t.low,isNaN(Math.abs(t.high-r))?0:Math.abs(t.high-r),isNaN(Math.abs(t.low-r))?0:Math.abs(t.low-r)),r=t.close,void 0!=n&&(n=o(n)),e.next=14,n;case 14:t=e.sent,e.next=3;break;case 17:case"end":return e.stop()}},e,this)})(),r.generator.next(),n.forEach(function(e,t){var o=r.generator.next({high:s[t],low:n[t],close:i[t]});void 0!=o.value&&r.result.push(o.value)}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){return this.generator.next(e).value}}]),t}(Indicator);TrueRange.calculate=truerange;var ADXInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),ADX=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.low,s=e.high,i=e.close,o=e.period,a=r.format,u=new PDM({high:[],low:[]}),l=new MDM({high:[],low:[]}),c=new WilderSmoothing({period:o,values:[],format:function(e){return e}}),h=new WilderSmoothing({period:o,values:[],format:function(e){return e}}),p=new WilderSmoothing({period:o,values:[],format:function(e){return e}}),v=new WEMA({period:o,values:[],format:function(e){return e}}),f=new TrueRange({low:[],high:[],close:[]});if(n.length!==s.length||s.length!==i.length)throw"Inputs(low,high, close) not of equal size";return r.result=[],r.generator=regeneratorRuntime.mark(function e(){var t,r,n,s,i,o,a,d,g,x,C,_,w,b,m,k,I;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return void(e.next=2);case 2:t=e.sent,r=0,n=0,s=0,i=0;case 7:if(x=f.nextValue(t),C=u.nextValue(t),_=l.nextValue(t),void 0!==x){e.next=16;break}return void(e.next=14);case 14:return t=e.sent,e.abrupt("continue",7);case 16:return w=p.nextValue(x),b=c.nextValue(C),m=h.nextValue(_),void 0!=w&&void 0!=b&&void 0!=m&&(o=100*b/w,a=100*m/w,k=Math.abs(o-a),I=o+a,d=k/I*100,g=v.nextValue(d)),e.next=22,g;case 22:t=e.sent,e.next=7;break;case 25:case"end":return e.stop()}},e,this)})(),r.generator.next(),n.forEach(function(e,t){var o=r.generator.next({high:s[t],low:n[t],close:i[t]});o.value&&r.result.push(a(o.value))}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){var t=this.generator.next(e).value;if(t)return this.format(t)}}]),t}(Indicator);ADX.calculate=adx;var ATRInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),ATR=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.low,s=e.high,i=e.close,o=e.period,a=r.format;if(n.length!==s.length||s.length!==i.length)throw"Inputs(low,high, close) not of equal size";var u=new TrueRange({low:[],high:[],close:[]}),l=new WEMA({period:o,values:[],format:function(e){return e}});return r.result=[],r.generator=regeneratorRuntime.mark(function e(){var t,r,n;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return void(e.next=2);case 2:t=e.sent;case 4:return n=u.nextValue({low:t.low,high:t.high,close:t.close}),r=void 0===n?void 0:l.nextValue(n),e.next=9,r;case 9:t=e.sent,e.next=4;break;case 12:case"end":return e.stop()}},e,this)})(),r.generator.next(),n.forEach(function(e,t){var o=r.generator.next({high:s[t],low:n[t],close:i[t]});void 0!==o.value&&r.result.push(a(o.value))}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){return this.generator.next(e).value}}]),t}(Indicator);ATR.calculate=atr;var ROCInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),ROC=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.period,s=e.values;return r.result=[],r.generator=regeneratorRuntime.mark(function e(){var t,r,s,i;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return t=1,r=new FixedSizeLinkedList(n),void(e.next=5);case 5:s=e.sent;case 6:return r.push(s),t<n?t++:i=(s-r.lastShift)/r.lastShift*100,e.next=11,i;case 11:s=e.sent,e.next=6;break;case 14:case"end":return e.stop()}},e,this)})(),r.generator.next(),s.forEach(function(e){var t=r.generator.next(e);t.value&&r.result.push(r.format(t.value))}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){var t=this.generator.next(e);if(t.value)return this.format(t.value)}}]),t}(Indicator);ROC.calculate=roc;var KSTInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}
-return inherits(t,e),t}(IndicatorInput),KST=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.values,s=e.ROCPer1,i=e.ROCPer2,o=e.ROCPer3,a=e.ROCPer4,u=e.SMAROCPer1,l=e.SMAROCPer2,c=e.SMAROCPer3,h=e.SMAROCPer4,p=e.signalPeriod,v=new ROC({period:s,values:[]}),f=new ROC({period:i,values:[]}),d=new ROC({period:o,values:[]}),g=new ROC({period:a,values:[]}),x=new SMA({period:u,values:[],format:function(e){return e}}),C=new SMA({period:l,values:[],format:function(e){return e}}),_=new SMA({period:c,values:[],format:function(e){return e}}),w=new SMA({period:h,values:[],format:function(e){return e}}),b=new SMA({period:p,values:[],format:function(e){return e}}),m=r.format;r.result=[];var k=Math.max(s+u,i+l,o+c,a+h);return r.generator=regeneratorRuntime.mark(function e(){var t,r,n,s,i,o,a,u,l,c,h,p,I;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return t=1,void(e.next=3);case 3:r=e.sent,n=void 0,s=void 0,i=void 0,o=void 0,a=void 0,u=void 0,l=void 0;case 6:return c=v.nextValue(r),h=f.nextValue(r),p=d.nextValue(r),I=g.nextValue(r),s=void 0!==c?x.nextValue(c):void 0,i=void 0!==h?C.nextValue(h):void 0,o=void 0!==p?_.nextValue(p):void 0,a=void 0!==I?w.nextValue(I):void 0,t<k?t++:n=1*s+2*i+3*o+4*a,u=void 0!==n?b.nextValue(n):void 0,l=void 0!==n?{kst:m(n),signal:u?m(u):void 0}:void 0,e.next=20,l;case 20:r=e.sent,e.next=6;break;case 23:case"end":return e.stop()}},e,this)})(),r.generator.next(),n.forEach(function(e){var t=r.generator.next(e);void 0!==t.value&&r.result.push(t.value)}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){var t=this.generator.next(e);if(void 0!==t.value)return t.value}}]),t}(Indicator);KST.calculate=kst;var StochasticInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),Stochastic=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.low,s=e.high,i=e.close,o=e.period,a=e.signalPeriod,u=r.format;if(n.length!==s.length||s.length!==i.length)throw"Inputs(low,high, close) not of equal size";return r.result=[],r.generator=regeneratorRuntime.mark(function e(){var t,r,n,s,i,l,c,h;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return t=1,r=new FixedSizeLinkedList(o,!0,!1),n=new FixedSizeLinkedList(o,!1,!0),s=new SMA({period:a,values:[],format:function(e){return e}}),i=void 0,l=void 0,void(e.next=7);case 7:c=e.sent;case 8:if(r.push(c.high),n.push(c.low),!(t<o)){e.next=17;break}return t++,void(e.next=15);case 15:return c=e.sent,e.abrupt("continue",8);case 17:return h=n.periodLow,i=(c.close-h)/(r.periodHigh-h)*100,l=s.nextValue(i),e.next=22,{k:u(i),d:l?u(l):void 0};case 22:c=e.sent,e.next=8;break;case 25:case"end":return e.stop()}},e,this)})(),r.generator.next(),n.forEach(function(e,t){var o=r.generator.next({high:s[t],low:n[t],close:i[t]});void 0!==o.value&&r.result.push(o.value)}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){var t=this.generator.next(e);if(void 0!==t.value)return t.value}}]),t}(Indicator);Stochastic.calculate=stochastic;var WilliamsRInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),WilliamsR=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.low,s=e.high,i=e.close,o=e.period,a=r.format;if(n.length!==s.length||s.length!==i.length)throw"Inputs(low,high, close) not of equal size";return r.result=[],r.generator=regeneratorRuntime.mark(function e(){var t,r,n,s,i,u,l;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return t=1,r=new FixedSizeLinkedList(o,!0,!1),n=new FixedSizeLinkedList(o,!1,!0),s=void 0,i=void 0,void(e.next=7);case 7:u=e.sent,l=void 0;case 9:if(r.push(u.high),n.push(u.low),!(t<o)){e.next=18;break}return t++,void(e.next=16);case 16:return u=e.sent,e.abrupt("continue",9);case 18:return s=n.periodLow,i=r.periodHigh,l=a((i-u.close)/(i-s)*-100),e.next=23,l;case 23:u=e.sent,e.next=9;break;case 26:case"end":return e.stop()}},e,this)})(),r.generator.next(),n.forEach(function(e,t){var o=r.generator.next({high:s[t],low:n[t],close:i[t]});void 0!==o.value&&r.result.push(o.value)}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){var t=this.generator.next(e);if(t.value)return this.format(t.value)}}]),t}(Indicator);WilliamsR.calculate=williamsr;var ADLInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),ADL=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.high,s=e.low,i=e.close,o=e.volume;if(s.length!==n.length||n.length!==i.length||n.length!==o.length)throw"Inputs(low,high, close, volumes) not of equal size";return r.result=[],r.generator=regeneratorRuntime.mark(function e(){var t,r,n,s;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return t=0,void(e.next=3);case 3:r=e.sent;case 4:return n=(r.close-r.low-(r.high-r.close))/(r.high-r.low),s=n*r.volume,t+=s,e.next=10,Math.round(t);case 10:r=e.sent,e.next=4;break;case 13:case"end":return e.stop()}},e,this)})(),r.generator.next(),n.forEach(function(e,t){var n={high:e,low:s[t],close:i[t],volume:o[t]},a=r.generator.next(n);a.value&&r.result.push(a.value)}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){return this.generator.next(e).value}}]),t}(Indicator);ADL.calculate=adl;var OBVInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),OBV=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.close,s=e.volume;return r.result=[],r.generator=regeneratorRuntime.mark(function e(){var t,r,n;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return t=0,void(e.next=3);case 3:if(r=e.sent,!r.close||"number"!=typeof r.close){e.next=9;break}return n=r.close,void(e.next=8);case 8:r=e.sent;case 9:return n<r.close?t+=r.volume:r.close<n&&(t-=r.volume),n=r.close,e.next=14,t;case 14:r=e.sent,e.next=9;break;case 17:case"end":return e.stop()}},e,this)})(),r.generator.next(),n.forEach(function(e,t){var i={close:n[t],volume:s[t]},o=r.generator.next(i);o.value&&r.result.push(o.value)}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){return this.generator.next(e).value}}]),t}(Indicator);OBV.calculate=obv;var TRIXInput=function(e){function t(){return classCallCheck(this,t),possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).apply(this,arguments))}return inherits(t,e),t}(IndicatorInput),TRIX=function(e){function t(e){classCallCheck(this,t);var r=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this,e)),n=e.values,s=e.period,i=r.format,o=new EMA({period:s,values:[],format:function(e){return e}}),a=new EMA({period:s,values:[],format:function(e){return e}}),u=new EMA({period:s,values:[],format:function(e){return e}}),l=new ROC({period:1,values:[],format:function(e){return e}});return r.result=[],r.generator=regeneratorRuntime.mark(function e(){var t,r,n,s,c;return regeneratorRuntime.wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return void(e.next=2);case 2:t=e.sent;case 3:return r=o.nextValue(t),n=r?a.nextValue(r):void 0,s=n?u.nextValue(n):void 0,c=s?l.nextValue(s):void 0,e.next=10,c?i(c):void 0;case 10:t=e.sent,e.next=3;break;case 13:case"end":return e.stop()}},e,this)})(),r.generator.next(),n.forEach(function(e){var t=r.generator.next(e);void 0!==t.value&&r.result.push(t.value)}),r}return inherits(t,e),createClass(t,[{key:"nextValue",value:function(e){var t=this.generator.next(e);if(void 0!==t.value)return t.value}}]),t}(Indicator);TRIX.calculate=trix;var CandlestickFinder=function(){function e(){classCallCheck(this,e)}return createClass(e,[{key:"approximateEqual",value:function(e,t){return 1*parseFloat(Math.abs(e-t).toPrecision(4))<=1*parseFloat((.001*e).toPrecision(4))}},{key:"logic",value:function(e){throw"this has to be implemented"}},{key:"getAllPatternIndex",value:function(e){var t=this;if(e.close.length<this.requiredCount)return console.warn("Data count less than data required for the strategy ",this.name),[];e.reversedInput&&(e.open.reverse(),e.high.reverse(),e.low.reverse(),e.close.reverse());var r=this.logic;return this._generateDataForCandleStick(e).map(function(e,n){return r.call(t,e)?n:void 0}).filter(function(e){return e})}},{key:"hasPattern",value:function(e){return e.close.length<this.requiredCount?(console.warn("Data count less than data required for the strategy ",this.name),!1):(e.reversedInput&&(e.open.reverse(),e.high.reverse(),e.low.reverse(),e.close.reverse()),this.logic.call(this,this._getLastDataForCandleStick(e)))}},{key:"_getLastDataForCandleStick",value:function(e){var t=this.requiredCount;if(e.close.length===t)return e;for(var r={open:[],high:[],low:[],close:[]},n=0,s=e.close.length-t;n<t;)r.open.push(e.open[s+n]),r.high.push(e.high[s+n]),r.low.push(e.low[s+n]),r.close.push(e.close[s+n]),n++;return r}},{key:"_generateDataForCandleStick",value:function(e){var t=this.requiredCount;return e.close.map(function(r,n){for(var s=0,i={open:[],high:[],low:[],close:[]};s<t;)i.open.push(e.open[n+s]),i.high.push(e.high[n+s]),i.low.push(e.low[n+s]),i.close.push(e.close[n+s]),s++;return i}).filter(function(r,n){return n<=e.close.length-t})}}]),e}(),MorningStar=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="MorningStar",e.requiredCount=3,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=(e.high[0],e.low[0]),s=(e.open[1],e.close[1]),i=e.high[1],o=e.low[1],a=e.open[2],u=e.close[2],l=(e.high[2],e.low[2],(t+r)/2),c=r<t,h=n>o&&n>i,p=a<u,v=i<n&&o<n&&a>i&&s<a,f=u>l;return c&&h&&v&&p&&f}}]),t}(CandlestickFinder),BullishEngulfingPattern=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="BullishEngulfingPattern",e.requiredCount=2,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=(e.high[0],e.low[0],e.open[1]),s=e.close[1];e.high[1],e.low[1];return r<t&&t>n&&r>n&&t<s}}]),t}(CandlestickFinder),BullishHarami=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.requiredCount=2,e.name="BullishHarami",e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.high[0],s=(e.low[0],e.open[1]),i=e.close[1],o=e.high[1],a=e.low[1];return t<s&&r>s&&r>i&&t<a&&n>o}}]),t}(CandlestickFinder),BullishHaramiCross=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.requiredCount=2,e.name="BullishHaramiCross",e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.high[0],s=(e.low[0],e.open[1]),i=e.close[1],o=e.high[1],a=e.low[1],u=t<s&&r>s&&r>i&&t<a&&n>o,l=this.approximateEqual(s,i);return u&&l}}]),t}(CandlestickFinder),Doji=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="Doji",e.requiredCount=1,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0];return this.approximateEqual(t,r)}}]),t}(CandlestickFinder),MorningDojiStar=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="MorningDojiStar",e.requiredCount=3,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=(e.high[0],e.low[0]),s=e.open[1],i=e.close[1],o=e.high[1],a=e.low[1],u=e.open[2],l=e.close[2],c=(e.high[2],e.low[2],(t+r)/2),h=r<t,p=(new Doji).hasPattern({open:[s],close:[i],high:[o],low:[a]}),v=u<l,f=o<n&&a<n&&u>o&&i<u,d=l>c;return h&&p&&v&&f&&d}}]),t}(CandlestickFinder),DownsideTasukiGap=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.requiredCount=3,e.name="DownsideTasukiGap",e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=(e.high[0],e.low[0]),s=e.open[1],i=e.close[1],o=e.high[1],a=(e.low[1],e.open[2]),u=e.close[2],l=(e.high[2],e.low[2],r<t),c=i<s,h=u>a,p=o<n,v=s>a&&i<a&&u>s&&u<r;return l&&c&&h&&p&&v}}]),t}(CandlestickFinder),BullishMarubozu=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="BullishMarubozu",e.requiredCount=1,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.high[0],s=e.low[0];return this.approximateEqual(r,n)&&this.approximateEqual(s,t)&&t<r&&t<n}}]),t}(CandlestickFinder),PiercingLine=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.requiredCount=2,e.name="PiercingLine",e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=(e.high[0],e.low[0]),s=e.open[1],i=e.close[1],o=(e.high[1],e.low[1]),a=(t+r)/2,u=o<n,l=r<t,c=i>s,h=n>s&&i>a;return u&&l&&h&&c}}]),t}(CandlestickFinder),ThreeWhiteSoldiers=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="ThreeWhiteSoldiers",e.requiredCount=3,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.high[0],s=(e.low[0],e.open[1]),i=e.close[1],o=e.high[1],a=(e.low[1],e.open[2]),u=e.close[2],l=e.high[2],c=(e.low[2],o>n&&l>o),h=t<r&&s<i&&a<u,p=r>s&&s<n&&o>a&&a<i;return c&&h&&p}}]),t}(CandlestickFinder),bullishPatterns=[new BullishEngulfingPattern,new DownsideTasukiGap,new BullishHarami,new BullishHaramiCross,new MorningDojiStar,new MorningStar,new BullishMarubozu,new PiercingLine,new ThreeWhiteSoldiers],BullishPatterns=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="Bullish Candlesticks",e}return inherits(t,e),createClass(t,[{key:"hasPattern",value:function(e){return bullishPatterns.reduce(function(t,r){var n=r.hasPattern(e);return n&&console.log("Matched pattern ",r.name),t||n},!1)}}]),t}(CandlestickFinder),BearishEngulfingPattern=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="BearishEngulfingPattern",e.requiredCount=2,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=(e.high[0],e.low[0],e.open[1]),s=e.close[1];e.high[1],e.low[1];return r>t&&t<n&&r<n&&t>s}}]),t}(CandlestickFinder),BearishHarami=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.requiredCount=2,e.name="BearishHarami",e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.high[0],s=(e.low[0],e.open[1]),i=e.close[1],o=e.high[1],a=e.low[1];return t>s&&r<s&&r<i&&t>a&&n>o}}]),t}(CandlestickFinder),BearishHaramiCross=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.requiredCount=2,e.name="BearishHaramiCross",e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.high[0],s=(e.low[0],e.open[1]),i=e.close[1],o=e.high[1],a=e.low[1],u=t>s&&r<s&&r<i&&t>a&&n>o,l=this.approximateEqual(s,i);return u&&l}}]),t}(CandlestickFinder),EveningDojiStar=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="EveningDojiStar",e.requiredCount=3,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.high[0],s=(e.low[0],e.open[1]),i=e.close[1],o=e.high[1],a=e.low[1],u=e.open[2],l=e.close[2],c=(e.high[2],e.low[2],(t+r)/2),h=r>t,p=(new Doji).hasPattern({open:[s],close:[i],high:[o],low:[a]}),v=u>l,f=o>n&&a>n&&u<a&&i>u,d=l<c;return h&&p&&f&&v&&d}}]),t}(CandlestickFinder),EveningStar=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="EveningStar",e.requiredCount=3,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.high[0],s=(e.low[0],e.open[1],e.close[1]),i=e.high[1],o=e.low[1],a=e.open[2],u=e.close[2],l=(e.high[2],e.low[2],(t+r)/2),c=r>t,h=n<o&&n<i,p=a>u,v=i>n&&o>n&&a<o&&s>a,f=u<l;return c&&h&&v&&p&&f}}]),t}(CandlestickFinder),BearishMarubozu=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="BearishMarubozu",e.requiredCount=1,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.high[0],s=e.low[0];return this.approximateEqual(t,n)&&this.approximateEqual(s,r)&&t>r&&t>s}}]),t}(CandlestickFinder),ThreeBlackCrows=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="ThreeBlackCrows",e.requiredCount=3,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=(e.high[0],e.low[0]),s=e.open[1],i=e.close[1],o=(e.high[1],e.low[1]),a=e.open[2],u=e.close[2],l=(e.high[2],e.low[2]),c=n>o&&o>l,h=t>r&&s>i&&a>u,p=t>s&&s>r&&s>a&&a>i;return c&&h&&p}}]),t}(CandlestickFinder),bearishPatterns=[new BearishEngulfingPattern,new BearishHarami,new BearishHaramiCross,new EveningDojiStar,new EveningStar,new BearishMarubozu,new ThreeBlackCrows],BearishPatterns=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="Bearish Candlesticks",e}return inherits(t,e),createClass(t,[{key:"hasPattern",value:function(e){return bearishPatterns.reduce(function(t,r){return t||r.hasPattern(e)},!1)}}]),t}(CandlestickFinder),AbandonedBaby=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="AbandonedBaby",e.requiredCount=3,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=(e.high[0],e.low[0]),s=e.open[1],i=e.close[1],o=e.high[1],a=e.low[1],u=e.open[2],l=e.close[2],c=e.high[2],h=e.low[2],p=r<t,v=(new Doji).hasPattern({open:[s],close:[i],high:[o],low:[a]}),f=o<n&&h>o&&l>u,d=c<t;return p&&v&&f&&d}}]),t}(CandlestickFinder),DarkCloudCover=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="DarkCloudCover",e.requiredCount=2,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.high[0],s=(e.low[0],e.open[1]),i=e.close[1],o=(e.high[1],e.low[1],(r+t)/2),a=r>t,u=i<s,l=s>n&&i<o&&i>t;return a&&u&&l}}]),t}(CandlestickFinder),DragonFlyDoji=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.requiredCount=1,e.name="DragonFlyDoji",e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.high[0],s=this.approximateEqual(t,r),i=this.approximateEqual(t,n);return s&&i}}]),t}(CandlestickFinder),GraveStoneDoji=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.requiredCount=1,e.name="GraveStoneDoji",e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.low[0],s=this.approximateEqual(t,r),i=this.approximateEqual(t,n);return s&&i}}]),t}(CandlestickFinder),BullishSpinningTop=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="BullishSpinningTop",e.requiredCount=1,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.high[0],s=e.low[0],i=Math.abs(r-t),o=Math.abs(n-r),a=Math.abs(t-s);return i<o&&i<a}}]),t}(CandlestickFinder),BearishSpinningTop=function(e){function t(){classCallCheck(this,t);var e=possibleConstructorReturn(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return e.name="BearishSpinningTop",e.requiredCount=1,e}return inherits(t,e),createClass(t,[{key:"logic",value:function(e){var t=e.open[0],r=e.close[0],n=e.high[0],s=e.low[0],i=Math.abs(r-t),o=Math.abs(n-t),a=Math.abs(n-s);return i<o&&i<a}}]),t}(CandlestickFinder);exports.getAvailableIndicators=getAvailableIndicators,exports.sma=sma,exports.SMA=SMA,exports.ema=ema,exports.EMA=EMA,exports.wma=wma,exports.WMA=WMA,exports.wema=wema,exports.WEMA=WEMA,exports.macd=macd,exports.MACD=MACD,exports.rsi=rsi,exports.RSI=RSI,exports.bollingerbands=bollingerbands,exports.BollingerBands=BollingerBands,exports.adx=adx,exports.ADX=ADX,exports.atr=atr,exports.ATR=ATR,exports.truerange=truerange,exports.TrueRange=TrueRange,exports.roc=roc,exports.ROC=ROC,exports.kst=kst,exports.KST=KST,exports.stochastic=stochastic,exports.Stochastic=Stochastic,exports.williamsr=williamsr,exports.WilliamsR=WilliamsR,exports.adl=adl,exports.ADL=ADL,exports.obv=obv,exports.OBV=OBV,exports.trix=trix,exports.TRIX=TRIX,exports.averagegain=averagegain,exports.AverageGain=AverageGain,exports.averageloss=averageloss,exports.AverageLoss=AverageLoss,exports.sd=sd,exports.SD=SD,exports.bullish=bullish,exports.bearish=bearish,exports.abandonedbaby=abandonedbaby,exports.doji=doji,exports.bearishengulfingpattern=bearishengulfingpattern,exports.bullishengulfingpattern=bullishengulfingpattern,exports.darkcloudcover=darkcloudcover,exports.downsidetasukigap=downsidetasukigap,exports.dragonflydoji=dragonflydoji,exports.gravestonedoji=gravestonedoji,exports.bullishharami=bullishharami,exports.bearishharami=bearishharami,exports.bullishharamicross=bullishharamicross,exports.bearishharamicross=bearishharamicross,exports.eveningdojistar=eveningdojistar,exports.eveningstar=eveningstar,exports.morningdojistar=morningdojistar,exports.morningstar=morningstar,exports.bullishmarubozu=bullishmarubozu,exports.bearishmarubozu=bearishmarubozu,exports.piercingline=piercingline,exports.bullishspinningtop=bullishspinningtop,exports.bearishspinningtop=bearishspinningtop,exports.threeblackcrows=threeblackcrows,exports.threewhitesoldiers=threewhitesoldiers,exports.fibonacciretracement=fibonacciretracement,exports.setConfig=setConfig,exports.getConfig=getConfig;
+/* APP */
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+let config = {};
+function setConfig(key, value) {
+    config[key] = value;
+}
+function getConfig(key) {
+    return config[key];
+}
+
+function format(v) {
+    let precision = getConfig('precision');
+    if (precision) {
+        return parseFloat(v.toPrecision(precision));
+    }
+    return v;
+}
+
+class Indicator {
+    constructor(input) {
+        this.format = input.format || format;
+    }
+    static reverseInputs(input) {
+        if (input.reversedInput) {
+            input.values ? input.values.reverse() : undefined;
+            input.open ? input.open.reverse() : undefined;
+            input.high ? input.high.reverse() : undefined;
+            input.low ? input.low.reverse() : undefined;
+            input.close ? input.close.reverse() : undefined;
+            input.volume ? input.volume.reverse() : undefined;
+        }
+    }
+    getResult() {
+        return this.result;
+    }
+}
+
+class Item {
+    constructor(data, prev, next) {
+        this.next = next;
+        if (next)
+            next.prev = this;
+        this.prev = prev;
+        if (prev)
+            prev.next = this;
+        this.data = data;
+    }
+}
+class LinkedList {
+    constructor() {
+        this._length = 0;
+    }
+    get head() {
+        return this._head && this._head.data;
+    }
+    get tail() {
+        return this._tail && this._tail.data;
+    }
+    get current() {
+        return this._current && this._current.data;
+    }
+    get length() {
+        return this._length;
+    }
+    push(data) {
+        this._tail = new Item(data, this._tail);
+        if (this._length === 0) {
+            this._head = this._tail;
+            this._current = this._head;
+            this._next = this._head;
+        }
+        this._length++;
+    }
+    pop() {
+        var tail = this._tail;
+        if (this._length === 0) {
+            return;
+        }
+        this._length--;
+        if (this._length === 0) {
+            this._head = this._tail = this._current = this._next = undefined;
+            return tail.data;
+        }
+        this._tail = tail.prev;
+        this._tail.next = undefined;
+        if (this._current === tail) {
+            this._current = this._tail;
+            this._next = undefined;
+        }
+        return tail.data;
+    }
+    shift() {
+        var head = this._head;
+        if (this._length === 0) {
+            return;
+        }
+        this._length--;
+        if (this._length === 0) {
+            this._head = this._tail = this._current = this._next = undefined;
+            return head.data;
+        }
+        this._head = this._head.next;
+        if (this._current === head) {
+            this._current = this._head;
+            this._next = this._current.next;
+        }
+        return head.data;
+    }
+    unshift(data) {
+        this._head = new Item(data, undefined, this._head);
+        if (this._length === 0) {
+            this._tail = this._head;
+            this._next = this._head;
+        }
+        this._length++;
+    }
+    unshiftCurrent() {
+        var current = this._current;
+        if (current === this._head || this._length < 2) {
+            return current && current.data;
+        }
+        // remove
+        if (current === this._tail) {
+            this._tail = current.prev;
+            this._tail.next = undefined;
+            this._current = this._tail;
+        }
+        else {
+            current.next.prev = current.prev;
+            current.prev.next = current.next;
+            this._current = current.prev;
+        }
+        this._next = this._current.next;
+        // unshift
+        current.next = this._head;
+        current.prev = undefined;
+        this._head.prev = current;
+        this._head = current;
+        return current.data;
+    }
+    removeCurrent() {
+        var current = this._current;
+        if (this._length === 0) {
+            return;
+        }
+        this._length--;
+        if (this._length === 0) {
+            this._head = this._tail = this._current = this._next = undefined;
+            return current.data;
+        }
+        if (current === this._tail) {
+            this._tail = current.prev;
+            this._tail.next = undefined;
+            this._current = this._tail;
+        }
+        else if (current === this._head) {
+            this._head = current.next;
+            this._head.prev = undefined;
+            this._current = this._head;
+        }
+        else {
+            current.next.prev = current.prev;
+            current.prev.next = current.next;
+            this._current = current.prev;
+        }
+        this._next = this._current.next;
+        return current.data;
+    }
+    resetCursor() {
+        this._current = this._next = this._head;
+        return this;
+    }
+    next() {
+        var next = this._next;
+        if (next !== undefined) {
+            this._next = next.next;
+            this._current = next;
+            return next.data;
+        }
+    }
+}
+
+//STEP 1. Import Necessary indicator or rather last step
+//STEP 2. Create the input for the indicator, mandatory should be in the constructor
+
+//STEP3. Add class based syntax with export
+class SMA extends Indicator {
+    constructor(input) {
+        super(input);
+        this.period = input.period;
+        this.price = input.values;
+        var genFn = (function* (period) {
+            var list = new LinkedList();
+            var sum = 0;
+            var counter = 1;
+            var current = yield;
+            var result;
+            list.push(0);
+            while (true) {
+                if (counter < period) {
+                    counter++;
+                    list.push(current);
+                    sum = sum + current;
+                }
+                else {
+                    sum = sum - list.shift() + current;
+                    result = ((sum) / period);
+                    list.push(current);
+                }
+                current = yield result;
+            }
+        });
+        this.generator = genFn(this.period);
+        this.generator.next();
+        this.result = [];
+        this.price.forEach((tick) => {
+            var result = this.generator.next(tick);
+            if (result.value !== undefined) {
+                this.result.push(this.format(result.value));
+            }
+        });
+    }
+    nextValue(price) {
+        var result = this.generator.next(price).value;
+        if (result != undefined)
+            return this.format(result);
+    }
+    ;
+}
+SMA.calculate = sma;
+function sma(input) {
+    Indicator.reverseInputs(input);
+    var result = new SMA(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+//STEP 6. Run the tests
+
+class EMA extends Indicator {
+    constructor(input) {
+        super(input);
+        var period = input.period;
+        var priceArray = input.values;
+        var exponent = (2 / (period + 1));
+        var sma$$1;
+        this.result = [];
+        sma$$1 = new SMA({ period: period, values: [] });
+        var genFn = (function* () {
+            var tick = yield;
+            var prevEma;
+            while (true) {
+                if (prevEma && tick) {
+                    prevEma = ((tick - prevEma) * exponent) + prevEma;
+                    tick = yield prevEma;
+                }
+                else {
+                    tick = yield;
+                    prevEma = sma$$1.nextValue(tick);
+                    if (prevEma)
+                        tick = yield prevEma;
+                }
+            }
+        });
+        this.generator = genFn();
+        this.generator.next();
+        this.generator.next();
+        priceArray.forEach((tick) => {
+            var result = this.generator.next(tick);
+            if (result.value) {
+                this.result.push(this.format(result.value));
+            }
+        });
+    }
+    nextValue(price) {
+        var result = this.generator.next(price).value;
+        if (result)
+            return this.format(result);
+    }
+    ;
+}
+EMA.calculate = ema;
+function ema(input) {
+    Indicator.reverseInputs(input);
+    var result = new EMA(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class WMA extends Indicator {
+    constructor(input) {
+        super(input);
+        var period = input.period;
+        var priceArray = input.values;
+        this.result = [];
+        this.generator = (function* () {
+            let data = new LinkedList();
+            let denominator = period * (period + 1) / 2;
+            while (true) {
+                if ((data.length) < period) {
+                    data.push(yield);
+                }
+                else {
+                    data.resetCursor();
+                    let result = 0;
+                    for (let i = 1; i <= period; i++) {
+                        result = result + (data.next() * i / (denominator));
+                    }
+                    var next = yield result;
+                    data.shift();
+                    data.push(next);
+                }
+            }
+        })();
+        this.generator.next();
+        priceArray.forEach((tick, index) => {
+            var result = this.generator.next(tick);
+            if (result.value) {
+                this.result.push(this.format(result.value));
+            }
+        });
+    }
+    //STEP 5. REMOVE GET RESULT FUNCTION
+    nextValue(price) {
+        var result = this.generator.next(price).value;
+        if (result)
+            return this.format(result);
+    }
+    ;
+}
+WMA.calculate = wma;
+
+function wma(input) {
+    Indicator.reverseInputs(input);
+    var result = new WMA(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class WEMA extends Indicator {
+    constructor(input) {
+        super(input);
+        var period = input.period;
+        var priceArray = input.values;
+        var exponent = 1 / period;
+        var sma$$1;
+        this.result = [];
+        sma$$1 = new SMA({ period: period, values: [] });
+        var genFn = (function* () {
+            var tick = yield;
+            var prevEma;
+            while (true) {
+                if (prevEma && tick != undefined) {
+                    prevEma = ((tick - prevEma) * exponent) + prevEma;
+                    tick = yield prevEma;
+                }
+                else {
+                    tick = yield;
+                    prevEma = sma$$1.nextValue(tick);
+                    if (prevEma)
+                        tick = yield prevEma;
+                }
+            }
+        });
+        this.generator = genFn();
+        this.generator.next();
+        this.generator.next();
+        priceArray.forEach((tick) => {
+            var result = this.generator.next(tick);
+            if (result.value != undefined) {
+                this.result.push(this.format(result.value));
+            }
+        });
+    }
+    nextValue(price) {
+        var result = this.generator.next(price).value;
+        if (result != undefined)
+            return this.format(result);
+    }
+    ;
+}
+WEMA.calculate = wema;
+function wema(input) {
+    Indicator.reverseInputs(input);
+    var result = new WEMA(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+/**
+ * Created by AAravindan on 5/4/16.
+ */
+
+
+class MACD extends Indicator {
+    constructor(input) {
+        super(input);
+        var oscillatorMAtype = input.SimpleMAOscillator ? SMA : EMA;
+        var signalMAtype = input.SimpleMASignal ? SMA : EMA;
+        var fastMAProducer = new oscillatorMAtype({ period: input.fastPeriod, values: [], format: (v) => { return v; } });
+        var slowMAProducer = new oscillatorMAtype({ period: input.slowPeriod, values: [], format: (v) => { return v; } });
+        var signalMAProducer = new signalMAtype({ period: input.signalPeriod, values: [], format: (v) => { return v; } });
+        var format = this.format;
+        this.result = [];
+        this.generator = (function* () {
+            var index = 0;
+            var tick;
+            var MACD, signal, histogram, fast, slow;
+            while (true) {
+                if (index < input.slowPeriod) {
+                    tick = yield;
+                    fast = fastMAProducer.nextValue(tick);
+                    slow = slowMAProducer.nextValue(tick);
+                    index++;
+                    continue;
+                }
+                if (fast && slow) {
+                    MACD = fast - slow;
+                    signal = signalMAProducer.nextValue(MACD);
+                }
+                histogram = MACD - signal;
+                tick = yield ({
+                    //fast : fast,
+                    //slow : slow,
+                    MACD: format(MACD),
+                    signal: signal ? format(signal) : undefined,
+                    histogram: isNaN(histogram) ? undefined : format(histogram)
+                });
+                fast = fastMAProducer.nextValue(tick);
+                slow = slowMAProducer.nextValue(tick);
+            }
+        })();
+        this.generator.next();
+        input.values.forEach((tick) => {
+            var result = this.generator.next(tick);
+            if (result.value) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    nextValue(price) {
+        var result = this.generator.next(price).value;
+        return result;
+    }
+    ;
+}
+MACD.calculate = macd;
+function macd(input) {
+    Indicator.reverseInputs(input);
+    var result = new MACD(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class AverageGain extends Indicator {
+    constructor(input) {
+        super(input);
+        let values = input.values;
+        let period = input.period;
+        let format = this.format;
+        this.generator = (function* (period) {
+            var currentValue = yield;
+            var counter = 1;
+            var gainSum = 0;
+            var avgGain;
+            var gain;
+            var lastValue;
+            while (true) {
+                gain = lastValue ? (currentValue - lastValue) : 0;
+                gain = gain ? gain : 0;
+                if (gain > 0) {
+                    gainSum = gainSum + gain;
+                }
+                if (counter < (period + 1)) {
+                    counter++;
+                }
+                else if (!avgGain) {
+                    avgGain = gainSum / period;
+                }
+                else {
+                    avgGain = ((avgGain * (period - 1)) + (gain > 0 ? gain : 0)) / period;
+                }
+                lastValue = currentValue;
+                avgGain = avgGain ? format(avgGain) : undefined;
+                currentValue = yield avgGain;
+            }
+        })(period);
+        this.generator.next();
+        this.result = [];
+        values.forEach((tick) => {
+            var result = this.generator.next(tick);
+            if (result.value !== undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    nextValue(price) {
+        return this.generator.next(price).value;
+    }
+    ;
+}
+AverageGain.calculate = averagegain;
+function averagegain(input) {
+    Indicator.reverseInputs(input);
+    var result = new AverageGain(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class AverageLoss extends Indicator {
+    constructor(input) {
+        super(input);
+        let values = input.values;
+        let period = input.period;
+        let format = this.format;
+        this.generator = (function* (period) {
+            var currentValue = yield;
+            var counter = 1;
+            var lossSum = 0;
+            var avgLoss;
+            var loss;
+            var lastValue;
+            while (true) {
+                loss = lastValue ? (lastValue - currentValue) : 0;
+                loss = loss ? loss : 0;
+                if (loss > 0) {
+                    lossSum = lossSum + loss;
+                }
+                if (counter < (period + 1)) {
+                    counter++;
+                }
+                else if (!avgLoss) {
+                    avgLoss = lossSum / period;
+                }
+                else {
+                    avgLoss = ((avgLoss * (period - 1)) + (loss > 0 ? loss : 0)) / period;
+                }
+                lastValue = currentValue;
+                avgLoss = avgLoss ? format(avgLoss) : undefined;
+                currentValue = yield avgLoss;
+            }
+        })(period);
+        this.generator.next();
+        this.result = [];
+        values.forEach((tick) => {
+            var result = this.generator.next(tick);
+            if (result.value !== undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    nextValue(price) {
+        return this.generator.next(price).value;
+    }
+    ;
+}
+AverageLoss.calculate = averageloss;
+function averageloss(input) {
+    Indicator.reverseInputs(input);
+    var result = new AverageLoss(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+/**
+ * Created by AAravindan on 5/5/16.
+ */
+
+class RSI extends Indicator {
+    constructor(input) {
+        super(input);
+        var period = input.period;
+        var values = input.values;
+        var GainProvider = new AverageGain({ period: period, values: [] });
+        var LossProvider = new AverageLoss({ period: period, values: [] });
+        this.generator = (function* (period) {
+            var current = yield;
+            var lastAvgGain, lastAvgLoss, RS, currentRSI;
+            while (true) {
+                lastAvgGain = GainProvider.nextValue(current);
+                lastAvgLoss = LossProvider.nextValue(current);
+                if (lastAvgGain && lastAvgLoss) {
+                    if (lastAvgLoss === 0) {
+                        currentRSI = 100;
+                    }
+                    else {
+                        RS = lastAvgGain / lastAvgLoss;
+                        currentRSI = parseFloat((100 - (100 / (1 + RS))).toFixed(2));
+                    }
+                }
+                current = yield currentRSI;
+            }
+        })(period);
+        this.generator.next();
+        this.result = [];
+        values.forEach((tick) => {
+            var result = this.generator.next(tick);
+            if (result.value !== undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    nextValue(price) {
+        return this.generator.next(price).value;
+    }
+    ;
+}
+RSI.calculate = rsi;
+function rsi(input) {
+    Indicator.reverseInputs(input);
+    var result = new RSI(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+/**
+ * Created by AAravindan on 5/7/16.
+ */
+class FixedSizeLinkedList extends LinkedList {
+    constructor(size, maintainHigh, maintainLow) {
+        super();
+        this.size = size;
+        this.maintainHigh = maintainHigh;
+        this.maintainLow = maintainLow;
+        this.periodHigh = 0;
+        this.periodLow = Infinity;
+        if (!size || typeof size !== 'number') {
+            throw ('Size required and should be a number.');
+        }
+        this._push = this.push;
+        this.push = function (data) {
+            this.add(data);
+        };
+    }
+    add(data) {
+        if (this.length === this.size) {
+            this.lastShift = this.shift();
+            this._push(data);
+            //TODO: FInd a better way
+            if (this.maintainHigh)
+                if (this.lastShift == this.periodHigh)
+                    this.calculatePeriodHigh();
+            if (this.maintainLow)
+                if (this.lastShift == this.periodLow)
+                    this.calculatePeriodLow();
+        }
+        else {
+            this._push(data);
+        }
+        //TODO: FInd a better way
+        if (this.maintainHigh)
+            if (this.periodHigh <= data)
+                (this.periodHigh = data);
+        if (this.maintainLow)
+            if (this.periodLow >= data)
+                (this.periodLow = data);
+    }
+    *iterator() {
+        this.resetCursor();
+        while (this.next()) {
+            yield this.current;
+        }
+    }
+    calculatePeriodHigh() {
+        this.resetCursor();
+        if (this.next())
+            this.periodHigh = this.current;
+        while (this.next()) {
+            if (this.periodHigh <= this.current) {
+                this.periodHigh = this.current;
+            }
+            
+        }
+        
+    }
+    calculatePeriodLow() {
+        this.resetCursor();
+        if (this.next())
+            this.periodLow = this.current;
+        while (this.next()) {
+            if (this.periodLow >= this.current) {
+                this.periodLow = this.current;
+            }
+            
+        }
+        
+    }
+}
+
+class SD extends Indicator {
+    constructor(input) {
+        super(input);
+        var period = input.period;
+        var priceArray = input.values;
+        var sma$$1 = new SMA({ period: period, values: [], format: (v) => { return v; } });
+        this.result = [];
+        this.generator = (function* () {
+            var tick;
+            var mean;
+            var currentSet = new FixedSizeLinkedList(period);
+            
+            tick = yield;
+            var sd;
+            while (true) {
+                currentSet.push(tick);
+                mean = sma$$1.nextValue(tick);
+                if (mean) {
+                    let sum = 0;
+                    for (let x of currentSet.iterator()) {
+                        sum = sum + (Math.pow((x - mean), 2));
+                    }
+                    sd = Math.sqrt(sum / (period));
+                }
+                tick = yield sd;
+            }
+        })();
+        this.generator.next();
+        priceArray.forEach((tick) => {
+            var result = this.generator.next(tick);
+            if (result.value) {
+                this.result.push(this.format(result.value));
+            }
+        });
+    }
+    nextValue(price) {
+        var nextResult = this.generator.next(price);
+        if (nextResult.value)
+            return this.format(nextResult.value);
+    }
+    ;
+}
+SD.calculate = sd;
+function sd(input) {
+    Indicator.reverseInputs(input);
+    var result = new SD(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class BollingerBands extends Indicator {
+    constructor(input) {
+        super(input);
+        var period = input.period;
+        var priceArray = input.values;
+        var stdDev = input.stdDev;
+        var format = this.format;
+        var sma$$1, sd$$1;
+        this.result = [];
+        sma$$1 = new SMA({ period: period, values: [], format: (v) => { return v; } });
+        sd$$1 = new SD({ period: period, values: [], format: (v) => { return v; } });
+        this.generator = (function* () {
+            var result;
+            var tick;
+            var calcSMA;
+            var calcsd;
+            tick = yield;
+            while (true) {
+                calcSMA = sma$$1.nextValue(tick);
+                calcsd = sd$$1.nextValue(tick);
+                if (calcSMA) {
+                    let middle = format(calcSMA);
+                    let upper = format(calcSMA + (calcsd * stdDev));
+                    let lower = format(calcSMA - (calcsd * stdDev));
+                    let pb = format((tick - lower) / (upper - lower));
+                    result = {
+                        middle: middle,
+                        upper: upper,
+                        lower: lower,
+                        pb: pb
+                    };
+                }
+                tick = yield result;
+            }
+        })();
+        this.generator.next();
+        priceArray.forEach((tick) => {
+            var result = this.generator.next(tick);
+            if (result.value) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    nextValue(price) {
+        return this.generator.next(price).value;
+    }
+    ;
+}
+BollingerBands.calculate = bollingerbands;
+function bollingerbands(input) {
+    Indicator.reverseInputs(input);
+    var result = new BollingerBands(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+//STEP3. Add class based syntax with export
+class WilderSmoothing extends Indicator {
+    constructor(input) {
+        super(input);
+        this.period = input.period;
+        this.price = input.values;
+        var genFn = (function* (period) {
+            var list = new LinkedList();
+            var sum = 0;
+            var counter = 1;
+            var current = yield;
+            var result;
+            while (true) {
+                if (counter < period) {
+                    counter++;
+                    sum = sum + current;
+                }
+                else if (counter == period) {
+                    counter++;
+                    sum = sum + current;
+                    result = sum;
+                }
+                else {
+                    result = result - (result / period) + current;
+                }
+                current = yield result;
+            }
+        });
+        this.generator = genFn(this.period);
+        this.generator.next();
+        this.result = [];
+        this.price.forEach((tick) => {
+            var result = this.generator.next(tick);
+            if (result.value != undefined) {
+                this.result.push(this.format(result.value));
+            }
+        });
+    }
+    nextValue(price) {
+        var result = this.generator.next(price).value;
+        if (result != undefined)
+            return this.format(result);
+    }
+    ;
+}
+WilderSmoothing.calculate = wildersmoothing;
+function wildersmoothing(input) {
+    Indicator.reverseInputs(input);
+    var result = new WilderSmoothing(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+//STEP 6. Run the tests
+
+class MDM extends Indicator {
+    constructor(input) {
+        super(input);
+        var lows = input.low;
+        var highs = input.high;
+        var format = this.format;
+        if (lows.length != highs.length) {
+            throw ('Inputs(low,high) not of equal size');
+        }
+        this.result = [];
+        this.generator = (function* () {
+            var minusDm;
+            var current = yield;
+            var last;
+            while (true) {
+                if (last) {
+                    let upMove = (current.high - last.high);
+                    let downMove = (last.low - current.low);
+                    minusDm = format((downMove > upMove && downMove > 0) ? downMove : 0);
+                }
+                last = current;
+                current = yield minusDm;
+            }
+        })();
+        this.generator.next();
+        lows.forEach((tick, index) => {
+            var result = this.generator.next({
+                high: highs[index],
+                low: lows[index]
+            });
+            if (result.value !== undefined)
+                this.result.push(result.value);
+        });
+    }
+    ;
+    static calculate(input) {
+        Indicator.reverseInputs(input);
+        var result = new MDM(input).result;
+        if (input.reversedInput) {
+            result.reverse();
+        }
+        Indicator.reverseInputs(input);
+        return result;
+    }
+    ;
+    nextValue(price) {
+        return this.generator.next(price).value;
+    }
+    ;
+}
+
+/**
+ * Created by AAravindan on 5/8/16.
+ */
+
+
+class PDM extends Indicator {
+    constructor(input) {
+        super(input);
+        var lows = input.low;
+        var highs = input.high;
+        var format = this.format;
+        if (lows.length != highs.length) {
+            throw ('Inputs(low,high) not of equal size');
+        }
+        this.result = [];
+        this.generator = (function* () {
+            var plusDm;
+            var current = yield;
+            var last;
+            while (true) {
+                if (last) {
+                    let upMove = (current.high - last.high);
+                    let downMove = (last.low - current.low);
+                    plusDm = format((upMove > downMove && upMove > 0) ? upMove : 0);
+                }
+                last = current;
+                current = yield plusDm;
+            }
+        })();
+        this.generator.next();
+        lows.forEach((tick, index) => {
+            var result = this.generator.next({
+                high: highs[index],
+                low: lows[index]
+            });
+            if (result.value !== undefined)
+                this.result.push(result.value);
+        });
+    }
+    ;
+    static calculate(input) {
+        Indicator.reverseInputs(input);
+        var result = new PDM(input).result;
+        if (input.reversedInput) {
+            result.reverse();
+        }
+        Indicator.reverseInputs(input);
+        return result;
+    }
+    ;
+    nextValue(price) {
+        return this.generator.next(price).value;
+    }
+    ;
+}
+
+class TrueRange extends Indicator {
+    constructor(input) {
+        super(input);
+        var lows = input.low;
+        var highs = input.high;
+        var closes = input.close;
+        var format = this.format;
+        if (lows.length != highs.length) {
+            throw ('Inputs(low,high) not of equal size');
+        }
+        this.result = [];
+        this.generator = (function* () {
+            var current = yield;
+            var previousClose, result;
+            while (true) {
+                if (previousClose === undefined) {
+                    previousClose = current.close;
+                    current = yield result;
+                }
+                result = Math.max(current.high - current.low, isNaN(Math.abs(current.high - previousClose)) ? 0 : Math.abs(current.high - previousClose), isNaN(Math.abs(current.low - previousClose)) ? 0 : Math.abs(current.low - previousClose));
+                previousClose = current.close;
+                if (result != undefined) {
+                    result = format(result);
+                }
+                current = yield result;
+            }
+        })();
+        this.generator.next();
+        lows.forEach((tick, index) => {
+            var result = this.generator.next({
+                high: highs[index],
+                low: lows[index],
+                close: closes[index]
+            });
+            if (result.value != undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    nextValue(price) {
+        return this.generator.next(price).value;
+    }
+    ;
+}
+TrueRange.calculate = truerange;
+function truerange(input) {
+    Indicator.reverseInputs(input);
+    var result = new TrueRange(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class ADX extends Indicator {
+    constructor(input) {
+        super(input);
+        var lows = input.low;
+        var highs = input.high;
+        var closes = input.close;
+        var period = input.period;
+        var format = this.format;
+        var plusDM = new PDM({
+            high: [],
+            low: []
+        });
+        var minusDM = new MDM({
+            high: [],
+            low: []
+        });
+        var emaPDM = new WilderSmoothing({ period: period, values: [], format: (v) => { return v; } });
+        var emaMDM = new WilderSmoothing({ period: period, values: [], format: (v) => { return v; } });
+        var emaTR = new WilderSmoothing({ period: period, values: [], format: (v) => { return v; } });
+        var emaDX = new WEMA({ period: period, values: [], format: (v) => { return v; } });
+        var tr = new TrueRange({
+            low: [],
+            high: [],
+            close: [],
+        });
+        if (!((lows.length === highs.length) && (highs.length === closes.length))) {
+            throw ('Inputs(low,high, close) not of equal size');
+        }
+        this.result = [];
+        this.generator = (function* () {
+            var tick = yield;
+            var index = 0;
+            var lastATR, lastAPDM, lastAMDM, lastPDI, lastMDI, lastDX, smoothedDX;
+            lastATR = 0;
+            lastAPDM = 0;
+            lastAMDM = 0;
+            while (true) {
+                let calcTr = tr.nextValue(tick);
+                let calcPDM = plusDM.nextValue(tick);
+                let calcMDM = minusDM.nextValue(tick);
+                if (calcTr === undefined) {
+                    tick = yield;
+                    continue;
+                }
+                let lastATR = emaTR.nextValue(calcTr);
+                let lastAPDM = emaPDM.nextValue(calcPDM);
+                let lastAMDM = emaMDM.nextValue(calcMDM);
+                if ((lastATR != undefined) && (lastAPDM != undefined) && (lastAMDM != undefined)) {
+                    lastPDI = (lastAPDM) * 100 / lastATR;
+                    lastMDI = (lastAMDM) * 100 / lastATR;
+                    let diDiff = Math.abs(lastPDI - lastMDI);
+                    let diSum = (lastPDI + lastMDI);
+                    lastDX = (diDiff / diSum) * 100;
+                    smoothedDX = emaDX.nextValue(lastDX);
+                    // console.log(tick.high.toFixed(2), tick.low.toFixed(2), tick.close.toFixed(2) , calcTr.toFixed(2), calcPDM.toFixed(2), calcMDM.toFixed(2), lastATR.toFixed(2), lastAPDM.toFixed(2), lastAMDM.toFixed(2), lastPDI.toFixed(2), lastMDI.toFixed(2), diDiff.toFixed(2), diSum.toFixed(2), lastDX.toFixed(2));
+                }
+                tick = yield smoothedDX;
+            }
+        })();
+        this.generator.next();
+        lows.forEach((tick, index) => {
+            var result = this.generator.next({
+                high: highs[index],
+                low: lows[index],
+                close: closes[index]
+            });
+            if (result.value) {
+                this.result.push(format(result.value));
+            }
+        });
+    }
+    ;
+    nextValue(price) {
+        let result = this.generator.next(price).value;
+        if (result) {
+            return this.format(result);
+        }
+    }
+    ;
+}
+ADX.calculate = adx;
+function adx(input) {
+    Indicator.reverseInputs(input);
+    var result = new ADX(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class ATR extends Indicator {
+    constructor(input) {
+        super(input);
+        var lows = input.low;
+        var highs = input.high;
+        var closes = input.close;
+        var period = input.period;
+        var format = this.format;
+        if (!((lows.length === highs.length) && (highs.length === closes.length))) {
+            throw ('Inputs(low,high, close) not of equal size');
+        }
+        var trueRange = new TrueRange({
+            low: [],
+            high: [],
+            close: []
+        });
+        var wema$$1 = new WEMA({ period: period, values: [], format: (v) => { return v; } });
+        this.result = [];
+        this.generator = (function* () {
+            var tick = yield;
+            var avgTrueRange, trange;
+            
+            while (true) {
+                trange = trueRange.nextValue({
+                    low: tick.low,
+                    high: tick.high,
+                    close: tick.close
+                });
+                if (trange === undefined) {
+                    avgTrueRange = undefined;
+                }
+                else {
+                    avgTrueRange = wema$$1.nextValue(trange);
+                }
+                tick = yield avgTrueRange;
+            }
+        })();
+        this.generator.next();
+        lows.forEach((tick, index) => {
+            var result = this.generator.next({
+                high: highs[index],
+                low: lows[index],
+                close: closes[index]
+            });
+            if (result.value !== undefined) {
+                this.result.push(format(result.value));
+            }
+        });
+    }
+    ;
+    nextValue(price) {
+        return this.generator.next(price).value;
+    }
+    ;
+}
+ATR.calculate = atr;
+function atr(input) {
+    Indicator.reverseInputs(input);
+    var result = new ATR(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class ROC extends Indicator {
+    constructor(input) {
+        super(input);
+        var period = input.period;
+        var priceArray = input.values;
+        this.result = [];
+        this.generator = (function* () {
+            let index = 1;
+            var pastPeriods = new FixedSizeLinkedList(period);
+            
+            var tick = yield;
+            var roc;
+            while (true) {
+                pastPeriods.push(tick);
+                if (index < period) {
+                    index++;
+                }
+                else {
+                    roc = ((tick - pastPeriods.lastShift) / (pastPeriods.lastShift)) * 100;
+                }
+                tick = yield roc;
+            }
+        })();
+        this.generator.next();
+        priceArray.forEach((tick) => {
+            var result = this.generator.next(tick);
+            if (result.value) {
+                this.result.push(this.format(result.value));
+            }
+        });
+    }
+    nextValue(price) {
+        var nextResult = this.generator.next(price);
+        if (nextResult.value)
+            return this.format(nextResult.value);
+    }
+    ;
+}
+ROC.calculate = roc;
+
+function roc(input) {
+    Indicator.reverseInputs(input);
+    var result = new ROC(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class KST extends Indicator {
+    constructor(input) {
+        super(input);
+        let priceArray = input.values;
+        let rocPer1 = input.ROCPer1;
+        let rocPer2 = input.ROCPer2;
+        let rocPer3 = input.ROCPer3;
+        let rocPer4 = input.ROCPer4;
+        let smaPer1 = input.SMAROCPer1;
+        let smaPer2 = input.SMAROCPer2;
+        let smaPer3 = input.SMAROCPer3;
+        let smaPer4 = input.SMAROCPer4;
+        let signalPeriod = input.signalPeriod;
+        let roc1 = new ROC({ period: rocPer1, values: [] });
+        let roc2 = new ROC({ period: rocPer2, values: [] });
+        let roc3 = new ROC({ period: rocPer3, values: [] });
+        let roc4 = new ROC({ period: rocPer4, values: [] });
+        let sma1 = new SMA({ period: smaPer1, values: [], format: (v) => { return v; } });
+        let sma2 = new SMA({ period: smaPer2, values: [], format: (v) => { return v; } });
+        let sma3 = new SMA({ period: smaPer3, values: [], format: (v) => { return v; } });
+        let sma4 = new SMA({ period: smaPer4, values: [], format: (v) => { return v; } });
+        let signalSMA = new SMA({ period: signalPeriod, values: [], format: (v) => { return v; } });
+        var format = this.format;
+        this.result = [];
+        let firstResult = Math.max(rocPer1 + smaPer1, rocPer2 + smaPer2, rocPer3 + smaPer3, rocPer4 + smaPer4);
+        this.generator = (function* () {
+            let index = 1;
+            let tick = yield;
+            let kst;
+            let RCMA1, RCMA2, RCMA3, RCMA4, signal, result;
+            while (true) {
+                let roc1Result = roc1.nextValue(tick);
+                let roc2Result = roc2.nextValue(tick);
+                let roc3Result = roc3.nextValue(tick);
+                let roc4Result = roc4.nextValue(tick);
+                RCMA1 = (roc1Result !== undefined) ? sma1.nextValue(roc1Result) : undefined;
+                RCMA2 = (roc2Result !== undefined) ? sma2.nextValue(roc2Result) : undefined;
+                RCMA3 = (roc3Result !== undefined) ? sma3.nextValue(roc3Result) : undefined;
+                RCMA4 = (roc4Result !== undefined) ? sma4.nextValue(roc4Result) : undefined;
+                if (index < firstResult) {
+                    index++;
+                }
+                else {
+                    kst = (RCMA1 * 1) + (RCMA2 * 2) + (RCMA3 * 3) + (RCMA4 * 4);
+                }
+                signal = (kst !== undefined) ? signalSMA.nextValue(kst) : undefined;
+                result = kst !== undefined ? {
+                    kst: format(kst),
+                    signal: signal ? format(signal) : undefined
+                } : undefined;
+                tick = yield result;
+            }
+        })();
+        this.generator.next();
+        priceArray.forEach((tick) => {
+            let result = this.generator.next(tick);
+            if (result.value !== undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    nextValue(price) {
+        let nextResult = this.generator.next(price);
+        if (nextResult.value !== undefined)
+            return nextResult.value;
+    }
+    ;
+}
+KST.calculate = kst;
+function kst(input) {
+    Indicator.reverseInputs(input);
+    var result = new KST(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class Stochastic extends Indicator {
+    constructor(input) {
+        super(input);
+        let lows = input.low;
+        let highs = input.high;
+        let closes = input.close;
+        let period = input.period;
+        let signalPeriod = input.signalPeriod;
+        let format = this.format;
+        if (!((lows.length === highs.length) && (highs.length === closes.length))) {
+            throw ('Inputs(low,high, close) not of equal size');
+        }
+        this.result = [];
+        //%K = (Current Close - Lowest Low)/(Highest High - Lowest Low) * 100
+        //%D = 3-day SMA of %K
+        //
+        //Lowest Low = lowest low for the look-back period
+        //Highest High = highest high for the look-back period
+        //%K is multiplied by 100 to move the decimal point two places
+        this.generator = (function* () {
+            let index = 1;
+            let pastHighPeriods = new FixedSizeLinkedList(period, true, false);
+            let pastLowPeriods = new FixedSizeLinkedList(period, false, true);
+            let dSma = new SMA({
+                period: signalPeriod,
+                values: [],
+                format: (v) => { return v; }
+            });
+            let k, d;
+            var tick = yield;
+            while (true) {
+                pastHighPeriods.push(tick.high);
+                pastLowPeriods.push(tick.low);
+                if (index < period) {
+                    index++;
+                    tick = yield;
+                    continue;
+                }
+                let periodLow = pastLowPeriods.periodLow;
+                k = (tick.close - periodLow) / (pastHighPeriods.periodHigh - periodLow) * 100;
+                d = dSma.nextValue(k);
+                tick = yield {
+                    k: format(k),
+                    d: d ? format(d) : undefined
+                };
+            }
+        })();
+        this.generator.next();
+        lows.forEach((tick, index) => {
+            var result = this.generator.next({
+                high: highs[index],
+                low: lows[index],
+                close: closes[index]
+            });
+            if (result.value !== undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    nextValue(input) {
+        let nextResult = this.generator.next(input);
+        if (nextResult.value !== undefined)
+            return nextResult.value;
+    }
+    ;
+}
+Stochastic.calculate = stochastic;
+function stochastic(input) {
+    Indicator.reverseInputs(input);
+    var result = new Stochastic(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class WilliamsR extends Indicator {
+    constructor(input) {
+        super(input);
+        let lows = input.low;
+        let highs = input.high;
+        let closes = input.close;
+        let period = input.period;
+        let format = this.format;
+        if (!((lows.length === highs.length) && (highs.length === closes.length))) {
+            throw ('Inputs(low,high, close) not of equal size');
+        }
+        this.result = [];
+        //%R = (Highest High - Close)/(Highest High - Lowest Low) * -100
+        //Lowest Low = lowest low for the look-back period
+        //Highest High = highest high for the look-back period
+        //%R is multiplied by -100 correct the inversion and move the decimal.
+        this.generator = (function* () {
+            let index = 1;
+            let pastHighPeriods = new FixedSizeLinkedList(period, true, false);
+            let pastLowPeriods = new FixedSizeLinkedList(period, false, true);
+            let periodLow;
+            let periodHigh;
+            var tick = yield;
+            let williamsR;
+            while (true) {
+                pastHighPeriods.push(tick.high);
+                pastLowPeriods.push(tick.low);
+                if (index < period) {
+                    index++;
+                    tick = yield;
+                    continue;
+                }
+                periodLow = pastLowPeriods.periodLow;
+                periodHigh = pastHighPeriods.periodHigh;
+                williamsR = format((periodHigh - tick.close) / (periodHigh - periodLow) * -100);
+                tick = yield williamsR;
+            }
+        })();
+        this.generator.next();
+        lows.forEach((low, index) => {
+            var result = this.generator.next({
+                high: highs[index],
+                low: lows[index],
+                close: closes[index]
+            });
+            if (result.value !== undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    nextValue(price) {
+        var nextResult = this.generator.next(price);
+        if (nextResult.value)
+            return this.format(nextResult.value);
+    }
+    ;
+}
+WilliamsR.calculate = williamsr;
+function williamsr(input) {
+    Indicator.reverseInputs(input);
+    var result = new WilliamsR(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+/**
+ * Created by AAravindan on 5/17/16.
+ */
+
+class ADL extends Indicator {
+    constructor(input) {
+        super(input);
+        var highs = input.high;
+        var lows = input.low;
+        var closes = input.close;
+        var volumes = input.volume;
+        if (!((lows.length === highs.length) && (highs.length === closes.length) && (highs.length === volumes.length))) {
+            throw ('Inputs(low,high, close, volumes) not of equal size');
+        }
+        this.result = [];
+        this.generator = (function* () {
+            var result = 0;
+            var tick;
+            tick = yield;
+            while (true) {
+                let moneyFlowMultiplier = ((tick.close - tick.low) - (tick.high - tick.close)) / (tick.high - tick.low);
+                let moneyFlowVolume = moneyFlowMultiplier * tick.volume;
+                result = result + moneyFlowVolume;
+                tick = yield Math.round(result);
+            }
+        })();
+        this.generator.next();
+        highs.forEach((tickHigh, index) => {
+            var tickInput = {
+                high: tickHigh,
+                low: lows[index],
+                close: closes[index],
+                volume: volumes[index]
+            };
+            var result = this.generator.next(tickInput);
+            if (result.value) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    nextValue(price) {
+        return this.generator.next(price).value;
+    }
+    ;
+}
+ADL.calculate = adl;
+function adl(input) {
+    Indicator.reverseInputs(input);
+    var result = new ADL(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class OBV extends Indicator {
+    constructor(input) {
+        super(input);
+        var closes = input.close;
+        var volumes = input.volume;
+        this.result = [];
+        this.generator = (function* () {
+            var result = 0;
+            var tick;
+            var lastClose;
+            tick = yield;
+            if (tick.close && (typeof tick.close === 'number')) {
+                lastClose = tick.close;
+                tick = yield;
+            }
+            while (true) {
+                if (lastClose < tick.close) {
+                    result = result + tick.volume;
+                }
+                else if (tick.close < lastClose) {
+                    result = result - tick.volume;
+                }
+                lastClose = tick.close;
+                tick = yield result;
+            }
+        })();
+        this.generator.next();
+        closes.forEach((close, index) => {
+            let tickInput = {
+                close: closes[index],
+                volume: volumes[index]
+            };
+            let result = this.generator.next(tickInput);
+            if (result.value) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    nextValue(price) {
+        return this.generator.next(price).value;
+    }
+    ;
+}
+OBV.calculate = obv;
+function obv(input) {
+    Indicator.reverseInputs(input);
+    var result = new OBV(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+/**
+ * Created by AAravindan on 5/9/16.
+ */
+
+
+class TRIX extends Indicator {
+    constructor(input) {
+        super(input);
+        let priceArray = input.values;
+        let period = input.period;
+        let format = this.format;
+        let ema$$1 = new EMA({ period: period, values: [], format: (v) => { return v; } });
+        let emaOfema = new EMA({ period: period, values: [], format: (v) => { return v; } });
+        let emaOfemaOfema = new EMA({ period: period, values: [], format: (v) => { return v; } });
+        let trixROC = new ROC({ period: 1, values: [], format: (v) => { return v; } });
+        this.result = [];
+        this.generator = (function* () {
+            let tick = yield;
+            while (true) {
+                let initialema = ema$$1.nextValue(tick);
+                let smoothedResult = initialema ? emaOfema.nextValue(initialema) : undefined;
+                let doubleSmoothedResult = smoothedResult ? emaOfemaOfema.nextValue(smoothedResult) : undefined;
+                let result = doubleSmoothedResult ? trixROC.nextValue(doubleSmoothedResult) : undefined;
+                tick = yield result ? format(result) : undefined;
+            }
+        })();
+        this.generator.next();
+        priceArray.forEach((tick) => {
+            let result = this.generator.next(tick);
+            if (result.value !== undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    nextValue(price) {
+        let nextResult = this.generator.next(price);
+        if (nextResult.value !== undefined)
+            return nextResult.value;
+    }
+    ;
+}
+TRIX.calculate = trix;
+function trix(input) {
+    Indicator.reverseInputs(input);
+    var result = new TRIX(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class CandlestickFinder {
+    constructor() {
+        // if (new.target === Abstract) {
+        //     throw new TypeError("Abstract class");
+        // }
+    }
+    approximateEqual(a, b) {
+        let left = parseFloat(Math.abs(a - b).toPrecision(4)) * 1;
+        let right = parseFloat((a * 0.001).toPrecision(4)) * 1;
+        return left <= right;
+    }
+    logic(data) {
+        throw "this has to be implemented";
+    }
+    getAllPatternIndex(data) {
+        if (data.close.length < this.requiredCount) {
+            console.warn('Data count less than data required for the strategy ', this.name);
+            return [];
+        }
+        if (data.reversedInput) {
+            data.open.reverse();
+            data.high.reverse();
+            data.low.reverse();
+            data.close.reverse();
+        }
+        let strategyFn = this.logic;
+        return this._generateDataForCandleStick(data)
+            .map((current, index) => {
+            return strategyFn.call(this, current) ? index : undefined;
+        }).filter((hasIndex) => {
+            return hasIndex;
+        });
+    }
+    hasPattern(data) {
+        if (data.close.length < this.requiredCount) {
+            console.warn('Data count less than data required for the strategy ', this.name);
+            return false;
+        }
+        if (data.reversedInput) {
+            data.open.reverse();
+            data.high.reverse();
+            data.low.reverse();
+            data.close.reverse();
+        }
+        let strategyFn = this.logic;
+        return strategyFn.call(this, this._getLastDataForCandleStick(data));
+    }
+    _getLastDataForCandleStick(data) {
+        let requiredCount = this.requiredCount;
+        if (data.close.length === requiredCount) {
+            return data;
+        }
+        else {
+            let returnVal = {
+                open: [],
+                high: [],
+                low: [],
+                close: []
+            };
+            let i = 0;
+            let index = data.close.length - requiredCount;
+            while (i < requiredCount) {
+                returnVal.open.push(data.open[index + i]);
+                returnVal.high.push(data.high[index + i]);
+                returnVal.low.push(data.low[index + i]);
+                returnVal.close.push(data.close[index + i]);
+                i++;
+            }
+            return returnVal;
+        }
+    }
+    _generateDataForCandleStick(data) {
+        let requiredCount = this.requiredCount;
+        let generatedData = data.close.map(function (currentData, index) {
+            let i = 0;
+            let returnVal = {
+                open: [],
+                high: [],
+                low: [],
+                close: []
+            };
+            while (i < requiredCount) {
+                returnVal.open.push(data.open[index + i]);
+                returnVal.high.push(data.high[index + i]);
+                returnVal.low.push(data.low[index + i]);
+                returnVal.close.push(data.close[index + i]);
+                i++;
+            }
+            return returnVal;
+        }).filter((val, index) => { return (index <= (data.close.length - requiredCount)); });
+        return generatedData;
+    }
+}
+
+class MorningStar extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'MorningStar';
+        this.requiredCount = 3;
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let thirddaysOpen = data.open[2];
+        let thirddaysClose = data.close[2];
+        let thirddaysHigh = data.high[2];
+        let thirddaysLow = data.low[2];
+        let firstdaysMidpoint = ((firstdaysOpen + firstdaysClose) / 2);
+        let isFirstBearish = firstdaysClose < firstdaysOpen;
+        let isSmallBodyExists = ((firstdaysLow > seconddaysLow) &&
+            (firstdaysLow > seconddaysHigh));
+        let isThirdBullish = thirddaysOpen < thirddaysClose;
+        let gapExists = ((seconddaysHigh < firstdaysLow) &&
+            (seconddaysLow < firstdaysLow) &&
+            (thirddaysOpen > seconddaysHigh) &&
+            (seconddaysClose < thirddaysOpen));
+        let doesCloseAboveFirstMidpoint = thirddaysClose > firstdaysMidpoint;
+        return (isFirstBearish && isSmallBodyExists && gapExists && isThirdBullish && doesCloseAboveFirstMidpoint);
+    }
+}
+function morningstar(data) {
+    return new MorningStar().hasPattern(data);
+}
+
+class BullishEngulfingPattern extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'BullishEngulfingPattern';
+        this.requiredCount = 2;
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let isBullishEngulfing = ((firstdaysClose < firstdaysOpen) &&
+            (firstdaysOpen > seconddaysOpen) &&
+            (firstdaysClose > seconddaysOpen) &&
+            (firstdaysOpen < seconddaysClose));
+        return (isBullishEngulfing);
+    }
+}
+function bullishengulfingpattern(data) {
+    return new BullishEngulfingPattern().hasPattern(data);
+}
+
+class BullishHarami extends CandlestickFinder {
+    constructor() {
+        super();
+        this.requiredCount = 2;
+        this.name = "BullishHarami";
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let isBullishHaramiPattern = ((firstdaysOpen < seconddaysOpen) &&
+            (firstdaysClose > seconddaysOpen) &&
+            (firstdaysClose > seconddaysClose) &&
+            (firstdaysOpen < seconddaysLow) &&
+            (firstdaysHigh > seconddaysHigh));
+        return (isBullishHaramiPattern);
+    }
+}
+function bullishharami(data) {
+    return new BullishHarami().hasPattern(data);
+}
+
+class BullishHaramiCross extends CandlestickFinder {
+    constructor() {
+        super();
+        this.requiredCount = 2;
+        this.name = 'BullishHaramiCross';
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let isBullishHaramiCrossPattern = ((firstdaysOpen < seconddaysOpen) &&
+            (firstdaysClose > seconddaysOpen) &&
+            (firstdaysClose > seconddaysClose) &&
+            (firstdaysOpen < seconddaysLow) &&
+            (firstdaysHigh > seconddaysHigh));
+        let isSecondDayDoji = this.approximateEqual(seconddaysOpen, seconddaysClose);
+        return (isBullishHaramiCrossPattern && isSecondDayDoji);
+    }
+}
+function bullishharamicross(data) {
+    return new BullishHaramiCross().hasPattern(data);
+}
+
+class Doji extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'Doji';
+        this.requiredCount = 1;
+    }
+    logic(data) {
+        let daysOpen = data.open[0];
+        let daysClose = data.close[0];
+        return this.approximateEqual(daysOpen, daysClose);
+    }
+}
+function doji(data) {
+    return new Doji().hasPattern(data);
+}
+
+class MorningDojiStar extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'MorningDojiStar';
+        this.requiredCount = 3;
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let thirddaysOpen = data.open[2];
+        let thirddaysClose = data.close[2];
+        let thirddaysHigh = data.high[2];
+        let thirddaysLow = data.low[2];
+        let firstdaysMidpoint = ((firstdaysOpen + firstdaysClose) / 2);
+        let isFirstBearish = firstdaysClose < firstdaysOpen;
+        let dojiExists = new Doji().hasPattern({
+            "open": [seconddaysOpen],
+            "close": [seconddaysClose],
+            "high": [seconddaysHigh],
+            "low": [seconddaysLow]
+        });
+        let isThirdBullish = thirddaysOpen < thirddaysClose;
+        let gapExists = ((seconddaysHigh < firstdaysLow) &&
+            (seconddaysLow < firstdaysLow) &&
+            (thirddaysOpen > seconddaysHigh) &&
+            (seconddaysClose < thirddaysOpen));
+        let doesCloseAboveFirstMidpoint = thirddaysClose > firstdaysMidpoint;
+        return (isFirstBearish && dojiExists && isThirdBullish && gapExists &&
+            doesCloseAboveFirstMidpoint);
+    }
+}
+function morningdojistar(data) {
+    return new MorningDojiStar().hasPattern(data);
+}
+
+class DownsideTasukiGap extends CandlestickFinder {
+    constructor() {
+        super();
+        this.requiredCount = 3;
+        this.name = 'DownsideTasukiGap';
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let thirddaysOpen = data.open[2];
+        let thirddaysClose = data.close[2];
+        let thirddaysHigh = data.high[2];
+        let thirddaysLow = data.low[2];
+        let isFirstBearish = firstdaysClose < firstdaysOpen;
+        let isSecondBearish = seconddaysClose < seconddaysOpen;
+        let isThirdBullish = thirddaysClose > thirddaysOpen;
+        let isFirstGapExists = seconddaysHigh < firstdaysLow;
+        let isDownsideTasukiGap = ((seconddaysOpen > thirddaysOpen) &&
+            (seconddaysClose < thirddaysOpen) &&
+            (thirddaysClose > seconddaysOpen) &&
+            (thirddaysClose < firstdaysClose));
+        return (isFirstBearish && isSecondBearish && isThirdBullish && isFirstGapExists && isDownsideTasukiGap);
+    }
+}
+function downsidetasukigap(data) {
+    return new DownsideTasukiGap().hasPattern(data);
+}
+
+class BullishMarubozu extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'BullishMarubozu';
+        this.requiredCount = 1;
+    }
+    logic(data) {
+        let daysOpen = data.open[0];
+        let daysClose = data.close[0];
+        let daysHigh = data.high[0];
+        let daysLow = data.low[0];
+        let isBullishMarbozu = this.approximateEqual(daysClose, daysHigh) &&
+            this.approximateEqual(daysLow, daysOpen) &&
+            daysOpen < daysClose &&
+            daysOpen < daysHigh;
+        return (isBullishMarbozu);
+    }
+}
+function bullishmarubozu(data) {
+    return new BullishMarubozu().hasPattern(data);
+}
+
+class PiercingLine extends CandlestickFinder {
+    constructor() {
+        super();
+        this.requiredCount = 2;
+        this.name = 'PiercingLine';
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let firstdaysMidpoint = ((firstdaysOpen + firstdaysClose) / 2);
+        let isDowntrend = seconddaysLow < firstdaysLow;
+        let isFirstBearish = firstdaysClose < firstdaysOpen;
+        let isSecondBullish = seconddaysClose > seconddaysOpen;
+        let isPiercingLinePattern = ((firstdaysLow > seconddaysOpen) &&
+            (seconddaysClose > firstdaysMidpoint));
+        return (isDowntrend && isFirstBearish && isPiercingLinePattern && isSecondBullish);
+    }
+}
+function piercingline(data) {
+    return new PiercingLine().hasPattern(data);
+}
+
+class ThreeWhiteSoldiers extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'ThreeWhiteSoldiers';
+        this.requiredCount = 3;
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let thirddaysOpen = data.open[2];
+        let thirddaysClose = data.close[2];
+        let thirddaysHigh = data.high[2];
+        let thirddaysLow = data.low[2];
+        let isUpTrend = seconddaysHigh > firstdaysHigh &&
+            thirddaysHigh > seconddaysHigh;
+        let isAllBullish = firstdaysOpen < firstdaysClose &&
+            seconddaysOpen < seconddaysClose &&
+            thirddaysOpen < thirddaysClose;
+        let doesOpenWithinPreviousBody = firstdaysClose > seconddaysOpen &&
+            seconddaysOpen < firstdaysHigh &&
+            seconddaysHigh > thirddaysOpen &&
+            thirddaysOpen < seconddaysClose;
+        return (isUpTrend && isAllBullish && doesOpenWithinPreviousBody);
+    }
+}
+function threewhitesoldiers(data) {
+    return new ThreeWhiteSoldiers().hasPattern(data);
+}
+
+let bullishPatterns = [new BullishEngulfingPattern(), new DownsideTasukiGap(), new BullishHarami(), new BullishHaramiCross(),
+    new MorningDojiStar(), new MorningStar(), new BullishMarubozu(), new PiercingLine(), new ThreeWhiteSoldiers()];
+class BullishPatterns extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'Bullish Candlesticks';
+    }
+    hasPattern(data) {
+        return bullishPatterns.reduce(function (state, pattern) {
+            let result = pattern.hasPattern(data);
+            if (result) {
+                console.log('Matched pattern ', pattern.name);
+            }
+            return state || result;
+        }, false);
+    }
+}
+function bullish(data) {
+    return new BullishPatterns().hasPattern(data);
+}
+
+class BearishEngulfingPattern extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'BearishEngulfingPattern';
+        this.requiredCount = 2;
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let isBearishEngulfing = ((firstdaysClose > firstdaysOpen) &&
+            (firstdaysOpen < seconddaysOpen) &&
+            (firstdaysClose < seconddaysOpen) &&
+            (firstdaysOpen > seconddaysClose));
+        return (isBearishEngulfing);
+    }
+}
+function bearishengulfingpattern(data) {
+    return new BearishEngulfingPattern().hasPattern(data);
+}
+
+class BearishHarami extends CandlestickFinder {
+    constructor() {
+        super();
+        this.requiredCount = 2;
+        this.name = 'BearishHarami';
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let isBearishHaramiPattern = ((firstdaysOpen > seconddaysOpen) &&
+            (firstdaysClose < seconddaysOpen) &&
+            (firstdaysClose < seconddaysClose) &&
+            (firstdaysOpen > seconddaysLow) &&
+            (firstdaysHigh > seconddaysHigh));
+        return (isBearishHaramiPattern);
+    }
+}
+function bearishharami(data) {
+    return new BearishHarami().hasPattern(data);
+}
+
+class BearishHaramiCross extends CandlestickFinder {
+    constructor() {
+        super();
+        this.requiredCount = 2;
+        this.name = 'BearishHaramiCross';
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let isBearishHaramiCrossPattern = ((firstdaysOpen > seconddaysOpen) &&
+            (firstdaysClose < seconddaysOpen) &&
+            (firstdaysClose < seconddaysClose) &&
+            (firstdaysOpen > seconddaysLow) &&
+            (firstdaysHigh > seconddaysHigh));
+        let isSecondDayDoji = this.approximateEqual(seconddaysOpen, seconddaysClose);
+        return (isBearishHaramiCrossPattern && isSecondDayDoji);
+    }
+}
+function bearishharamicross(data) {
+    return new BearishHaramiCross().hasPattern(data);
+}
+
+class EveningDojiStar extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'EveningDojiStar';
+        this.requiredCount = 3;
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let thirddaysOpen = data.open[2];
+        let thirddaysClose = data.close[2];
+        let thirddaysHigh = data.high[2];
+        let thirddaysLow = data.low[2];
+        let firstdaysMidpoint = ((firstdaysOpen + firstdaysClose) / 2);
+        let isFirstBullish = firstdaysClose > firstdaysOpen;
+        let dojiExists = new Doji().hasPattern({
+            "open": [seconddaysOpen],
+            "close": [seconddaysClose],
+            "high": [seconddaysHigh],
+            "low": [seconddaysLow]
+        });
+        let isThirdBearish = thirddaysOpen > thirddaysClose;
+        let gapExists = ((seconddaysHigh > firstdaysHigh) &&
+            (seconddaysLow > firstdaysHigh) &&
+            (thirddaysOpen < seconddaysLow) &&
+            (seconddaysClose > thirddaysOpen));
+        let doesCloseBelowFirstMidpoint = thirddaysClose < firstdaysMidpoint;
+        return (isFirstBullish && dojiExists && gapExists && isThirdBearish && doesCloseBelowFirstMidpoint);
+    }
+}
+function eveningdojistar(data) {
+    return new EveningDojiStar().hasPattern(data);
+}
+
+class EveningStar extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'EveningStar';
+        this.requiredCount = 3;
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let thirddaysOpen = data.open[2];
+        let thirddaysClose = data.close[2];
+        let thirddaysHigh = data.high[2];
+        let thirddaysLow = data.low[2];
+        let firstdaysMidpoint = ((firstdaysOpen + firstdaysClose) / 2);
+        let isFirstBullish = firstdaysClose > firstdaysOpen;
+        let isSmallBodyExists = ((firstdaysHigh < seconddaysLow) &&
+            (firstdaysHigh < seconddaysHigh));
+        let isThirdBearish = thirddaysOpen > thirddaysClose;
+        let gapExists = ((seconddaysHigh > firstdaysHigh) &&
+            (seconddaysLow > firstdaysHigh) &&
+            (thirddaysOpen < seconddaysLow) &&
+            (seconddaysClose > thirddaysOpen));
+        let doesCloseBelowFirstMidpoint = thirddaysClose < firstdaysMidpoint;
+        return (isFirstBullish && isSmallBodyExists && gapExists && isThirdBearish && doesCloseBelowFirstMidpoint);
+    }
+}
+function eveningstar(data) {
+    return new EveningStar().hasPattern(data);
+}
+
+class BearishMarubozu extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'BearishMarubozu';
+        this.requiredCount = 1;
+    }
+    logic(data) {
+        let daysOpen = data.open[0];
+        let daysClose = data.close[0];
+        let daysHigh = data.high[0];
+        let daysLow = data.low[0];
+        let isBearishMarbozu = this.approximateEqual(daysOpen, daysHigh) &&
+            this.approximateEqual(daysLow, daysClose) &&
+            daysOpen > daysClose &&
+            daysOpen > daysLow;
+        return (isBearishMarbozu);
+    }
+}
+function bearishmarubozu(data) {
+    return new BearishMarubozu().hasPattern(data);
+}
+
+class ThreeBlackCrows extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'ThreeBlackCrows';
+        this.requiredCount = 3;
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let thirddaysOpen = data.open[2];
+        let thirddaysClose = data.close[2];
+        let thirddaysHigh = data.high[2];
+        let thirddaysLow = data.low[2];
+        let isDownTrend = firstdaysLow > seconddaysLow &&
+            seconddaysLow > thirddaysLow;
+        let isAllBearish = firstdaysOpen > firstdaysClose &&
+            seconddaysOpen > seconddaysClose &&
+            thirddaysOpen > thirddaysClose;
+        let doesOpenWithinPreviousBody = firstdaysOpen > seconddaysOpen &&
+            seconddaysOpen > firstdaysClose &&
+            seconddaysOpen > thirddaysOpen &&
+            thirddaysOpen > seconddaysClose;
+        return (isDownTrend && isAllBearish && doesOpenWithinPreviousBody);
+    }
+}
+function threeblackcrows(data) {
+    return new ThreeBlackCrows().hasPattern(data);
+}
+
+let bearishPatterns = [new BearishEngulfingPattern(), new BearishHarami(), new BearishHaramiCross(), new EveningDojiStar(),
+    new EveningStar(), new BearishMarubozu(), new ThreeBlackCrows()];
+class BearishPatterns extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'Bearish Candlesticks';
+    }
+    hasPattern(data) {
+        return bearishPatterns.reduce(function (state, pattern) {
+            return state || pattern.hasPattern(data);
+        }, false);
+    }
+}
+function bearish(data) {
+    return new BearishPatterns().hasPattern(data);
+}
+
+class AbandonedBaby extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'AbandonedBaby';
+        this.requiredCount = 3;
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let thirddaysOpen = data.open[2];
+        let thirddaysClose = data.close[2];
+        let thirddaysHigh = data.high[2];
+        let thirddaysLow = data.low[2];
+        let isFirstBearish = firstdaysClose < firstdaysOpen;
+        let dojiExists = new Doji().hasPattern({
+            "open": [seconddaysOpen],
+            "close": [seconddaysClose],
+            "high": [seconddaysHigh],
+            "low": [seconddaysLow]
+        });
+        let gapExists = ((seconddaysHigh < firstdaysLow) &&
+            (thirddaysLow > seconddaysHigh) &&
+            (thirddaysClose > thirddaysOpen));
+        let isThirdBullish = (thirddaysHigh < firstdaysOpen);
+        return (isFirstBearish && dojiExists && gapExists && isThirdBullish);
+    }
+}
+function abandonedbaby(data) {
+    return new AbandonedBaby().hasPattern(data);
+}
+
+class DarkCloudCover extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'DarkCloudCover';
+        this.requiredCount = 2;
+    }
+    logic(data) {
+        let firstdaysOpen = data.open[0];
+        let firstdaysClose = data.close[0];
+        let firstdaysHigh = data.high[0];
+        let firstdaysLow = data.low[0];
+        let seconddaysOpen = data.open[1];
+        let seconddaysClose = data.close[1];
+        let seconddaysHigh = data.high[1];
+        let seconddaysLow = data.low[1];
+        let firstdayMidpoint = ((firstdaysClose + firstdaysOpen) / 2);
+        let isFirstBullish = firstdaysClose > firstdaysOpen;
+        let isSecondBearish = seconddaysClose < seconddaysOpen;
+        let isDarkCloudPattern = ((seconddaysOpen > firstdaysHigh) &&
+            (seconddaysClose < firstdayMidpoint) &&
+            (seconddaysClose > firstdaysOpen));
+        return (isFirstBullish && isSecondBearish && isDarkCloudPattern);
+    }
+}
+function darkcloudcover(data) {
+    return new DarkCloudCover().hasPattern(data);
+}
+
+class DragonFlyDoji extends CandlestickFinder {
+    constructor() {
+        super();
+        this.requiredCount = 1;
+        this.name = 'DragonFlyDoji';
+    }
+    logic(data) {
+        let daysOpen = data.open[0];
+        let daysClose = data.close[0];
+        let daysHigh = data.high[0];
+        let isOpenEqualsClose = this.approximateEqual(daysOpen, daysClose);
+        let isHighEqualsOpen = this.approximateEqual(daysOpen, daysHigh);
+        return (isOpenEqualsClose && isHighEqualsOpen);
+    }
+}
+function dragonflydoji(data) {
+    return new DragonFlyDoji().hasPattern(data);
+}
+
+class GraveStoneDoji extends CandlestickFinder {
+    constructor() {
+        super();
+        this.requiredCount = 1;
+        this.name = 'GraveStoneDoji';
+    }
+    logic(data) {
+        let daysOpen = data.open[0];
+        let daysClose = data.close[0];
+        let daysLow = data.low[0];
+        let isOpenEqualsClose = this.approximateEqual(daysOpen, daysClose);
+        let isLowEqualsOpen = this.approximateEqual(daysOpen, daysLow);
+        return (isOpenEqualsClose && isLowEqualsOpen);
+    }
+}
+function gravestonedoji(data) {
+    return new GraveStoneDoji().hasPattern(data);
+}
+
+class BullishSpinningTop extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'BullishSpinningTop';
+        this.requiredCount = 1;
+    }
+    logic(data) {
+        let daysOpen = data.open[0];
+        let daysClose = data.close[0];
+        let daysHigh = data.high[0];
+        let daysLow = data.low[0];
+        let bodyLength = Math.abs(daysClose - daysOpen);
+        let upperShadowLength = Math.abs(daysHigh - daysClose);
+        let lowerShadowLength = Math.abs(daysOpen - daysLow);
+        let isBullishSpinningTop = bodyLength < upperShadowLength &&
+            bodyLength < lowerShadowLength;
+        return isBullishSpinningTop;
+    }
+}
+function bullishspinningtop(data) {
+    return new BullishSpinningTop().hasPattern(data);
+}
+
+class BearishSpinningTop extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'BearishSpinningTop';
+        this.requiredCount = 1;
+    }
+    logic(data) {
+        let daysOpen = data.open[0];
+        let daysClose = data.close[0];
+        let daysHigh = data.high[0];
+        let daysLow = data.low[0];
+        let bodyLength = Math.abs(daysClose - daysOpen);
+        let upperShadowLength = Math.abs(daysHigh - daysOpen);
+        let lowerShadowLength = Math.abs(daysHigh - daysLow);
+        let isBearishSpinningTop = bodyLength < upperShadowLength &&
+            bodyLength < lowerShadowLength;
+        return isBearishSpinningTop;
+    }
+}
+function bearishspinningtop(data) {
+    return new BearishSpinningTop().hasPattern(data);
+}
+
+/**
+ * Calcaultes the fibonacci retracements for given start and end points
+ *
+ * If calculating for up trend start should be low and end should be high and vice versa
+ *
+ * returns an array of retracements level containing [0 , 23.6, 38.2, 50, 61.8, 78.6, 100, 127.2, 161.8, 261.8, 423.6]
+ *
+ * @export
+ * @param {number} start
+ * @param {number} end
+ * @returns {number[]}
+ */
+/**
+ * Calcaultes the fibonacci retracements for given start and end points
+ *
+ * If calculating for up trend start should be low and end should be high and vice versa
+ *
+ * returns an array of retracements level containing [0 , 23.6, 38.2, 50, 61.8, 78.6, 100, 127.2, 161.8, 261.8, 423.6]
+ *
+ * @export
+ * @param {number} start
+ * @param {number} end
+ * @returns {number[]}
+ */ function fibonacciretracement(start, end) {
+    let levels = [0, 23.6, 38.2, 50, 61.8, 78.6, 100, 127.2, 161.8, 261.8, 423.6];
+    let retracements;
+    if (start < end) {
+        retracements = levels.map(function (level) {
+            let calculated = end - Math.abs(start - end) * (level) / 100;
+            return calculated > 0 ? calculated : 0;
+        });
+    }
+    else {
+        retracements = levels.map(function (level) {
+            let calculated = end + Math.abs(start - end) * (level) / 100;
+            return calculated > 0 ? calculated : 0;
+        });
+    }
+    return retracements;
+}
+
+function getAvailableIndicators () {
+  let AvailableIndicators   = [];
+  AvailableIndicators.push('sma');
+  AvailableIndicators.push('ema');
+  AvailableIndicators.push('wma');
+  AvailableIndicators.push('wema');
+  AvailableIndicators.push('macd');
+  AvailableIndicators.push('rsi');
+  AvailableIndicators.push('bollingerbands');
+  AvailableIndicators.push('adx');
+  AvailableIndicators.push('atr');
+  AvailableIndicators.push('truerange');
+  AvailableIndicators.push('roc');
+  AvailableIndicators.push('kst');
+  AvailableIndicators.push('stochastic');
+  AvailableIndicators.push('williamsr');
+  AvailableIndicators.push('adl');
+  AvailableIndicators.push('obv');
+  AvailableIndicators.push('trix');
+  AvailableIndicators.push('averagegain');
+  AvailableIndicators.push('averageloss');
+  AvailableIndicators.push('sd');
+  AvailableIndicators.push('bullish');
+  AvailableIndicators.push('bearish');
+  AvailableIndicators.push('abandonedbaby');
+  AvailableIndicators.push('doji');
+  AvailableIndicators.push('bearishengulfingpattern');
+  AvailableIndicators.push('bullishengulfingpattern');
+  AvailableIndicators.push('darkcloudcover');
+  AvailableIndicators.push('downsidetasukigap');
+  AvailableIndicators.push('dragonflydoji');
+  AvailableIndicators.push('gravestonedoji');
+  AvailableIndicators.push('bullishharami');
+  AvailableIndicators.push('bearishharami');
+  AvailableIndicators.push('bullishharamicross');
+  AvailableIndicators.push('bearishharamicross');
+  AvailableIndicators.push('eveningdojistar');
+  AvailableIndicators.push('eveningstar');
+  AvailableIndicators.push('morningdojistar');
+  AvailableIndicators.push('morningstar');
+  AvailableIndicators.push('bullishmarubozu');
+  AvailableIndicators.push('bearishmarubozu');
+  AvailableIndicators.push('piercingline');
+  AvailableIndicators.push('bullishspinningtop');
+  AvailableIndicators.push('bearishspinningtop');
+  AvailableIndicators.push('threeblackcrows');
+  AvailableIndicators.push('threewhitesoldiers');
+  return AvailableIndicators;
+}
+
+exports.getAvailableIndicators = getAvailableIndicators;
+exports.sma = sma;
+exports.SMA = SMA;
+exports.ema = ema;
+exports.EMA = EMA;
+exports.wma = wma;
+exports.WMA = WMA;
+exports.wema = wema;
+exports.WEMA = WEMA;
+exports.macd = macd;
+exports.MACD = MACD;
+exports.rsi = rsi;
+exports.RSI = RSI;
+exports.bollingerbands = bollingerbands;
+exports.BollingerBands = BollingerBands;
+exports.adx = adx;
+exports.ADX = ADX;
+exports.atr = atr;
+exports.ATR = ATR;
+exports.truerange = truerange;
+exports.TrueRange = TrueRange;
+exports.roc = roc;
+exports.ROC = ROC;
+exports.kst = kst;
+exports.KST = KST;
+exports.stochastic = stochastic;
+exports.Stochastic = Stochastic;
+exports.williamsr = williamsr;
+exports.WilliamsR = WilliamsR;
+exports.adl = adl;
+exports.ADL = ADL;
+exports.obv = obv;
+exports.OBV = OBV;
+exports.trix = trix;
+exports.TRIX = TRIX;
+exports.averagegain = averagegain;
+exports.AverageGain = AverageGain;
+exports.averageloss = averageloss;
+exports.AverageLoss = AverageLoss;
+exports.sd = sd;
+exports.SD = SD;
+exports.bullish = bullish;
+exports.bearish = bearish;
+exports.abandonedbaby = abandonedbaby;
+exports.doji = doji;
+exports.bearishengulfingpattern = bearishengulfingpattern;
+exports.bullishengulfingpattern = bullishengulfingpattern;
+exports.darkcloudcover = darkcloudcover;
+exports.downsidetasukigap = downsidetasukigap;
+exports.dragonflydoji = dragonflydoji;
+exports.gravestonedoji = gravestonedoji;
+exports.bullishharami = bullishharami;
+exports.bearishharami = bearishharami;
+exports.bullishharamicross = bullishharamicross;
+exports.bearishharamicross = bearishharamicross;
+exports.eveningdojistar = eveningdojistar;
+exports.eveningstar = eveningstar;
+exports.morningdojistar = morningdojistar;
+exports.morningstar = morningstar;
+exports.bullishmarubozu = bullishmarubozu;
+exports.bearishmarubozu = bearishmarubozu;
+exports.piercingline = piercingline;
+exports.bullishspinningtop = bullishspinningtop;
+exports.bearishspinningtop = bearishspinningtop;
+exports.threeblackcrows = threeblackcrows;
+exports.threewhitesoldiers = threewhitesoldiers;
+exports.fibonacciretracement = fibonacciretracement;
+exports.setConfig = setConfig;
+exports.getConfig = getConfig;
 //# sourceMappingURL=index.js.map

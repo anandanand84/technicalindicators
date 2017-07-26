@@ -33,7 +33,12 @@ async function doBuild() {
       moduleName: 'window',
       'sourceMap': true
     })
-    bundle.write({
+
+    let bundleNode = await rollup({
+      entry: 'index.js'
+    });
+
+    bundleNode.write({
       'banner': '/* APP */',
       dest: 'dist/index.js',
       format: 'cjs',

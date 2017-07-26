@@ -6,22 +6,36 @@ A javascript technical indicators written in javascript.
 
 # Installation
 
-For nodejs install using npm
+## Nodejs
 
 ``` 
+npm install --save babel-polyfill
 npm install --save technicalindicators
 ```
+
+### node usage above 6.4
 
 ```
 const SMA = require('technicalindicators').SMA;
 ```
-For browser install using bower or npm, but it is necessary to include the babel-polyfill otherwise you will get an error.
+
+### node usage below 6.4
+
+```
+require('babel-polyfill);
+const SMA = require('technicalindicators/dist/browser').SMA;
+```
+
+## Browser
+
+For browser install using bower or npm, but it is necessary to include the babel-polyfill otherwise you will get an error. For example see [index.html](https://github.com/anandanand84/technicalindicators/blob/master/index.html "index.html")
 
 ```
 npm install --save technicalindicators
 npm install --save babel-polyfill
 bower install --save technicalindicators
 ```
+
 ```
 <script src="node_modules/babel-polyfill/browser.js"></script>
 <script src="bower_components/technicalindicators/browser.js"></script>
@@ -40,7 +54,7 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 
 # Playground
   
-  [Playground with code completion](https://anandanand84.github.io/ "Playground")
+  [Playground with code completion](http://anandanand84.github.io/technicalindicators/ "Playground")
 
 # Available Indicators
 
@@ -59,7 +73,7 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 13. [Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "ADL").
 14. [On Balance Volume (OBV)](https://tonicdev.com/anandaravindan/obv "OBV").
 15. [Triple Exponentially Smoothed Average (TRIX)](https://tonicdev.com/anandaravindan/trix "TRIX").
-15. [Average Directional Index (ADX)](https://tonicdev.com/anandaravindan/adx "ADX").
+16. [Average Directional Index (ADX)](https://tonicdev.com/anandaravindan/adx "ADX").
 
 
 # CandleStick Pattern
