@@ -25,6 +25,18 @@ const SMA = require('technicalindicators').SMA;
 require('babel-polyfill);
 const SMA = require('technicalindicators/dist/browser').SMA;
 ```
+## Webpack
+
+Make sure you have the following in your config file.
+
+```
+module.exports = {
+  resolve: {
+    mainFields: ["module", "main"]
+  }
+}
+
+```
 
 ## Browser
 
