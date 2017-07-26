@@ -23,6 +23,9 @@
     "finance",
     "forex",
     "stocks",
+    "Bitcoin",
+    "Ethereum",
+    "Crypto Currency",
     "rsi",
     "relative strength index",
     "macd",
@@ -49,7 +52,12 @@
     "TRIX",
     "CandleStick",
     "DOJI",
-    "AbandonedBaby"
+    "AbandonedBaby",
+    "Renko",
+    "ADX",
+    "Heikin Ashi",
+    "CCI",
+    "Commodity Channel Index"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",
