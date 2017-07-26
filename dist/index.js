@@ -1240,15 +1240,16 @@ class ROC extends Indicator {
         this.generator.next();
         priceArray.forEach((tick) => {
             var result = this.generator.next(tick);
-            if (result.value != undefined) {
+            if (result.value != undefined && (!isNaN(result.value))) {
                 this.result.push(this.format(result.value));
             }
         });
     }
     nextValue(price) {
         var nextResult = this.generator.next(price);
-        if (nextResult.value != undefined)
+        if (nextResult.value != undefined && (!isNaN(nextResult.value))) {
             return this.format(nextResult.value);
+        }
     }
     ;
 }
@@ -1320,7 +1321,7 @@ class KST extends Indicator {
         this.generator.next();
         priceArray.forEach((tick) => {
             let result = this.generator.next(tick);
-            if (result.value !== undefined) {
+            if (result.value != undefined) {
                 this.result.push(result.value);
             }
         });
@@ -1328,7 +1329,7 @@ class KST extends Indicator {
     ;
     nextValue(price) {
         let nextResult = this.generator.next(price);
-        if (nextResult.value !== undefined)
+        if (nextResult.value != undefined)
             return nextResult.value;
     }
     ;
