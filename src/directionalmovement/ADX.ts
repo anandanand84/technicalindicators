@@ -13,9 +13,17 @@ export class ADXInput extends IndicatorInput {
   period : number;
 };
 
+export class ADXOutput extends IndicatorInput {
+ adx : number;
+ pdi : number;
+ mdi : number;
+};
+
+
 
 export class ADX extends Indicator {
-  generator:IterableIterator<number | undefined>;
+  result : ADXOutput[]
+  generator:IterableIterator<ADXOutput | undefined>;;
   constructor(input:ADXInput) {
     super(input);
     var lows = input.low;
@@ -50,7 +58,7 @@ export class ADX extends Indicator {
     }
 
     this.result = [];
-
+ADXOutput
     this.generator = (function* (){
       var tick = yield;
       var index = 0;
@@ -78,7 +86,7 @@ export class ADX extends Indicator {
           smoothedDX = emaDX.nextValue(lastDX)
           // console.log(tick.high.toFixed(2), tick.low.toFixed(2), tick.close.toFixed(2) , calcTr.toFixed(2), calcPDM.toFixed(2), calcMDM.toFixed(2), lastATR.toFixed(2), lastAPDM.toFixed(2), lastAMDM.toFixed(2), lastPDI.toFixed(2), lastMDI.toFixed(2), diDiff.toFixed(2), diSum.toFixed(2), lastDX.toFixed(2));
         } 
-        tick = yield smoothedDX;
+        tick = yield { adx : smoothedDX, pdi : lastPDI, mdi : lastMDI };
       }
     })();
 
@@ -90,23 +98,23 @@ export class ADX extends Indicator {
         low  : lows[index],
         close : closes[index]
       });
-      if(result.value){
-        this.result.push(format(result.value));
+      if(result.value != undefined && result.value.adx != undefined){
+        this.result.push({ adx : format(result.value.adx), pdi : format(result.value.pdi), mdi : format(result.value.mdi) });
       }
     });
   };
 
   static calculate = adx;
 
-  nextValue(price:number):number | undefined {
+  nextValue(price:number):ADXOutput | undefined {
       let result = this.generator.next(price).value;
-      if(result) {
-        return this.format(result);
+      if(result != undefined && result.adx != undefined) {
+        return { adx : this.format(result.adx), pdi : this.format(result.pdi), mdi : this.format(result.mdi) };
       }
   };
 }
 
-export function adx(input:ADXInput):number[] {
+export function adx(input:ADXInput):ADXOutput[] {
     Indicator.reverseInputs(input);
     var result = new ADX(input).result;
     if(input.reversedInput) {

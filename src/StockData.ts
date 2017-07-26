@@ -10,4 +10,15 @@ export class CandleData {
     high?:number;
     low?:number;
     close?:number
+    timestamp?:number
+    volume?:number
+}
+
+export class CandleList {
+    open?:number[] = [];
+    high?:number[] = [];
+    low?:number[] = [];
+    close?:number[] = []
+    volume?: number[] = []
+    timestamp? : number[] = []
 }

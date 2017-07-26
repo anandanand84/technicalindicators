@@ -18,6 +18,7 @@ export { trix, TRIX } from './momentum/TRIX';
 export { averagegain, AverageGain } from './Utils/AverageGain';
 export { averageloss, AverageLoss } from './Utils/AverageLoss';
 export { sd, SD } from './Utils/SD';
+export { renko } from './chart_types/Renko';
 export { bullish } from './candlestick/Bullish';
 export { bearish } from './candlestick/Bearish';
 export { abandonedbaby } from './candlestick/AbandonedBaby';

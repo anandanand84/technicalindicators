@@ -12,10 +12,11 @@ export class AllInputs {
     low?:number[]   
     close?:number[]   
     volume?:number[]
+    timestamp?: number[]
 }
 
 export class Indicator {
-    result:any[];
+    result:any;
     format:(data:number)=>number;
     constructor(input:IndicatorInput) {
         this.format = input.format || nf;
@@ -28,6 +29,7 @@ export class Indicator {
             input.low ? input.low.reverse() : undefined;
             input.close ? input.close.reverse() : undefined;
             input.volume ? input.volume.reverse() : undefined;
+            input.timestamp ? input.timestamp.reverse() : undefined;
         }
     }
 

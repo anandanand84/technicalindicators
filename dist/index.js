@@ -19,6 +19,9 @@ function format(v) {
     return v;
 }
 
+class IndicatorInput {
+}
+
 class Indicator {
     constructor(input) {
         this.format = input.format || format;
@@ -31,6 +34,7 @@ class Indicator {
             input.low ? input.low.reverse() : undefined;
             input.close ? input.close.reverse() : undefined;
             input.volume ? input.volume.reverse() : undefined;
+            input.timestamp ? input.timestamp.reverse() : undefined;
         }
     }
     getResult() {
@@ -1048,6 +1052,9 @@ function truerange(input) {
     return result;
 }
 
+class ADXOutput extends IndicatorInput {
+}
+
 class ADX extends Indicator {
     constructor(input) {
         super(input);
@@ -1077,6 +1084,7 @@ class ADX extends Indicator {
             throw ('Inputs(low,high, close) not of equal size');
         }
         this.result = [];
+        ADXOutput;
         this.generator = (function* () {
             var tick = yield;
             var index = 0;
@@ -1104,7 +1112,7 @@ class ADX extends Indicator {
                     smoothedDX = emaDX.nextValue(lastDX);
                     // console.log(tick.high.toFixed(2), tick.low.toFixed(2), tick.close.toFixed(2) , calcTr.toFixed(2), calcPDM.toFixed(2), calcMDM.toFixed(2), lastATR.toFixed(2), lastAPDM.toFixed(2), lastAMDM.toFixed(2), lastPDI.toFixed(2), lastMDI.toFixed(2), diDiff.toFixed(2), diSum.toFixed(2), lastDX.toFixed(2));
                 }
-                tick = yield smoothedDX;
+                tick = yield { adx: smoothedDX, pdi: lastPDI, mdi: lastMDI };
             }
         })();
         this.generator.next();
@@ -1114,16 +1122,17 @@ class ADX extends Indicator {
                 low: lows[index],
                 close: closes[index]
             });
-            if (result.value) {
-                this.result.push(format(result.value));
+            if (result.value != undefined && result.value.adx != undefined) {
+                this.result.push({ adx: format(result.value.adx), pdi: format(result.value.pdi), mdi: format(result.value.mdi) });
             }
         });
     }
     ;
+    ;
     nextValue(price) {
         let result = this.generator.next(price).value;
-        if (result) {
-            return this.format(result);
+        if (result != undefined && result.adx != undefined) {
+            return { adx: this.format(result.adx), pdi: this.format(result.pdi), mdi: this.format(result.mdi) };
         }
     }
     ;
@@ -1640,6 +1649,119 @@ function trix(input) {
     var result = new TRIX(input).result;
     if (input.reversedInput) {
         result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class CandleList {
+    constructor() {
+        this.open = [];
+        this.high = [];
+        this.low = [];
+        this.close = [];
+        this.volume = [];
+        this.timestamp = [];
+    }
+}
+
+/**
+ * Created by AAravindan on 5/4/16.
+ */
+
+class Renko extends Indicator {
+    constructor(input) {
+        super(input);
+        var format = this.format;
+        let useATR = input.useATR;
+        let brickSize = input.brickSize || 0;
+        if (useATR) {
+            let atrResult = atr(Object.assign({}, input));
+            brickSize = atrResult[atrResult.length - 1];
+        }
+        this.result = new CandleList();
+        
+        if (brickSize === 0) {
+            console.error('Not enough data to calculate brickSize for renko when using ATR');
+            return;
+        }
+        let lastOpen = 0;
+        let lastHigh = 0;
+        let lastLow = Infinity;
+        let lastClose = 0;
+        let lastVolume = 0;
+        let lastTimestamp = 0;
+        this.generator = (function* () {
+            let candleData = yield;
+            while (true) {
+                if (lastOpen === 0) {
+                    lastOpen = candleData.close;
+                    lastHigh = candleData.high;
+                    lastLow = candleData.low;
+                    lastClose = candleData.close;
+                    lastVolume = candleData.volume;
+                    lastTimestamp = candleData.timestamp;
+                    candleData = yield;
+                    continue;
+                }
+                if (Math.abs(candleData.close - lastOpen) >= brickSize) {
+                    let calculated = {
+                        open: lastOpen,
+                        high: lastHigh > candleData.high ? lastHigh : candleData.high,
+                        low: lastLow < candleData.Low ? lastLow : candleData.low,
+                        close: lastOpen > candleData.close ? (lastOpen - brickSize) : (lastOpen + brickSize),
+                        volume: lastVolume + candleData.volume,
+                        timestamp: candleData.timestamp
+                    };
+                    candleData = yield calculated;
+                }
+                else {
+                    lastHigh = candleData.high;
+                    lastLow = candleData.low;
+                    lastClose = candleData.close;
+                    lastVolume = lastVolume + candleData.volume;
+                    lastTimestamp = candleData.timestamp;
+                    candleData = yield;
+                }
+            }
+        })();
+        this.generator.next();
+        input.low.forEach((tick, index) => {
+            var result = this.generator.next({
+                open: input.open[index],
+                high: input.high[index],
+                low: input.low[index],
+                close: input.close[index],
+                volume: input.volume[index],
+                timestamp: input.timestamp[index]
+            });
+            if (result.value) {
+                this.result.open.push(result.value.open);
+                this.result.high.push(result.value.high);
+                this.result.low.push(result.value.low);
+                this.result.close.push(result.value.close);
+                this.result.volume.push(result.value.volume);
+                this.result.timestamp.push(result.value.timestamp);
+            }
+        });
+    }
+    nextValue(price) {
+        console.error('Cannot calculate next value on Renko, Every value has to be recomputed for every change, use calcualte method');
+        return null;
+    }
+    ;
+}
+Renko.calculate = renko;
+function renko(input) {
+    Indicator.reverseInputs(input);
+    var result = new Renko(input).result;
+    if (input.reversedInput) {
+        result.open.reverse();
+        result.high.reverse();
+        result.low.reverse();
+        result.close.reverse();
+        result.volume.reverse();
+        result.timestamp.reverse();
     }
     Indicator.reverseInputs(input);
     return result;
@@ -2565,6 +2687,7 @@ exports.averageloss = averageloss;
 exports.AverageLoss = AverageLoss;
 exports.sd = sd;
 exports.SD = SD;
+exports.renko = renko;
 exports.bullish = bullish;
 exports.bearish = bearish;
 exports.abandonedbaby = abandonedbaby;

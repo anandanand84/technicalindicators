@@ -87,6 +87,9 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 15. [Triple Exponentially Smoothed Average (TRIX)](https://tonicdev.com/anandaravindan/trix "TRIX").
 16. [Average Directional Index (ADX)](https://tonicdev.com/anandaravindan/adx "ADX").
 
+# Chart Types
+
+1. [Renko (renko)](https://github.com/anandanand84/technicalindicators/blob/master/test/chart_types/renko.js)
 
 # CandleStick Pattern
 1. [Abandoned Baby](https://runkit.com/aarthiaradhana/abandonedbaby).

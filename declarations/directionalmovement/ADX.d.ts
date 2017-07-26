@@ -5,10 +5,16 @@ export declare class ADXInput extends IndicatorInput {
     close: number[];
     period: number;
 }
+export declare class ADXOutput extends IndicatorInput {
+    adx: number;
+    pdi: number;
+    mdi: number;
+}
 export declare class ADX extends Indicator {
-    generator: IterableIterator<number | undefined>;
+    result: ADXOutput[];
+    generator: IterableIterator<ADXOutput | undefined>;
     constructor(input: ADXInput);
     static calculate: typeof adx;
-    nextValue(price: number): number | undefined;
+    nextValue(price: number): ADXOutput | undefined;
 }
-export declare function adx(input: ADXInput): number[];
+export declare function adx(input: ADXInput): ADXOutput[];
