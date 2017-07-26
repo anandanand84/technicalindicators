@@ -60,7 +60,7 @@ export class BollingerBands extends Indicator {
 
         priceArray.forEach((tick) => {
             var result = this.generator.next(tick);
-            if(result.value){
+            if(result.value != undefined){
                 this.result.push(result.value);
             }
         });

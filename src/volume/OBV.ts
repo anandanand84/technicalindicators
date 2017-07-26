@@ -48,7 +48,7 @@ export class OBV extends Indicator {
         volume  : volumes[index]
       }
       let result = this.generator.next(tickInput);
-      if(result.value){
+      if(result.value != undefined){
         this.result.push(result.value);
       }
     });

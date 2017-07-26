@@ -70,7 +70,7 @@ export class WilliamsR extends Indicator {
 
   nextValue(price:number):number | undefined {
       var nextResult = this.generator.next(price);
-      if(nextResult.value)
+      if(nextResult.value != undefined)
         return this.format(nextResult.value);
   };
 }

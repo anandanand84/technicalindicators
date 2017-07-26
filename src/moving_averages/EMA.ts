@@ -41,7 +41,7 @@ export class EMA extends Indicator{
 
         priceArray.forEach((tick) => {
             var result = this.generator.next(tick);
-            if(result.value){
+            if(result.value != undefined){
                 this.result.push(this.format(result.value));
             }
         });
@@ -51,7 +51,7 @@ export class EMA extends Indicator{
 
     nextValue(price:number) {
         var result = this.generator.next(price).value;
-        if(result)
+        if(result != undefined)
             return this.format(result);
     };
 }

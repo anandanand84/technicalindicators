@@ -21,6 +21,7 @@ export  { averageloss, AverageLoss }       from  './Utils/AverageLoss';
 export  { sd, SD }                         from  './Utils/SD';
 
 export  { renko }                         from  './chart_types/Renko';
+export  { HeikinAshi, heikinashi }        from  './chart_types/HeikinAshi';
 
 export  { bullish }                    from  './candlestick/Bullish';
 export  { bearish }                    from  './candlestick/Bearish';
@@ -47,5 +48,5 @@ export  { bullishspinningtop }         from  './candlestick/BullishSpinningTop';
 export  { bearishspinningtop }         from  './candlestick/BearishSpinningTop';
 export  { threeblackcrows }            from  './candlestick/ThreeBlackCrows';
 export  { threewhitesoldiers }         from  './candlestick/ThreeWhiteSoldiers';
-export  { fibonacciretracement}         from './drawingtools/fibonacci';
-export  { setConfig, getConfig }  from './config'
+export  { fibonacciretracement}        from './drawingtools/fibonacci';
+export  { setConfig, getConfig }       from './config'

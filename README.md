@@ -89,7 +89,8 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 
 # Chart Types
 
-1. [Renko (renko)](https://github.com/anandanand84/technicalindicators/blob/master/test/chart_types/renko.js)
+1. [Renko (renko)](https://github.com/anandanand84/technicalindicators/blob/master/test/chart_types/Renko.js)
+2. [Heikin-Ashi (HA)](https://github.com/anandanand84/technicalindicators/blob/master/test/chart_types/HeikinAshi.js)
 
 # CandleStick Pattern
 1. [Abandoned Baby](https://runkit.com/aarthiaradhana/abandonedbaby).

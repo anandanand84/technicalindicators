@@ -35,7 +35,7 @@ export class ROC extends Indicator {
 
       priceArray.forEach((tick) => {
         var result = this.generator.next(tick);
-        if(result.value){
+        if(result.value != undefined){
           this.result.push(this.format(result.value));
         }
       });
@@ -45,7 +45,7 @@ export class ROC extends Indicator {
 
     nextValue(price:number):number | undefined {
         var nextResult = this.generator.next(price);
-        if(nextResult.value)
+        if(nextResult.value != undefined)
           return this.format(nextResult.value);
     };
 
