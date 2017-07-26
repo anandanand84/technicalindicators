@@ -84,7 +84,7 @@ export class KST extends Indicator {
 
     priceArray.forEach((tick) => {
       let result = this.generator.next(tick);
-      if(result.value !== undefined){
+      if(result.value != undefined){
         this.result.push(result.value);
       }
     });
@@ -95,7 +95,7 @@ export class KST extends Indicator {
 
   nextValue (price:number) {
     let nextResult = this.generator.next(price);
-    if(nextResult.value !== undefined)
+    if(nextResult.value != undefined)
       return nextResult.value;
   };
 }
