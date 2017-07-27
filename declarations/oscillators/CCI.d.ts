@@ -1,3 +1,4 @@
+import { CandleData } from '../../src/StockData';
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 export declare class CCIInput extends IndicatorInput {
     high: number[];
@@ -10,6 +11,6 @@ export declare class CCI extends Indicator {
     generator: IterableIterator<number | undefined>;
     constructor(input: CCIInput);
     static calculate: typeof cci;
-    nextValue(price: number): number | undefined;
+    nextValue(price: CandleData): number | undefined;
 }
 export declare function cci(input: CCIInput): number[];

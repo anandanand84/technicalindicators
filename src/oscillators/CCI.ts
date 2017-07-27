@@ -1,3 +1,4 @@
+import { CandleData } from '../../src/StockData';
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 import { SMA } from       '../moving_averages/SMA';
 import LinkedList from '../Utils/FixedSizeLinkedList';
@@ -71,7 +72,7 @@ export class CCI extends Indicator {
 
   static calculate = cci;
 
-  nextValue(price:number):number | undefined {
+  nextValue(price:CandleData):number | undefined {
       let result = this.generator.next(price).value;
       if(result != undefined) {
         return result;

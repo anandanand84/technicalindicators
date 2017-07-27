@@ -15,7 +15,7 @@
     var editor;
     require.config({ paths: { 'vs': 'http://unpkg.com/monaco-editor@0.8.3//min/vs' }});
     require(['vs/editor/editor.main'], function() {
-        fetch('node_modules/technicalindicators/declarations/generated.d.ts', { method: 'get'}).then(function(response) { return response.text()  }).then(function(content) {
+        fetch('/node_modules/technicalindicators/declarations/generated.d.ts', { method: 'get'}).then(function(response) { return response.text()  }).then(function(content) {
                 var technicalIndicators = content.replace(new RegExp('default ', 'g'), '').split('export').join('declare');
                 var disposable = monaco.languages.typescript.typescriptDefaults.addExtraLib(
                 technicalIndicators

@@ -57,7 +57,10 @@
     "ADX",
     "Heikin Ashi",
     "CCI",
-    "Commodity Channel Index"
+    "Commodity Channel Index",
+    "VWAP",
+    "Force Index",
+    "PSAR"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",

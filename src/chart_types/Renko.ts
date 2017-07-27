@@ -44,6 +44,7 @@ class Renko extends Indicator{
       this.generator = (function* (){
           let candleData = yield;
           while (true) {
+            //Calculating first bar
             if(lastOpen === 0) {
                 lastOpen = candleData.close;
                 lastHigh = candleData.high;
