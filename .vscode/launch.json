@@ -2,15 +2,23 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run mocha",
+            "name": "Debug",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "program": "${workspaceRoot}/debug.js",
             "stopOnEntry": false,
-            "args": ["--compilers", "js:babel-core/register", "--require", "babel-polyfill"],
+            "args": [],
             "cwd": "${workspaceRoot}",
-            "runtimeExecutable": null,
-            "env": { "NODE_ENV": "testing"}
+            "preLaunchTask": null,
+            "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/babel-node",
+            "runtimeArgs": [
+                "--nolazy"
+            ],
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "console": "internalConsole",
+            "sourceMaps": true
         }
     ]
 }

@@ -85,7 +85,7 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 13. [Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "ADL").
 14. [On Balance Volume (OBV)](https://tonicdev.com/anandaravindan/obv "OBV").
 15. [Triple Exponentially Smoothed Average (TRIX)](https://tonicdev.com/anandaravindan/trix "TRIX").
-16. [Average Directional Index (ADX)](https://tonicdev.com/anandaravindan/adx "ADX").
+16. [Average Directional Index (ADX)](https://github.com/anandanand84/technicalindicators/blob/master/test/directionalmovement/ADX.js "ADX").
 17. [Commodity Channel Index (CCI)](https://github.com/anandanand84/technicalindicators/blob/master/test/oscillators/CCI.js "CCI").
 18. [Volume Weighted Average Price (VWAP)](https://github.com/anandanand84/technicalindicators/blob/master/test/volume/VWAP.js "VWAP").
 19. [Force Index (FI)](https://github.com/anandanand84/technicalindicators/blob/master/test/volume/ForceIndex.js "VWAP").

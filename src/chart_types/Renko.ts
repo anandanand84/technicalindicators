@@ -55,20 +55,28 @@ class Renko extends Indicator{
                 candleData = yield;
                 continue;
             }
-            if(Math.abs(candleData.close - lastOpen) >= brickSize) {
+            let absoluteMovementFromClose = Math.abs(candleData.close - lastClose);
+            let absoluteMovementFromOpen = Math.abs(candleData.close - lastOpen);
+
+            if((absoluteMovementFromClose >= brickSize) && (absoluteMovementFromOpen >= brickSize)) {
+                let reference = absoluteMovementFromClose > absoluteMovementFromOpen ? lastOpen : lastClose
                 let calculated = <any>{
-                    open : lastOpen,
+                    open : reference,
                     high : lastHigh > candleData.high ? lastHigh : candleData.high,
                     low : lastLow < candleData.Low ? lastLow : candleData.low,
-                    close : lastOpen > candleData.close ? (lastOpen - brickSize) : (lastOpen + brickSize),
+                    close : reference > candleData.close ? (reference - brickSize) : (reference + brickSize),
                     volume : lastVolume + candleData.volume,
                     timestamp : candleData.timestamp
                 };
+                lastOpen = calculated.open;
+                lastHigh = calculated.close;
+                lastLow = calculated.close;
+                lastClose = calculated.close;
+                lastVolume = 0;
                 candleData = yield calculated
             } else {
-                lastHigh = candleData.high;
-                lastLow = candleData.low;
-                lastClose = candleData.close;
+                lastHigh = lastHigh > candleData.high ? lastHigh : candleData.high;
+                lastLow = lastLow < candleData.Low ? lastLow : candleData.low;
                 lastVolume = lastVolume + candleData.volume;
                 lastTimestamp = candleData.timestamp;
                 candleData = yield;
