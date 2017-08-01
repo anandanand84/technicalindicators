@@ -6,6 +6,18 @@ A javascript technical indicators written in javascript.
 
 # Installation
 
+## Environment dependencies
+
+TechnicalIndicators depends on the [`canvas` package](https://npmjs.com/canvas), which requires some dependencies to be installed. You can find the instructions to do that [here](https://github.com/Automattic/node-canvas#installation). If you do not install these dependencies, expect to get this error message during the installation of TechnicalIndicators:
+
+```
+> canvas@1.6.6 install /Users/balupton/Projects/trading/technicalindicators/node_modules/canvas
+> node-gyp rebuild
+
+./util/has_lib.sh: line 31: pkg-config: command not found
+gyp: Call to './util/has_lib.sh freetype' returned exit status 0 while in binding.gyp. while trying to load binding.gyp
+```
+
 ## Nodejs
 
 ``` 
