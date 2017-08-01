@@ -7,20 +7,22 @@ A javascript technical indicators written in javascript.
 
 # Installation
 
-## Nodejs
+## Node.js versions above 6.4
 
 ``` bash
-npm install --save babel-polyfill
 npm install --save technicalindicators
 ```
-
-### node usage above 6.4
 
 ``` javascript
 const SMA = require('technicalindicators').SMA;
 ```
 
-### node usage below 6.4
+## Node.js versions below 6.4
+
+``` bash
+npm install --save babel-polyfill
+npm install --save technicalindicators
+```
 
 ``` javascript
 require('babel-polyfill);
