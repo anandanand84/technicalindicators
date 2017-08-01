@@ -7,7 +7,7 @@ A javascript technical indicators written in javascript.
 
 # Installation
 
-## Node.js versions above 6.4
+## Node.js versions >= 6.4
 
 ``` bash
 npm install --save technicalindicators
@@ -17,7 +17,7 @@ npm install --save technicalindicators
 const SMA = require('technicalindicators').SMA;
 ```
 
-## Node.js versions below 6.4
+## Node.js versions < 6.4
 
 ``` bash
 npm install --save babel-polyfill
@@ -25,7 +25,7 @@ npm install --save technicalindicators
 ```
 
 ``` javascript
-require('babel-polyfill);
+require('babel-polyfill');
 const SMA = require('technicalindicators/dist/browser').SMA;
 ```
 
