@@ -1655,6 +1655,192 @@ function trix(input) {
     return result;
 }
 
+class ForceIndex extends Indicator {
+    constructor(input) {
+        super(input);
+        var closes = input.close;
+        var volumes = input.volume;
+        var period = input.period || 1;
+        if (!((volumes.length === closes.length))) {
+            throw ('Inputs(volume, close) not of equal size');
+        }
+        let emaForceIndex = new EMA({ values: [], period: period });
+        this.result = [];
+        this.generator = (function* () {
+            var previousTick = yield;
+            var tick = yield;
+            let forceIndex;
+            while (true) {
+                forceIndex = (tick.close - previousTick.close) * tick.volume;
+                previousTick = tick;
+                tick = yield emaForceIndex.nextValue(forceIndex);
+            }
+        })();
+        this.generator.next();
+        volumes.forEach((tick, index) => {
+            var result = this.generator.next({
+                close: closes[index],
+                volume: volumes[index]
+            });
+            if (result.value != undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    ;
+    nextValue(price) {
+        let result = this.generator.next(price).value;
+        if (result != undefined) {
+            return result;
+        }
+    }
+    ;
+}
+ForceIndex.calculate = forceindex;
+function forceindex(input) {
+    Indicator.reverseInputs(input);
+    var result = new ForceIndex(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class CCI extends Indicator {
+    constructor(input) {
+        super(input);
+        var lows = input.low;
+        var highs = input.high;
+        var closes = input.close;
+        var period = input.period;
+        var format = this.format;
+        let constant = .015;
+        var currentTpSet = new FixedSizeLinkedList(period);
+        
+        var tpSMACalculator = new SMA({ period: period, values: [], format: (v) => { return v; } });
+        if (!((lows.length === highs.length) && (highs.length === closes.length))) {
+            throw ('Inputs(low,high, close) not of equal size');
+        }
+        this.result = [];
+        this.generator = (function* () {
+            var tick = yield;
+            while (true) {
+                let tp = (tick.high + tick.low + tick.close) / 3;
+                currentTpSet.push(tp);
+                let smaTp = tpSMACalculator.nextValue(tp);
+                let meanDeviation = null;
+                let cci;
+                let sum = 0;
+                if (smaTp != undefined) {
+                    //First, subtract the most recent 20-period average of the typical price from each period's typical price. 
+                    //Second, take the absolute values of these numbers.
+                    //Third,sum the absolute values. 
+                    for (let x of currentTpSet.iterator()) {
+                        sum = sum + (Math.abs(x - smaTp));
+                    }
+                    //Fourth, divide by the total number of periods (20). 
+                    meanDeviation = sum / 20;
+                    cci = (tp - smaTp) / (constant * meanDeviation);
+                }
+                tick = yield cci;
+            }
+        })();
+        this.generator.next();
+        lows.forEach((tick, index) => {
+            var result = this.generator.next({
+                high: highs[index],
+                low: lows[index],
+                close: closes[index]
+            });
+            if (result.value != undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    ;
+    nextValue(price) {
+        let result = this.generator.next(price).value;
+        if (result != undefined) {
+            return result;
+        }
+    }
+    ;
+}
+CCI.calculate = cci;
+function cci(input) {
+    Indicator.reverseInputs(input);
+    var result = new CCI(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class VWAP extends Indicator {
+    constructor(input) {
+        super(input);
+        var lows = input.low;
+        var highs = input.high;
+        var closes = input.close;
+        var volumes = input.volume;
+        var period = input.period;
+        var format = this.format;
+        if (!((lows.length === highs.length) && (highs.length === closes.length))) {
+            throw ('Inputs(low,high, close) not of equal size');
+        }
+        this.result = [];
+        this.generator = (function* () {
+            var tick = yield;
+            let cumulativeTotal = 0;
+            let cumulativeVolume = 0;
+            let vwap;
+            while (true) {
+                let typicalPrice = (tick.high + tick.low + tick.close) / 3;
+                let total = tick.volume * typicalPrice;
+                cumulativeTotal = cumulativeTotal + total;
+                cumulativeVolume = cumulativeVolume + tick.volume;
+                tick = yield cumulativeTotal / cumulativeVolume;
+                
+            }
+        })();
+        this.generator.next();
+        lows.forEach((tick, index) => {
+            var result = this.generator.next({
+                high: highs[index],
+                low: lows[index],
+                close: closes[index],
+                volume: volumes[index]
+            });
+            if (result.value != undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    ;
+    nextValue(price) {
+        let result = this.generator.next(price).value;
+        if (result != undefined) {
+            return result;
+        }
+    }
+    ;
+}
+VWAP.calculate = vwap;
+function vwap(input) {
+    Indicator.reverseInputs(input);
+    var result = new VWAP(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
 class CandleList {
     constructor() {
         this.open = [];
@@ -2722,6 +2908,13 @@ function getAvailableIndicators () {
   AvailableIndicators.push('adl');
   AvailableIndicators.push('obv');
   AvailableIndicators.push('trix');
+  
+  AvailableIndicators.push('cci');
+  AvailableIndicators.push('forceindex');
+  AvailableIndicators.push('vwap');
+  AvailableIndicators.push('renko');
+  AvailableIndicators.push('heikinashi');
+
   AvailableIndicators.push('averagegain');
   AvailableIndicators.push('averageloss');
   AvailableIndicators.push('sd');
@@ -2788,6 +2981,12 @@ exports.obv = obv;
 exports.OBV = OBV;
 exports.trix = trix;
 exports.TRIX = TRIX;
+exports.forceindex = forceindex;
+exports.ForceIndex = ForceIndex;
+exports.cci = cci;
+exports.CCI = CCI;
+exports.vwap = vwap;
+exports.VWAP = VWAP;
 exports.averagegain = averagegain;
 exports.AverageGain = AverageGain;
 exports.averageloss = averageloss;

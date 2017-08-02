@@ -2,6 +2,7 @@
  * Created by AAravindan on 5/3/16.
  */
 var sma = require('../dist/index.js').sma;
+var cci = require('../dist/index.js').cci;
 var assert = require('assert');
 var data   = require('./data')
 

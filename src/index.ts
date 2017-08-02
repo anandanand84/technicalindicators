@@ -15,6 +15,9 @@ export  { williamsr, WilliamsR }           from  './momentum/WilliamsR';
 export  { adl, ADL }                       from  './volume/ADL';
 export  { obv, OBV }                       from  './volume/OBV';
 export  { trix, TRIX }                     from  './momentum/TRIX';
+export  { forceindex, ForceIndex }         from  './volume/ForceIndex';
+export  { cci, CCI }                       from  './oscillators/CCI';
+export  { vwap, VWAP }                     from  './volume/VWAP';
 
 export  { averagegain, AverageGain }       from  './Utils/AverageGain';
 export  { averageloss, AverageLoss }       from  './Utils/AverageLoss';

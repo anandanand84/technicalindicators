@@ -18,6 +18,13 @@ export function getAvailableIndicators () {
   AvailableIndicators.push('adl');
   AvailableIndicators.push('obv');
   AvailableIndicators.push('trix');
+  
+  AvailableIndicators.push('cci');
+  AvailableIndicators.push('forceindex');
+  AvailableIndicators.push('vwap');
+  AvailableIndicators.push('renko');
+  AvailableIndicators.push('heikinashi');
+
   AvailableIndicators.push('averagegain');
   AvailableIndicators.push('averageloss');
   AvailableIndicators.push('sd');
