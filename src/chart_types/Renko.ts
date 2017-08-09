@@ -1,6 +1,6 @@
 import { CandleData, CandleList } from '../StockData';
-import { ATRInput } from '../../declarations/directionalmovement/ATR';
 import { atr } from '../directionalmovement/ATR';
+
 /**
  * Created by AAravindan on 5/4/16.
  */

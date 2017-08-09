@@ -9,11 +9,12 @@ export declare class AllInputs {
     low?: number[];
     close?: number[];
     volume?: number[];
+    timestamp?: number[];
 }
 export declare class Indicator {
-    result: any[];
+    result: any;
     format: (data: number) => number;
     constructor(input: IndicatorInput);
     static reverseInputs(input: any): void;
-    getResult(): any[];
+    getResult(): any;
 }

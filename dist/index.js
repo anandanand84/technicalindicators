@@ -842,11 +842,12 @@ class WilderSmoothing extends Indicator {
             var sum = 0;
             var counter = 1;
             var current = yield;
-            var result;
+            var result = 0;
             while (true) {
                 if (counter < period) {
                     counter++;
                     sum = sum + current;
+                    result = undefined;
                 }
                 else if (counter == period) {
                     counter++;
