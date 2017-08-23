@@ -12,6 +12,7 @@ export default class CandlestickFinder {
         let right = parseFloat((a * 0.001).toPrecision(4)) * 1; 
         return  left <= right 
     }
+    
     logic(data:StockData):boolean {
         throw "this has to be implemented";        
     }

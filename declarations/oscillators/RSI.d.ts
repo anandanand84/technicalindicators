@@ -1,3 +1,6 @@
+/**
+ * Created by AAravindan on 5/5/16.
+ */
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 export declare class RSIInput extends IndicatorInput {
     period: number;

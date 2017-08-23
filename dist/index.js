@@ -601,6 +601,7 @@ class RSI extends Indicator {
         var values = input.values;
         var GainProvider = new AverageGain({ period: period, values: [] });
         var LossProvider = new AverageLoss({ period: period, values: [] });
+        let count = 1;
         this.generator = (function* (period) {
             var current = yield;
             var lastAvgGain, lastAvgLoss, RS, currentRSI;
@@ -616,6 +617,17 @@ class RSI extends Indicator {
                         currentRSI = parseFloat((100 - (100 / (1 + RS))).toFixed(2));
                     }
                 }
+                else if (lastAvgGain && !lastAvgLoss) {
+                    currentRSI = 100;
+                }
+                else if (lastAvgLoss && !lastAvgGain) {
+                    currentRSI = 0;
+                }
+                else if (count >= period) {
+                    //if no average gain and average loss after the RSI period
+                    currentRSI = 0;
+                }
+                count++;
                 current = yield currentRSI;
             }
         })(period);
