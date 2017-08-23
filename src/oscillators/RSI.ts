@@ -1,24 +1,28 @@
-import { Indicator, IndicatorInput } from '../indicator/indicator';
 /**
  * Created by AAravindan on 5/5/16.
  */
-import  { AverageGain } from '../Utils/AverageGain';
+
+import { Indicator, IndicatorInput } from '../indicator/indicator';
+import { AverageGain } from '../Utils/AverageGain';
 import { AverageLoss } from '../Utils/AverageLoss';
 
 export class RSIInput extends IndicatorInput {
-  period :number;
-  values:number[];
+  period: number;
+  values: number[];
 }
 
 export class RSI extends Indicator {
+
   generator:IterableIterator<number | undefined>;
+
   constructor(input:RSIInput) {
     super(input);
+
     var period = input.period;
     var values = input.values;
 
-    var GainProvider = new AverageGain({period : period, values : [] });
-    var LossProvider = new AverageLoss({period : period, values : [] });
+    var GainProvider = new AverageGain({ period: period, values: [] });
+    var LossProvider = new AverageLoss({ period: period, values: [] });
     this.generator = (function* (period){
       var current = yield;
       var lastAvgGain,lastAvgLoss, RS, currentRSI;
@@ -32,6 +36,10 @@ export class RSI extends Indicator {
             RS = lastAvgGain / lastAvgLoss;
             currentRSI = parseFloat((100 - (100 / (1 + RS))).toFixed(2));
           }
+        } else if (lastAvgGain && !lastAvgLoss) {
+          currentRSI = 100;
+        } else if (lastAvgLoss && !lastAvgGain) {
+          currentRSI = 0;
         }
         current = yield currentRSI;
       }
