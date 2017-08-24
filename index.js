@@ -13,12 +13,13 @@ export function getAvailableIndicators () {
   AvailableIndicators.push('truerange');
   AvailableIndicators.push('roc');
   AvailableIndicators.push('kst');
+  AvailableIndicators.push('psar');
   AvailableIndicators.push('stochastic');
   AvailableIndicators.push('williamsr');
   AvailableIndicators.push('adl');
   AvailableIndicators.push('obv');
   AvailableIndicators.push('trix');
-  
+
   AvailableIndicators.push('cci');
   AvailableIndicators.push('forceindex');
   AvailableIndicators.push('vwap');

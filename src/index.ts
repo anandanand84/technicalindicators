@@ -10,6 +10,7 @@ export  { atr, ATR }                       from  './directionalmovement/ATR';
 export  { truerange, TrueRange }           from  './directionalmovement/TrueRange';
 export  { roc, ROC }                       from  './momentum/ROC';
 export  { kst, KST }                       from  './momentum/KST';
+export  { psar, PSAR }                     from  './momentum/PSAR';
 export  { stochastic, Stochastic }         from  './momentum/Stochastic';
 export  { williamsr, WilliamsR }           from  './momentum/WilliamsR';
 export  { adl, ADL }                       from  './volume/ADL';
