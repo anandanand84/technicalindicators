@@ -2,12 +2,9 @@
 
 # TechnicalIndicators
 
-A javascript technical indicators written in javascript. 
+> A collection of technical indicators written in TypeScript.
 
-
-# Installation
-
-## Node.js versions >= 6.4
+## Installation
 
 ``` bash
 npm install --save technicalindicators
@@ -17,21 +14,16 @@ npm install --save technicalindicators
 const SMA = require('technicalindicators').SMA;
 ```
 
-## Node.js versions < 6.4
-
-``` bash
-npm install --save babel-polyfill
-npm install --save technicalindicators
-```
+For node versions `<6.4`, you will have to install `babel-polyfill` and require
+using the following path:
 
 ``` javascript
-require('babel-polyfill');
 const SMA = require('technicalindicators/dist/browser').SMA;
 ```
 
-## Webpack
+### Webpack
 
-Make sure you have the following in your config file.
+You will need to have modify your configuration in order to integrate these resolves:
 
 ``` javascript
 module.exports = {
@@ -42,12 +34,12 @@ module.exports = {
 
 ```
 
-## Browser
+### Browser
 
-For browser install using bower or npm, but it is necessary to include the babel-polyfill otherwise you will get an error. For example see [index.html](https://github.com/anandanand84/technicalindicators/blob/master/index.html "index.html")
+For browser install using either bower or npm, but you might encounter an error that
+would require you to use `babel-polyfill`. You can refer to this example [index.html](https://github.com/anandanand84/technicalindicators/blob/master/index.html).
 
 ``` bash
-npm install --save technicalindicators
 npm install --save babel-polyfill
 bower install --save technicalindicators
 ```
@@ -57,25 +49,21 @@ bower install --save technicalindicators
 <script src="bower_components/technicalindicators/browser.js"></script>
 ```
 
-All indicators will be available in window object. So you can just use
+All indicators will be available in the `window` object. So you can just use:
 
 ``` javascript
 sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
-```
-
-or 
-
-``` javascript
+// or
 SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 ```
 
+You also have the possibility to use the [unpkg CDN browser url](https://unpkg.com/technicalindicators/dist/browser.js).
 
 # Playground
-  
+
 [Playground with code completion](http://anandanand84.github.io/technicalindicators/ "Playground")
 
-
-# Available Indicators
+### Available Indicators
 
 1. [Simple Moving Average (SMA)](https://tonicdev.com/anandaravindan/sma "SMA").
 1. [Exponential Moving Average (EMA)](https://tonicdev.com/anandaravindan/ema "EMA").
@@ -97,14 +85,12 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 1. [Volume Weighted Average Price (VWAP)](https://github.com/anandanand84/technicalindicators/blob/master/test/volume/VWAP.js "VWAP").
 1. [Force Index (FI)](https://github.com/anandanand84/technicalindicators/blob/master/test/volume/ForceIndex.js "VWAP").
 
-
-# Chart Types
+###  Chart Types
 
 1. [Renko (renko)](https://github.com/anandanand84/technicalindicators/blob/master/test/chart_types/Renko.js)
 1. [Heikin-Ashi (HA)](https://github.com/anandanand84/technicalindicators/blob/master/test/chart_types/HeikinAshi.js)
 
-
-# CandleStick Pattern
+### CandleStick Pattern
 
 1. [Abandoned Baby](https://runkit.com/aarthiaradhana/abandonedbaby).
 1. [Bearish Engulfing Pattern](https://runkit.com/aarthiaradhana/bearishengulfingpattern).
@@ -130,10 +116,7 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 1. [Three Black Crows](https://runkit.com/aarthiaradhana/threeblackcrows).
 1. [Three White Soldiers](https://runkit.com/aarthiaradhana/threewhitesoldiers).
 
-or 
-
-Search for all bullish or bearish using
-
+##### Bullish detection example:
 
 ``` javascript
 var twoDayBullishInput = {
@@ -143,17 +126,16 @@ var twoDayBullishInput = {
   low: [20.82,14.93],
 }
 
-var bullish = require('technicalindicators').bullish;
+var bullish = require('technicalindicators').bullish
 
-bullish(twoDayBullishInput) //true
+bullish(twoDayBullishInput) // true
 ```
 
-
-# API
+## API
 
 There are three ways you can use to get the indicator results.
 
-## calculate 
+### calculate
 
 Every indicator has a static method `calculate` which can be used to calculate the indicator without creating an object.
 
@@ -162,18 +144,16 @@ const sma = require('technicalindicators').sma;
 var prices = [1,2,3,4,5,6,7,8,9,10,12,13,15];
 var period = 10;
 sma({period : period, values : prices})
-```
 
-or 
+// or
 
-``` javascript
 const SMA = require('technicalindicators').SMA;
 var prices = [1,2,3,4,5,6,7,8,9,10,12,13,15];
 var period = 10;
 SMA.calculate({period : period, values : prices})
 ```
 
-## nextValue
+### nextValue
 
 `nextValue` method is used to get the next indicator value.
 
@@ -187,39 +167,40 @@ prices.forEach(price => {
 });
 ```
 
-## getResult
+### getResult
 
 This a merge of calculate and nextValue. The usual use case would be
 
 1. Initialize indicator with available price value
 
-1. Get results for initialized values 
+1. Get results for initialized values
 
-1. Use nextValue to get next indicator values for further tick.
+1. Use nextValue to get next indicator values for further tick
 
-    ``` javascript
-    var sma = new SMA({period : period, values : prices});
-    sma.getResult(); // [5.5, 6.6, 7.7, 8.9]
-    sma.nextValue(16); // 10.1
-    ```
+``` javascript
+var sma = new SMA({period : period, values : prices});
+sma.getResult(); // [5.5, 6.6, 7.7, 8.9]
+sma.nextValue(16); // 10.1
+```
 
-    Note: Calling nextValue will not update getResult() value. 
+Note: Calling nextValue will not update getResult() value.
 
 ### Precision
 
-This uses regular javascript numbers, so there can be rounding errors which are negligible for a technical indicators, you can set precision by using the below config. By default there is no precision set.
-  
-  ``` javascript
-  const technicalIndicators = require('technicalindicators');
-  technicalIndicators.setConfig('precision', 10);
-  ```
+This uses regular javascript numbers, so there can be rounding errors which are negligible for a technical indicators,
+you can set precision by using the below config. By default there is no precision set.
 
+``` javascript
+const technicalIndicators = require('technicalindicators');
+technicalIndicators.setConfig('precision', 10);
+```
 
-# Contribute
+## Contribute
 
-Create issues about anything you want to report, change of API's, or request for adding new indicators. You can also create pull request with new indicators.
+Create issues about anything you want to report, change of API's, or request for adding new indicators.
+You can also create pull request with new indicators.
 
-## Environment dependencies
+### Environment dependencies
 
 TechnicalIndicators depends on the [`canvas` package](https://npmjs.com/canvas), which requires some dependencies to be installed. You can find the instructions to do that [here](https://github.com/Automattic/node-canvas#installation). If you do not install these dependencies, expect to get this error message during the installation of TechnicalIndicators:
 
@@ -231,23 +212,23 @@ TechnicalIndicators depends on the [`canvas` package](https://npmjs.com/canvas),
 gyp: Call to './util/has_lib.sh freetype' returned exit status 0 while in binding.gyp. while trying to load binding.gyp
 ```
 
-## Setup
+### Setup
 
 ``` bash
-git clone git@github.com:anandanand84/technicalindicators.git  # or use your fork
+git clone git@github.com:anandanand84/technicalindicators.git
 cd technicalindicators
 npm install
 gulp watch-test
 ```
 
-## Running tests and getting coverage
+### Tests and Coverage
 
 ``` bash
 npm test
 npm run cover
 ```
 
-## Adding new indicators.
+### Adding new indicators.
 
 1. Add tests for the indicator. Make it pass. It would be better if a sample of the stockcharts excel is used for the test case.
 1. Add the indicator to the index.js
@@ -256,17 +237,13 @@ npm run cover
 1. Add indicator it to keywords in package.json and bower.json
 1. Send a pull request.
 
-
-## Verify Documentation
+### Verify Documentation
 
 ``` bash
 node testdocs.js
 open "http://localhost:5444/testdocs.html"
 ```
 
-
 # Donate
 
 BTC: `12eGmnhPrGuqvLNVnPddTaXm74hX68auTV`
-
-

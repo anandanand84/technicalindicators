@@ -7,11 +7,12 @@
   "module": "lib/index.js",
   "types": "./declarations/index.d.ts",
   "jsnext:main": "lib/index.js",
+  "files": ["dist", "lib"],
   "scripts": {
     "cover": "babel-istanbul --include-all-sources cover -x dist/**/*.* ./node_modules/mocha/bin/_mocha -- -R spec && open coverage/lcov-report/index.html",
     "test": "mocha --compilers js:babel-register --require babel-polyfill",
     "generateDts": "dts-bundle --name indicators --main declarations/index.d.ts --out generated.d.ts --baseDir declarations --outputAsModuleFolder",
-    "build-lib": "babel-node --presets es2015 rollup.js"
+    "build": "tsc -p . && babel-node --presets es2015 rollup.js"
   },
   "repository": {
     "type": "git",
