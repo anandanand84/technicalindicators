@@ -82,11 +82,11 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 1. [Average True Range (ATR)](https://tonicdev.com/anandaravindan/atr "ATR").
 1. [Bollinger Bands (BB)](https://tonicdev.com/anandaravindan/bb "BB").
 1. [Commodity Channel Index (CCI)](https://github.com/anandanand84/technicalindicators/blob/master/test/oscillators/CCI.js "CCI").
-1. [Force Index (FI)](https://github.com/anandanand84/technicalindicators/blob/master/test/volume/ForceIndex.js "VWAP").
+1. [Force Index (FI)](https://github.com/anandanand84/technicalindicators/blob/master/test/volume/ForceIndex.js "FI").
 1. [Know Sure Thing (KST)](https://tonicdev.com/anandaravindan/kst "KST").
 1. [Moving Average Convergence Divergence (MACD)](https://tonicdev.com/anandaravindan/macd "MACD").
 1. [On Balance Volume (OBV)](https://tonicdev.com/anandaravindan/obv "OBV").
-1. Parabolic Stop and Reverse (PSAR)
+1. [Parabolic Stop and Reverse (PSAR)*] (https://github.com/anandanand84/technicalindicators/blob/master/test/momentum/PSAR.js "PSAR").
 1. [Rate of Change (ROC)](https://tonicdev.com/anandaravindan/roc "ROC").
 1. [Relative Strength Index (RSI)](https://tonicdev.com/anandaravindan/rsi "RSI").
 1. [Simple Moving Average (SMA)](https://tonicdev.com/anandaravindan/sma "SMA").
