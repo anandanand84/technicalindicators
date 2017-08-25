@@ -1,6 +1,6 @@
 {
   "name": "technicalindicators",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Techincal Indicators written in javascript",
   "main": "dist/index.js",
   "browser": "dist/browser.js",
