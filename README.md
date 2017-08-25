@@ -2,7 +2,7 @@
 
 # TechnicalIndicators
 
-A javascript technical indicators written in javascript. 
+A javascript technical indicators written in javascript.
 
 
 # Installation
@@ -63,7 +63,7 @@ All indicators will be available in window object. So you can just use
 sma({period : 5, values : [1,2,3,4,5,6,7,8,9], reversedInput : true});
 ```
 
-or 
+or
 
 ``` javascript
 SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
@@ -71,31 +71,32 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 
 
 # Playground
-  
+
 [Playground with code completion](http://anandanand84.github.io/technicalindicators/ "Playground")
 
 
 # Available Indicators
 
+1. [Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "ADL").
+1. [Average Directional Index (ADX)](https://github.com/anandanand84/technicalindicators/blob/master/test/directionalmovement/ADX.js "ADX").
+1. [Average True Range (ATR)](https://tonicdev.com/anandaravindan/atr "ATR").
+1. [Bollinger Bands (BB)](https://tonicdev.com/anandaravindan/bb "BB").
+1. [Commodity Channel Index (CCI)](https://github.com/anandanand84/technicalindicators/blob/master/test/oscillators/CCI.js "CCI").
+1. [Force Index (FI)](https://github.com/anandanand84/technicalindicators/blob/master/test/volume/ForceIndex.js "FI").
+1. [Know Sure Thing (KST)](https://tonicdev.com/anandaravindan/kst "KST").
+1. [Moving Average Convergence Divergence (MACD)](https://tonicdev.com/anandaravindan/macd "MACD").
+1. [On Balance Volume (OBV)](https://tonicdev.com/anandaravindan/obv "OBV").
+1. [Parabolic Stop and Reverse (PSAR)*] (https://github.com/anandanand84/technicalindicators/blob/master/test/momentum/PSAR.js "PSAR").
+1. [Rate of Change (ROC)](https://tonicdev.com/anandaravindan/roc "ROC").
+1. [Relative Strength Index (RSI)](https://tonicdev.com/anandaravindan/rsi "RSI").
 1. [Simple Moving Average (SMA)](https://tonicdev.com/anandaravindan/sma "SMA").
+1. [Stochastic Oscillator (KD)](https://tonicdev.com/anandaravindan/stochastic "KD").
+1. [Triple Exponentially Smoothed Average (TRIX)](https://tonicdev.com/anandaravindan/trix "TRIX").
+1. [Volume Weighted Average Price (VWAP)](https://github.com/anandanand84/technicalindicators/blob/master/test/volume/VWAP.js "VWAP").
 1. [Exponential Moving Average (EMA)](https://tonicdev.com/anandaravindan/ema "EMA").
 1. [Weighted Moving Average (WMA)](https://tonicdev.com/anandaravindan/wma "WMA").
-1. [Moving Average Convergence Divergence (MACD)](https://tonicdev.com/anandaravindan/macd "MACD").
-1. [Bollinger Bands (BB)](https://tonicdev.com/anandaravindan/bb "BB").
-1. [Average True Range (ATR)](https://tonicdev.com/anandaravindan/atr "ATR").
-1. [Relative Strength Index (RSI)](https://tonicdev.com/anandaravindan/rsi "RSI").
 1. [Wilder’s Smoothing (Smoothed Moving Average, WEMA)](https://tonicdev.com/anandaravindan/wema "WEMA").
-1. [Rate of Change (ROC)](https://tonicdev.com/anandaravindan/roc "ROC").
-1. [Know Sure Thing (KST)](https://tonicdev.com/anandaravindan/kst "KST").
-1. [Stochastic Oscillator (KD)](https://tonicdev.com/anandaravindan/stochastic "KD").
 1. [WilliamsR (W%R)](https://tonicdev.com/anandaravindan/williamsr "W%R").
-1. [Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "ADL").
-1. [On Balance Volume (OBV)](https://tonicdev.com/anandaravindan/obv "OBV").
-1. [Triple Exponentially Smoothed Average (TRIX)](https://tonicdev.com/anandaravindan/trix "TRIX").
-1. [Average Directional Index (ADX)](https://github.com/anandanand84/technicalindicators/blob/master/test/directionalmovement/ADX.js "ADX").
-1. [Commodity Channel Index (CCI)](https://github.com/anandanand84/technicalindicators/blob/master/test/oscillators/CCI.js "CCI").
-1. [Volume Weighted Average Price (VWAP)](https://github.com/anandanand84/technicalindicators/blob/master/test/volume/VWAP.js "VWAP").
-1. [Force Index (FI)](https://github.com/anandanand84/technicalindicators/blob/master/test/volume/ForceIndex.js "VWAP").
 
 
 # Chart Types
@@ -130,7 +131,7 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 1. [Three Black Crows](https://runkit.com/aarthiaradhana/threeblackcrows).
 1. [Three White Soldiers](https://runkit.com/aarthiaradhana/threewhitesoldiers).
 
-or 
+or
 
 Search for all bullish or bearish using
 
@@ -153,7 +154,7 @@ bullish(twoDayBullishInput) //true
 
 There are three ways you can use to get the indicator results.
 
-## calculate 
+## calculate
 
 Every indicator has a static method `calculate` which can be used to calculate the indicator without creating an object.
 
@@ -164,7 +165,7 @@ var period = 10;
 sma({period : period, values : prices})
 ```
 
-or 
+or
 
 ``` javascript
 const SMA = require('technicalindicators').SMA;
@@ -193,7 +194,7 @@ This a merge of calculate and nextValue. The usual use case would be
 
 1. Initialize indicator with available price value
 
-1. Get results for initialized values 
+1. Get results for initialized values
 
 1. Use nextValue to get next indicator values for further tick.
 
@@ -203,12 +204,12 @@ This a merge of calculate and nextValue. The usual use case would be
     sma.nextValue(16); // 10.1
     ```
 
-    Note: Calling nextValue will not update getResult() value. 
+    Note: Calling nextValue will not update getResult() value.
 
 ### Precision
 
 This uses regular javascript numbers, so there can be rounding errors which are negligible for a technical indicators, you can set precision by using the below config. By default there is no precision set.
-  
+
   ``` javascript
   const technicalIndicators = require('technicalindicators');
   technicalIndicators.setConfig('precision', 10);
@@ -268,5 +269,3 @@ open "http://localhost:5444/testdocs.html"
 # Donate
 
 BTC: `12eGmnhPrGuqvLNVnPddTaXm74hX68auTV`
-
-

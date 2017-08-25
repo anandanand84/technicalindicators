@@ -1,4 +1,5 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
     "declaration": true,
     "declarationDir": "./declarations",
