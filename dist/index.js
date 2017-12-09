@@ -2580,11 +2580,13 @@ class BullishPatterns extends CandlestickFinder {
     }
     hasPattern(data) {
         return bullishPatterns.reduce(function (state, pattern) {
-            let result = pattern.hasPattern(data);
-            if (result) {
-                console.log('Matched pattern ', pattern.name);
+            if(pattern.hasPattern(data) == false){
+              return state || {result:pattern.hasPattern(data)};
             }
-            return state || result;
+            else{
+              console.log("FOUNDDD")
+              return state || {result:pattern.hasPattern(data), matched:pattern.name};
+            }
         }, false);
     }
 }
@@ -2815,7 +2817,13 @@ class BearishPatterns extends CandlestickFinder {
     }
     hasPattern(data) {
         return bearishPatterns.reduce(function (state, pattern) {
-            return state || pattern.hasPattern(data);
+            if(pattern.hasPattern(data) == false){
+              return state || {result:pattern.hasPattern(data)};
+            }
+            else{
+              return state || {result:pattern.hasPattern(data), matched:pattern.name};
+            }
+
         }, false);
     }
 }
