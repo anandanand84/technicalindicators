@@ -2584,7 +2584,6 @@ class BullishPatterns extends CandlestickFinder {
               return state || {result:pattern.hasPattern(data)};
             }
             else{
-              console.log("FOUNDDD")
               return state || {result:pattern.hasPattern(data), matched:pattern.name};
             }
         }, false);
