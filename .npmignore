@@ -1,0 +1,25 @@
+# source files
+src
+
+# dependencies
+package-lock.json
+
+# conifgs
+
+.babelrc
+.travis.yml
+.editorconfig
+gulpfile.js
+tsconfig.json
+tslint.json
+.vscode
+
+# unneeded html
+index.html
+
+
+# test
+test
+
+#editors
+.editorconfig
