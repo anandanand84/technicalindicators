@@ -21,10 +21,6 @@ export default class BullishPatterns extends CandlestickFinder {
 
     hasPattern (data:StockData) {
         return bullishPatterns.reduce(function(state, pattern) {
-            let result = pattern.hasPattern(data);
-            if(result) {
-                console.log('Matched pattern ', pattern.name);
-            }
             return state || result;
         }, false)
     }
