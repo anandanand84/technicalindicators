@@ -9,7 +9,7 @@
   "jsnext:main": "lib/index.js",
   "scripts": {
     "cover": "babel-istanbul --include-all-sources cover -x dist/**/*.* ./node_modules/mocha/bin/_mocha -- -R spec && open coverage/lcov-report/index.html",
-    "test": "mocha --compilers js:babel-register --require babel-polyfill",
+    "test": "mocha --compilers js:babel-register --require keras-js",
     "generateDts": "dts-bundle --name indicators --main declarations/index.d.ts --out generated.d.ts --baseDir declarations --outputAsModuleFolder",
     "build-lib": "babel-node --presets es2015 rollup.js"
   },

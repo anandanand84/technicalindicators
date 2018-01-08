@@ -54,5 +54,14 @@ export function getAvailableIndicators () {
   AvailableIndicators.push('bearishspinningtop');
   AvailableIndicators.push('threeblackcrows');
   AvailableIndicators.push('threewhitesoldiers');
+
+  AvailableIndicators.push('predictPattern');
+  AvailableIndicators.push('hasDoubleBottom');
+  AvailableIndicators.push('hasDoubleTop');
+  AvailableIndicators.push('hasHeadAndShoulder');
+  AvailableIndicators.push('hasInverseHeadAndShoulder');
+  AvailableIndicators.push('isTrendingUp');
+  AvailableIndicators.push('isTrendingDown');
+
   return AvailableIndicators;
 };

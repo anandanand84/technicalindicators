@@ -3,6 +3,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var kerasJs = require('keras-js');
+
 let config = {};
 function setConfig(key, value) {
     config[key] = value;
@@ -187,7 +189,6 @@ class LinkedList {
     }
 }
 
-//STEP 1. Import Necessary indicator or rather last step
 //STEP 2. Create the input for the indicator, mandatory should be in the constructor
 
 //STEP3. Add class based syntax with export
@@ -405,11 +406,6 @@ function wema(input) {
     Indicator.reverseInputs(input);
     return result;
 }
-
-/**
- * Created by AAravindan on 5/4/16.
- */
-
 
 class MACD extends Indicator {
     constructor(input) {
@@ -657,9 +653,6 @@ function rsi(input) {
     return result;
 }
 
-/**
- * Created by AAravindan on 5/7/16.
- */
 class FixedSizeLinkedList extends LinkedList {
     constructor(size, maintainHigh, maintainLow) {
         super();
@@ -1123,7 +1116,6 @@ class ADX extends Indicator {
                     let diSum = (lastPDI + lastMDI);
                     lastDX = (diDiff / diSum) * 100;
                     smoothedDX = emaDX.nextValue(lastDX);
-                    // console.log(tick.high.toFixed(2), tick.low.toFixed(2), tick.close.toFixed(2) , calcTr.toFixed(2), calcPDM.toFixed(2), calcMDM.toFixed(2), lastATR.toFixed(2), lastAPDM.toFixed(2), lastAMDM.toFixed(2), lastPDI.toFixed(2), lastMDI.toFixed(2), diDiff.toFixed(2), diSum.toFixed(2), lastDX.toFixed(2));
                 }
                 tick = yield { adx: smoothedDX, pdi: lastPDI, mdi: lastMDI };
             }
@@ -1616,10 +1608,6 @@ function williamsr(input) {
     return result;
 }
 
-/**
- * Created by AAravindan on 5/17/16.
- */
-
 class ADL extends Indicator {
     constructor(input) {
         super(input);
@@ -1976,10 +1964,6 @@ class CandleList {
     }
 }
 
-/**
- * Created by AAravindan on 5/4/16.
- */
-
 class Renko extends Indicator {
     constructor(input) {
         super(input);
@@ -2085,10 +2069,6 @@ function renko(input) {
     Indicator.reverseInputs(input);
     return result;
 }
-
-/**
- * Created by AAravindan on 5/4/16.
- */
 
 class HeikinAshi extends Indicator {
     constructor(input) {
@@ -2581,9 +2561,6 @@ class BullishPatterns extends CandlestickFinder {
     hasPattern(data) {
         return bullishPatterns.reduce(function (state, pattern) {
             let result = pattern.hasPattern(data);
-            if (result) {
-                console.log('Matched pattern ', pattern.name);
-            }
             return state || result;
         }, false);
     }
@@ -2984,18 +2961,7 @@ function bearishspinningtop(data) {
  * @param {number} end
  * @returns {number[]}
  */
-/**
- * Calcaultes the fibonacci retracements for given start and end points
- *
- * If calculating for up trend start should be low and end should be high and vice versa
- *
- * returns an array of retracements level containing [0 , 23.6, 38.2, 50, 61.8, 78.6, 100, 127.2, 161.8, 261.8, 423.6]
- *
- * @export
- * @param {number} start
- * @param {number} end
- * @returns {number[]}
- */ function fibonacciretracement(start, end) {
+function fibonacciretracement(start, end) {
     let levels = [0, 23.6, 38.2, 50, 61.8, 78.6, 100, 127.2, 161.8, 261.8, 423.6];
     let retracements;
     if (start < end) {
@@ -3012,6 +2978,127 @@ function bearishspinningtop(data) {
     }
     return retracements;
 }
+
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator.throw(value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments)).next());
+    });
+};
+var isNodeEnvironment = false;
+(function () {
+    if (typeof module !== 'undefined' && module.exports) {
+        isNodeEnvironment = true;
+    }
+})();
+var modelPath = getConfig('MODEL_PATH') || '/dist/model.bin';
+var model = new kerasJs.Model({
+    filepath: isNodeEnvironment ? __dirname + '/model.bin' : modelPath,
+    gpu: false,
+    filesystem: isNodeEnvironment
+});
+
+
+(function (AvailablePatterns) {
+    AvailablePatterns[AvailablePatterns['TD'] = 0] = 'TD';
+    AvailablePatterns[AvailablePatterns['IHS'] = 1] = 'IHS';
+    AvailablePatterns[AvailablePatterns['HS'] = 2] = 'HS';
+    AvailablePatterns[AvailablePatterns['TU'] = 3] = 'TU';
+    AvailablePatterns[AvailablePatterns['DT'] = 4] = 'DT';
+    AvailablePatterns[AvailablePatterns['DB'] = 5] = 'DB';
+})(exports.AvailablePatterns || (exports.AvailablePatterns = {}));
+function interpolateArray(data, fitCount) {
+    var linearInterpolate = function (before, after, atPoint) {
+        return before + (after - before) * atPoint;
+    };
+    var newData = new Array();
+    var springFactor = new Number((data.length - 1) / (fitCount - 1));
+    newData[0] = data[0]; // for new allocation
+    for (var i = 1; i < fitCount - 1; i++) {
+        var tmp = i * springFactor;
+        var before = new Number(Math.floor(tmp)).toFixed();
+        var after = new Number(Math.ceil(tmp)).toFixed();
+        var atPoint = tmp - before;
+        newData[i] = linearInterpolate(data[before], data[after], atPoint);
+    }
+    newData[fitCount - 1] = data[data.length - 1]; // for new allocation
+    return newData;
+}
+
+function l2Normalize(arr) {
+    var sum = arr.reduce((cum, value) => { return cum + (value * value); }, 0);
+    var norm = Math.sqrt(sum);
+    return arr.map((v) => v / norm);
+}
+
+function predictPattern(input) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (input.values.length < 200) {
+            console.warn('Pattern detector requires atleast 250 data for a reliable prediction, received just ', input.values.length);
+        }
+        yield model.ready();
+        Indicator.reverseInputs(input);
+        var data = input.values;
+        var closes = l2Normalize(interpolateArray(data, 400));
+        let result = yield model.predict({
+            input: new Float32Array(closes)
+        });
+        var index = result.output.indexOf(Math.max(...result.output));
+        Indicator.reverseInputs(input);
+        return {
+            pattern: exports.AvailablePatterns[index],
+            patternId: index,
+            probability: result.output[index] * 100
+        };
+    });
+}
+function hasDoubleBottom(input) {
+    return __awaiter(this, void 0, void 0, function* () {
+        var result = yield predictPattern(input);
+        return (result.patternId === exports.AvailablePatterns.DB && result.probability > 75);
+    });
+}
+function hasDoubleTop(input) {
+    return __awaiter(this, void 0, void 0, function* () {
+        var result = yield predictPattern(input);
+        return (result.patternId === exports.AvailablePatterns.DT && result.probability > 75);
+    });
+}
+function hasHeadAndShoulder(input) {
+    return __awaiter(this, void 0, void 0, function* () {
+        var result = yield predictPattern(input);
+        return (result.patternId === exports.AvailablePatterns.HS && result.probability > 75);
+    });
+}
+function hasInverseHeadAndShoulder(input) {
+    return __awaiter(this, void 0, void 0, function* () {
+        var result = yield predictPattern(input);
+        return (result.patternId === exports.AvailablePatterns.IHS && result.probability > 75);
+    });
+}
+function isTrendingUp(input) {
+    return __awaiter(this, void 0, void 0, function* () {
+        var result = yield predictPattern(input);
+        return (result.patternId === exports.AvailablePatterns.TU && result.probability > 75);
+    });
+}
+function isTrendingDown(input) {
+    return __awaiter(this, void 0, void 0, function* () {
+        var result = yield predictPattern(input);
+        return (result.patternId === exports.AvailablePatterns.TD && result.probability > 75);
+    });
+}
+class PatternDetector extends Indicator {
+}
+PatternDetector.predictPattern = predictPattern;
+PatternDetector.hasDoubleBottom = hasDoubleBottom;
+PatternDetector.hasDoubleTop = hasDoubleTop;
+PatternDetector.hasHeadAndShoulder = hasHeadAndShoulder;
+PatternDetector.hasInverseHeadAndShoulder = hasInverseHeadAndShoulder;
+PatternDetector.isTrendingUp = isTrendingUp;
+PatternDetector.isTrendingDown = isTrendingDown;
 
 function getAvailableIndicators () {
   let AvailableIndicators   = [];
@@ -3068,6 +3155,15 @@ function getAvailableIndicators () {
   AvailableIndicators.push('bearishspinningtop');
   AvailableIndicators.push('threeblackcrows');
   AvailableIndicators.push('threewhitesoldiers');
+
+  AvailableIndicators.push('predictPattern');
+  AvailableIndicators.push('hasDoubleBottom');
+  AvailableIndicators.push('hasDoubleTop');
+  AvailableIndicators.push('hasHeadAndShoulder');
+  AvailableIndicators.push('hasInverseHeadAndShoulder');
+  AvailableIndicators.push('isTrendingUp');
+  AvailableIndicators.push('isTrendingDown');
+
   return AvailableIndicators;
 }
 
@@ -3149,6 +3245,14 @@ exports.bearishspinningtop = bearishspinningtop;
 exports.threeblackcrows = threeblackcrows;
 exports.threewhitesoldiers = threewhitesoldiers;
 exports.fibonacciretracement = fibonacciretracement;
+exports.predictPattern = predictPattern;
+exports.PatternDetector = PatternDetector;
+exports.hasDoubleBottom = hasDoubleBottom;
+exports.hasDoubleTop = hasDoubleTop;
+exports.hasHeadAndShoulder = hasHeadAndShoulder;
+exports.hasInverseHeadAndShoulder = hasInverseHeadAndShoulder;
+exports.isTrendingUp = isTrendingUp;
+exports.isTrendingDown = isTrendingDown;
 exports.setConfig = setConfig;
 exports.getConfig = getConfig;
 //# sourceMappingURL=index.js.map

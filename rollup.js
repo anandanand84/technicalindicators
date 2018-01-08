@@ -33,7 +33,11 @@ async function doBuild() {
       dest: 'dist/browser.js',
       format: 'iife',
       moduleName: 'window',
-      'sourceMap': true
+      'sourceMap': true,
+      external: ['keras-js'],
+      globals: {
+        'keras-js': 'KerasJS',
+      }
     })
 
     let bundleES6 = await rollup({
@@ -50,7 +54,11 @@ async function doBuild() {
       dest: 'dist/browser.es6.js',
       format: 'iife',
       moduleName: 'window',
-      'sourceMap': true
+      'sourceMap': true,
+      external: ['keras-js'],
+      globals: {
+        'keras-js': 'KerasJS',
+      }
     })
 
     let bundleNode = await rollup({

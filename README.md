@@ -74,7 +74,6 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 
 [Playground with code completion](http://anandanand84.github.io/technicalindicators/ "Playground")
 
-
 # Available Indicators
 
 1. [Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "ADL").
@@ -86,7 +85,7 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 1. [Know Sure Thing (KST)](https://tonicdev.com/anandaravindan/kst "KST").
 1. [Moving Average Convergence Divergence (MACD)](https://tonicdev.com/anandaravindan/macd "MACD").
 1. [On Balance Volume (OBV)](https://tonicdev.com/anandaravindan/obv "OBV").
-1. [Parabolic Stop and Reverse (PSAR)*] (https://github.com/anandanand84/technicalindicators/blob/master/test/momentum/PSAR.js "PSAR").
+1. [Parabolic Stop and Reverse (PSAR)](https://github.com/anandanand84/technicalindicators/blob/master/test/momentum/PSAR.js "PSAR").
 1. [Rate of Change (ROC)](https://tonicdev.com/anandaravindan/roc "ROC").
 1. [Relative Strength Index (RSI)](https://tonicdev.com/anandaravindan/rsi "RSI").
 1. [Simple Moving Average (SMA)](https://tonicdev.com/anandaravindan/sma "SMA").
@@ -98,6 +97,22 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 1. [Wilder’s Smoothing (Smoothed Moving Average, WEMA)](https://tonicdev.com/anandaravindan/wema "WEMA").
 1. [WilliamsR (W%R)](https://tonicdev.com/anandaravindan/williamsr "W%R").
 
+# Pattern Detection
+
+1. [Pattern Detection](https://tonicdev.com/anandaravindan/patterns "Pattern Detection")
+
+Finds pattern in the given set of data, patterns include, DB, DT, HS, IHS, TU, TD
+
+
+```
+  const hasHeadAndShoulder = require('technicalindicators').hasHeadAndShoulder;
+  hasHeadAndShoulder({values : closes})
+  isTrendingUp({values : closes})
+```
+
+
+When running in browser the file model.bin present in dist/model.bin in the respository should be accessible on your server at the location at /dist/model.bin.
+The model is trained using 400 count of values, so try to provide values close to 400  for a reliable prediction
 
 # Chart Types
 
