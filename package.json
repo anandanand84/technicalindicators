@@ -60,7 +60,15 @@
     "Commodity Channel Index",
     "VWAP",
     "Force Index",
-    "PSAR"
+    "PSAR",
+    "Pattern detection",
+    "Head and Shoulder",
+    "Inverse Head and Shoulder",
+    "Double Top",
+    "Double Bottom",
+    "Trending Up",
+    "Trending Down",
+    "Custom Screening"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",

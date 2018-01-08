@@ -282,5 +282,7 @@ open "http://localhost:5444/testdocs.html"
 
 
 # Donate
-
-BTC: `12eGmnhPrGuqvLNVnPddTaXm74hX68auTV`
+1. ETH: `0x0B56580Eb25f3F7e366dDA697161d314C17Bcb6a`
+1. LTC: `LLTUhKBRKs9sbW9F8MFQm7VVdZ1dJnXzGc`
+1. BTC: `1FGeJHoj7tjeLrm4JNtyPWTdBKPJjcqP6Y`
+1. BCH: `1AUFc8CEfHVjnoixbqTbX62WV8DZkpC1DU`
