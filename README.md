@@ -69,10 +69,25 @@ or
 SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 ```
 
-
 # Playground
 
 [Playground with code completion](http://anandanand84.github.io/technicalindicators/ "Playground")
+
+# Crypto Trading hub
+
+If you like this project. You'll love my other project https://cryptotrading-hub.com/?utm_source=github&utm_medium=readme&utm_campaign=technicalindicators
+
+1. Its free
+1. Realtime price charts 
+1. Unified trading experience across exchanges
+1. Price alerts
+1. Realtime crypto screening using javascript (Find coins making high and low in realtime or anything you can write using this library and javascript in realtime)
+1. Trading from charts, 
+1. Modify orders and ability to trade and create studies using javascript.
+
+![Home](/images/home.png)
+![Screener](/images/screener.png)
+![Trade](/images/trade.png)
 
 # Available Indicators
 
