@@ -75,7 +75,7 @@ SMA.calculate({period : 5, values : [1,2,3,4,5,6,7,8,9]});
 
 # Crypto Trading hub
 
-If you like this project. You'll love my other project https://cryptotrading-hub.com/?utm_source=github&utm_medium=readme&utm_campaign=technicalindicators
+If you like this project. You'll love my other project [crypto trading hub](https://cryptotrading-hub.com/?utm_source=github&utm_medium=readme&utm_campaign=technicalindicators "Crypto trading hub")
 
 1. Its free
 1. Realtime price charts 
