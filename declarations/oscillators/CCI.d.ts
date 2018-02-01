@@ -1,4 +1,4 @@
-import { CandleData } from '../../src/StockData';
+import { CandleData } from '../StockData';
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 export declare class CCIInput extends IndicatorInput {
     high: number[];
