@@ -5,8 +5,7 @@ export class VWAPInput extends IndicatorInput {
   high : number[];
   low :number[];
   close : number[];
-  period : number;
-  volume : number
+  volume : number[]
 };
 
 
@@ -19,7 +18,6 @@ export class VWAP extends Indicator {
     var highs = input.high;
     var closes = input.close;
     var volumes = input.volume;
-    var period = input.period;
     var format = this.format;
     
     if(!((lows.length === highs.length) && (highs.length === closes.length) )){
@@ -32,7 +30,6 @@ export class VWAP extends Indicator {
       var tick = yield;
       let cumulativeTotal = 0;
       let cumulativeVolume = 0;
-      let vwap;
       while (true) {
         let typicalPrice = (tick.high + tick.low + tick.close) / 3;
         let total = tick.volume * typicalPrice;

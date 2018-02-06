@@ -13,7 +13,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "module": "es6",
     "target": "es6",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "outDir": "./lib",
     "preserveConstEnums": true,
     "removeComments": false,

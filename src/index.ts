@@ -1,3 +1,4 @@
+export { CandleData, CandleList } from "./StockData";
 export  { sma, SMA } from './moving_averages/SMA'
 export  { ema, EMA }                       from  './moving_averages/EMA';
 export  { wma, WMA }                       from  './moving_averages/WMA';

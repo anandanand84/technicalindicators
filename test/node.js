@@ -3,6 +3,7 @@
  */
 var sma = require('../dist/index.js').sma;
 var cci = require('../dist/index.js').cci;
+var AvailableIndicators = require('../dist/index.js').getAvailableIndicators;
 var assert = require('assert');
 var data   = require('./data')
 
@@ -26,5 +27,9 @@ var expectResult =  [
 describe('Test in node after build process', function() {
   it('should calculate sma', function() {
     assert.deepEqual(sma({period : period, values : prices}), expectResult, 'Wrong Results');
+  });
+  it('Available Indicators should be availabel in global object', function() {
+    console.log(AvailableIndicators())
+    assert.notDeepStrictEqual(AvailableIndicators(), undefined, 'Available indicators not available in global object');
   });
 })

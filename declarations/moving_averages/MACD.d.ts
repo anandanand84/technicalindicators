@@ -3,14 +3,13 @@
  */
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 export declare class MACDInput extends IndicatorInput {
-    period: number;
     values: number[];
     SimpleMAOscillator: boolean;
     SimpleMASignal: boolean;
     fastPeriod: number;
     slowPeriod: number;
     signalPeriod: number;
-    constructor(period: number, values: number[]);
+    constructor(values: number[]);
 }
 export declare class MACDOutput {
     MACD?: number;

@@ -11,8 +11,7 @@ export class MACDInput extends IndicatorInput {
     fastPeriod:number;
     slowPeriod:number;
     signalPeriod:number;
-    constructor(public period:number, 
-                public values:number[]) {
+    constructor(public values:number[]) {
         super();
     }
 }

@@ -111,6 +111,7 @@
     "typescript": "^2.0.0"
   },
   "dependencies": {
+    "@types/node": "^6.0.96",
     "babel-polyfill": "^6.23.0",
     "keras-js": "^1.0.2"
   }

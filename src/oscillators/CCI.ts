@@ -1,4 +1,4 @@
-import { CandleData } from '../../src/StockData';
+import { CandleData } from '../StockData';
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 import { SMA } from       '../moving_averages/SMA';
 import LinkedList from '../Utils/FixedSizeLinkedList';

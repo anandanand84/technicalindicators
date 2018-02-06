@@ -252,6 +252,10 @@ Create issues about anything you want to report, change of API's, or request for
 
 ## Environment dependencies
 
+Typescript: Use typescript 2.0.0 other you might get max call stack reached error.
+
+``` npm install -g typescript@2.0.0 ```
+
 TechnicalIndicators depends on the [`canvas` package](https://npmjs.com/canvas), which requires some dependencies to be installed. You can find the instructions to do that [here](https://github.com/Automattic/node-canvas#installation). If you do not install these dependencies, expect to get this error message during the installation of TechnicalIndicators:
 
 ```

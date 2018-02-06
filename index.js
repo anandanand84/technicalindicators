@@ -62,6 +62,8 @@ export function getAvailableIndicators () {
   AvailableIndicators.push('hasInverseHeadAndShoulder');
   AvailableIndicators.push('isTrendingUp');
   AvailableIndicators.push('isTrendingDown');
-
   return AvailableIndicators;
 };
+
+let AvailableIndicators = getAvailableIndicators();
+export { AvailableIndicators }

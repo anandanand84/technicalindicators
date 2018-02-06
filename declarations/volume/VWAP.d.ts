@@ -4,8 +4,7 @@ export declare class VWAPInput extends IndicatorInput {
     high: number[];
     low: number[];
     close: number[];
-    period: number;
-    volume: number;
+    volume: number[];
 }
 export declare class VWAP extends Indicator {
     result: number[];

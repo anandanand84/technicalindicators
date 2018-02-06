@@ -5,6 +5,19 @@ Object.defineProperty(exports, '__esModule', { value: true });
 
 var kerasJs = require('keras-js');
 
+class CandleData {
+}
+class CandleList {
+    constructor() {
+        this.open = [];
+        this.high = [];
+        this.low = [];
+        this.close = [];
+        this.volume = [];
+        this.timestamp = [];
+    }
+}
+
 let config = {};
 function setConfig(key, value) {
     config[key] = value;
@@ -1899,7 +1912,6 @@ class VWAP extends Indicator {
         var highs = input.high;
         var closes = input.close;
         var volumes = input.volume;
-        var period = input.period;
         var format = this.format;
         if (!((lows.length === highs.length) && (highs.length === closes.length))) {
             throw ('Inputs(low,high, close) not of equal size');
@@ -1909,7 +1921,6 @@ class VWAP extends Indicator {
             var tick = yield;
             let cumulativeTotal = 0;
             let cumulativeVolume = 0;
-            let vwap;
             while (true) {
                 let typicalPrice = (tick.high + tick.low + tick.close) / 3;
                 let total = tick.volume * typicalPrice;
@@ -1951,17 +1962,6 @@ function vwap(input) {
     }
     Indicator.reverseInputs(input);
     return result;
-}
-
-class CandleList {
-    constructor() {
-        this.open = [];
-        this.high = [];
-        this.low = [];
-        this.close = [];
-        this.volume = [];
-        this.timestamp = [];
-    }
 }
 
 class Renko extends Indicator {
@@ -2989,7 +2989,7 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 };
 var isNodeEnvironment = false;
 (function () {
-    if (typeof module !== 'undefined' && module.exports) {
+    if (typeof (module) !== 'undefined' && module.exports) {
         isNodeEnvironment = true;
     }
 })();
@@ -3163,11 +3163,15 @@ function getAvailableIndicators () {
   AvailableIndicators.push('hasInverseHeadAndShoulder');
   AvailableIndicators.push('isTrendingUp');
   AvailableIndicators.push('isTrendingDown');
-
   return AvailableIndicators;
 }
 
+let AvailableIndicators = getAvailableIndicators();
+
 exports.getAvailableIndicators = getAvailableIndicators;
+exports.AvailableIndicators = AvailableIndicators;
+exports.CandleData = CandleData;
+exports.CandleList = CandleList;
 exports.sma = sma;
 exports.SMA = SMA;
 exports.ema = ema;

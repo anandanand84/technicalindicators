@@ -1,11 +1,14 @@
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 import { getConfig } from '../config';
-import { Model, Tensor, GPU_SUPPORT, activations, layers, testUtils } from 'keras-js';
+import { Model } from 'keras-js';
 
 var isNodeEnvironment = false;
 
+declare var module;
+declare var __dirname;
+
 (function () {
-    if (typeof module !== 'undefined' && module.exports) {
+    if (typeof (module) !== 'undefined' && module.exports) {
             isNodeEnvironment = true;
     } 
 })();
