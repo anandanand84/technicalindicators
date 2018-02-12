@@ -22,7 +22,7 @@ export class WEMA extends Indicator{
             var tick  = yield;
             var prevEma;
             while (true) {
-                if(prevEma !== undefined && tick != undefined){
+                if(prevEma !== undefined && tick !== undefined){
                     prevEma = ((tick - prevEma) * exponent) + prevEma;
                     tick = yield prevEma;
                 }else {
