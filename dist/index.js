@@ -277,7 +277,7 @@ class EMA extends Indicator {
             var tick = yield;
             var prevEma;
             while (true) {
-                if (prevEma && tick) {
+                if (prevEma !== undefined && tick !== undefined) {
                     prevEma = ((tick - prevEma) * exponent) + prevEma;
                     tick = yield prevEma;
                 }
@@ -383,14 +383,14 @@ class WEMA extends Indicator {
             var tick = yield;
             var prevEma;
             while (true) {
-                if (prevEma && tick != undefined) {
+                if (prevEma !== undefined && tick !== undefined) {
                     prevEma = ((tick - prevEma) * exponent) + prevEma;
                     tick = yield prevEma;
                 }
                 else {
                     tick = yield;
                     prevEma = sma$$1.nextValue(tick);
-                    if (prevEma)
+                    if (prevEma !== undefined)
                         tick = yield prevEma;
                 }
             }
