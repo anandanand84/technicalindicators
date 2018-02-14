@@ -1,21 +1,20 @@
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 import { getConfig } from '../config';
-import { Model } from 'keras-js';
+import KerasJS from 'keras-js';
 
 var isNodeEnvironment = false;
 
 declare var module;
 declare var __dirname;
+declare var global;
 
-(function () {
-    if (typeof (module) !== 'undefined' && module.exports) {
-            isNodeEnvironment = true;
-    } 
-})();
+try {
+    isNodeEnvironment = Object.prototype.toString.call(global.process) === '[object process]' 
+ } catch(e) {}
 
 var modelPath = getConfig('MODEL_PATH') || '/dist/model.bin';
 
-var model = new Model({
+var model = new KerasJS.Model({
     filepath: isNodeEnvironment ? __dirname + '/model.bin' : modelPath,
     gpu: false,
     filesystem: isNodeEnvironment

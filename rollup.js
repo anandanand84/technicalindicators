@@ -2,6 +2,10 @@ import { rollup } from 'rollup';
 import babel from 'rollup-plugin-babel';
 import uglify from 'rollup-plugin-uglify';
 import minify from 'rollup-plugin-babel-minify';
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
+import builtins from 'rollup-plugin-node-builtins';
+import replace from 'rollup-plugin-replace';
 
 var fs = require('fs');
 
@@ -10,6 +14,17 @@ async function doBuild() {
     let bundle = await rollup({
       entry: 'index.js',
       plugins: [
+        replace({
+          'process.env.NODE_ENV': JSON.stringify( 'production' )
+        }),
+        builtins(),
+        resolve({
+          jsnext: true,
+          main: true,
+          browser: true
+        }),
+        commonjs({
+        }),
         babel({
           babelrc: false,
           "presets": [
@@ -24,8 +39,11 @@ async function doBuild() {
             "external-helpers"
           ]
         }),
-        uglify()
-      ]
+        minify({
+          comments : false
+        })
+      ],
+      external: ["@babel/polyfill"]
     });
 
     bundle.write({
@@ -34,19 +52,30 @@ async function doBuild() {
       format: 'iife',
       moduleName: 'window',
       'sourceMap': true,
-      external: ['keras-js'],
-      globals: {
-        'keras-js': 'KerasJS',
+      globals : {
+        "@babel/polyfill" : 'window'
       }
     })
 
     let bundleES6 = await rollup({
       entry: 'index.js',
       plugins: [
+        replace({
+          'process.env.NODE_ENV': JSON.stringify( 'production' )
+        }),
+        builtins(),
+        resolve({
+          jsnext: true,
+          main: true,
+          browser: true
+        }),
+        commonjs({
+        }),
         minify({
           comments : false
         })
-      ]
+      ],
+      external: ["@babel/polyfill"],
     });
 
     bundleES6.write({
@@ -55,9 +84,8 @@ async function doBuild() {
       format: 'iife',
       moduleName: 'window',
       'sourceMap': true,
-      external: ['keras-js'],
-      globals: {
-        'keras-js': 'KerasJS',
+      globals : {
+        "@babel/polyfill" : 'window'
       }
     })
 
@@ -67,8 +95,8 @@ async function doBuild() {
 
     bundleNode.write({
       'banner': '/* APP */',
-      dest: 'dist/index.js',
-      format: 'cjs',
+       dest: 'dist/index.js',
+       format: 'cjs',
       'sourceMap': true
     })
   } catch (e) {

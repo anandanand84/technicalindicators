@@ -3,7 +3,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var kerasJs = require('keras-js');
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var KerasJS = _interopDefault(require('keras-js'));
 
 class CandleData {
 }
@@ -202,6 +204,7 @@ class LinkedList {
     }
 }
 
+//STEP 1. Import Necessary indicator or rather last step
 //STEP 2. Create the input for the indicator, mandatory should be in the constructor
 
 //STEP3. Add class based syntax with export
@@ -419,6 +422,11 @@ function wema(input) {
     Indicator.reverseInputs(input);
     return result;
 }
+
+/**
+ * Created by AAravindan on 5/4/16.
+ */
+
 
 class MACD extends Indicator {
     constructor(input) {
@@ -666,6 +674,9 @@ function rsi(input) {
     return result;
 }
 
+/**
+ * Created by AAravindan on 5/7/16.
+ */
 class FixedSizeLinkedList extends LinkedList {
     constructor(size, maintainHigh, maintainLow) {
         super();
@@ -1129,6 +1140,7 @@ class ADX extends Indicator {
                     let diSum = (lastPDI + lastMDI);
                     lastDX = (diDiff / diSum) * 100;
                     smoothedDX = emaDX.nextValue(lastDX);
+                    // console.log(tick.high.toFixed(2), tick.low.toFixed(2), tick.close.toFixed(2) , calcTr.toFixed(2), calcPDM.toFixed(2), calcMDM.toFixed(2), lastATR.toFixed(2), lastAPDM.toFixed(2), lastAMDM.toFixed(2), lastPDI.toFixed(2), lastMDI.toFixed(2), diDiff.toFixed(2), diSum.toFixed(2), lastDX.toFixed(2));
                 }
                 tick = yield { adx: smoothedDX, pdi: lastPDI, mdi: lastMDI };
             }
@@ -1621,6 +1633,10 @@ function williamsr(input) {
     return result;
 }
 
+/**
+ * Created by AAravindan on 5/17/16.
+ */
+
 class ADL extends Indicator {
     constructor(input) {
         super(input);
@@ -1964,6 +1980,10 @@ function vwap(input) {
     return result;
 }
 
+/**
+ * Created by AAravindan on 5/4/16.
+ */
+
 class Renko extends Indicator {
     constructor(input) {
         super(input);
@@ -2069,6 +2089,10 @@ function renko(input) {
     Indicator.reverseInputs(input);
     return result;
 }
+
+/**
+ * Created by AAravindan on 5/4/16.
+ */
 
 class HeikinAshi extends Indicator {
     constructor(input) {
@@ -2982,19 +3006,18 @@ function fibonacciretracement(start, end) {
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator.throw(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
         function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments)).next());
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
 var isNodeEnvironment = false;
-(function () {
-    if (typeof (module) !== 'undefined' && module.exports) {
-        isNodeEnvironment = true;
-    }
-})();
+try {
+    isNodeEnvironment = Object.prototype.toString.call(global.process) === '[object process]';
+}
+catch (e) { }
 var modelPath = getConfig('MODEL_PATH') || '/dist/model.bin';
-var model = new kerasJs.Model({
+var model = new KerasJS.Model({
     filepath: isNodeEnvironment ? __dirname + '/model.bin' : modelPath,
     gpu: false,
     filesystem: isNodeEnvironment
@@ -3002,12 +3025,12 @@ var model = new kerasJs.Model({
 
 
 (function (AvailablePatterns) {
-    AvailablePatterns[AvailablePatterns['TD'] = 0] = 'TD';
-    AvailablePatterns[AvailablePatterns['IHS'] = 1] = 'IHS';
-    AvailablePatterns[AvailablePatterns['HS'] = 2] = 'HS';
-    AvailablePatterns[AvailablePatterns['TU'] = 3] = 'TU';
-    AvailablePatterns[AvailablePatterns['DT'] = 4] = 'DT';
-    AvailablePatterns[AvailablePatterns['DB'] = 5] = 'DB';
+    AvailablePatterns[AvailablePatterns["TD"] = 0] = "TD";
+    AvailablePatterns[AvailablePatterns["IHS"] = 1] = "IHS";
+    AvailablePatterns[AvailablePatterns["HS"] = 2] = "HS";
+    AvailablePatterns[AvailablePatterns["TU"] = 3] = "TU";
+    AvailablePatterns[AvailablePatterns["DT"] = 4] = "DT";
+    AvailablePatterns[AvailablePatterns["DB"] = 5] = "DB";
 })(exports.AvailablePatterns || (exports.AvailablePatterns = {}));
 function interpolateArray(data, fitCount) {
     var linearInterpolate = function (before, after, atPoint) {
