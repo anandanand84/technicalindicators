@@ -6,12 +6,11 @@ var isNodeEnvironment = false;
 
 declare var module;
 declare var __dirname;
+declare var global;
 
-(function () {
-    if (typeof (module) !== 'undefined' && module.exports) {
-            isNodeEnvironment = true;
-    } 
-})();
+try {
+    isNodeEnvironment = Object.prototype.toString.call(global.process) === '[object process]' 
+ } catch(e) {}
 
 var modelPath = getConfig('MODEL_PATH') || '/dist/model.bin';
 
