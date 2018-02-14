@@ -127,7 +127,8 @@ Finds pattern in the given set of data, patterns include, DB, DT, HS, IHS, TU, T
 
 
 When running in browser the file model.bin present in dist/model.bin in the respository should be accessible on your server at the location at /dist/model.bin.
-The model is trained using 400 count of values, so try to provide values close to 400  for a reliable prediction
+The model is trained using 400 count of values, so try to provide values close to 400  for a reliable prediction of DB, DT, HS, IHS
+TD(Trending Down) and TU(Trending up) works fine even with lower values.
 
 # Chart Types
 
@@ -137,7 +138,7 @@ The model is trained using 400 count of values, so try to provide values close t
 
 # CandleStick Pattern
 
-1. [Abandoned Baby](https://runkit.com/aarthiaradhana/abandonedbaby).
+1. [Abandoned Baby](https://runkit.com/anandaravindan/abandoned-baby).
 1. [Bearish Engulfing Pattern](https://runkit.com/aarthiaradhana/bearishengulfingpattern).
 1. [Bullish Engulfiing Pattern](https://runkit.com/aarthiaradhana/bullishengulfingpattern).
 1. [Dark Cloud Cover](https://runkit.com/aarthiaradhana/darkcloudcover).
@@ -301,6 +302,7 @@ open "http://localhost:5444/testdocs.html"
 
 
 # Donate
+1. XRB: `xrb_1shh8i77upiq4bjzi3ajik9ofq14bbcucshoapi3m7f8d74dc5k31o56yj5r`
 1. ETH: `0x0B56580Eb25f3F7e366dDA697161d314C17Bcb6a`
 1. LTC: `LLTUhKBRKs9sbW9F8MFQm7VVdZ1dJnXzGc`
 1. BTC: `1FGeJHoj7tjeLrm4JNtyPWTdBKPJjcqP6Y`
