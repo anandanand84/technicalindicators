@@ -22,7 +22,7 @@ export class EMA extends Indicator{
             var tick  = yield;
             var prevEma;
             while (true) {
-                if(prevEma && tick){
+                if(prevEma !== undefined && tick !== undefined){
                     prevEma = ((tick - prevEma) * exponent) + prevEma;
                     tick = yield prevEma;
                 }else {
