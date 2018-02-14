@@ -5,6 +5,7 @@ import minify from 'rollup-plugin-babel-minify';
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import builtins from 'rollup-plugin-node-builtins';
+import replace from 'rollup-plugin-replace';
 
 var fs = require('fs');
 
@@ -13,6 +14,9 @@ async function doBuild() {
     let bundle = await rollup({
       entry: 'index.js',
       plugins: [
+        replace({
+          'process.env.NODE_ENV': JSON.stringify( 'production' )
+        }),
         builtins(),
         resolve({
           jsnext: true,
@@ -38,7 +42,8 @@ async function doBuild() {
         minify({
           comments : false
         })
-      ]
+      ],
+      external: ["@babel/polyfill"]
     });
 
     bundle.write({
@@ -46,12 +51,18 @@ async function doBuild() {
       dest: 'dist/browser.js',
       format: 'iife',
       moduleName: 'window',
-      'sourceMap': true
+      'sourceMap': true,
+      globals : {
+        "@babel/polyfill" : 'window'
+      }
     })
 
     let bundleES6 = await rollup({
       entry: 'index.js',
       plugins: [
+        replace({
+          'process.env.NODE_ENV': JSON.stringify( 'production' )
+        }),
         builtins(),
         resolve({
           jsnext: true,
@@ -63,7 +74,8 @@ async function doBuild() {
         minify({
           comments : false
         })
-      ]
+      ],
+      external: ["@babel/polyfill"],
     });
 
     bundleES6.write({
@@ -71,7 +83,10 @@ async function doBuild() {
       dest: 'dist/browser.es6.js',
       format: 'iife',
       moduleName: 'window',
-      'sourceMap': true
+      'sourceMap': true,
+      globals : {
+        "@babel/polyfill" : 'window'
+      }
     })
 
     let bundleNode = await rollup({
@@ -80,8 +95,8 @@ async function doBuild() {
 
     bundleNode.write({
       'banner': '/* APP */',
-      dest: 'dist/index.js',
-      format: 'cjs',
+       dest: 'dist/index.js',
+       format: 'cjs',
       'sourceMap': true
     })
   } catch (e) {
