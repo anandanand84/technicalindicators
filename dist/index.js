@@ -1974,6 +1974,189 @@ function vwap(input) {
     return result;
 }
 
+class TypicalPrice extends Indicator {
+    constructor(input) {
+        super(input);
+        this.result = [];
+        this.generator = (function* () {
+            let priceInput = yield;
+            while (true) {
+                priceInput = yield (priceInput.high + priceInput.low + priceInput.close) / 3;
+            }
+        })();
+        this.generator.next();
+        input.low.forEach((tick, index) => {
+            var result = this.generator.next({
+                high: input.high[index],
+                low: input.low[index],
+                close: input.close[index],
+            });
+            this.result.push(result.value);
+        });
+    }
+    nextValue(price) {
+        var result = this.generator.next(price).value;
+        return result;
+    }
+    ;
+}
+TypicalPrice.calculate = typicalprice;
+function typicalprice(input) {
+    Indicator.reverseInputs(input);
+    var result = new TypicalPrice(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class MFI extends Indicator {
+    constructor(input) {
+        super(input);
+        var highs = input.high;
+        var lows = input.low;
+        var closes = input.close;
+        var volumes = input.volume;
+        var period = input.period;
+        var typicalPrice = new TypicalPrice({ low: [], high: [], close: [] });
+        var positiveFlow = new FixedSizeLinkedList(period, false, false, true);
+        var negativeFlow = new FixedSizeLinkedList(period, false, false, true);
+        if (!((lows.length === highs.length) && (highs.length === closes.length) && (highs.length === volumes.length))) {
+            throw ('Inputs(low,high, close, volumes) not of equal size');
+        }
+        this.result = [];
+        this.generator = (function* () {
+            var result;
+            var tick;
+            var lastClose;
+            var positiveFlowForPeriod;
+            var rawMoneyFlow = 0;
+            var moneyFlowRatio;
+            var negativeFlowForPeriod;
+            let typicalPriceValue;
+            tick = yield;
+            lastClose = tick.close; //Fist value 
+            tick = yield;
+            while (true) {
+                var { high, low, close, volume } = tick;
+                var positionMoney = 0;
+                var negativeMoney = 0;
+                typicalPriceValue = typicalPrice.nextValue({ high, low, close });
+                rawMoneyFlow = typicalPriceValue * volume;
+                close > lastClose ? positionMoney = rawMoneyFlow : negativeMoney = rawMoneyFlow;
+                positiveFlow.push(positionMoney);
+                negativeFlow.push(negativeMoney);
+                positiveFlowForPeriod = positiveFlow.periodSum;
+                negativeFlowForPeriod = negativeFlow.periodSum;
+                if ((positiveFlow.totalPushed >= period) && (positiveFlow.totalPushed >= period)) {
+                    moneyFlowRatio = positiveFlowForPeriod / negativeFlowForPeriod;
+                    result = 100 - 100 / (1 + moneyFlowRatio);
+                }
+                lastClose = close;
+                tick = yield result;
+            }
+        })();
+        this.generator.next();
+        highs.forEach((tickHigh, index) => {
+            var tickInput = {
+                high: tickHigh,
+                low: lows[index],
+                close: closes[index],
+                volume: volumes[index]
+            };
+            var result = this.generator.next(tickInput);
+            if (result.value != undefined) {
+                this.result.push(parseFloat(result.value.toFixed(2)));
+            }
+        });
+    }
+    ;
+    nextValue(price) {
+        var result = this.generator.next(price);
+        if (result.value != undefined) {
+            return (parseFloat(result.value.toFixed(2)));
+        }
+    }
+    ;
+}
+MFI.calculate = mfi;
+function mfi(input) {
+    Indicator.reverseInputs(input);
+    var result = new MFI(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class StochasticRSI extends Indicator {
+    constructor(input) {
+        super(input);
+        let closes = input.values;
+        let rsiPeriod = input.rsiPeriod;
+        let stochasticPeriod = input.stochasticPeriod;
+        let kPeriod = input.kPeriod;
+        let dPeriod = input.dPeriod;
+        let format = this.format;
+        this.result = [];
+        this.generator = (function* () {
+            let index = 1;
+            let rsi$$1 = new RSI({ period: rsiPeriod, values: [] });
+            let stochastic$$1 = new Stochastic({ period: stochasticPeriod, high: [], low: [], close: [], signalPeriod: kPeriod });
+            let dSma = new SMA({
+                period: dPeriod,
+                values: [],
+                format: (v) => { return v; }
+            });
+            let lastRSI, stochasticRSI, d, result;
+            var tick = yield;
+            while (true) {
+                lastRSI = rsi$$1.nextValue(tick);
+                if (lastRSI !== undefined) {
+                    var stochasticInput = { high: lastRSI, low: lastRSI, close: lastRSI };
+                    stochasticRSI = stochastic$$1.nextValue(stochasticInput);
+                    if (stochasticRSI !== undefined && stochasticRSI.d !== undefined) {
+                        d = dSma.nextValue(stochasticRSI.d);
+                        if (d !== undefined)
+                            result = {
+                                stochRSI: stochasticRSI.k,
+                                k: stochasticRSI.d,
+                                d: d
+                            };
+                    }
+                }
+                tick = yield result;
+            }
+        })();
+        this.generator.next();
+        closes.forEach((tick, index) => {
+            var result = this.generator.next(tick);
+            if (result.value !== undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    nextValue(input) {
+        let nextResult = this.generator.next(input);
+        if (nextResult.value !== undefined)
+            return nextResult.value;
+    }
+    ;
+}
+StochasticRSI.calculate = stochasticrsi;
+function stochasticrsi(input) {
+    Indicator.reverseInputs(input);
+    var result = new StochasticRSI(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
 class Renko extends Indicator {
     constructor(input) {
         super(input);
@@ -3136,6 +3319,9 @@ function getAvailableIndicators () {
   AvailableIndicators.push('renko');
   AvailableIndicators.push('heikinashi');
 
+  AvailableIndicators.push('stochasticrsi');
+  AvailableIndicators.push('mfi');
+
   AvailableIndicators.push('averagegain');
   AvailableIndicators.push('averageloss');
   AvailableIndicators.push('sd');
@@ -3223,6 +3409,10 @@ exports.cci = cci;
 exports.CCI = CCI;
 exports.vwap = vwap;
 exports.VWAP = VWAP;
+exports.mfi = mfi;
+exports.MFI = MFI;
+exports.stochasticrsi = stochasticrsi;
+exports.StochasticRSI = StochasticRSI;
 exports.averagegain = averagegain;
 exports.AverageGain = AverageGain;
 exports.averageloss = averageloss;

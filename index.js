@@ -26,6 +26,9 @@ export function getAvailableIndicators () {
   AvailableIndicators.push('renko');
   AvailableIndicators.push('heikinashi');
 
+  AvailableIndicators.push('stochasticrsi');
+  AvailableIndicators.push('mfi');
+
   AvailableIndicators.push('averagegain');
   AvailableIndicators.push('averageloss');
   AvailableIndicators.push('sd');
