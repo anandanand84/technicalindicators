@@ -20,23 +20,24 @@ export class AverageGain extends Indicator {
       var gainSum = 0;
       var avgGain;
       var gain;
-      var lastValue;
+      var lastValue = currentValue;
+      currentValue = yield
       while(true){
-        gain = lastValue ? (currentValue - lastValue) : 0;
-        gain = gain ? gain : 0;
+        gain = currentValue - lastValue;
+        gain = gain > 0 ? gain : 0;
         if(gain > 0){
           gainSum = gainSum + gain;
         }
-        if(counter < (period + 1)){
+        if(counter < period){
           counter++;
         }
-        else if(!avgGain){
+        else if(avgGain === undefined){
           avgGain = gainSum / period;
         }else {
-          avgGain = ((avgGain * (period-1)) + (gain > 0 ? gain : 0))/period;
+          avgGain = ((avgGain * (period-1)) + gain)/period;
         }
         lastValue = currentValue;
-        avgGain = avgGain ? format(avgGain) : undefined;
+        avgGain = (avgGain!==undefined) ? format(avgGain) : undefined;
         currentValue = yield avgGain;
       }
     })(period);

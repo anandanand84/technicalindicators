@@ -497,24 +497,25 @@ class AverageGain extends Indicator {
             var gainSum = 0;
             var avgGain;
             var gain;
-            var lastValue;
+            var lastValue = currentValue;
+            currentValue = yield;
             while (true) {
-                gain = lastValue ? (currentValue - lastValue) : 0;
-                gain = gain ? gain : 0;
+                gain = currentValue - lastValue;
+                gain = gain > 0 ? gain : 0;
                 if (gain > 0) {
                     gainSum = gainSum + gain;
                 }
-                if (counter < (period + 1)) {
+                if (counter < period) {
                     counter++;
                 }
-                else if (!avgGain) {
+                else if (avgGain === undefined) {
                     avgGain = gainSum / period;
                 }
                 else {
-                    avgGain = ((avgGain * (period - 1)) + (gain > 0 ? gain : 0)) / period;
+                    avgGain = ((avgGain * (period - 1)) + gain) / period;
                 }
                 lastValue = currentValue;
-                avgGain = avgGain ? format(avgGain) : undefined;
+                avgGain = (avgGain !== undefined) ? format(avgGain) : undefined;
                 currentValue = yield avgGain;
             }
         })(period);
@@ -555,24 +556,25 @@ class AverageLoss extends Indicator {
             var lossSum = 0;
             var avgLoss;
             var loss;
-            var lastValue;
+            var lastValue = currentValue;
+            currentValue = yield;
             while (true) {
-                loss = lastValue ? (lastValue - currentValue) : 0;
-                loss = loss ? loss : 0;
+                loss = lastValue - currentValue;
+                loss = loss > 0 ? loss : 0;
                 if (loss > 0) {
                     lossSum = lossSum + loss;
                 }
-                if (counter < (period + 1)) {
+                if (counter < period) {
                     counter++;
                 }
-                else if (!avgLoss) {
+                else if (avgLoss === undefined) {
                     avgLoss = lossSum / period;
                 }
                 else {
-                    avgLoss = ((avgLoss * (period - 1)) + (loss > 0 ? loss : 0)) / period;
+                    avgLoss = ((avgLoss * (period - 1)) + loss) / period;
                 }
                 lastValue = currentValue;
-                avgLoss = avgLoss ? format(avgLoss) : undefined;
+                avgLoss = (avgLoss !== undefined) ? format(avgLoss) : undefined;
                 currentValue = yield avgLoss;
             }
         })(period);
@@ -619,24 +621,18 @@ class RSI extends Indicator {
             while (true) {
                 lastAvgGain = GainProvider.nextValue(current);
                 lastAvgLoss = LossProvider.nextValue(current);
-                if (lastAvgGain && lastAvgLoss) {
+                if ((lastAvgGain !== undefined) && (lastAvgLoss !== undefined)) {
                     if (lastAvgLoss === 0) {
                         currentRSI = 100;
                     }
+                    else if (lastAvgGain === 0) {
+                        currentRSI = 0;
+                    }
                     else {
                         RS = lastAvgGain / lastAvgLoss;
+                        RS = isNaN(RS) ? 0 : RS;
                         currentRSI = parseFloat((100 - (100 / (1 + RS))).toFixed(2));
                     }
-                }
-                else if (lastAvgGain && !lastAvgLoss) {
-                    currentRSI = 100;
-                }
-                else if (lastAvgLoss && !lastAvgGain) {
-                    currentRSI = 0;
-                }
-                else if (count >= period) {
-                    //if no average gain and average loss after the RSI period
-                    currentRSI = 0;
                 }
                 count++;
                 current = yield currentRSI;
@@ -1651,6 +1647,7 @@ class ADL extends Indicator {
             tick = yield;
             while (true) {
                 let moneyFlowMultiplier = ((tick.close - tick.low) - (tick.high - tick.close)) / (tick.high - tick.low);
+                moneyFlowMultiplier = isNaN(moneyFlowMultiplier) ? 1 : moneyFlowMultiplier;
                 let moneyFlowVolume = moneyFlowMultiplier * tick.volume;
                 result = result + moneyFlowVolume;
                 tick = yield Math.round(result);

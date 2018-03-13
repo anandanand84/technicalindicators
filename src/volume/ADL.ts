@@ -32,7 +32,8 @@ export class ADL extends Indicator {
         tick = yield;
         while (true)
         {
-          let moneyFlowMultiplier = ((tick.close  -  tick.low) - (tick.high - tick.close)) /(tick.high - tick.low);
+          let moneyFlowMultiplier = ((tick.close  -  tick.low) - (tick.high - tick.close)) / (tick.high - tick.low);
+          moneyFlowMultiplier = isNaN(moneyFlowMultiplier) ? 1 : moneyFlowMultiplier;
           let moneyFlowVolume = moneyFlowMultiplier * tick.volume;
           result = result + moneyFlowVolume
           tick = yield Math.round(result);

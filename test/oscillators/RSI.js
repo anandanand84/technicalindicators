@@ -1,17 +1,35 @@
 "use strict"
 var RSI = require('../../lib/oscillators/RSI').RSI;
+var AverageGain = require('../../lib/Utils/AverageGain').AverageGain;
+var AverageLoss = require('../../lib/Utils/AverageLoss').AverageLoss;
 var assert = require("assert");
 var data = require('../data');
 
 var inputRSI = {
-  values : [127.75,129.02,132.75,145.40,148.98,137.52,147.38,139.05,137.23,149.30,162.45,178.95,200.35,221.90,243.23,243.52,286.42,280.27,277.35,269.02,263.23,214.90],
+  values : [44.34,44.09,44.15,43.61,44.33,44.83,45.10,45.42,45.84,46.08,45.89,46.03,45.61,46.28,46.28,46.00,46.03,46.41,46.22,45.64,46.21,46.25,45.71,46.45,45.78,45.35,44.03,44.18,44.22,44.57,43.42,42.66,43.13],
   period : 14
 };
 var expectedResult = [
-    86.38,86.41,89.65,86.47,84.93,80.52,77.51,58
-  //86.39,86.41,89.65,86.47,84.93,80.52,77.50,58.00
+  70.46,
+  66.25,
+  66.48,
+  69.35,
+  66.29,
+  57.92,
+  62.88,
+  63.21,
+  56.01,
+  62.34,
+  54.67,
+  50.39,
+  40.02,
+  41.49,
+  41.90,
+  45.50,
+  37.32,
+  33.09,
+  37.79
 ];
-
 
 //have issue with this input
 var noGainsInput = {
@@ -19,7 +37,7 @@ var noGainsInput = {
   period : 14
  };
  var noGainsExpectedResult = [
-  0, 100, 71.1, 71.1, 71.1, 71.1, 71.1, 79.63
+  100, 71.1, 71.1, 71.1, 71.1, 71.1, 79.63
  ];
  
 
@@ -29,34 +47,34 @@ describe('RSI (Relative Strength Index)', function () {
     assert.deepEqual(result, noGainsExpectedResult, 'Wrong Results');
   });
 
-  // it('should calculate RSI using the calculate method', function () {
-  //   assert.deepEqual(RSI.calculate(inputRSI), expectedResult, 'Wrong Results');
-  // });
+  it('should calculate RSI using the calculate method', function () {
+    assert.deepEqual(RSI.calculate(inputRSI), expectedResult, 'Wrong Results');
+  });
 
-  // it('should be able to get RSI for the next bar', function () {
-  //   var rsi = new RSI(inputRSI);
-  //   assert.deepEqual(rsi.getResult(), expectedResult, 'Wrong Results while getting results');
-  // })
+  it('should be able to get RSI for the next bar', function () {
+    var rsi = new RSI(inputRSI);
+    assert.deepEqual(rsi.getResult(), expectedResult, 'Wrong Results while getting results');
+  })
 
-  // it('should be able to get RSI for the next bar using nextValue', function () {
-  //   var rsi = new RSI({
-  //     values : [],
-  //     period : 14
-  //   });
-  //   var results = [];
-  //   inputRSI.values.forEach(price => {
-  //     var result = rsi.nextValue(price);
-  //     if (result) {
-  //       results.push(result)
-  //     }
-  //   });
-  //   assert.deepEqual(results, expectedResult, 'Wrong Results while getting results');
-  // })
+  it('should be able to get RSI for the next bar using nextValue', function () {
+    var rsi = new RSI({
+      values : [],
+      period : 14
+    });
+    var results = [];
+    inputRSI.values.forEach(price => {
+      var result = rsi.nextValue(price);
+      if (result!==undefined) {
+        results.push(result)
+      }
+    });
+    assert.deepEqual(results, expectedResult, 'Wrong Results while getting results');
+  })
 
-  // it('should be able to calculate ROC for reversed input by using calculate method', function() {
-  //   let myInput = Object.assign({}, inputRSI);
-  //   myInput.reversedInput = true;
-  //   myInput.values.reverse();
-  //   assert.deepEqual(RSI.calculate(myInput),  expectedResult.slice().reverse(), 'Wrong Results while calculating next bar');
-  // });
+  it('should be able to calculate ROC for reversed input by using calculate method', function() {
+    let myInput = Object.assign({}, inputRSI);
+    myInput.reversedInput = true;
+    myInput.values.reverse();
+    assert.deepEqual(RSI.calculate(myInput),  expectedResult.slice().reverse(), 'Wrong Results while calculating next bar');
+  });
 })

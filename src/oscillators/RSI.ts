@@ -30,20 +30,16 @@ export class RSI extends Indicator {
       while(true){
         lastAvgGain = GainProvider.nextValue(current);
         lastAvgLoss = LossProvider.nextValue(current);
-        if(lastAvgGain && lastAvgLoss){
+        if((lastAvgGain!==undefined) && (lastAvgLoss!==undefined)){
           if(lastAvgLoss === 0){
             currentRSI = 100;
-          }else{
+          } else if(lastAvgGain === 0 ) { 
+            currentRSI = 0;
+          } else {
             RS = lastAvgGain / lastAvgLoss;
+            RS = isNaN(RS) ? 0 : RS;
             currentRSI = parseFloat((100 - (100 / (1 + RS))).toFixed(2));
           }
-        } else if (lastAvgGain && !lastAvgLoss) {
-          currentRSI = 100;
-        } else if (lastAvgLoss && !lastAvgGain) {
-          currentRSI = 0;
-        } else if(count >= period) {
-          //if no average gain and average loss after the RSI period
-          currentRSI = 0;
         }
         count++;
         current = yield currentRSI;
