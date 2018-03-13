@@ -4,11 +4,13 @@
 import { LinkedList } from './LinkedList';
 
 export default class FixedSizeLinkedList extends LinkedList {
+  public totalPushed:number = 0;
   public periodHigh:number = 0;
   public periodLow:number = Infinity;
+  public periodSum:number = 0;
   public lastShift:number;
   public _push:(data:number)=>void;
-  constructor(public size:number,public maintainHigh?:boolean,public maintainLow?:boolean) {
+  constructor(public size:number,public maintainHigh?:boolean,public maintainLow?:boolean, public maintainSum?:boolean) {
     super();
     if(!size || typeof size !== 'number'){
       throw('Size required and should be a number.');
@@ -16,6 +18,7 @@ export default class FixedSizeLinkedList extends LinkedList {
     this._push = this.push;
     this.push = function(data) {
       this.add(data);
+      this.totalPushed++;
     }
   }
 
@@ -30,6 +33,9 @@ export default class FixedSizeLinkedList extends LinkedList {
       if(this.maintainLow)
         if (this.lastShift == this.periodLow)
           this.calculatePeriodLow();
+      if(this.maintainSum) {
+        this.periodSum = this.periodSum - this.lastShift;
+      }
     }else {
       this._push(data);
     }
@@ -40,6 +46,9 @@ export default class FixedSizeLinkedList extends LinkedList {
     if(this.maintainLow)
       if(this.periodLow >= data)
         (this.periodLow = data);
+    if(this.maintainSum) {
+      this.periodSum = this.periodSum + data;
+    }
   }
 
   *iterator() {

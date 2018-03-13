@@ -10,7 +10,7 @@ var size = 10;
 
 describe('Fixed Size Linked List', function() {
   beforeEach(function() {
-    linkedList = new FixedSizeLinkedList(size, true, true);
+    linkedList = new FixedSizeLinkedList(size, true, true, true);
   });
 
   it('Should maintain only the fixed size', function() {
@@ -88,6 +88,19 @@ describe('Fixed Size Linked List', function() {
       linkedList.push(i)
     }
     assert.equal(linkedList.periodLow, 5)
+  })
 
+  it('Should maintain sum if requested', function(){
+    for(let i=1; i<=10; i++) {
+      linkedList.push(i)
+    }
+    assert.equal(linkedList.periodSum, (10 * 11)/2 )
+  })
+  
+  it('Should maintain sum if requested', function(){
+    for(let i=1; i<=14; i++) {
+      linkedList.push(i)
+    }
+    assert.equal(linkedList.periodSum, 95)
   })
 });

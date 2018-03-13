@@ -45,7 +45,7 @@ export class Stochastic extends Indicator {
       let index = 1;
       let pastHighPeriods = new LinkedList(period, true, false);
       let pastLowPeriods = new LinkedList(period, false, true);
-      let dSma           = new SMA({
+      let dSma = new SMA({
         period : signalPeriod,
         values : [],
         format : (v) => {return v}
@@ -62,10 +62,11 @@ export class Stochastic extends Indicator {
         }
         let periodLow = pastLowPeriods.periodLow;
         k = (tick.close - periodLow) / (pastHighPeriods.periodHigh - periodLow) * 100;
+        k = isNaN(k) ? 0 : k; //This happens when the close, high and low are same for the entire period; Bug fix for 
         d = dSma.nextValue(k);
         tick = yield {
           k : format(k),
-          d : d ? format(d) : undefined
+          d : (d !== undefined) ? format(d) : undefined
         }
       }
     })();
