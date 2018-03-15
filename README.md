@@ -94,6 +94,7 @@ If you like this project. You'll love my other project [crypto trading hub](http
 1. [Accumulation Distribution Line (ADL)](https://tonicdev.com/anandaravindan/adl "ADL").
 1. [Average Directional Index (ADX)](https://github.com/anandanand84/technicalindicators/blob/master/test/directionalmovement/ADX.js "ADX").
 1. [Average True Range (ATR)](https://tonicdev.com/anandaravindan/atr "ATR").
+1. [Awesome Oscillator (AO)](https://github.com/anandanand84/technicalindicators/blob/master/test/oscillators/AwesomeOscillator.js "AO").
 1. [Bollinger Bands (BB)](https://tonicdev.com/anandaravindan/bb "BB").
 1. [Commodity Channel Index (CCI)](https://github.com/anandanand84/technicalindicators/blob/master/test/oscillators/CCI.js "CCI").
 1. [Force Index (FI)](https://github.com/anandanand84/technicalindicators/blob/master/test/volume/ForceIndex.js "FI").

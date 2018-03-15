@@ -19,6 +19,7 @@ export { obv, OBV } from './volume/OBV';
 export { trix, TRIX } from './momentum/TRIX';
 export { forceindex, ForceIndex } from './volume/ForceIndex';
 export { cci, CCI } from './oscillators/CCI';
+export { awesomeoscillator, AwesomeOscillator } from './oscillators/AwesomeOscillator';
 export { vwap, VWAP } from './volume/VWAP';
 export { mfi, MFI } from './volume/MFI';
 export { stochasticrsi, StochasticRSI } from './momentum/StochasticRSI';

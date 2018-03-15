@@ -21,6 +21,7 @@ export function getAvailableIndicators () {
   AvailableIndicators.push('trix');
 
   AvailableIndicators.push('cci');
+  AvailableIndicators.push('awesomeoscillator');
   AvailableIndicators.push('forceindex');
   AvailableIndicators.push('vwap');
   AvailableIndicators.push('renko');
