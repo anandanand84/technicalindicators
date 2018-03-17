@@ -55,12 +55,13 @@
   },
   "homepage": "https://github.com/anandanand84/technicalindicators#readme",
   "dependencies": {
+    "keras-js": "^0.1.0",
     "linkedlist": "^1.0.1"
   },
   "devDependencies": {
     "@types/chai": "^3.0.0",
     "@types/mocha": "^2.0.0",
-    "@types/node": "^6.0.31",
+    "@types/node": "^6.0.68",
     "babel-cli": "^6.8.0",
     "babel-core": "^6.8.0",
     "babel-polyfill": "^6.8.0",

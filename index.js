@@ -49,4 +49,5 @@ global.AvailableIndicators.push('bullishspinningtop');
 global.AvailableIndicators.push('bearishspinningtop');
 global.AvailableIndicators.push('threeblackcrows');
 global.AvailableIndicators.push('threewhitesoldiers');
+global.AvailableIndicators.push('trendline');
 module.exports = Indicators;

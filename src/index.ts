@@ -8,6 +8,7 @@ export  { bollingerbands, BollingerBands } from  './volatility/BollingerBands';
 export  { adx, ADX }                       from  './directionalmovement/ADX';
 export  { atr, ATR }                       from  './directionalmovement/ATR';
 export  { truerange, TrueRange }           from  './directionalmovement/TrueRange';
+export  { predict as trendline }           from './directionalmovement/TrendLine';
 export  { roc, ROC }                       from  './momentum/ROC';
 export  { kst, KST }                       from  './momentum/KST';
 export  { stochastic, Stochastic }         from  './momentum/Stochastic';
