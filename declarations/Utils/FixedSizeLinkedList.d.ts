@@ -4,9 +4,9 @@
 import { LinkedList } from './LinkedList';
 export default class FixedSizeLinkedList extends LinkedList {
     size: number;
-    maintainHigh?: boolean;
-    maintainLow?: boolean;
-    maintainSum?: boolean;
+    maintainHigh: boolean;
+    maintainLow: boolean;
+    maintainSum: boolean;
     totalPushed: number;
     periodHigh: number;
     periodLow: number;

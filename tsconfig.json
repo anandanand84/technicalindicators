@@ -17,7 +17,7 @@
     "outDir": "./lib",
     "preserveConstEnums": true,
     "removeComments": false,
-    "sourceMap": true,
+    "sourceMap": false,
     "baseUrl": ".", // This must be specified if "paths" is.
     "typeRoots" : ["typings", "node_modules/**/@types"]
   },

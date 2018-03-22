@@ -276,8 +276,7 @@ gyp: Call to './util/has_lib.sh freetype' returned exit status 0 while in bindin
 ``` bash
 git clone git@github.com:anandanand84/technicalindicators.git  # or use your fork
 cd technicalindicators
-npm install
-gulp watch-test
+npm run start
 ```
 
 ## Running tests and getting coverage
