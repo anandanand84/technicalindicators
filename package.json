@@ -1,6 +1,6 @@
 {
   "name": "technicalindicators",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "Techincal Indicators written in javascript",
   "main": "dist/index.js",
   "module": "lib/index.js",
@@ -12,7 +12,7 @@
     "test:watch": "mocha --watch --compilers js:babel-register --require keras-js",
     "generateDts": "dts-bundle --name indicators --main declarations/index.d.ts --out generated.d.ts --baseDir declarations --outputAsModuleFolder",
     "build-lib": "babel-node --presets es2015 rollup.js",
-    "start" : "sh test.sh"
+    "start": "sh test.sh"
   },
   "repository": {
     "type": "git",
