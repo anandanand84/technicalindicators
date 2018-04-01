@@ -7,58 +7,6 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var KerasJS = _interopDefault(require('keras-js'));
 
-class CandleData {
-}
-class CandleList {
-    constructor() {
-        this.open = [];
-        this.high = [];
-        this.low = [];
-        this.close = [];
-        this.volume = [];
-        this.timestamp = [];
-    }
-}
-
-let config = {};
-function setConfig(key, value) {
-    config[key] = value;
-}
-function getConfig(key) {
-    return config[key];
-}
-
-function format(v) {
-    let precision = getConfig('precision');
-    if (precision) {
-        return parseFloat(v.toPrecision(precision));
-    }
-    return v;
-}
-
-class IndicatorInput {
-}
-
-class Indicator {
-    constructor(input) {
-        this.format = input.format || format;
-    }
-    static reverseInputs(input) {
-        if (input.reversedInput) {
-            input.values ? input.values.reverse() : undefined;
-            input.open ? input.open.reverse() : undefined;
-            input.high ? input.high.reverse() : undefined;
-            input.low ? input.low.reverse() : undefined;
-            input.close ? input.close.reverse() : undefined;
-            input.volume ? input.volume.reverse() : undefined;
-            input.timestamp ? input.timestamp.reverse() : undefined;
-        }
-    }
-    getResult() {
-        return this.result;
-    }
-}
-
 class Item {
     constructor(data, prev, next) {
         this.next = next;
@@ -204,6 +152,143 @@ class LinkedList {
     }
 }
 
+/**
+ * Created by AAravindan on 5/7/16.
+ */
+class FixedSizeLinkedList extends LinkedList {
+    constructor(size, maintainHigh, maintainLow, maintainSum) {
+        super();
+        this.size = size;
+        this.maintainHigh = maintainHigh;
+        this.maintainLow = maintainLow;
+        this.maintainSum = maintainSum;
+        this.totalPushed = 0;
+        this.periodHigh = 0;
+        this.periodLow = Infinity;
+        this.periodSum = 0;
+        if (!size || typeof size !== 'number') {
+            throw ('Size required and should be a number.');
+        }
+        this._push = this.push;
+        this.push = function (data) {
+            this.add(data);
+            this.totalPushed++;
+        };
+    }
+    add(data) {
+        if (this.length === this.size) {
+            this.lastShift = this.shift();
+            this._push(data);
+            //TODO: FInd a better way
+            if (this.maintainHigh)
+                if (this.lastShift == this.periodHigh)
+                    this.calculatePeriodHigh();
+            if (this.maintainLow)
+                if (this.lastShift == this.periodLow)
+                    this.calculatePeriodLow();
+            if (this.maintainSum) {
+                this.periodSum = this.periodSum - this.lastShift;
+            }
+        }
+        else {
+            this._push(data);
+        }
+        //TODO: FInd a better way
+        if (this.maintainHigh)
+            if (this.periodHigh <= data)
+                (this.periodHigh = data);
+        if (this.maintainLow)
+            if (this.periodLow >= data)
+                (this.periodLow = data);
+        if (this.maintainSum) {
+            this.periodSum = this.periodSum + data;
+        }
+    }
+    *iterator() {
+        this.resetCursor();
+        while (this.next()) {
+            yield this.current;
+        }
+    }
+    calculatePeriodHigh() {
+        this.resetCursor();
+        if (this.next())
+            this.periodHigh = this.current;
+        while (this.next()) {
+            if (this.periodHigh <= this.current) {
+                this.periodHigh = this.current;
+            }
+            
+        }
+        
+    }
+    calculatePeriodLow() {
+        this.resetCursor();
+        if (this.next())
+            this.periodLow = this.current;
+        while (this.next()) {
+            if (this.periodLow >= this.current) {
+                this.periodLow = this.current;
+            }
+            
+        }
+        
+    }
+}
+
+class CandleData {
+}
+class CandleList {
+    constructor() {
+        this.open = [];
+        this.high = [];
+        this.low = [];
+        this.close = [];
+        this.volume = [];
+        this.timestamp = [];
+    }
+}
+
+let config = {};
+function setConfig(key, value) {
+    config[key] = value;
+}
+function getConfig(key) {
+    return config[key];
+}
+
+function format(v) {
+    let precision = getConfig('precision');
+    if (precision) {
+        return parseFloat(v.toPrecision(precision));
+    }
+    return v;
+}
+
+class IndicatorInput {
+}
+
+class Indicator {
+    constructor(input) {
+        this.format = input.format || format;
+    }
+    static reverseInputs(input) {
+        if (input.reversedInput) {
+            input.values ? input.values.reverse() : undefined;
+            input.open ? input.open.reverse() : undefined;
+            input.high ? input.high.reverse() : undefined;
+            input.low ? input.low.reverse() : undefined;
+            input.close ? input.close.reverse() : undefined;
+            input.volume ? input.volume.reverse() : undefined;
+            input.timestamp ? input.timestamp.reverse() : undefined;
+        }
+    }
+    getResult() {
+        return this.result;
+    }
+}
+
+//STEP 1. Import Necessary indicator or rather last step
 //STEP 2. Create the input for the indicator, mandatory should be in the constructor
 
 //STEP3. Add class based syntax with export
@@ -421,6 +506,11 @@ function wema(input) {
     Indicator.reverseInputs(input);
     return result;
 }
+
+/**
+ * Created by AAravindan on 5/4/16.
+ */
+
 
 class MACD extends Indicator {
     constructor(input) {
@@ -662,87 +752,6 @@ function rsi(input) {
     }
     Indicator.reverseInputs(input);
     return result;
-}
-
-class FixedSizeLinkedList extends LinkedList {
-    constructor(size, maintainHigh, maintainLow, maintainSum) {
-        super();
-        this.size = size;
-        this.maintainHigh = maintainHigh;
-        this.maintainLow = maintainLow;
-        this.maintainSum = maintainSum;
-        this.totalPushed = 0;
-        this.periodHigh = 0;
-        this.periodLow = Infinity;
-        this.periodSum = 0;
-        if (!size || typeof size !== 'number') {
-            throw ('Size required and should be a number.');
-        }
-        this._push = this.push;
-        this.push = function (data) {
-            this.add(data);
-            this.totalPushed++;
-        };
-    }
-    add(data) {
-        if (this.length === this.size) {
-            this.lastShift = this.shift();
-            this._push(data);
-            //TODO: FInd a better way
-            if (this.maintainHigh)
-                if (this.lastShift == this.periodHigh)
-                    this.calculatePeriodHigh();
-            if (this.maintainLow)
-                if (this.lastShift == this.periodLow)
-                    this.calculatePeriodLow();
-            if (this.maintainSum) {
-                this.periodSum = this.periodSum - this.lastShift;
-            }
-        }
-        else {
-            this._push(data);
-        }
-        //TODO: FInd a better way
-        if (this.maintainHigh)
-            if (this.periodHigh <= data)
-                (this.periodHigh = data);
-        if (this.maintainLow)
-            if (this.periodLow >= data)
-                (this.periodLow = data);
-        if (this.maintainSum) {
-            this.periodSum = this.periodSum + data;
-        }
-    }
-    *iterator() {
-        this.resetCursor();
-        while (this.next()) {
-            yield this.current;
-        }
-    }
-    calculatePeriodHigh() {
-        this.resetCursor();
-        if (this.next())
-            this.periodHigh = this.current;
-        while (this.next()) {
-            if (this.periodHigh <= this.current) {
-                this.periodHigh = this.current;
-            }
-            
-        }
-        
-    }
-    calculatePeriodLow() {
-        this.resetCursor();
-        if (this.next())
-            this.periodLow = this.current;
-        while (this.next()) {
-            if (this.periodLow >= this.current) {
-                this.periodLow = this.current;
-            }
-            
-        }
-        
-    }
 }
 
 class SD extends Indicator {
@@ -1137,6 +1146,7 @@ class ADX extends Indicator {
                     let diSum = (lastPDI + lastMDI);
                     lastDX = (diDiff / diSum) * 100;
                     smoothedDX = emaDX.nextValue(lastDX);
+                    // console.log(tick.high.toFixed(2), tick.low.toFixed(2), tick.close.toFixed(2) , calcTr.toFixed(2), calcPDM.toFixed(2), calcMDM.toFixed(2), lastATR.toFixed(2), lastAPDM.toFixed(2), lastAMDM.toFixed(2), lastPDI.toFixed(2), lastMDI.toFixed(2), diDiff.toFixed(2), diSum.toFixed(2), lastDX.toFixed(2));
                 }
                 tick = yield { adx: smoothedDX, pdi: lastPDI, mdi: lastMDI };
             }
@@ -1630,6 +1640,10 @@ function williamsr(input) {
     return result;
 }
 
+/**
+ * Created by AAravindan on 5/17/16.
+ */
+
 class ADL extends Indicator {
     constructor(input) {
         super(input);
@@ -2033,6 +2047,75 @@ function vwap(input) {
     return result;
 }
 
+function priceFallsBetweenBarRange(low, high, low1, high1) {
+    return (low <= low1 && high >= low1) || (low1 <= low && high1 >= low);
+}
+class VolumeProfile extends Indicator {
+    constructor(input) {
+        super(input);
+        var highs = input.high;
+        var lows = input.low;
+        var closes = input.close;
+        var opens = input.open;
+        var volumes = input.volume;
+        var bars = input.noOfBars;
+        if (!((lows.length === highs.length) && (highs.length === closes.length) && (highs.length === volumes.length))) {
+            throw ('Inputs(low,high, close, volumes) not of equal size');
+        }
+        this.result = [];
+        var max = Math.max(...highs, ...lows, ...closes, ...opens);
+        var min = Math.min(...highs, ...lows, ...closes, ...opens);
+        var barRange = (max - min) / bars;
+        var lastEnd = min;
+        for (let i = 0; i < bars; i++) {
+            let rangeStart = lastEnd;
+            let rangeEnd = rangeStart + barRange;
+            lastEnd = rangeEnd;
+            let bullishVolume = 0;
+            let bearishVolume = 0;
+            let totalVolume = 0;
+            for (let priceBar = 0; priceBar < highs.length; priceBar++) {
+                let priceBarStart = lows[priceBar];
+                let priceBarEnd = highs[priceBar];
+                let priceBarOpen = opens[priceBar];
+                let priceBarClose = closes[priceBar];
+                let priceBarVolume = volumes[priceBar];
+                if (priceFallsBetweenBarRange(rangeStart, rangeEnd, priceBarStart, priceBarEnd)) {
+                    totalVolume = totalVolume + priceBarVolume;
+                    if (priceBarOpen > priceBarClose) {
+                        bearishVolume = bearishVolume + priceBarVolume;
+                    }
+                    else {
+                        bullishVolume = bullishVolume + priceBarVolume;
+                    }
+                }
+            }
+            this.result.push({
+                rangeStart, rangeEnd, bullishVolume, bearishVolume, totalVolume
+            });
+        }
+    }
+    ;
+    nextValue(price) {
+        throw ('Next value not supported for volume profile');
+    }
+    ;
+}
+VolumeProfile.calculate = volumeprofile;
+function volumeprofile(input) {
+    Indicator.reverseInputs(input);
+    var result = new VolumeProfile(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+/**
+ * Created by AAravindan on 5/4/16.
+ */
+
 class TypicalPrice extends Indicator {
     constructor(input) {
         super(input);
@@ -2069,6 +2152,10 @@ function typicalprice(input) {
     Indicator.reverseInputs(input);
     return result;
 }
+
+/**
+ * Created by AAravindan on 5/17/16.
+ */
 
 class MFI extends Indicator {
     constructor(input) {
@@ -2216,6 +2303,154 @@ function stochasticrsi(input) {
     return result;
 }
 
+class Highest extends Indicator {
+    constructor(input) {
+        super(input);
+        var values = input.values;
+        var period = input.period;
+        this.result = [];
+        var periodList = new FixedSizeLinkedList(period, true, false, false);
+        this.generator = (function* () {
+            var result;
+            var tick;
+            var high;
+            tick = yield;
+            while (true) {
+                periodList.push(tick);
+                if (periodList.totalPushed >= period) {
+                    high = periodList.periodHigh;
+                }
+                tick = yield high;
+            }
+        })();
+        this.generator.next();
+        values.forEach((value, index) => {
+            var result = this.generator.next(value);
+            if (result.value != undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    nextValue(price) {
+        var result = this.generator.next(price);
+        if (result.value != undefined) {
+            return result.value;
+        }
+    }
+    ;
+}
+Highest.calculate = highest;
+function highest(input) {
+    Indicator.reverseInputs(input);
+    var result = new Highest(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class Lowest extends Indicator {
+    constructor(input) {
+        super(input);
+        var values = input.values;
+        var period = input.period;
+        this.result = [];
+        var periodList = new FixedSizeLinkedList(period, false, true, false);
+        this.generator = (function* () {
+            var result;
+            var tick;
+            var high;
+            tick = yield;
+            while (true) {
+                periodList.push(tick);
+                if (periodList.totalPushed >= period) {
+                    high = periodList.periodLow;
+                }
+                tick = yield high;
+            }
+        })();
+        this.generator.next();
+        values.forEach((value, index) => {
+            var result = this.generator.next(value);
+            if (result.value != undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    nextValue(price) {
+        var result = this.generator.next(price);
+        if (result.value != undefined) {
+            return result.value;
+        }
+    }
+    ;
+}
+Lowest.calculate = lowest;
+function lowest(input) {
+    Indicator.reverseInputs(input);
+    var result = new Lowest(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class Sum extends Indicator {
+    constructor(input) {
+        super(input);
+        var values = input.values;
+        var period = input.period;
+        this.result = [];
+        var periodList = new FixedSizeLinkedList(period, false, false, true);
+        this.generator = (function* () {
+            var result;
+            var tick;
+            var high;
+            tick = yield;
+            while (true) {
+                periodList.push(tick);
+                if (periodList.totalPushed >= period) {
+                    high = periodList.periodSum;
+                }
+                tick = yield high;
+            }
+        })();
+        this.generator.next();
+        values.forEach((value, index) => {
+            var result = this.generator.next(value);
+            if (result.value != undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    nextValue(price) {
+        var result = this.generator.next(price);
+        if (result.value != undefined) {
+            return result.value;
+        }
+    }
+    ;
+}
+Sum.calculate = sum;
+function sum(input) {
+    Indicator.reverseInputs(input);
+    var result = new Sum(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+/**
+ * Created by AAravindan on 5/4/16.
+ */
+
 class Renko extends Indicator {
     constructor(input) {
         super(input);
@@ -2321,6 +2556,10 @@ function renko(input) {
     Indicator.reverseInputs(input);
     return result;
 }
+
+/**
+ * Created by AAravindan on 5/4/16.
+ */
 
 class HeikinAshi extends Indicator {
     constructor(input) {
@@ -3234,9 +3473,9 @@ function fibonacciretracement(start, end) {
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator.throw(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
         function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments)).next());
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
 var isNodeEnvironment = false;
@@ -3253,12 +3492,12 @@ var model = new KerasJS.Model({
 
 
 (function (AvailablePatterns) {
-    AvailablePatterns[AvailablePatterns['TD'] = 0] = 'TD';
-    AvailablePatterns[AvailablePatterns['IHS'] = 1] = 'IHS';
-    AvailablePatterns[AvailablePatterns['HS'] = 2] = 'HS';
-    AvailablePatterns[AvailablePatterns['TU'] = 3] = 'TU';
-    AvailablePatterns[AvailablePatterns['DT'] = 4] = 'DT';
-    AvailablePatterns[AvailablePatterns['DB'] = 5] = 'DB';
+    AvailablePatterns[AvailablePatterns["TD"] = 0] = "TD";
+    AvailablePatterns[AvailablePatterns["IHS"] = 1] = "IHS";
+    AvailablePatterns[AvailablePatterns["HS"] = 2] = "HS";
+    AvailablePatterns[AvailablePatterns["TU"] = 3] = "TU";
+    AvailablePatterns[AvailablePatterns["DT"] = 4] = "DT";
+    AvailablePatterns[AvailablePatterns["DB"] = 5] = "DB";
 })(exports.AvailablePatterns || (exports.AvailablePatterns = {}));
 function interpolateArray(data, fitCount) {
     var linearInterpolate = function (before, after, atPoint) {
@@ -3376,6 +3615,7 @@ function getAvailableIndicators () {
   AvailableIndicators.push('awesomeoscillator');
   AvailableIndicators.push('forceindex');
   AvailableIndicators.push('vwap');
+  AvailableIndicators.push('volumeprofile');
   AvailableIndicators.push('renko');
   AvailableIndicators.push('heikinashi');
 
@@ -3384,6 +3624,10 @@ function getAvailableIndicators () {
 
   AvailableIndicators.push('averagegain');
   AvailableIndicators.push('averageloss');
+  AvailableIndicators.push('highest');
+  AvailableIndicators.push('lowest');
+  AvailableIndicators.push('sum');
+  AvailableIndicators.push('FixedSizeLinkedList');
   AvailableIndicators.push('sd');
   AvailableIndicators.push('bullish');
   AvailableIndicators.push('bearish');
@@ -3425,6 +3669,7 @@ let AvailableIndicators = getAvailableIndicators();
 
 exports.getAvailableIndicators = getAvailableIndicators;
 exports.AvailableIndicators = AvailableIndicators;
+exports.FixedSizeLinkedList = FixedSizeLinkedList;
 exports.CandleData = CandleData;
 exports.CandleList = CandleList;
 exports.sma = sma;
@@ -3471,6 +3716,8 @@ exports.awesomeoscillator = awesomeoscillator;
 exports.AwesomeOscillator = AwesomeOscillator;
 exports.vwap = vwap;
 exports.VWAP = VWAP;
+exports.volumeprofile = volumeprofile;
+exports.VolumeProfile = VolumeProfile;
 exports.mfi = mfi;
 exports.MFI = MFI;
 exports.stochasticrsi = stochasticrsi;
@@ -3481,6 +3728,12 @@ exports.averageloss = averageloss;
 exports.AverageLoss = AverageLoss;
 exports.sd = sd;
 exports.SD = SD;
+exports.highest = highest;
+exports.Highest = Highest;
+exports.lowest = lowest;
+exports.Lowest = Lowest;
+exports.sum = sum;
+exports.Sum = Sum;
 exports.renko = renko;
 exports.HeikinAshi = HeikinAshi;
 exports.heikinashi = heikinashi;

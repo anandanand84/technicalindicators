@@ -24,6 +24,7 @@ export function getAvailableIndicators () {
   AvailableIndicators.push('awesomeoscillator');
   AvailableIndicators.push('forceindex');
   AvailableIndicators.push('vwap');
+  AvailableIndicators.push('volumeprofile');
   AvailableIndicators.push('renko');
   AvailableIndicators.push('heikinashi');
 
@@ -32,6 +33,10 @@ export function getAvailableIndicators () {
 
   AvailableIndicators.push('averagegain');
   AvailableIndicators.push('averageloss');
+  AvailableIndicators.push('highest');
+  AvailableIndicators.push('lowest');
+  AvailableIndicators.push('sum');
+  AvailableIndicators.push('FixedSizeLinkedList');
   AvailableIndicators.push('sd');
   AvailableIndicators.push('bullish');
   AvailableIndicators.push('bearish');

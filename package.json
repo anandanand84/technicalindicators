@@ -8,7 +8,8 @@
   "jsnext:main": "lib/index.js",
   "scripts": {
     "cover": "babel-istanbul --include-all-sources cover -x dist/**/*.* ./node_modules/mocha/bin/_mocha -- -R spec && open coverage/lcov-report/index.html",
-    "test": "mocha --watch --compilers js:babel-register --require keras-js",
+    "test": "mocha --compilers js:babel-register --require keras-js",
+    "test:watch": "mocha --watch --compilers js:babel-register --require keras-js",
     "generateDts": "dts-bundle --name indicators --main declarations/index.d.ts --out generated.d.ts --baseDir declarations --outputAsModuleFolder",
     "build-lib": "babel-node --presets es2015 rollup.js",
     "start" : "sh test.sh"
@@ -63,6 +64,7 @@
     "CCI",
     "Commodity Channel Index",
     "VWAP",
+    "Volume Profile",
     "Force Index",
     "Money Flow Index",
     "Typical Price",
@@ -74,7 +76,12 @@
     "Double Bottom",
     "Trending Up",
     "Trending Down",
-    "Custom Screening"
+    "Custom Screening",
+    "Highest",
+    "Lowest",
+    "Standard Deviation",
+    "Average Gain",
+    "Average Loss"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",

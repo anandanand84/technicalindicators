@@ -1,3 +1,5 @@
+import FixedSizeLinkedList from "./Utils/FixedSizeLinkedList";
+
 export { CandleData, CandleList } from "./StockData";
 export  { sma, SMA } from './moving_averages/SMA'
 export  { ema, EMA }                       from  './moving_averages/EMA';
@@ -21,12 +23,17 @@ export  { forceindex, ForceIndex }         from  './volume/ForceIndex';
 export  { cci, CCI }                       from  './oscillators/CCI';
 export  { awesomeoscillator, AwesomeOscillator }                       from  './oscillators/AwesomeOscillator';
 export  { vwap, VWAP }                     from  './volume/VWAP';
+export  { volumeprofile, VolumeProfile }   from  './volume/VolumeProfile';
 export  { mfi, MFI }                       from  './volume/MFI';
 export  { stochasticrsi, StochasticRSI }   from  './momentum/StochasticRSI';
 
 export  { averagegain, AverageGain }       from  './Utils/AverageGain';
 export  { averageloss, AverageLoss }       from  './Utils/AverageLoss';
 export  { sd, SD }                         from  './Utils/SD';
+export  { highest, Highest }                         from  './Utils/Highest';
+export  { lowest, Lowest }                         from  './Utils/Lowest';
+export  { sum, Sum }                         from  './Utils/Sum';
+export  { FixedSizeLinkedList }                 
 
 export  { renko }                         from  './chart_types/Renko';
 export  { HeikinAshi, heikinashi }        from  './chart_types/HeikinAshi';
