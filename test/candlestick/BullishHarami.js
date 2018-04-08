@@ -4,10 +4,10 @@ var drawCandleStick         = require('draw-candlestick');
 var fs                      = require('fs');
 
 var input = {
-  open: [20.12, 22,13],
-  high: [23.82,22.76],
-  close: [23.50,21.70],
-  low: [19.88,21.31],
+  open: [25.13, 23.45],
+  high: [25.80,24.59],
+  close: [22.14,24.1],
+  low: [21.7,23.07],
 }
 
 describe('BullishHarami : ', function() {
