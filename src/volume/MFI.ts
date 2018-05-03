@@ -43,7 +43,8 @@ export class MFI extends Indicator {
         var rawMoneyFlow = 0;
         var moneyFlowRatio;
         var negativeFlowForPeriod;
-        let typicalPriceValue
+        let typicalPriceValue = null;
+        let prevousTypicalPrice = null;
         tick = yield;
         lastClose = tick.close; //Fist value 
         tick = yield;
@@ -54,16 +55,18 @@ export class MFI extends Indicator {
           var negativeMoney = 0;
           typicalPriceValue = typicalPrice.nextValue({ high, low, close});
           rawMoneyFlow = typicalPriceValue * volume;
-          close > lastClose ? positionMoney=rawMoneyFlow : negativeMoney = rawMoneyFlow;
-          positiveFlow.push(positionMoney)
-          negativeFlow.push(negativeMoney)
-          positiveFlowForPeriod = positiveFlow.periodSum;
-          negativeFlowForPeriod = negativeFlow.periodSum;
-          if((positiveFlow.totalPushed >= period) && (positiveFlow.totalPushed >= period)) {
-              moneyFlowRatio = positiveFlowForPeriod / negativeFlowForPeriod;
-              result = 100 - 100 / ( 1 + moneyFlowRatio);
+          if((typicalPriceValue != null) && (prevousTypicalPrice != null)) {
+            typicalPriceValue > prevousTypicalPrice ? positionMoney=rawMoneyFlow : negativeMoney = rawMoneyFlow;
+            positiveFlow.push(positionMoney)
+            negativeFlow.push(negativeMoney)
+            positiveFlowForPeriod = positiveFlow.periodSum;
+            negativeFlowForPeriod = negativeFlow.periodSum;
+            if((positiveFlow.totalPushed >= period) && (positiveFlow.totalPushed >= period)) {
+                moneyFlowRatio = positiveFlowForPeriod / negativeFlowForPeriod;
+                result = 100 - 100 / ( 1 + moneyFlowRatio);
+            }
           }
-          lastClose = close;
+          prevousTypicalPrice = typicalPriceValue;
           tick = yield result
         }
       })();
