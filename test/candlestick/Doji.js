@@ -11,6 +11,14 @@ var input = {
   
 }
 
+var inputDot = {
+  open: [30.10],
+  high: [30.11],
+  close: [30.10],
+  low: [30.09],
+
+}
+
 describe('Doji : ', function() {
    before(function() {
     var imageBuffer = drawCandleStick(input);
@@ -20,5 +28,10 @@ describe('Doji : ', function() {
    var doji = new Doji();
    var result = doji.hasPattern(input);
    assert.deepEqual(result, true, 'Invalid result for Doji');
+  });
+  it('Check whether the supplied data has Doji pattern', function() {
+   var doji = new Doji();
+   var result = doji.hasPattern(inputDot);
+   assert.deepEqual(result, true, 'Invalid result for a single point Doji');
   });
 })

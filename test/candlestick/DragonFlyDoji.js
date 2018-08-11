@@ -11,6 +11,14 @@ var input = {
   
 }
 
+var inputDot = {
+  open: [30.10],
+  high: [30.11],
+  close: [30.10],
+  low: [30.09],
+
+}
+
 describe('DragonFlyDoji : ', function() {
    before(function() {
     var imageBuffer = drawCandleStick(input);
@@ -20,5 +28,10 @@ describe('DragonFlyDoji : ', function() {
    var dragonFlyDoji = new DragonFlyDoji();
    var result = dragonFlyDoji.hasPattern(input);
    assert.deepEqual(result, true, 'Invalid result for DragonFlyDoji');
+  });
+  it('Check whether the supplied data has DragonFlyDoji pattern', function() {
+   var dragonFlyDoji = new DragonFlyDoji();
+   var result = dragonFlyDoji.hasPattern(inputDot);
+   assert.deepEqual(result, false, 'Invalid result for a single point Doji');
   });
 })

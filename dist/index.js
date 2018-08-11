@@ -2878,7 +2878,12 @@ class Doji extends CandlestickFinder {
     logic(data) {
         let daysOpen = data.open[0];
         let daysClose = data.close[0];
-        return this.approximateEqual(daysOpen, daysClose);
+        let daysHigh = data.high[0];
+        let daysLow = data.low[0];
+        let isOpenEqualsClose = this.approximateEqual(daysOpen, daysClose);
+        let isHighEqualsOpen = isOpenEqualsClose && this.approximateEqual(daysOpen, daysHigh);
+        let isLowEqualsClose = isOpenEqualsClose && this.approximateEqual(daysClose, daysLow);
+        return (isOpenEqualsClose && isHighEqualsOpen == isLowEqualsClose);
     }
 }
 function doji(data) {
@@ -3369,9 +3374,11 @@ class DragonFlyDoji extends CandlestickFinder {
         let daysOpen = data.open[0];
         let daysClose = data.close[0];
         let daysHigh = data.high[0];
+        let daysLow = data.low[0];
         let isOpenEqualsClose = this.approximateEqual(daysOpen, daysClose);
-        let isHighEqualsOpen = this.approximateEqual(daysOpen, daysHigh);
-        return (isOpenEqualsClose && isHighEqualsOpen);
+        let isHighEqualsOpen = isOpenEqualsClose && this.approximateEqual(daysOpen, daysHigh);
+        let isLowEqualsClose = isOpenEqualsClose && this.approximateEqual(daysClose, daysLow);
+        return (isOpenEqualsClose && isHighEqualsOpen && !isLowEqualsClose);
     }
 }
 function dragonflydoji(data) {
@@ -3387,10 +3394,12 @@ class GraveStoneDoji extends CandlestickFinder {
     logic(data) {
         let daysOpen = data.open[0];
         let daysClose = data.close[0];
+        let daysHigh = data.high[0];
         let daysLow = data.low[0];
         let isOpenEqualsClose = this.approximateEqual(daysOpen, daysClose);
-        let isLowEqualsOpen = this.approximateEqual(daysOpen, daysLow);
-        return (isOpenEqualsClose && isLowEqualsOpen);
+        let isHighEqualsOpen = isOpenEqualsClose && this.approximateEqual(daysOpen, daysHigh);
+        let isLowEqualsClose = isOpenEqualsClose && this.approximateEqual(daysClose, daysLow);
+        return (isOpenEqualsClose && isLowEqualsClose && !isHighEqualsOpen);
     }
 }
 function gravestonedoji(data) {
