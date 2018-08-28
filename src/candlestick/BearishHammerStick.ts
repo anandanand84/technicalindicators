@@ -1,10 +1,10 @@
 import StockData from '../StockData';
 import CandlestickFinder from './CandlestickFinder';
 
-export default class BearishHammer extends CandlestickFinder {
+export default class BearishHammerStick extends CandlestickFinder {
     constructor() {
         super();
-        this.name = 'BearishHammer';
+        this.name = 'BearishHammerStick';
         this.requiredCount  = 1;
     }
     logic (data:StockData) {
@@ -21,6 +21,6 @@ export default class BearishHammer extends CandlestickFinder {
     }
 }
 
-export function bearishhammer(data:StockData) {
-  return new BearishHammer().hasPattern(data);
+export function bearishhammerstick(data:StockData) {
+  return new BearishHammerStick().hasPattern(data);
 }

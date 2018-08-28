@@ -3667,7 +3667,7 @@ function getAvailableIndicators () {
   AvailableIndicators.push('threeblackcrows');
   AvailableIndicators.push('threewhitesoldiers');
   AvailableIndicators.push('bullishhammerstick');
-  AvailableIndicators.push('bearishhammer');
+  AvailableIndicators.push('bearishhammerstick');
   AvailableIndicators.push('bullishinvertedhammerstick');
   AvailableIndicators.push('bearishinvertedhammer');
 
