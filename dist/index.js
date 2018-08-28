@@ -3666,6 +3666,10 @@ function getAvailableIndicators () {
   AvailableIndicators.push('bearishspinningtop');
   AvailableIndicators.push('threeblackcrows');
   AvailableIndicators.push('threewhitesoldiers');
+  AvailableIndicators.push('bullishhammer');
+  AvailableIndicators.push('bearishhammer');
+  AvailableIndicators.push('bullishinvertedhammer');
+  AvailableIndicators.push('bearishinvertedhammer');
 
   AvailableIndicators.push('predictPattern');
   AvailableIndicators.push('hasDoubleBottom');
