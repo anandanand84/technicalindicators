@@ -3669,7 +3669,7 @@ function getAvailableIndicators () {
   AvailableIndicators.push('bullishhammerstick');
   AvailableIndicators.push('bearishhammerstick');
   AvailableIndicators.push('bullishinvertedhammerstick');
-  AvailableIndicators.push('bearishinvertedhammer');
+  AvailableIndicators.push('bearishinvertedhammerstick');
 
   AvailableIndicators.push('predictPattern');
   AvailableIndicators.push('hasDoubleBottom');
