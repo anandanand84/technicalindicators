@@ -15,7 +15,7 @@ export default class BearishInvertedHammerStick extends CandlestickFinder {
 
         let isBearishInvertedHammer = daysOpen > daysClose;
         isBearishInvertedHammer = isBearishInvertedHammer && this.approximateEqual(daysClose, daysLow);
-        isBearishInvertedHammer = isBearishInvertedHammer && (daysOpen - daysClose) < (daysHigh - daysOpen);
+        isBearishInvertedHammer = isBearishInvertedHammer && (daysOpen - daysClose) <= 2 * (daysHigh - daysOpen);
 
         return isBearishInvertedHammer;
     }
