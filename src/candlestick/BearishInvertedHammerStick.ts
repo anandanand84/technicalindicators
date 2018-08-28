@@ -1,0 +1,26 @@
+import StockData from '../StockData';
+import CandlestickFinder from './CandlestickFinder';
+
+export default class BearishInvertedHammerStick extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'BearishInvertedHammerStick';
+        this.requiredCount  = 1;
+    }
+    logic (data:StockData) {
+        let daysOpen  = data.open[0];
+        let daysClose = data.close[0];
+        let daysHigh  = data.high[0];
+        let daysLow   = data.low[0];
+
+        let isBearishInvertedHammer = daysOpen > daysClose;
+        isBearishInvertedHammer = isBearishInvertedHammer && this.approximateEqual(daysClose, daysLow);
+        isBearishInvertedHammer = isBearishInvertedHammer && (daysOpen - daysClose) < (daysHigh - daysOpen);
+
+        return isBearishInvertedHammer;
+    }
+}
+
+export function bearishinvertedhammerstick(data:StockData) {
+  return new BearishInvertedHammerStick().hasPattern(data);
+}

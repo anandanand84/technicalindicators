@@ -63,10 +63,10 @@ export function getAvailableIndicators () {
   AvailableIndicators.push('bearishspinningtop');
   AvailableIndicators.push('threeblackcrows');
   AvailableIndicators.push('threewhitesoldiers');
-  AvailableIndicators.push('bullishhammer');
-  AvailableIndicators.push('bearishhammer');
-  AvailableIndicators.push('bullishinvertedhammer');
-  AvailableIndicators.push('bearishinvertedhammer');
+  AvailableIndicators.push('bullishhammerstick');
+  AvailableIndicators.push('bearishhammerstick');
+  AvailableIndicators.push('bullishinvertedhammerstick');
+  AvailableIndicators.push('bearishinvertedhammerstick');
 
   AvailableIndicators.push('predictPattern');
   AvailableIndicators.push('hasDoubleBottom');
