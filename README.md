@@ -175,6 +175,10 @@ TD(Trending Down) and TU(Trending up) works fine even with lower values.
 1. [Morning Star](https://runkit.com/aarthiaradhana/morningstar).
 1. [Three Black Crows](https://runkit.com/aarthiaradhana/threeblackcrows).
 1. [Three White Soldiers](https://runkit.com/aarthiaradhana/threewhitesoldiers).
+1. [Bullish Hammer](https://runkit.com/nerdacus/technicalindicator-bullishhammer).
+1. [Bearish Hammer](https://runkit.com/nerdacus/technicalindicator-bearishhammer).
+1. [Bullish Inverted Hammer](https://runkit.com/nerdacus/technicalindicator-bullishinvertedhammer).
+1. [Bearish Inverted Hammer](https://runkit.com/nerdacus/technicalindicator-bearishinvertedhammer).
 
 or
 

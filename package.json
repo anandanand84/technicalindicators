@@ -81,7 +81,11 @@
     "Lowest",
     "Standard Deviation",
     "Average Gain",
-    "Average Loss"
+    "Average Loss",
+    "Bullish Hammer",
+    "Bearish Hammer",
+    "Bullish Inverted Hammer",
+    "Bearish Inverted Hammer"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",
