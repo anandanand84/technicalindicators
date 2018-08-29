@@ -68,7 +68,13 @@
     "Bullish Hammer",
     "Bearish Hammer",
     "Bullish Inverted Hammer",
-    "Bearish Inverted Hammer"
+    "Bearish Inverted Hammer",
+    "Hammer Pattern",
+    "Confirmed Hammer Pattern",
+    "Unconfirmed Hammer Pattern",
+    "Inverted Hammer Pattern",
+    "Confirmed Inverted Hammer Pattern",
+    "Unconfirmed Inverted Hammer Pattern"
   ],
   "homepage": "https://github.com/anandanand84/technicalindicators",
   "moduleType": [],
