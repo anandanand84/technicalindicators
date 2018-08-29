@@ -3670,6 +3670,8 @@ function getAvailableIndicators () {
   AvailableIndicators.push('bearishhammerstick');
   AvailableIndicators.push('bullishinvertedhammerstick');
   AvailableIndicators.push('bearishinvertedhammerstick');
+  AvailableIndicators.push('hammerpattern');
+  AvailableIndicators.push('hammerpatternunconfirmed');
 
   AvailableIndicators.push('predictPattern');
   AvailableIndicators.push('hasDoubleBottom');
