@@ -3672,6 +3672,10 @@ function getAvailableIndicators () {
   AvailableIndicators.push('bearishinvertedhammerstick');
   AvailableIndicators.push('hammerpattern');
   AvailableIndicators.push('hammerpatternunconfirmed');
+  AvailableIndicators.push('hangingman');
+  AvailableIndicators.push('hangingmanunconfirmed');
+  AvailableIndicators.push('shootingstar');
+  AvailableIndicators.push('shootingstarunconfirmed');
 
   AvailableIndicators.push('predictPattern');
   AvailableIndicators.push('hasDoubleBottom');
