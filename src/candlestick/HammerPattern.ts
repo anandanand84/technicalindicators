@@ -23,7 +23,7 @@ export default class HammerPattern extends CandlestickFinder {
 
     downwardTrend (data:StockData, confirm = true) {
         let end = confirm ? 3 : 4;
-        // Analyze trends in closing prices of the first three sticks
+        // Analyze trends in closing prices of the first three or four candlesticks
         let gains = averagegain({ values: data.close.slice(0, end), period: 1 })
             .reduce((delta, total) => delta + total);
         let losses = averageloss({ values: data.close.slice(0, end), period: 1 })
@@ -63,7 +63,7 @@ export default class HammerPattern extends CandlestickFinder {
             low: data.low[4],
             high: data.high[4],
         }
-        // Confirmation stick is bullish
+        // Confirmation candlestick is bullish
         let isPattern = possibleConfirmation.open < possibleConfirmation.close;
         return isPattern && possibleHammer.close < possibleConfirmation.close;
     }

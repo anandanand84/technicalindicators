@@ -40,7 +40,7 @@ var hammerData = [
       low: [38.00, 28.00, 27.70, 26.90, 26.13],
     },
   },
-]
+];
 
 describe('Hammer Pattern (Unconfirmed) : ', function() {
    before(function() {

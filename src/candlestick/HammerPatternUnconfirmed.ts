@@ -5,7 +5,6 @@ export default class HammerPatternUnconfirmed extends HammerPattern {
     constructor() {
         super();
         this.name = 'HammerPatternUnconfirmed';
-        this.requiredCount = 5;
     }
 
     logic (data:StockData) {

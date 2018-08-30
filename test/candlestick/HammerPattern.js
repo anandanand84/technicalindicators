@@ -40,7 +40,7 @@ var hammerData = [
       low: [28.00, 27.70, 26.90, 26.13, 25.90],
     },
   },
-]
+];
 
 describe('Hammer Pattern : ', function() {
    before(function() {
