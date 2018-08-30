@@ -24,10 +24,8 @@ export default class HammerPattern extends CandlestickFinder {
     downwardTrend (data:StockData, confirm = true) {
         let end = confirm ? 3 : 4;
         // Analyze trends in closing prices of the first three or four candlesticks
-        let gains = averagegain({ values: data.close.slice(0, end), period: 1 })
-            .reduce((delta, total) => delta + total);
-        let losses = averageloss({ values: data.close.slice(0, end), period: 1 })
-            .reduce((delta, total) => delta + total);
+        let gains = averagegain({ values: data.close.slice(0, end), period: end - 1 });
+        let losses = averageloss({ values: data.close.slice(0, end), period: end - 1 });
         // Downward trend, so more losses than gains
         return losses > gains;
     }
