@@ -181,6 +181,10 @@ TD(Trending Down) and TU(Trending up) works fine even with lower values.
 1. [Bearish Inverted Hammer](https://runkit.com/nerdacus/technicalindicator-bearishinvertedhammer).
 1. [Hammer Pattern](https://runkit.com/nerdacus/technicalindicator-hammerpattern).
 1. [Hammer Pattern (Unconfirmed)](https://runkit.com/nerdacus/technicalindicator-hammerpatternunconfirmed).
+1. [Hanging Man](https://runkit.com/nerdacus/technicalindicator-hangingman).
+1. [Hanging Man (Unconfirmed)](https://runkit.com/nerdacus/technicalindicator-hangingmanunconfirmed).
+1. [Shooting Star](https://runkit.com/nerdacus/technicalindicator-shootingstar).
+1. [Shooting Star (Unconfirmed)](https://runkit.com/nerdacus/technicalindicator-shootingstarunconfirmed).
 
 or
 
