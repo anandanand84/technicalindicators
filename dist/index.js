@@ -3050,8 +3050,177 @@ function threewhitesoldiers(data) {
     return new ThreeWhiteSoldiers().hasPattern(data);
 }
 
-let bullishPatterns = [new BullishEngulfingPattern(), new DownsideTasukiGap(), new BullishHarami(), new BullishHaramiCross(),
-    new MorningDojiStar(), new MorningStar(), new BullishMarubozu(), new PiercingLine(), new ThreeWhiteSoldiers()];
+class BullishHammerStick extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'BullishHammerStick';
+        this.requiredCount = 1;
+    }
+    logic(data) {
+        let daysOpen = data.open[0];
+        let daysClose = data.close[0];
+        let daysHigh = data.high[0];
+        let daysLow = data.low[0];
+        let isBullishHammer = daysClose > daysOpen;
+        isBullishHammer = isBullishHammer && this.approximateEqual(daysClose, daysHigh);
+        isBullishHammer = isBullishHammer && (daysClose - daysOpen) <= 2 * (daysOpen - daysLow);
+        return isBullishHammer;
+    }
+}
+function bullishhammerstick(data) {
+    return new BullishHammerStick().hasPattern(data);
+}
+
+class BullishInvertedHammerStick extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'BullishInvertedHammerStick';
+        this.requiredCount = 1;
+    }
+    logic(data) {
+        let daysOpen = data.open[0];
+        let daysClose = data.close[0];
+        let daysHigh = data.high[0];
+        let daysLow = data.low[0];
+        let isBullishInvertedHammer = daysClose > daysOpen;
+        isBullishInvertedHammer = isBullishInvertedHammer && this.approximateEqual(daysOpen, daysLow);
+        isBullishInvertedHammer = isBullishInvertedHammer && (daysClose - daysOpen) <= 2 * (daysHigh - daysClose);
+        return isBullishInvertedHammer;
+    }
+}
+function bullishinvertedhammerstick(data) {
+    return new BullishInvertedHammerStick().hasPattern(data);
+}
+
+class BearishHammerStick extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'BearishHammerStick';
+        this.requiredCount = 1;
+    }
+    logic(data) {
+        let daysOpen = data.open[0];
+        let daysClose = data.close[0];
+        let daysHigh = data.high[0];
+        let daysLow = data.low[0];
+        let isBearishHammer = daysOpen > daysClose;
+        isBearishHammer = isBearishHammer && this.approximateEqual(daysOpen, daysHigh);
+        isBearishHammer = isBearishHammer && (daysOpen - daysClose) <= 2 * (daysClose - daysLow);
+        return isBearishHammer;
+    }
+}
+function bearishhammerstick(data) {
+    return new BearishHammerStick().hasPattern(data);
+}
+
+class BearishInvertedHammerStick extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'BearishInvertedHammerStick';
+        this.requiredCount = 1;
+    }
+    logic(data) {
+        let daysOpen = data.open[0];
+        let daysClose = data.close[0];
+        let daysHigh = data.high[0];
+        let daysLow = data.low[0];
+        let isBearishInvertedHammer = daysOpen > daysClose;
+        isBearishInvertedHammer = isBearishInvertedHammer && this.approximateEqual(daysClose, daysLow);
+        isBearishInvertedHammer = isBearishInvertedHammer && (daysOpen - daysClose) <= 2 * (daysHigh - daysOpen);
+        return isBearishInvertedHammer;
+    }
+}
+function bearishinvertedhammerstick(data) {
+    return new BearishInvertedHammerStick().hasPattern(data);
+}
+
+class HammerPattern extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'HammerPattern';
+        this.requiredCount = 5;
+    }
+    logic(data) {
+        let isPattern = this.downwardTrend(data);
+        isPattern = isPattern && this.includesHammer(data);
+        isPattern = isPattern && this.hasConfirmation(data);
+        return isPattern;
+    }
+    downwardTrend(data, confirm = true) {
+        let end = confirm ? 3 : 4;
+        // Analyze trends in closing prices of the first three or four candlesticks
+        let gains = averagegain({ values: data.close.slice(0, end), period: end - 1 });
+        let losses = averageloss({ values: data.close.slice(0, end), period: end - 1 });
+        // Downward trend, so more losses than gains
+        return losses > gains;
+    }
+    includesHammer(data, confirm = true) {
+        let start = confirm ? 3 : 4;
+        let end = confirm ? 4 : undefined;
+        let possibleHammerData = {
+            open: data.open.slice(start, end),
+            close: data.close.slice(start, end),
+            low: data.low.slice(start, end),
+            high: data.high.slice(start, end),
+        };
+        let isPattern = bearishhammerstick(possibleHammerData);
+        isPattern = isPattern || bearishinvertedhammerstick(possibleHammerData);
+        isPattern = isPattern || bullishhammerstick(possibleHammerData);
+        isPattern = isPattern || bullishinvertedhammerstick(possibleHammerData);
+        return isPattern;
+    }
+    hasConfirmation(data) {
+        let possibleHammer = {
+            open: data.open[3],
+            close: data.close[3],
+            low: data.low[3],
+            high: data.high[3],
+        };
+        let possibleConfirmation = {
+            open: data.open[4],
+            close: data.close[4],
+            low: data.low[4],
+            high: data.high[4],
+        };
+        // Confirmation candlestick is bullish
+        let isPattern = possibleConfirmation.open < possibleConfirmation.close;
+        return isPattern && possibleHammer.close < possibleConfirmation.close;
+    }
+}
+function hammerpattern(data) {
+    return new HammerPattern().hasPattern(data);
+}
+
+class HammerPatternUnconfirmed extends HammerPattern {
+    constructor() {
+        super();
+        this.name = 'HammerPatternUnconfirmed';
+    }
+    logic(data) {
+        let isPattern = this.downwardTrend(data, false);
+        isPattern = isPattern && this.includesHammer(data, false);
+        return isPattern;
+    }
+}
+function hammerpatternunconfirmed(data) {
+    return new HammerPatternUnconfirmed().hasPattern(data);
+}
+
+let bullishPatterns = [
+    new BullishEngulfingPattern(),
+    new DownsideTasukiGap(),
+    new BullishHarami(),
+    new BullishHaramiCross(),
+    new MorningDojiStar(),
+    new MorningStar(),
+    new BullishMarubozu(),
+    new PiercingLine(),
+    new ThreeWhiteSoldiers(),
+    new BullishHammerStick(),
+    new BullishInvertedHammerStick(),
+    new HammerPattern(),
+    new HammerPatternUnconfirmed(),
+];
 class BullishPatterns extends CandlestickFinder {
     constructor() {
         super();
@@ -3282,8 +3451,161 @@ function threeblackcrows(data) {
     return new ThreeBlackCrows().hasPattern(data);
 }
 
-let bearishPatterns = [new BearishEngulfingPattern(), new BearishHarami(), new BearishHaramiCross(), new EveningDojiStar(),
-    new EveningStar(), new BearishMarubozu(), new ThreeBlackCrows()];
+class HangingMan extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'HangingMan';
+        this.requiredCount = 5;
+    }
+    logic(data) {
+        let isPattern = this.upwardTrend(data);
+        isPattern = isPattern && this.includesHammer(data);
+        isPattern = isPattern && this.hasConfirmation(data);
+        return isPattern;
+    }
+    upwardTrend(data, confirm = true) {
+        let end = confirm ? 3 : 4;
+        // Analyze trends in closing prices of the first three or four candlesticks
+        let gains = averagegain({ values: data.close.slice(0, end), period: end - 1 });
+        let losses = averageloss({ values: data.close.slice(0, end), period: end - 1 });
+        // Upward trend, so more gains than losses
+        return gains > losses;
+    }
+    includesHammer(data, confirm = true) {
+        let start = confirm ? 3 : 4;
+        let end = confirm ? 4 : undefined;
+        let possibleHammerData = {
+            open: data.open.slice(start, end),
+            close: data.close.slice(start, end),
+            low: data.low.slice(start, end),
+            high: data.high.slice(start, end),
+        };
+        let isPattern = bearishhammerstick(possibleHammerData);
+        isPattern = isPattern || bullishhammerstick(possibleHammerData);
+        return isPattern;
+    }
+    hasConfirmation(data) {
+        let possibleHammer = {
+            open: data.open[3],
+            close: data.close[3],
+            low: data.low[3],
+            high: data.high[3],
+        };
+        let possibleConfirmation = {
+            open: data.open[4],
+            close: data.close[4],
+            low: data.low[4],
+            high: data.high[4],
+        };
+        // Confirmation candlestick is bearish
+        let isPattern = possibleConfirmation.open > possibleConfirmation.close;
+        return isPattern && possibleHammer.close > possibleConfirmation.close;
+    }
+}
+function hangingman(data) {
+    return new HangingMan().hasPattern(data);
+}
+
+class HangingManUnconfirmed extends HangingMan {
+    constructor() {
+        super();
+        this.name = 'HangingManUnconfirmed';
+    }
+    logic(data) {
+        let isPattern = this.upwardTrend(data, false);
+        isPattern = isPattern && this.includesHammer(data, false);
+        return isPattern;
+    }
+}
+function hangingmanunconfirmed(data) {
+    return new HangingManUnconfirmed().hasPattern(data);
+}
+
+class ShootingStar extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'ShootingStar';
+        this.requiredCount = 5;
+    }
+    logic(data) {
+        let isPattern = this.upwardTrend(data);
+        isPattern = isPattern && this.includesHammer(data);
+        isPattern = isPattern && this.hasConfirmation(data);
+        return isPattern;
+    }
+    upwardTrend(data, confirm = true) {
+        let end = confirm ? 3 : 4;
+        // Analyze trends in closing prices of the first three or four candlesticks
+        let gains = averagegain({ values: data.close.slice(0, end), period: end - 1 });
+        let losses = averageloss({ values: data.close.slice(0, end), period: end - 1 });
+        // Upward trend, so more gains than losses
+        return gains > losses;
+    }
+    includesHammer(data, confirm = true) {
+        let start = confirm ? 3 : 4;
+        let end = confirm ? 4 : undefined;
+        let possibleHammerData = {
+            open: data.open.slice(start, end),
+            close: data.close.slice(start, end),
+            low: data.low.slice(start, end),
+            high: data.high.slice(start, end),
+        };
+        let isPattern = bearishinvertedhammerstick(possibleHammerData);
+        isPattern = isPattern || bullishinvertedhammerstick(possibleHammerData);
+        return isPattern;
+    }
+    hasConfirmation(data) {
+        let possibleHammer = {
+            open: data.open[3],
+            close: data.close[3],
+            low: data.low[3],
+            high: data.high[3],
+        };
+        let possibleConfirmation = {
+            open: data.open[4],
+            close: data.close[4],
+            low: data.low[4],
+            high: data.high[4],
+        };
+        // Confirmation candlestick is bearish
+        let isPattern = possibleConfirmation.open > possibleConfirmation.close;
+        return isPattern && possibleHammer.close > possibleConfirmation.close;
+    }
+}
+function shootingstar(data) {
+    return new ShootingStar().hasPattern(data);
+}
+
+class ShootingStarUnconfirmed extends ShootingStar {
+    constructor() {
+        super();
+        this.name = 'ShootingStarUnconfirmed';
+    }
+    logic(data) {
+        let isPattern = this.upwardTrend(data, false);
+        isPattern = isPattern && this.includesHammer(data, false);
+        return isPattern;
+    }
+}
+function shootingstarunconfirmed(data) {
+    return new ShootingStarUnconfirmed().hasPattern(data);
+}
+
+let bearishPatterns = [
+    new BearishEngulfingPattern(),
+    new BearishHarami(),
+    new BearishHaramiCross(),
+    new EveningDojiStar(),
+    new EveningStar(),
+    new BearishMarubozu(),
+    new ThreeBlackCrows(),
+    new BearishHammerStick(),
+    new BearishInvertedHammerStick(),
+    new HangingMan(),
+    new HangingManUnconfirmed(),
+    new ShootingStar(),
+    new ShootingStarUnconfirmed(),
+];
 class BearishPatterns extends CandlestickFinder {
     constructor() {
         super();
@@ -3784,6 +4106,16 @@ exports.bullishspinningtop = bullishspinningtop;
 exports.bearishspinningtop = bearishspinningtop;
 exports.threeblackcrows = threeblackcrows;
 exports.threewhitesoldiers = threewhitesoldiers;
+exports.bullishhammerstick = bullishhammerstick;
+exports.bearishhammerstick = bearishhammerstick;
+exports.bullishinvertedhammerstick = bullishinvertedhammerstick;
+exports.bearishinvertedhammerstick = bearishinvertedhammerstick;
+exports.hammerpattern = hammerpattern;
+exports.hammerpatternunconfirmed = hammerpatternunconfirmed;
+exports.hangingman = hangingman;
+exports.hangingmanunconfirmed = hangingmanunconfirmed;
+exports.shootingstar = shootingstar;
+exports.shootingstarunconfirmed = shootingstarunconfirmed;
 exports.fibonacciretracement = fibonacciretracement;
 exports.predictPattern = predictPattern;
 exports.PatternDetector = PatternDetector;

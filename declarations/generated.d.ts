@@ -714,6 +714,75 @@ export class ThreeWhiteSoldiers extends CandlestickFinder {
 }
 export function threewhitesoldiers(data: StockData): any;
 
+export class BullishHammerStick extends CandlestickFinder {
+    constructor();
+    logic(data: StockData): boolean;
+}
+export function bullishhammerstick(data: StockData): any;
+
+export class BearishHammerStick extends CandlestickFinder {
+    constructor();
+    logic(data: StockData): boolean;
+}
+export function bearishhammerstick(data: StockData): any;
+
+export class BullishInvertedHammerStick extends CandlestickFinder {
+    constructor();
+    logic(data: StockData): boolean;
+}
+export function bullishinvertedhammerstick(data: StockData): any;
+
+export class BearishInvertedHammerStick extends CandlestickFinder {
+    constructor();
+    logic(data: StockData): boolean;
+}
+export function bearishinvertedhammerstick(data: StockData): any;
+
+export class HammerPattern extends CandlestickFinder {
+    constructor();
+    logic(data: StockData): boolean;
+    downwardTrend(data: StockData, confirm?: boolean): boolean;
+    includesHammer(data: StockData, confirm?: boolean): any;
+    hasConfirmation(data: StockData): boolean;
+}
+export function hammerpattern(data: StockData): any;
+
+export class HammerPatternUnconfirmed extends HammerPattern {
+    constructor();
+    logic(data: StockData): boolean;
+}
+export function hammerpatternunconfirmed(data: StockData): any;
+
+export class HangingMan extends CandlestickFinder {
+    constructor();
+    logic(data: StockData): boolean;
+    upwardTrend(data: StockData, confirm?: boolean): boolean;
+    includesHammer(data: StockData, confirm?: boolean): any;
+    hasConfirmation(data: StockData): boolean;
+}
+export function hangingman(data: StockData): any;
+
+export class HangingManUnconfirmed extends HangingMan {
+    constructor();
+    logic(data: StockData): boolean;
+}
+export function hangingmanunconfirmed(data: StockData): any;
+
+export class ShootingStar extends CandlestickFinder {
+    constructor();
+    logic(data: StockData): boolean;
+    upwardTrend(data: StockData, confirm?: boolean): boolean;
+    includesHammer(data: StockData, confirm?: boolean): any;
+    hasConfirmation(data: StockData): boolean;
+}
+export function shootingstar(data: StockData): any;
+
+export class ShootingStarUnconfirmed extends ShootingStar {
+    constructor();
+    logic(data: StockData): boolean;
+}
+export function shootingstarunconfirmed(data: StockData): any;
+
 /**
   * Calcaultes the fibonacci retracements for given start and end points
   *
