@@ -75,6 +75,9 @@ export { hangingmanunconfirmed }       from './candlestick/HangingManUnconfirmed
 export { shootingstar }                from './candlestick/ShootingStar';
 export { shootingstarunconfirmed }     from './candlestick/ShootingStarUnconfirmed';
 
+export { tweezertop }                  from './candlestick/TweezerTop';
+export { tweezerbottom }               from './candlestick/TweezerBottom';
+
 export  { fibonacciretracement}        from './drawingtools/fibonacci';
 
 
