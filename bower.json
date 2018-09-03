@@ -76,7 +76,9 @@
     "Confirmed Inverted Hammer Pattern",
     "Unconfirmed Inverted Hammer Pattern",
     "Hanging Man",
-    "Shooting Star"
+    "Shooting Star",
+    "Tweezer Top",
+    "Tweezer Bottom"
   ],
   "homepage": "https://github.com/anandanand84/technicalindicators",
   "moduleType": [],
