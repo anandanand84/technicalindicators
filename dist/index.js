@@ -3998,6 +3998,8 @@ function getAvailableIndicators () {
   AvailableIndicators.push('hangingmanunconfirmed');
   AvailableIndicators.push('shootingstar');
   AvailableIndicators.push('shootingstarunconfirmed');
+  AvailableIndicators.push('tweezertop');
+  AvailableIndicators.push('tweezerbottom');
 
   AvailableIndicators.push('predictPattern');
   AvailableIndicators.push('hasDoubleBottom');
