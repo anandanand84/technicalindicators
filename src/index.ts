@@ -64,6 +64,17 @@ export  { bearishspinningtop }         from  './candlestick/BearishSpinningTop';
 export  { threeblackcrows }            from  './candlestick/ThreeBlackCrows';
 export  { threewhitesoldiers }         from  './candlestick/ThreeWhiteSoldiers';
 
+export { bullishhammerstick }          from './candlestick/BullishHammerStick';
+export { bearishhammerstick }          from './candlestick/BearishHammerStick';
+export { bullishinvertedhammerstick }  from './candlestick/BullishInvertedHammerStick';
+export { bearishinvertedhammerstick }  from './candlestick/BearishInvertedHammerStick';
+export { hammerpattern }               from './candlestick/HammerPattern';
+export { hammerpatternunconfirmed }    from './candlestick/HammerPatternUnconfirmed';
+export { hangingman }                  from './candlestick/HangingMan';
+export { hangingmanunconfirmed }       from './candlestick/HangingManUnconfirmed';
+export { shootingstar }                from './candlestick/ShootingStar';
+export { shootingstarunconfirmed }     from './candlestick/ShootingStarUnconfirmed';
+
 export  { fibonacciretracement}        from './drawingtools/fibonacci';
 
 
