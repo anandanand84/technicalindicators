@@ -93,7 +93,9 @@
     "Confirmed Inverted Hammer Pattern",
     "Unconfirmed Inverted Hammer Pattern",
     "Hanging Man",
-    "Shooting Star"
+    "Shooting Star",
+    "Tweezer Top",
+    "Tweezer Bottom"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",

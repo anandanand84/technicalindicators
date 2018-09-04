@@ -3206,6 +3206,27 @@ function hammerpatternunconfirmed(data) {
     return new HammerPatternUnconfirmed().hasPattern(data);
 }
 
+class TweezerBottom extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'TweezerBottom';
+        this.requiredCount = 5;
+    }
+    logic(data) {
+        return this.downwardTrend(data) && data.low[3] == data.low[4];
+    }
+    downwardTrend(data) {
+        // Analyze trends in closing prices of the first three or four candlesticks
+        let gains = averagegain({ values: data.close.slice(0, 3), period: 2 });
+        let losses = averageloss({ values: data.close.slice(0, 3), period: 2 });
+        // Downward trend, so more losses than gains
+        return losses > gains;
+    }
+}
+function tweezerbottom(data) {
+    return new TweezerBottom().hasPattern(data);
+}
+
 let bullishPatterns = [
     new BullishEngulfingPattern(),
     new DownsideTasukiGap(),
@@ -3220,6 +3241,7 @@ let bullishPatterns = [
     new BullishInvertedHammerStick(),
     new HammerPattern(),
     new HammerPatternUnconfirmed(),
+    new TweezerBottom()
 ];
 class BullishPatterns extends CandlestickFinder {
     constructor() {
@@ -3591,6 +3613,27 @@ function shootingstarunconfirmed(data) {
     return new ShootingStarUnconfirmed().hasPattern(data);
 }
 
+class TweezerTop extends CandlestickFinder {
+    constructor() {
+        super();
+        this.name = 'TweezerTop';
+        this.requiredCount = 5;
+    }
+    logic(data) {
+        return this.upwardTrend(data) && data.high[3] == data.high[4];
+    }
+    upwardTrend(data) {
+        // Analyze trends in closing prices of the first three or four candlesticks
+        let gains = averagegain({ values: data.close.slice(0, 3), period: 2 });
+        let losses = averageloss({ values: data.close.slice(0, 3), period: 2 });
+        // Upward trend, so more gains than losses
+        return gains > losses;
+    }
+}
+function tweezertop(data) {
+    return new TweezerTop().hasPattern(data);
+}
+
 let bearishPatterns = [
     new BearishEngulfingPattern(),
     new BearishHarami(),
@@ -3605,6 +3648,7 @@ let bearishPatterns = [
     new HangingManUnconfirmed(),
     new ShootingStar(),
     new ShootingStarUnconfirmed(),
+    new TweezerTop()
 ];
 class BearishPatterns extends CandlestickFinder {
     constructor() {
@@ -3998,6 +4042,8 @@ function getAvailableIndicators () {
   AvailableIndicators.push('hangingmanunconfirmed');
   AvailableIndicators.push('shootingstar');
   AvailableIndicators.push('shootingstarunconfirmed');
+  AvailableIndicators.push('tweezertop');
+  AvailableIndicators.push('tweezerbottom');
 
   AvailableIndicators.push('predictPattern');
   AvailableIndicators.push('hasDoubleBottom');
@@ -4116,6 +4162,8 @@ exports.hangingman = hangingman;
 exports.hangingmanunconfirmed = hangingmanunconfirmed;
 exports.shootingstar = shootingstar;
 exports.shootingstarunconfirmed = shootingstarunconfirmed;
+exports.tweezertop = tweezertop;
+exports.tweezerbottom = tweezerbottom;
 exports.fibonacciretracement = fibonacciretracement;
 exports.predictPattern = predictPattern;
 exports.PatternDetector = PatternDetector;

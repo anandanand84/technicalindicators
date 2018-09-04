@@ -783,6 +783,20 @@ export class ShootingStarUnconfirmed extends ShootingStar {
 }
 export function shootingstarunconfirmed(data: StockData): any;
 
+export class TweezerTop extends CandlestickFinder {
+    constructor();
+    logic(data: StockData): boolean;
+    upwardTrend(data: StockData): boolean;
+}
+export function tweezertop(data: StockData): any;
+
+export class TweezerBottom extends CandlestickFinder {
+    constructor();
+    logic(data: StockData): boolean;
+    downwardTrend(data: StockData): boolean;
+}
+export function tweezerbottom(data: StockData): any;
+
 /**
   * Calcaultes the fibonacci retracements for given start and end points
   *
