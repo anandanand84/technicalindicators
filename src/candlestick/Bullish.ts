@@ -13,6 +13,7 @@ import HammerPattern from './HammerPattern';
 import HammerPatternUnconfirmed from './HammerPatternUnconfirmed';
 import StockData from '../StockData';
 import CandlestickFinder from './CandlestickFinder';
+import TweezerBottom from './TweezerBottom';
 
 let bullishPatterns = [
     new BullishEngulfingPattern(),
@@ -28,6 +29,7 @@ let bullishPatterns = [
     new BullishInvertedHammerStick(),
     new HammerPattern(),
     new HammerPatternUnconfirmed(),
+    new TweezerBottom()
 ];
 
 export default class BullishPatterns extends CandlestickFinder {

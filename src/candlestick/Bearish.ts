@@ -11,6 +11,7 @@ import HangingMan from './HangingMan';
 import HangingManUnconfirmed from './HangingManUnconfirmed';
 import ShootingStar from './ShootingStar';
 import ShootingStarUnconfirmed from './ShootingStarUnconfirmed';
+import TweezerTop from './TweezerTop';
 import StockData from '../StockData';
 import CandlestickFinder from './CandlestickFinder';
 
@@ -28,6 +29,7 @@ let bearishPatterns = [
     new HangingManUnconfirmed(),
     new ShootingStar(),
     new ShootingStarUnconfirmed(),
+    new TweezerTop()
 ];
 
 export default class BearishPatterns extends CandlestickFinder {

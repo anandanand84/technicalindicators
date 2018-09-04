@@ -185,6 +185,8 @@ TD(Trending Down) and TU(Trending up) works fine even with lower values.
 1. [Hanging Man (Unconfirmed)](https://runkit.com/nerdacus/technicalindicator-hangingmanunconfirmed).
 1. [Shooting Star](https://runkit.com/nerdacus/technicalindicator-shootingstar).
 1. [Shooting Star (Unconfirmed)](https://runkit.com/nerdacus/technicalindicator-shootingstarunconfirmed).
+1. [Tweezer Top](https://runkit.com/nerdacus/technicalindicator-tweezertop).
+1. [Tweezer Bottom](https://runkit.com/nerdacus/technicalindicator-tweezerbottom).
 
 or
 
