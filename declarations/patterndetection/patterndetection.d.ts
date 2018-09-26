@@ -4,12 +4,12 @@ export declare class PatternDetectorInput extends IndicatorInput {
     constructor(values: number[]);
 }
 export declare enum AvailablePatterns {
-    'TD' = 0,
-    'IHS' = 1,
-    'HS' = 2,
-    'TU' = 3,
-    'DT' = 4,
-    'DB' = 5,
+    'IHS' = 0,
+    'TU' = 1,
+    'DB' = 2,
+    'HS' = 3,
+    'TD' = 4,
+    'DT' = 5,
 }
 export declare class PatternDetectorOutput {
     patternId: AvailablePatterns;

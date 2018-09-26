@@ -3,9 +3,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var KerasJS = _interopDefault(require('keras-js'));
+var tf = require('@tensorflow/tfjs');
 
 class Item {
     constructor(data, prev, next) {
@@ -3857,25 +3855,21 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
     });
 };
 var isNodeEnvironment = false;
+var model;
+var oneHotMap = ['IHS', 'TU', 'DB', 'HS', 'TD', 'DT'];
 try {
     isNodeEnvironment = Object.prototype.toString.call(global.process) === '[object process]';
 }
 catch (e) { }
-var modelPath = getConfig('MODEL_PATH') || '/dist/model.bin';
-var model = new KerasJS.Model({
-    filepath: isNodeEnvironment ? __dirname + '/model.bin' : modelPath,
-    gpu: false,
-    filesystem: isNodeEnvironment
-});
 
 
 (function (AvailablePatterns) {
-    AvailablePatterns[AvailablePatterns["TD"] = 0] = "TD";
-    AvailablePatterns[AvailablePatterns["IHS"] = 1] = "IHS";
-    AvailablePatterns[AvailablePatterns["HS"] = 2] = "HS";
-    AvailablePatterns[AvailablePatterns["TU"] = 3] = "TU";
-    AvailablePatterns[AvailablePatterns["DT"] = 4] = "DT";
-    AvailablePatterns[AvailablePatterns["DB"] = 5] = "DB";
+    AvailablePatterns[AvailablePatterns["IHS"] = 0] = "IHS";
+    AvailablePatterns[AvailablePatterns["TU"] = 1] = "TU";
+    AvailablePatterns[AvailablePatterns["DB"] = 2] = "DB";
+    AvailablePatterns[AvailablePatterns["HS"] = 3] = "HS";
+    AvailablePatterns[AvailablePatterns["TD"] = 4] = "TD";
+    AvailablePatterns[AvailablePatterns["DT"] = 5] = "DT";
 })(exports.AvailablePatterns || (exports.AvailablePatterns = {}));
 function interpolateArray(data, fitCount) {
     var linearInterpolate = function (before, after, atPoint) {
@@ -3901,61 +3895,93 @@ function l2Normalize(arr) {
     return arr.map((v) => v / norm);
 }
 
+var modelLoaded = false;
+var laodingModel = false;
+var loadingPromise;
+function loadModel$1() {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (modelLoaded)
+            return Promise.resolve(true);
+        if (laodingModel)
+            return loadingPromise;
+        loadingPromise = new Promise(function (resolve, reject) {
+            return __awaiter(this, void 0, void 0, function* () {
+                if (isNodeEnvironment) {
+                    console.log('Nodejs Environment detected ');
+                    var tfnode = require('@tensorflow/tfjs-node');
+                    var modelPath = require('path').resolve(__dirname, '../tf_model/model.json');
+                    model = yield tf.loadModel(tfnode.io.fileSystem(modelPath));
+                }
+                else {
+                    console.log('Browser Environment detected ');
+                    if ((typeof tf === "undefined") || (typeof tf.loadModel === "undefined")) {
+                        console.log('Tensorflow js not imported, pattern detection may not work');
+                        modelLoaded = false;
+                        laodingModel = false;
+                        resolve();
+                        return;
+                    }
+                    model = yield tf.loadModel('/tf_model/model.json');
+                }
+                modelLoaded = true;
+                laodingModel = false;
+                resolve();
+                return;
+            });
+        });
+        laodingModel = true;
+        return;
+    });
+}
+loadModel$1();
 function predictPattern(input) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (input.values.length < 200) {
-            console.warn('Pattern detector requires atleast 250 data for a reliable prediction, received just ', input.values.length);
+        yield loadModel$1();
+        if (input.values.length < 300) {
+            console.warn('Pattern detector requires atleast 300 data points for a reliable prediction, received just ', input.values.length);
         }
-        yield model.ready();
         Indicator.reverseInputs(input);
-        var data = input.values;
-        var closes = l2Normalize(interpolateArray(data, 400));
-        let result = yield model.predict({
-            input: new Float32Array(closes)
-        });
-        var index = result.output.indexOf(Math.max(...result.output));
+        var values = input.values;
+        var output = yield model.predict(tf.tensor2d([l2Normalize(interpolateArray(values, 400))]));
+        var index = tf.argMax(output, 1).get(0);
         Indicator.reverseInputs(input);
-        return {
-            pattern: exports.AvailablePatterns[index],
-            patternId: index,
-            probability: result.output[index] * 100
-        };
+        return { patternId: index, pattern: oneHotMap[index], probability: output.get(0, 4) * 100 };
     });
 }
 function hasDoubleBottom(input) {
     return __awaiter(this, void 0, void 0, function* () {
         var result = yield predictPattern(input);
-        return (result.patternId === exports.AvailablePatterns.DB && result.probability > 75);
+        return (result.patternId === exports.AvailablePatterns.DB);
     });
 }
 function hasDoubleTop(input) {
     return __awaiter(this, void 0, void 0, function* () {
         var result = yield predictPattern(input);
-        return (result.patternId === exports.AvailablePatterns.DT && result.probability > 75);
+        return (result.patternId === exports.AvailablePatterns.DT);
     });
 }
 function hasHeadAndShoulder(input) {
     return __awaiter(this, void 0, void 0, function* () {
         var result = yield predictPattern(input);
-        return (result.patternId === exports.AvailablePatterns.HS && result.probability > 75);
+        return (result.patternId === exports.AvailablePatterns.HS);
     });
 }
 function hasInverseHeadAndShoulder(input) {
     return __awaiter(this, void 0, void 0, function* () {
         var result = yield predictPattern(input);
-        return (result.patternId === exports.AvailablePatterns.IHS && result.probability > 75);
+        return (result.patternId === exports.AvailablePatterns.IHS);
     });
 }
 function isTrendingUp(input) {
     return __awaiter(this, void 0, void 0, function* () {
         var result = yield predictPattern(input);
-        return (result.patternId === exports.AvailablePatterns.TU && result.probability > 75);
+        return (result.patternId === exports.AvailablePatterns.TU);
     });
 }
 function isTrendingDown(input) {
     return __awaiter(this, void 0, void 0, function* () {
         var result = yield predictPattern(input);
-        return (result.patternId === exports.AvailablePatterns.TD && result.probability > 75);
+        return (result.patternId === exports.AvailablePatterns.TD);
     });
 }
 class PatternDetector extends Indicator {

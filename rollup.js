@@ -43,17 +43,17 @@ async function doBuild() {
           comments : false
         })
       ],
-      external: ["@babel/polyfill"]
+      external: ["@babel/polyfill", "@tensorflow/tfjs"]
     });
 
-    bundle.write({
+    await bundle.write({
       'banner': '/* APP */',
       dest: 'dist/browser.js',
       format: 'iife',
       moduleName: 'window',
-      'sourceMap': true,
       globals : {
-        "@babel/polyfill" : 'window'
+        "@babel/polyfill" : 'window',
+        "@tensorflow/tfjs" : 'tf'
       }
     })
 
@@ -75,30 +75,32 @@ async function doBuild() {
           comments : false
         })
       ],
-      external: ["@babel/polyfill"],
+      external: ["@babel/polyfill", "@tensorflow/tfjs"],
     });
 
-    bundleES6.write({
+    await bundleES6.write({
       'banner': '/* APP */',
       dest: 'dist/browser.es6.js',
       format: 'iife',
       moduleName: 'window',
-      'sourceMap': true,
       globals : {
-        "@babel/polyfill" : 'window'
+        "@babel/polyfill" : 'window',
+        "@tensorflow/tfjs" : 'tf'
       }
     })
 
     let bundleNode = await rollup({
-      entry: 'index.js'
+      entry: 'index.js',
+      external: ["@babel/polyfill", "@tensorflow/tfjs"],
     });
 
-    bundleNode.write({
+    await bundleNode.write({
       'banner': '/* APP */',
        dest: 'dist/index.js',
        format: 'cjs',
       'sourceMap': true
     })
+
   } catch (e) {
     console.error(e);
     console.log(e.message);
@@ -106,4 +108,24 @@ async function doBuild() {
 
 };
 
-doBuild().then(console.log.bind(null, 'Completed build for node and browser'));
+doBuild().then(()=> {
+  var data = fs.readFileSync('dist/browser.js')
+  var fd = fs.openSync('dist/browser.js', 'w+')
+  var insert = Buffer.from("var tf = window.tf || {};")
+  fs.writeSync(fd, insert, 0, insert.length, 0)
+  fs.writeSync(fd, data, 0, data.length, insert.length)
+  fs.close(fd, (err) => {
+    if (err) throw err;
+  });
+  
+
+  var data = fs.readFileSync('dist/browser.es6.js')
+  var fd = fs.openSync('dist/browser.es6.js', 'w+')
+  var insert = Buffer.from("var tf = window.tf || {};")
+  fs.writeSync(fd, insert, 0, insert.length, 0)
+  fs.writeSync(fd, data, 0, data.length, insert.length)
+  fs.close(fd, (err) => {
+    if (err) throw err;
+  });
+  console.log('Completed build for node and browser');
+});

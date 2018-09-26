@@ -2,12 +2,12 @@
 
 # TechnicalIndicators
 
-A javascript technical indicators written in javascript.
+A javascript technical indicators written in typescript.
 
 
 # Installation
 
-## Node.js versions >= 6.4
+## Node.js versions >= 10
 
 ``` bash
 npm install --save technicalindicators
@@ -17,17 +17,9 @@ npm install --save technicalindicators
 const SMA = require('technicalindicators').SMA;
 ```
 
-## Node.js versions < 6.4
+## Node.js versions < 10
 
-``` bash
-npm install --save babel-polyfill
-npm install --save technicalindicators
-```
-
-``` javascript
-require('babel-polyfill');
-const SMA = require('technicalindicators/dist/browser').SMA;
-```
+For nodejs version below 10 use 1.x versions of this library.
 
 ## Webpack
 
@@ -44,17 +36,47 @@ module.exports = {
 
 ## Browser
 
-For browser install using bower or npm, but it is necessary to include the babel-polyfill otherwise you will get an error. For example see [index.html](https://github.com/anandanand84/technicalindicators/blob/master/index.html "index.html")
+For browsers install using npm, 
+
+For ES6 browsers use
+
+``` bash
+npm install --save technicalindicators
+```
+
+```html
+<script src="node_modules/technicalindicators/dist/browser.es6.js"></script>
+```
+
+For ES5 support it is necessary to include the babel-polyfill and respective file browser.js otherwise you will get an error. For example see [index.html](https://github.com/anandanand84/technicalindicators/blob/master/index.html "index.html")
 
 ``` bash
 npm install --save technicalindicators
 npm install --save babel-polyfill
-bower install --save technicalindicators
 ```
 
 ``` html
 <script src="node_modules/babel-polyfill/browser.js"></script>
-<script src="bower_components/technicalindicators/browser.js"></script>
+<script src="node_modules/technicalindicators/dist/browser.js"></script>
+```
+
+### Pattern detection
+
+If using pattern detection it is necessary to include the tensorflowjs library before this library is loaded and the model files present in tf_model dir in this repository should be accessible at location /tf_model/ in server.
+
+For ES6
+
+``` html
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0"></script>
+<script src="node_modules/technicalindicators/dist/browser.es6.js"></script>
+```
+
+For ES5
+
+``` html
+<script src="node_modules/babel-polyfill/browser.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0"></script>
+<script src="node_modules/technicalindicators/dist/browser.es6.js"></script>
 ```
 
 All indicators will be available in window object. So you can just use
@@ -140,7 +162,7 @@ Finds pattern in the given set of data, patterns include, DB, DT, HS, IHS, TU, T
 ```
 
 
-When running in browser the file model.bin present in dist/model.bin in the respository should be accessible on your server at the location at /dist/model.bin.
+When running in browser the dir /tf_model/ present in this respository should be accessible on your server at the location at /tf_model/.
 The model is trained using 400 count of values, so try to provide values close to 400  for a reliable prediction of DB, DT, HS, IHS
 TD(Trending Down) and TU(Trending up) works fine even with lower values.
 

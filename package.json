@@ -1,6 +1,6 @@
 {
   "name": "technicalindicators",
-  "version": "1.1.13",
+  "version": "2.0.0",
   "description": "Techincal Indicators written in javascript",
   "main": "dist/index.js",
   "module": "lib/index.js",
@@ -8,8 +8,8 @@
   "jsnext:main": "lib/index.js",
   "scripts": {
     "cover": "babel-istanbul --include-all-sources cover -x dist/**/*.* ./node_modules/mocha/bin/_mocha -- -R spec && open coverage/lcov-report/index.html",
-    "test": "mocha --compilers js:babel-register --require keras-js",
-    "test:watch": "mocha --watch --compilers js:babel-register --require keras-js",
+    "test": "mocha --compilers js:babel-register --require babel-polyfill",
+    "test:watch": "mocha --watch --compilers js:babel-register --require babel-polyfill",
     "generateDts": "./generateTsDefinitions.sh",
     "build-lib": "babel-node --presets es2015 rollup.js",
     "start": "sh test.sh"
@@ -117,7 +117,7 @@
     "babel-register": "^6.8.0",
     "babel-runtime": "^6.23.0",
     "chai": "^3.0.0",
-    "draw-candlestick": "*",
+    "draw-candlestick": "2.0.3",
     "gulp": "^3.9.1",
     "gulp-mocha": "^2.2.0",
     "gulp-util": "^3.0.7",
@@ -140,11 +140,11 @@
     "rollup-watch": "^3.2.2",
     "ts-node": "^1.0.0",
     "tslint": "^4.0.0",
-    "typescript": "^2.0.0"
+    "typescript": "^2.7.2"
   },
   "dependencies": {
-    "@types/node": "^6.0.96",
-    "babel-polyfill": "^6.23.0",
-    "keras-js": "^1.0.2"
+    "@tensorflow/tfjs": "^0.13.0",
+    "@tensorflow/tfjs-node": "^0.1.17",
+    "@types/node": "^6.0.96"
   }
 }

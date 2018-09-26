@@ -8,12 +8,13 @@
 
 <div id="container" style="width:800px;height:600px;border:1px solid grey"></div>
 <input type="button" onclick="executeCode()" value="Execute"></input>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js"></script>
 <script src="dist/browser.js"></script>
 <script src="https://unpkg.com/monaco-editor@0.8.3/min/vs/loader.js"></script>
 <script>
     var editor;
-    require.config({ paths: { 'vs': 'http://unpkg.com/monaco-editor@0.8.3//min/vs' }});
+    require.config({ paths: { 'vs': 'http://unpkg.com/monaco-editor@0.8.3/min/vs' }});
     require(['vs/editor/editor.main'], function() {
         fetch('/node_modules/technicalindicators/declarations/generated.d.ts', { method: 'get'}).then(function(response) { return response.text()  }).then(function(content) {
                 var technicalIndicators = content.replace(new RegExp('default ', 'g'), '').split('export').join('declare');
