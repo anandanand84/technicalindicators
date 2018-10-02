@@ -95,7 +95,8 @@ async function loadModel() {
     return;
  }
 
- loadModel();
+ if(isNodeEnvironment)
+    loadModel();
 
 export async function predictPattern(input:PatternDetectorInput):Promise<PatternDetectorOutput> {
     await loadModel()

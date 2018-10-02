@@ -3933,7 +3933,8 @@ function loadModel$1() {
         return;
     });
 }
-loadModel$1();
+if (isNodeEnvironment)
+    loadModel$1();
 function predictPattern(input) {
     return __awaiter(this, void 0, void 0, function* () {
         yield loadModel$1();
