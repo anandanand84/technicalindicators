@@ -138,6 +138,7 @@ If you like this project. You'll love my other project [crypto trading hub](http
 1. [Weighted Moving Average (WMA)](https://tonicdev.com/anandaravindan/wma "WMA").
 1. [Wilder’s Smoothing (Smoothed Moving Average, WEMA)](https://tonicdev.com/anandaravindan/wema "WEMA").
 1. [WilliamsR (W%R)](https://tonicdev.com/anandaravindan/williamsr "W%R").
+1. [Ichimoku Cloud](https://github.com/anandanand84/technicalindicators/blob/master/test/ichimoku/IchimokuCloud.js "Ichimoku Cloud").
 
 # Other Utils
 

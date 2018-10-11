@@ -4079,6 +4079,7 @@ function getAvailableIndicators () {
   AvailableIndicators.push('hasInverseHeadAndShoulder');
   AvailableIndicators.push('isTrendingUp');
   AvailableIndicators.push('isTrendingDown');
+  AvailableIndicators.push('ichimokucloud');
   return AvailableIndicators;
 }
 
