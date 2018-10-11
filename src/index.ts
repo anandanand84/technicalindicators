@@ -88,6 +88,6 @@ export  { hasInverseHeadAndShoulder }   from './patterndetection/patterndetectio
 export  { isTrendingUp}                 from './patterndetection/patterndetection';
 export  { isTrendingDown }              from './patterndetection/patterndetection';
 
-export  { ichimokucloud }              from './ichimoku/IchimokuCloud';
+export  { ichimokucloud, IchimokuCloud }              from './ichimoku/IchimokuCloud';
 
 export  { setConfig, getConfig }       from './config'
