@@ -1,6 +1,6 @@
 {
   "name": "technicalindicators",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Techincal Indicators written in javascript",
   "main": "dist/index.js",
   "module": "lib/index.js",
@@ -34,6 +34,7 @@
     "ema",
     "exponential moving average",
     "Awesome Oscillator",
+    "Keltner Channels",
     "Ichimoku Cloud",
     "AO",
     "sma",

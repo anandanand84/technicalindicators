@@ -84,6 +84,9 @@ export function getAvailableIndicators () {
   AvailableIndicators.push('isTrendingUp');
   AvailableIndicators.push('isTrendingDown');
   AvailableIndicators.push('ichimokucloud');
+  
+  AvailableIndicators.push('keltnerchannels');
+  AvailableIndicators.push('chandelierexit');
   return AvailableIndicators;
 };
 

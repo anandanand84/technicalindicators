@@ -81,4 +81,6 @@ export { hasInverseHeadAndShoulder } from './patterndetection/patterndetection';
 export { isTrendingUp } from './patterndetection/patterndetection';
 export { isTrendingDown } from './patterndetection/patterndetection';
 export { ichimokucloud, IchimokuCloud } from './ichimoku/IchimokuCloud';
+export { keltnerchannels, KeltnerChannels, KeltnerChannelsInput, KeltnerChannelsOutput } from './volatility/KeltnerChannels';
+export { chandelierexit, ChandelierExit, ChandelierExitInput, ChandelierExitOutput } from './volatility/ChandelierExit';
 export { setConfig, getConfig } from './config';

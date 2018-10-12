@@ -4078,6 +4078,148 @@ function ichimokucloud(input) {
     return result;
 }
 
+class KeltnerChannelsInput extends IndicatorInput {
+    constructor() {
+        super(...arguments);
+        this.maPeriod = 20;
+        this.atrPeriod = 10;
+        this.useSMA = false;
+        this.multiplier = 1;
+    }
+}
+class KeltnerChannelsOutput extends IndicatorInput {
+}
+
+class KeltnerChannels extends Indicator {
+    constructor(input) {
+        super(input);
+        var maType = input.useSMA ? SMA : EMA;
+        var maProducer = new maType({ period: input.maPeriod, values: [], format: (v) => { return v; } });
+        var atrProducer = new ATR({ period: input.atrPeriod, high: [], low: [], close: [], format: (v) => { return v; } });
+        var tick;
+        this.result = [];
+        this.generator = (function* () {
+            var KeltnerChannelsOutput;
+            var result;
+            tick = yield;
+            while (true) {
+                var { close } = tick;
+                var ma = maProducer.nextValue(close);
+                var atr$$1 = atrProducer.nextValue(tick);
+                if (ma != undefined && atr$$1 != undefined) {
+                    result = {
+                        middle: ma,
+                        upper: ma + (input.multiplier * (atr$$1)),
+                        lower: ma - (input.multiplier * (atr$$1))
+                    };
+                }
+                tick = yield result;
+            }
+        })();
+        this.generator.next();
+        var highs = input.high;
+        highs.forEach((tickHigh, index) => {
+            var tickInput = {
+                high: tickHigh,
+                low: input.low[index],
+                close: input.close[index],
+            };
+            var result = this.generator.next(tickInput);
+            if (result.value != undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    nextValue(price) {
+        var result = this.generator.next(price);
+        if (result.value != undefined) {
+            return result.value;
+        }
+    }
+    ;
+}
+KeltnerChannels.calculate = keltnerchannels;
+function keltnerchannels(input) {
+    Indicator.reverseInputs(input);
+    var result = new KeltnerChannels(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
+class ChandelierExitInput extends IndicatorInput {
+    constructor() {
+        super(...arguments);
+        this.period = 22;
+        this.multiplier = 3;
+    }
+}
+class ChandelierExitOutput extends IndicatorInput {
+}
+
+class ChandelierExit extends Indicator {
+    constructor(input) {
+        super(input);
+        var highs = input.high;
+        var lows = input.low;
+        var closes = input.close;
+        this.result = [];
+        var atrProducer = new ATR({ period: input.period, high: [], low: [], close: [], format: (v) => { return v; } });
+        var dataCollector = new FixedSizeLinkedList(input.period * 2, true, true, false);
+        this.generator = (function* () {
+            var result;
+            var tick = yield;
+            var atr$$1;
+            while (true) {
+                var { high, low } = tick;
+                dataCollector.push(high);
+                dataCollector.push(low);
+                atr$$1 = atrProducer.nextValue(tick);
+                if ((dataCollector.totalPushed >= (2 * input.period)) && atr$$1 != undefined) {
+                    result = {
+                        exitLong: dataCollector.periodHigh - atr$$1 * input.multiplier,
+                        exitShort: dataCollector.periodLow + atr$$1 * input.multiplier
+                    };
+                }
+                tick = yield result;
+            }
+        })();
+        this.generator.next();
+        highs.forEach((tickHigh, index) => {
+            var tickInput = {
+                high: tickHigh,
+                low: lows[index],
+                close: closes[index],
+            };
+            var result = this.generator.next(tickInput);
+            if (result.value != undefined) {
+                this.result.push(result.value);
+            }
+        });
+    }
+    ;
+    nextValue(price) {
+        var result = this.generator.next(price);
+        if (result.value != undefined) {
+            return result.value;
+        }
+    }
+    ;
+}
+ChandelierExit.calculate = chandelierexit;
+function chandelierexit(input) {
+    Indicator.reverseInputs(input);
+    var result = new ChandelierExit(input).result;
+    if (input.reversedInput) {
+        result.reverse();
+    }
+    Indicator.reverseInputs(input);
+    return result;
+}
+
 function getAvailableIndicators () {
   let AvailableIndicators   = [];
   AvailableIndicators.push('sma');
@@ -4163,6 +4305,9 @@ function getAvailableIndicators () {
   AvailableIndicators.push('isTrendingUp');
   AvailableIndicators.push('isTrendingDown');
   AvailableIndicators.push('ichimokucloud');
+  
+  AvailableIndicators.push('keltnerchannels');
+  AvailableIndicators.push('chandelierexit');
   return AvailableIndicators;
 }
 
@@ -4286,6 +4431,14 @@ exports.isTrendingUp = isTrendingUp;
 exports.isTrendingDown = isTrendingDown;
 exports.ichimokucloud = ichimokucloud;
 exports.IchimokuCloud = IchimokuCloud;
+exports.keltnerchannels = keltnerchannels;
+exports.KeltnerChannels = KeltnerChannels;
+exports.KeltnerChannelsInput = KeltnerChannelsInput;
+exports.KeltnerChannelsOutput = KeltnerChannelsOutput;
+exports.chandelierexit = chandelierexit;
+exports.ChandelierExit = ChandelierExit;
+exports.ChandelierExitInput = ChandelierExitInput;
+exports.ChandelierExitOutput = ChandelierExitOutput;
 exports.setConfig = setConfig;
 exports.getConfig = getConfig;
 //# sourceMappingURL=index.js.map
