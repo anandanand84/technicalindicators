@@ -9,7 +9,7 @@ export declare enum AvailablePatterns {
     'DB' = 2,
     'HS' = 3,
     'TD' = 4,
-    'DT' = 5,
+    'DT' = 5
 }
 export declare class PatternDetectorOutput {
     patternId: AvailablePatterns;

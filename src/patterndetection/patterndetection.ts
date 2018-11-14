@@ -1,6 +1,6 @@
 import { Indicator, IndicatorInput } from '../indicator/indicator';
 import { getConfig } from '../config';
-import * as tf from '@tensorflow/tfjs';
+// import * as tf from '@tensorflow/tfjs';
 
 var isNodeEnvironment = false;
 
@@ -11,9 +11,11 @@ declare var module;
 declare var __dirname;
 declare var global;
 declare var require;
+declare var tf; 
 
 try {
-    isNodeEnvironment = Object.prototype.toString.call(global.process) === '[object process]' 
+    isNodeEnvironment = Object.prototype.toString.call(global.process) === '[object process]' ;
+    tf = require('@tensorflow/tfjs')
  } catch(e) {}
 
 export class PatternDetectorInput extends IndicatorInput {
@@ -69,6 +71,7 @@ var loadingPromise;
 async function loadModel() {
     if(modelLoaded) return Promise.resolve(true);
     if(laodingModel) return loadingPromise;
+    laodingModel = true;
     loadingPromise = new Promise(async function(resolve, reject) {
         if(isNodeEnvironment) {
             console.log('Nodejs Environment detected ');
@@ -76,27 +79,33 @@ async function loadModel() {
             var modelPath = require('path').resolve(__dirname, '../tf_model/model.json');
             model = await tf.loadModel(tfnode.io.fileSystem(modelPath));
         } else {
-            console.log('Browser Environment detected ');
-            if((typeof tf === "undefined") || (typeof tf.loadModel === "undefined")) {
-                console.log('Tensorflow js not imported, pattern detection may not work');
+            if(typeof (window as any).tf == "undefined") {
                 modelLoaded = false;
                 laodingModel = false;
+                console.log('Tensorflow js not imported, pattern detection may not work');
                 resolve();
                 return;
             }
+            tf = (window as any).tf;
+            console.log('Browser Environment detected ', tf);
+            console.log('Loading model ....')
             model = await tf.loadModel('/tf_model/model.json');
+            modelLoaded = true;
+            laodingModel = false;
+            setTimeout(resolve, 1000);
+            console.log('Loaded model');
+            return;
         }
         modelLoaded = true;
         laodingModel = false;
         resolve();
         return;
     });
-    laodingModel = true;
+    await loadingPromise;
     return;
  }
 
- if(isNodeEnvironment)
-    loadModel();
+loadModel();
 
 export async function predictPattern(input:PatternDetectorInput):Promise<PatternDetectorOutput> {
     await loadModel()
