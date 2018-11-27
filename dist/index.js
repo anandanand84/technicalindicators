@@ -3856,9 +3856,9 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
 var isNodeEnvironment = false;
 var model;
 var oneHotMap = ['IHS', 'TU', 'DB', 'HS', 'TD', 'DT'];
+var tf;
 try {
     isNodeEnvironment = Object.prototype.toString.call(global.process) === '[object process]';
-    tf = require('@tensorflow/tfjs');
 }
 catch (e) { }
 
@@ -3908,6 +3908,7 @@ function loadModel() {
         loadingPromise = new Promise(function (resolve, reject) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (isNodeEnvironment) {
+                    tf = require('@tensorflow/tfjs');
                     console.log('Nodejs Environment detected ');
                     var tfnode = require('@tensorflow/tfjs-node');
                     var modelPath = require('path').resolve(__dirname, '../tf_model/model.json');

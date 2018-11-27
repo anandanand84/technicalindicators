@@ -11,11 +11,10 @@ declare var module;
 declare var __dirname;
 declare var global;
 declare var require;
-declare var tf; 
+var tf; 
 
 try {
     isNodeEnvironment = Object.prototype.toString.call(global.process) === '[object process]' ;
-    tf = require('@tensorflow/tfjs')
  } catch(e) {}
 
 export class PatternDetectorInput extends IndicatorInput {
@@ -74,6 +73,7 @@ async function loadModel() {
     laodingModel = true;
     loadingPromise = new Promise(async function(resolve, reject) {
         if(isNodeEnvironment) {
+            tf = require('@tensorflow/tfjs')
             console.log('Nodejs Environment detected ');
             var tfnode = require('@tensorflow/tfjs-node');
             var modelPath = require('path').resolve(__dirname, '../tf_model/model.json');
