@@ -1,4 +1,5 @@
 import { Indicator, IndicatorInput } from '../indicator/indicator';
+import { CandleData } from '../StockData';
 /**
  * Created by AAravindan on 5/8/16.
  */
@@ -74,7 +75,7 @@ export class ATR extends Indicator {
 
   static calculate = atr;
 
-  nextValue(price:number):number | undefined {
+  nextValue(price:CandleData):number | undefined {
       return this.generator.next(price).value;
   };
 }

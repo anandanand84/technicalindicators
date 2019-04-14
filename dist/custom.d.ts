@@ -187,7 +187,7 @@ declare class ATR extends Indicator {
     generator: IterableIterator<number | undefined>;
     constructor(input: ATRInput);
     static calculate: typeof atr;
-    nextValue(price: number): number | undefined;
+    nextValue(price: CandleData): number | undefined;
 }
 declare function atr(input: ATRInput): number[];
 declare class WEMA extends Indicator {

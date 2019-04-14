@@ -1,4 +1,5 @@
 import { Indicator, IndicatorInput } from '../indicator/indicator';
+import { CandleData } from '../StockData';
 export declare class ATRInput extends IndicatorInput {
     low: number[];
     high: number[];
@@ -10,6 +11,6 @@ export declare class ATR extends Indicator {
     generator: IterableIterator<number | undefined>;
     constructor(input: ATRInput);
     static calculate: typeof atr;
-    nextValue(price: number): number | undefined;
+    nextValue(price: CandleData): number | undefined;
 }
 export declare function atr(input: ATRInput): number[];
