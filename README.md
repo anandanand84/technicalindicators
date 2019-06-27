@@ -164,7 +164,7 @@ Finds pattern in the given set of data, patterns include, DB, DT, HS, IHS, TU, T
 
 
 When running in browser the dir /tf_model/ present in this respository should be accessible on your server at the location at /tf_model/.
-The model is trained using 400 count of values, so try to provide values close to 400  for a reliable prediction of DB, DT, HS, IHS
+The model is trained using 400 count of values, so try to provide values close to 400  for a reliable prediction of DB(Double Bottom), DT(Double Top), HS(Head and Shoulders), IHS(Inverted Head and Shoulders)
 TD(Trending Down) and TU(Trending up) works fine even with lower values.
 
 # Chart Types
