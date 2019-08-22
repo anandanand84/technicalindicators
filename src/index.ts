@@ -79,14 +79,14 @@ export { tweezerbottom }               from './candlestick/TweezerBottom';
 
 export  { fibonacciretracement}        from './drawingtools/fibonacci';
 
-export  { predictPattern, PatternDetector }              from './patterndetection/patterndetection';
-export  { AvailablePatterns }              from './patterndetection/patterndetection';
-export  { hasDoubleBottom}              from './patterndetection/patterndetection';
-export  { hasDoubleTop }                from './patterndetection/patterndetection';
-export  { hasHeadAndShoulder}           from './patterndetection/patterndetection';
-export  { hasInverseHeadAndShoulder }   from './patterndetection/patterndetection';
-export  { isTrendingUp}                 from './patterndetection/patterndetection';
-export  { isTrendingDown }              from './patterndetection/patterndetection';
+//export  { predictPattern, PatternDetector }              from './patterndetection/patterndetection';
+//export  { AvailablePatterns }              from './patterndetection/patterndetection';
+//export  { hasDoubleBottom}              from './patterndetection/patterndetection';
+//export  { hasDoubleTop }                from './patterndetection/patterndetection';
+//export  { hasHeadAndShoulder}           from './patterndetection/patterndetection';
+//export  { hasInverseHeadAndShoulder }   from './patterndetection/patterndetection';
+//export  { isTrendingUp}                 from './patterndetection/patterndetection';
+//export  { isTrendingDown }              from './patterndetection/patterndetection';
 
 export  { ichimokucloud, IchimokuCloud }              from './ichimoku/IchimokuCloud';
 
