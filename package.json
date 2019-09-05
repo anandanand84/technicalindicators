@@ -147,6 +147,8 @@
     "typescript": "^2.9.2"
   },
   "dependencies": {
+    "@tensorflow/tfjs": "^1.2.7",
+    "@tensorflow/tfjs-node": "^1.2.7",
     "@types/node": "^6.0.96"
   }
 }

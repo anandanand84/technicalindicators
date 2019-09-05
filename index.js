@@ -76,7 +76,7 @@ export function getAvailableIndicators () {
   AvailableIndicators.push('tweezertop');
   AvailableIndicators.push('tweezerbottom');
 
-  //AvailableIndicators.push('predictPattern');
+  AvailableIndicators.push('predictPattern');
   AvailableIndicators.push('hasDoubleBottom');
   AvailableIndicators.push('hasDoubleTop');
   AvailableIndicators.push('hasHeadAndShoulder');
