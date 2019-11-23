@@ -62,22 +62,7 @@ npm install --save babel-polyfill
 
 ### Pattern detection
 
-If using pattern detection it is necessary to include the tensorflowjs library before this library is loaded and the model files present in tf_model dir in this repository should be accessible at location /tf_model/ in server.
-
-For ES6
-
-``` html
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0"></script>
-<script src="node_modules/technicalindicators/dist/browser.es6.js"></script>
-```
-
-For ES5
-
-``` html
-<script src="node_modules/babel-polyfill/browser.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.0"></script>
-<script src="node_modules/technicalindicators/dist/browser.es6.js"></script>
-```
+Pattern detection is removed from version 3.0, if you need pattern detection use v2.0
 
 All indicators will be available in window object. So you can just use
 
@@ -149,23 +134,6 @@ If you like this project. You'll love my other project [crypto trading hub](http
 1. [Standard Deviation](https://github.com/anandanand84/technicalindicators/blob/master/test/Utils/SD.js "")
 1. [Sum](https://github.com/anandanand84/technicalindicators/blob/master/test/Utils/Sum.js "")
 
-# Pattern Detection
-
-1. [Pattern Detection](https://tonicdev.com/anandaravindan/patterns "Pattern Detection")
-
-Finds pattern in the given set of data, patterns include, DB, DT, HS, IHS, TU, TD
-
-
-```
-  const hasHeadAndShoulder = require('technicalindicators').hasHeadAndShoulder;
-  hasHeadAndShoulder({values : closes})
-  isTrendingUp({values : closes})
-```
-
-
-When running in browser the dir /tf_model/ present in this respository should be accessible on your server at the location at /tf_model/.
-The model is trained using 400 count of values, so try to provide values close to 400  for a reliable prediction of DB(Double Bottom), DT(Double Top), HS(Head and Shoulders), IHS(Inverted Head and Shoulders)
-TD(Trending Down) and TU(Trending up) works fine even with lower values.
 
 # Chart Types
 

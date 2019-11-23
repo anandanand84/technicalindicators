@@ -1,6 +1,6 @@
 {
   "name": "technicalindicators",
-  "version": "2.0.9",
+  "version": "3.0.0",
   "description": "Techincal Indicators written in javascript",
   "main": "dist/index.js",
   "module": "lib/index.js",
@@ -104,6 +104,7 @@
   "bugs": {
     "url": "https://github.com/anandanand84/technicalindicators/issues"
   },
+  "sideEffects" : false,
   "homepage": "https://github.com/anandanand84/technicalindicators#readme",
   "devDependencies": {
     "@types/chai": "^3.0.0",
@@ -147,8 +148,6 @@
     "typescript": "^2.9.2"
   },
   "dependencies": {
-    "@tensorflow/tfjs": "^0.13.5",
-    "@tensorflow/tfjs-node": "^0.3.2",
     "@types/node": "^6.0.96"
   }
 }

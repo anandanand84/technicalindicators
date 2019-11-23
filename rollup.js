@@ -45,7 +45,7 @@ async function doBuild() {
           comments : false
         })
       ],
-      external: ["@babel/polyfill", "@tensorflow/tfjs"]
+      external: ["@babel/polyfill"]
     });
 
     await bundle.write({
@@ -54,8 +54,7 @@ async function doBuild() {
       format: 'iife',
       moduleName: 'window',
       globals : {
-        "@babel/polyfill" : 'window',
-        "@tensorflow/tfjs" : 'tf'
+        "@babel/polyfill" : 'window'
       }
     })
 
@@ -110,7 +109,7 @@ async function doBuild() {
           comments : false
         })
       ],
-      external: ["@babel/polyfill", "@tensorflow/tfjs"]
+      external: ["@babel/polyfill"]
     });
 
     await customBundle.write({
@@ -119,8 +118,7 @@ async function doBuild() {
       format: 'iife',
       moduleName: 'window',
       globals : {
-        "@babel/polyfill" : 'window',
-        "@tensorflow/tfjs" : 'tf'
+        "@babel/polyfill" : 'window'
       }
     })
 
@@ -144,7 +142,7 @@ async function doBuild() {
           comments : false
         })
       ],
-      external: ["@babel/polyfill", "@tensorflow/tfjs"],
+      external: ["@babel/polyfill"],
     });
 
     await bundleES6.write({
@@ -153,14 +151,13 @@ async function doBuild() {
       format: 'iife',
       moduleName: 'window',
       globals : {
-        "@babel/polyfill" : 'window',
-        "@tensorflow/tfjs" : 'tf'
+        "@babel/polyfill" : 'window'
       }
     })
 
     let bundleNode = await rollup({
       entry: 'index.js',
-      external: ["@babel/polyfill", "@tensorflow/tfjs"],
+      external: ["@babel/polyfill"],
     });
 
     await bundleNode.write({
