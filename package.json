@@ -98,7 +98,9 @@
     "Shooting Star",
     "Tweezer Top",
     "Tweezer Bottom",
-    "Cross Up"
+    "Cross Up",
+    "Cross Down",
+    "Cross Over"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",
