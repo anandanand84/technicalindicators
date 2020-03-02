@@ -87,6 +87,7 @@ export function getAvailableIndicators () {
   
   AvailableIndicators.push('keltnerchannels');
   AvailableIndicators.push('chandelierexit');
+  AvailableIndicators.push('crossup');
   return AvailableIndicators;
 };
 
