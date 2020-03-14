@@ -24,7 +24,6 @@ export class CrossUp extends Indicator {
         const genFn = (function* (): IterableIterator<true | false> {
             var current = yield;
             var result = false;
-            var prevResult = false;
 
             while (true) {
                 currentLineA.unshift(current.valueA);
@@ -49,7 +48,6 @@ export class CrossUp extends Indicator {
                 }
 
                 current = yield result;
-                prevResult = result;
             }
         });
 
