@@ -4079,7 +4079,6 @@ class CrossUp extends Indicator {
         const genFn = (function* () {
             var current = yield;
             var result = false;
-            var prevResult = false;
             while (true) {
                 currentLineA.unshift(current.valueA);
                 currentLineB.unshift(current.valueB);
@@ -4101,7 +4100,6 @@ class CrossUp extends Indicator {
                     currentLineB = [current.valueB];
                 }
                 current = yield result;
-                prevResult = result;
             }
         });
         this.generator = genFn();
@@ -4152,7 +4150,6 @@ class CrossDown extends Indicator {
         const genFn = (function* () {
             var current = yield;
             var result = false;
-            var prevResult = false;
             while (true) {
                 currentLineA.unshift(current.valueA);
                 currentLineB.unshift(current.valueB);
@@ -4174,7 +4171,6 @@ class CrossDown extends Indicator {
                     currentLineB = [current.valueB];
                 }
                 current = yield result;
-                prevResult = result;
             }
         });
         this.generator = genFn();
