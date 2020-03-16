@@ -97,14 +97,17 @@
     "Hanging Man",
     "Shooting Star",
     "Tweezer Top",
-    "Tweezer Bottom"
+    "Tweezer Bottom",
+    "Cross Up",
+    "Cross Down",
+    "Cross Over"
   ],
   "author": "anand.anand84@gmail.com",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/anandanand84/technicalindicators/issues"
   },
-  "sideEffects" : false,
+  "sideEffects": false,
   "homepage": "https://github.com/anandanand84/technicalindicators#readme",
   "devDependencies": {
     "@types/chai": "^3.0.0",

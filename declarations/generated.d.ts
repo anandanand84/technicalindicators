@@ -811,40 +811,6 @@ export function tweezerbottom(data: StockData): any;
   */
 export function fibonacciretracement(start: number, end: number): number[];
 
-export class PatternDetectorInput extends IndicatorInput {
-    values: number[];
-    constructor(values: number[]);
-}
-export enum AvailablePatterns {
-    'IHS' = 0,
-    'TU' = 1,
-    'DB' = 2,
-    'HS' = 3,
-    'TD' = 4,
-    'DT' = 5
-}
-export class PatternDetectorOutput {
-    patternId: AvailablePatterns;
-    pattern: string;
-    probability: number;
-}
-export function predictPattern(input: PatternDetectorInput): Promise<PatternDetectorOutput>;
-export function hasDoubleBottom(input: PatternDetectorInput): Promise<Boolean>;
-export function hasDoubleTop(input: PatternDetectorInput): Promise<Boolean>;
-export function hasHeadAndShoulder(input: PatternDetectorInput): Promise<Boolean>;
-export function hasInverseHeadAndShoulder(input: PatternDetectorInput): Promise<Boolean>;
-export function isTrendingUp(input: PatternDetectorInput): Promise<Boolean>;
-export function isTrendingDown(input: PatternDetectorInput): Promise<Boolean>;
-export class PatternDetector extends Indicator {
-    static predictPattern: typeof predictPattern;
-    static hasDoubleBottom: typeof hasDoubleBottom;
-    static hasDoubleTop: typeof hasDoubleTop;
-    static hasHeadAndShoulder: typeof hasHeadAndShoulder;
-    static hasInverseHeadAndShoulder: typeof hasInverseHeadAndShoulder;
-    static isTrendingUp: typeof isTrendingUp;
-    static isTrendingDown: typeof isTrendingDown;
-}
-
 export class IchimokuCloudInput extends IndicatorInput {
     high: number[];
     low: number[];
@@ -909,6 +875,40 @@ export class ChandelierExit extends Indicator {
     nextValue(price: ChandelierExitInput): ChandelierExitOutput | undefined;
 }
 export function chandelierexit(input: ChandelierExitInput): number[];
+
+export class CrossInput extends IndicatorInput {
+    lineA: number[];
+    lineB: number[];
+    constructor(lineA: number[], lineB: number[]);
+}
+export class CrossUp extends Indicator {
+    lineA: number[];
+    lineB: number[];
+    result: boolean[];
+    generator: IterableIterator<true | false>;
+    constructor(input: CrossInput);
+    static calculate: typeof crossUp;
+    static reverseInputs(input: CrossInput): void;
+    nextValue(valueA: number, valueB: number): true | false;
+}
+export function crossUp(input: CrossInput): boolean[];
+
+export class CrossInput extends IndicatorInput {
+    lineA: number[];
+    lineB: number[];
+    constructor(lineA: number[], lineB: number[]);
+}
+export class CrossDown extends Indicator {
+    lineA: number[];
+    lineB: number[];
+    result: boolean[];
+    generator: IterableIterator<true | false>;
+    constructor(input: CrossInput);
+    static calculate: typeof crossDown;
+    static reverseInputs(input: CrossInput): void;
+    nextValue(valueA: number, valueB: number): true | false;
+}
+export function crossDown(input: CrossInput): boolean[];
 
 export function setConfig(key: any, value: any): void;
 export function getConfig(key: any): any;
