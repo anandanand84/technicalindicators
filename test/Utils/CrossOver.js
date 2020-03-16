@@ -13,7 +13,7 @@ var expectedResults = [false, false, false, true, false, true, true, false, fals
 
 describe('Cross Over', function() {
     'use strict';
-    it.only('should calculate positive and negative line cross over using the calculate method', function() {
+    it('should calculate positive and negative line cross over using the calculate method', function() {
         assert.deepEqual(CrossOver.calculate(input), expectedResults);
     });
 

@@ -107,7 +107,7 @@
   "bugs": {
     "url": "https://github.com/anandanand84/technicalindicators/issues"
   },
-  "sideEffects" : false,
+  "sideEffects": false,
   "homepage": "https://github.com/anandanand84/technicalindicators#readme",
   "devDependencies": {
     "@types/chai": "^3.0.0",
