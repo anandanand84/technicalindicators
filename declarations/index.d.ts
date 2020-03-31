@@ -77,4 +77,5 @@ export { keltnerchannels, KeltnerChannels, KeltnerChannelsInput, KeltnerChannels
 export { chandelierexit, ChandelierExit, ChandelierExitInput, ChandelierExitOutput } from './volatility/ChandelierExit';
 export { crossUp, CrossUp } from './Utils/CrossUp';
 export { crossDown, CrossDown } from './Utils/CrossDown';
+export { crossOver, CrossOver } from './Utils/CrossOver';
 export { setConfig, getConfig } from './config';
