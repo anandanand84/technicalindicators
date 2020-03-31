@@ -34,6 +34,7 @@ export { sum, Sum } from './Utils/Sum';
 export { FixedSizeLinkedList };
 export { renko } from './chart_types/Renko';
 export { HeikinAshi, heikinashi } from './chart_types/HeikinAshi';
+export { TypicalPrice, typicalprice } from './chart_types/TypicalPrice';
 export { bullish } from './candlestick/Bullish';
 export { bearish } from './candlestick/Bearish';
 export { abandonedbaby } from './candlestick/AbandonedBaby';
@@ -77,4 +78,5 @@ export { keltnerchannels, KeltnerChannels, KeltnerChannelsInput, KeltnerChannels
 export { chandelierexit, ChandelierExit, ChandelierExitInput, ChandelierExitOutput } from './volatility/ChandelierExit';
 export { crossUp, CrossUp } from './Utils/CrossUp';
 export { crossDown, CrossDown } from './Utils/CrossDown';
+export { crossOver, CrossOver } from './Utils/CrossOver';
 export { setConfig, getConfig } from './config';
