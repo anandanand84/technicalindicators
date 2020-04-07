@@ -307,7 +307,7 @@ npm run cover
 1. Add tests for the indicator and make them pass.  
    (It would be better if a sample of the stockcharts excel is used for the test case.)
 1. Add the indicator to the `index.js` and `src/index.ts`
-1. Run build scripts: `npm run build-lib && npm run generateDts && npm run start`
+1. Run build scripts: `npm run build && npm run generateDts && npm run start`
 1. Add it to `README.md`, with the link to the runkit url containing the sample.
 1. Add indicator it to keywords in `package.json` and `bower.json`
 1. Send a Pull Request.
