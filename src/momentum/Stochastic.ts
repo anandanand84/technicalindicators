@@ -30,6 +30,7 @@ export class Stochastic extends Indicator {
     let closes = input.close;
     let period = input.period;
     let signalPeriod = input.signalPeriod;
+    let smoothing = input.smoothing;
     let format = this.format;
     if(!((lows.length === highs.length) && (highs.length === closes.length) )){
       throw ('Inputs(low,high, close) not of equal size');
@@ -45,6 +46,14 @@ export class Stochastic extends Indicator {
       let index = 1;
       let pastHighPeriods = new LinkedList(period, true, false);
       let pastLowPeriods = new LinkedList(period, false, true);
+      let kSma
+      if (smoothing > 1) {
+          kSma = new SMA({
+              period: smoothing,
+              values: [],
+              format: (v) => { return v; }
+          });
+      }
       let dSma = new SMA({
         period : signalPeriod,
         values : [],
@@ -62,7 +71,11 @@ export class Stochastic extends Indicator {
         }
         let periodLow = pastLowPeriods.periodLow;
         k = (tick.close - periodLow) / (pastHighPeriods.periodHigh - periodLow) * 100;
-        k = isNaN(k) ? 0 : k; //This happens when the close, high and low are same for the entire period; Bug fix for 
+        k = isNaN(k) ? 0 : k; //This happens when the close, high and low are same for the entire period; Bug fix for
+        if (smoothing > 1) {
+            k = kSma.nextValue(k);
+            k = isNaN(k) ? 0 : k;
+        }
         d = dSma.nextValue(k);
         tick = yield {
           k : format(k),

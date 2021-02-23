@@ -214,9 +214,9 @@ class FixedSizeLinkedList extends LinkedList {
             if (this.periodHigh <= this.current) {
                 this.periodHigh = this.current;
             }
-            
+
         }
-        
+
     }
     calculatePeriodLow() {
         this.resetCursor();
@@ -226,9 +226,9 @@ class FixedSizeLinkedList extends LinkedList {
             if (this.periodLow >= this.current) {
                 this.periodLow = this.current;
             }
-            
+
         }
-        
+
     }
 }
 
@@ -761,7 +761,7 @@ class SD extends Indicator {
             var tick;
             var mean;
             var currentSet = new FixedSizeLinkedList(period);
-            
+
             tick = yield;
             var sd;
             while (true) {
@@ -1201,7 +1201,7 @@ class ATR extends Indicator {
         this.generator = (function* () {
             var tick = yield;
             var avgTrueRange, trange;
-            
+
             while (true) {
                 trange = trueRange.nextValue({
                     low: tick.low,
@@ -1255,7 +1255,7 @@ class ROC extends Indicator {
         this.generator = (function* () {
             let index = 1;
             var pastPeriods = new FixedSizeLinkedList(period);
-            
+
             var tick = yield;
             var roc;
             while (true) {
@@ -1429,7 +1429,7 @@ class PSAR extends Indicator {
                             extreme = curr.high;
                             accel = Math.min(accel + step, max);
                         }
-                        
+
                     }
                     else {
                         sar = Math.max(sar, furthest.high, prev.high);
@@ -1496,6 +1496,7 @@ class Stochastic extends Indicator {
         let closes = input.close;
         let period = input.period;
         let signalPeriod = input.signalPeriod;
+        let smoothing = (input.smoothing || 1);
         let format = this.format;
         if (!((lows.length === highs.length) && (highs.length === closes.length))) {
             throw ('Inputs(low,high, close) not of equal size');
@@ -1516,6 +1517,14 @@ class Stochastic extends Indicator {
                 values: [],
                 format: (v) => { return v; }
             });
+            let kSma
+            if (smoothing > 1) {
+                kSma = new SMA({
+                    period: smoothing,
+                    values: [],
+                    format: (v) => { return v; }
+                });
+            }
             let k, d;
             var tick = yield;
             while (true) {
@@ -1528,8 +1537,12 @@ class Stochastic extends Indicator {
                 }
                 let periodLow = pastLowPeriods.periodLow;
                 k = (tick.close - periodLow) / (pastHighPeriods.periodHigh - periodLow) * 100;
-                k = isNaN(k) ? 0 : k; //This happens when the close, high and low are same for the entire period; Bug fix for 
-                d = dSma.nextValue(k);
+                k = isNaN(k) ? 0 : k; //This happens when the close, high and low are same for the entire period; Bug fix for
+                if (smoothing > 1) {
+                    k = kSma.nextValue(k);
+                    k = isNaN(k) ? 0 : k;
+                }
+                d = dSma.nextValue(Number(k));
                 tick = yield {
                     k: format(k),
                     d: (d !== undefined) ? format(d) : undefined
@@ -1863,7 +1876,7 @@ class CCI extends Indicator {
         var format = this.format;
         let constant = .015;
         var currentTpSet = new FixedSizeLinkedList(period);
-        
+
         var tpSMACalculator = new SMA({ period: period, values: [], format: (v) => { return v; } });
         if (!((lows.length === highs.length) && (highs.length === closes.length))) {
             throw ('Inputs(low,high, close) not of equal size');
@@ -1879,13 +1892,13 @@ class CCI extends Indicator {
                 let cci;
                 let sum = 0;
                 if (smaTp != undefined) {
-                    //First, subtract the most recent 20-period average of the typical price from each period's typical price. 
+                    //First, subtract the most recent 20-period average of the typical price from each period's typical price.
                     //Second, take the absolute values of these numbers.
-                    //Third,sum the absolute values. 
+                    //Third,sum the absolute values.
                     for (let x of currentTpSet.iterator()) {
                         sum = sum + (Math.abs(x - smaTp));
                     }
-                    //Fourth, divide by the total number of periods (20). 
+                    //Fourth, divide by the total number of periods (20).
                     meanDeviation = sum / period;
                     cci = (tp - smaTp) / (constant * meanDeviation);
                 }
@@ -2006,7 +2019,7 @@ class VWAP extends Indicator {
                 cumulativeTotal = cumulativeTotal + total;
                 cumulativeVolume = cumulativeVolume + tick.volume;
                 tick = yield cumulativeTotal / cumulativeVolume;
-                
+
             }
         })();
         this.generator.next();
@@ -2179,7 +2192,7 @@ class MFI extends Indicator {
             let typicalPriceValue = null;
             let prevousTypicalPrice = null;
             tick = yield;
-            lastClose = tick.close; //Fist value 
+            lastClose = tick.close; //Fist value
             tick = yield;
             while (true) {
                 var { high, low, close, volume } = tick;
@@ -2461,7 +2474,7 @@ class Renko extends Indicator {
             brickSize = atrResult[atrResult.length - 1];
         }
         this.result = new CandleList();
-        
+
         if (brickSize === 0) {
             console.error('Not enough data to calculate brickSize for renko when using ATR');
             return;
@@ -4296,7 +4309,7 @@ function getAvailableIndicators () {
   // AvailableIndicators.push('isTrendingUp');
   // AvailableIndicators.push('isTrendingDown');
   AvailableIndicators.push('ichimokucloud');
-  
+
   AvailableIndicators.push('keltnerchannels');
   AvailableIndicators.push('chandelierexit');
   AvailableIndicators.push('crossup');
