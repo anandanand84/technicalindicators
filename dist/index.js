@@ -3688,10 +3688,9 @@ class AbandonedBaby extends CandlestickFinder {
             "low": [seconddaysLow]
         });
         let gapExists = ((seconddaysHigh < firstdaysLow) &&
-            (thirddaysLow > seconddaysHigh) &&
-            (thirddaysClose > thirddaysOpen));
-        let isThirdBullish = (thirddaysHigh < firstdaysOpen);
-        return (isFirstBearish && dojiExists && gapExists && isThirdBullish);
+            (thirddaysLow > seconddaysHigh));
+        let isThirdBullish = (thirddaysClose > thirddaysOpen);
+        return ((isFirstBearish && dojiExists && gapExists && isThirdBullish) || (isFirstBearish && dojiExists && isThirdBullish));
     }
 }
 function abandonedbaby(data) {

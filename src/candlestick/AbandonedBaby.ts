@@ -22,7 +22,6 @@ export default class AbandonedBaby extends CandlestickFinder {
         let thirddaysClose  = data.close[2];
         let thirddaysHigh   = data.high[2];
         let thirddaysLow    = data.low[2];
-         
         let isFirstBearish  = firstdaysClose<firstdaysOpen;
         let dojiExists      =  new Doji().hasPattern({
                                     "open" : [seconddaysOpen],
@@ -30,14 +29,13 @@ export default class AbandonedBaby extends CandlestickFinder {
                                     "high" : [seconddaysHigh],
                                     "low"  : [seconddaysLow]
                                 });
-        let gapExists       = ((seconddaysHigh < firstdaysLow) && 
-                              (thirddaysLow > seconddaysHigh) && 
-                              (thirddaysClose > thirddaysOpen));
-        let isThirdBullish  = (thirddaysHigh< firstdaysOpen);                  
-        return (isFirstBearish && dojiExists && gapExists && isThirdBullish );
+        let gapExists       = ((seconddaysHigh < firstdaysLow) &&
+                              (thirddaysLow > seconddaysHigh));
+        let isThirdBullish  = (thirddaysClose > thirddaysOpen);
+        return ((isFirstBearish && dojiExists && gapExists && isThirdBullish) || (isFirstBearish && dojiExists && isThirdBullish) );
      }
 }
 
 export function abandonedbaby(data:StockData) {
     return new AbandonedBaby().hasPattern(data);
-} 
+}
