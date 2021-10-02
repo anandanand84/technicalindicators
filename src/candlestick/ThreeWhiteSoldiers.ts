@@ -20,18 +20,18 @@ export default class ThreeWhiteSoldiers extends CandlestickFinder {
         let thirddaysClose  = data.close[2];
         let thirddaysHigh   = data.high[2];
         let thirddaysLow    = data.low[2];
-         
+
         let isUpTrend                = seconddaysHigh > firstdaysHigh &&
                                        thirddaysHigh > seconddaysHigh;
         let isAllBullish             = firstdaysOpen < firstdaysClose &&
                                        seconddaysOpen < seconddaysClose &&
                                        thirddaysOpen < thirddaysClose;
-                                      
-      let doesOpenWithinPreviousBody = firstdaysClose > seconddaysOpen &&
-                                        seconddaysOpen <  firstdaysHigh &&
-                                        seconddaysHigh > thirddaysOpen  &&
-                                        thirddaysOpen < seconddaysClose;
-      
+
+      let doesOpenWithinPreviousBody = thirddaysOpen > seconddaysOpen &&
+                                        seconddaysOpen >  firstdaysOpen &&
+                                        firstdaysClose > seconddaysOpen  &&
+                                        seconddaysClose > thirddaysOpen;
+
       return (isUpTrend && isAllBullish && doesOpenWithinPreviousBody);
      }
 }

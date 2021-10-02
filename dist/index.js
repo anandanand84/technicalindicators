@@ -2799,10 +2799,10 @@ class BullishEngulfingPattern extends CandlestickFinder {
         let seconddaysClose = data.close[1];
         let seconddaysHigh = data.high[1];
         let seconddaysLow = data.low[1];
-        let isBullishEngulfing = ((firstdaysClose < firstdaysOpen) &&
-            (firstdaysOpen > seconddaysOpen) &&
-            (firstdaysClose > seconddaysOpen) &&
-            (firstdaysOpen < seconddaysClose));
+        let isBullishEngulfing = ((firstdaysOpen > firstdaysClose) &&
+            (seconddaysClose > seconddaysOpen) &&
+            (seconddaysClose > firstdaysOpen) &&
+            (firstdaysClose > seconddaysOpen));
         return (isBullishEngulfing);
     }
 }
@@ -3035,10 +3035,10 @@ class ThreeWhiteSoldiers extends CandlestickFinder {
         let isAllBullish = firstdaysOpen < firstdaysClose &&
             seconddaysOpen < seconddaysClose &&
             thirddaysOpen < thirddaysClose;
-        let doesOpenWithinPreviousBody = firstdaysClose > seconddaysOpen &&
-            seconddaysOpen < firstdaysHigh &&
-            seconddaysHigh > thirddaysOpen &&
-            thirddaysOpen < seconddaysClose;
+        let doesOpenWithinPreviousBody = thirddaysOpen > seconddaysOpen &&
+            seconddaysOpen > firstdaysOpen &&
+            firstdaysClose > seconddaysOpen &&
+            seconddaysClose > thirddaysOpen;
         return (isUpTrend && isAllBullish && doesOpenWithinPreviousBody);
     }
 }
@@ -3271,8 +3271,8 @@ class BearishEngulfingPattern extends CandlestickFinder {
         let seconddaysHigh = data.high[1];
         let seconddaysLow = data.low[1];
         let isBearishEngulfing = ((firstdaysClose > firstdaysOpen) &&
-            (firstdaysOpen < seconddaysOpen) &&
-            (firstdaysClose < seconddaysOpen) &&
+            (seconddaysOpen > seconddaysClose) &&
+            (seconddaysOpen > firstdaysClose) &&
             (firstdaysOpen > seconddaysClose));
         return (isBearishEngulfing);
     }
